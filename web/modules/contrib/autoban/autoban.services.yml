@@ -1,0 +1,4 @@
+services:
+  autoban:
+    class: Drupal\autoban\Controller\AutobanController
+    arguments: ['@request_stack']

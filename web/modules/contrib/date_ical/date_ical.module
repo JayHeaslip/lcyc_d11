@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for date_ical module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function date_ical_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the block module.
+    case 'help.page.date_ical':
+      return t("It provides a plugin for Views to enable exporting your site's calendar as an iCal feed, and a plugin for Feeds to enable importing external iCal feeds into your site's calendar.");
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function date_ical_theme() {
+  return [
+    'date_ical_icon' => [
+      'variables' => [
+        'format' => NULL,
+        'url' => NULL,
+        'title' => '📅',
+        'attributes' => [],
+      ],
+    ],
+  ];
+}

@@ -1,0 +1,11 @@
+.book-traversal__list {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  margin-inline-start: 0;
+}
+
+.book-traversal__item {
+  margin: 0 1rem;
+  list-style-type: none;
+}

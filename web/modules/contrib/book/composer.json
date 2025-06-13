@@ -1,0 +1,26 @@
+{
+    "name": "drupal/book",
+    "description": "A book is a set of nodes tied together in a hierarchical structure, with chapters, sections, and subsections.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Peter Wolanin (pwolanin)",
+            "homepage": "https://www.drupal.org/u/pwolanin",
+            "role": "Maintainer"
+        },
+        {
+            "name": "Stephen Mustgrave (smustgrave)",
+            "homepage": "https://www.drupal.org/u/smustgrave",
+            "role": "Co-Maintainer"
+        }
+    ],
+    "homepage": "https://drupal.org/project/book",
+    "require": {
+        "ext-pdo": "*"
+    },
+    "support": {
+        "issues": "https://drupal.org/project/issues/book",
+        "source": "https://git.drupalcode.org/project/book"
+    }
+}

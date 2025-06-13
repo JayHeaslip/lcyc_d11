@@ -1,0 +1,14 @@
+drupal.book:
+  version: VERSION
+  js:
+    js/book.js: { }
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.form
+
+book.styling:
+  version: VERSION
+  css:
+    theme:
+      css/book.css: { }

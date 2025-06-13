@@ -15,12 +15,24 @@
         }
     ],
     "require": {
+        "civicrm/civicrm-core": "^5.2",
+        "civicrm/civicrm-drupal-8": "^5.2",
+        "civicrm/civicrm-packages": "^5.2",
         "composer/installers": "^2.3",
+        "drupal/autoban": "^1.11",
+        "drupal/book": "^2.0",
+        "drupal/color": "^2.x-dev",
         "drupal/core-composer-scaffold": "^11.1",
         "drupal/core-project-message": "^11.1",
         "drupal/core-recommended": "^11.1",
+        "drupal/ctools": "^4.1",
+        "drupal/date_ical": "^4",
+        "drupal/ds": "^3.0",
+        "drupal/forum": "^1.0",
         "drupal/migrate_plus": "^6.0",
         "drupal/migrate_tools": "^6.0",
+        "drupal/profile": "^1.12",
+        "drupal/rdf": "^3.0@beta",
         "drush/drush": "^13.6"
     },
     "conflict": {
@@ -30,12 +42,16 @@
     "prefer-stable": true,
     "config": {
         "allow-plugins": {
+            "civicrm/civicrm-asset-plugin": true,
+            "civicrm/composer-compile-plugin": true,
+            "civicrm/composer-downloads-plugin": true,
             "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
-            "phpstan/extension-installer": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "phpstan/extension-installer": true
         },
         "sort-packages": true
     },
@@ -97,6 +113,7 @@
                 "  * Remove the plugin that prints this message:",
                 "      composer remove drupal/core-project-message"
             ]
-        }
+        },
+        "enable-patching": "true"
     }
 }

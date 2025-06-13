@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Tell Drupal about templates.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function book_olivero_theme(): array {
+  return [
+    'book_navigation' => [
+      'template' => 'book-navigation',
+    ],
+    'book_tree' => [
+      'template' => 'book-tree',
+    ],
+  ];
+}

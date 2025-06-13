@@ -1,0 +1,14 @@
+name: 'Book test views'
+type: module
+description: 'Provides default views for views book tests.'
+core_version_requirement: ^10.3 || ^11
+package: Testing
+# version: VERSION
+dependencies:
+  - drupal:book
+  - drupal:views
+
+# Information added by Drupal.org packaging script on 2025-01-03
+version: '2.0.0'
+project: 'book'
+datestamp: 1735922164

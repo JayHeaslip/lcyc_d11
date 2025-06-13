@@ -1,0 +1,4 @@
+book_olivero.navigation:
+  css:
+    theme:
+      css/navigation.css: {}

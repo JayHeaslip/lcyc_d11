@@ -1,0 +1,12 @@
+name: Book Olivero
+type: module
+description: 'Provides styling and templates for Olivero theme.'
+core_version_requirement: ^10.3 || ^11
+package: Book
+dependencies:
+  - book:book
+
+# Information added by Drupal.org packaging script on 2025-01-03
+version: '2.0.0'
+project: 'book'
+datestamp: 1735922164
