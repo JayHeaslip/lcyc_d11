@@ -1,0 +1,20 @@
+# Ignore vendor directory (managed by Composer)
+/vendor/
+
+# Ignore Drupal's files directory
+/web/sites/*/files/
+
+# Ignore sensitive settings files
+/web/sites/*/settings.local.php
+/web/sites/*/services.yml
+
+# Ignore temporary files
+/.env
+*.log
+*.cache
+/web/core/install.php
+
+# Ignore IDE-specific files
+.idea/
+*.sublime-project
+*.sublime-workspace
