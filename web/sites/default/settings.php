@@ -872,12 +872,12 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
 $databases['default']['default'] = array (
-  'database' => 'lcyc_d11',
-  'username' => 'root',
-  'password' => 'password',
+  'database' => 'lcyc_drupal_11',
+  'username' => 'lcyc_db',
+  'password' => 'candc997',
   'prefix' => '',
-  'host' => 'localhost',
-  'port' => '3306',
+  'host' => 'mysql.lcyc.info',
+  'port' => '',
   'isolation_level' => 'READ COMMITTED',
   'driver' => 'mysql',
   'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',

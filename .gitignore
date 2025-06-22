@@ -18,3 +18,5 @@
 .idea/
 *.sublime-project
 *.sublime-workspace
+web/sites/default/settings.php
+web/sites/default/civicrm.settings.php.template

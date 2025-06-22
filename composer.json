@@ -15,9 +15,9 @@
         }
     ],
     "require": {
-        "civicrm/civicrm-core": "^5.2",
-        "civicrm/civicrm-drupal-8": "^5.2",
-        "civicrm/civicrm-packages": "^5.2",
+        "civicrm/civicrm-core": "^6.3",
+        "civicrm/civicrm-drupal-8": "^6.3",
+        "civicrm/civicrm-packages": "^6.3",
         "composer/installers": "^2.3",
         "drupal/autoban": "^1.11",
         "drupal/book": "^2.0",
