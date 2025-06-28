@@ -18,6 +18,7 @@
         "civicrm/civicrm-core": "^6.3",
         "civicrm/civicrm-drupal-8": "^6.3",
         "civicrm/civicrm-packages": "^6.3",
+        "civicrm/cli-tools": "^2025.06",
         "composer/installers": "^2.3",
         "drupal/autoban": "^1.11",
         "drupal/book": "^2.0",
@@ -38,7 +39,7 @@
     "conflict": {
         "drupal/drupal": "*"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
         "allow-plugins": {
