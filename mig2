@@ -1,0 +1,8 @@
+vendor/bin/drush migrate:import d7_search_page
+vendor/bin/drush migrate:import d7_taxonomy_vocabulary
+vendor/bin/drush migrate:import d7_taxonomy_term:forums
+vendor/bin/drush migrate:import d7_theme_settings
+vendor/bin/drush migrate:import d7_url_alias
+vendor/bin/drush migrate:import block_content_type
+vendor/bin/drush migrate:import block_content_body_field
+vendor/bin/drush migrate:import d7_custom_block

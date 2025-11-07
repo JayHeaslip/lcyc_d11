@@ -1,0 +1,39 @@
+vendor/bin/drush en book -y
+vendor/bin/drush en book_olivero -y
+vendor/bin/drush en color -y
+vendor/bin/drush en forum -y
+vendor/bin/drush en profile -y
+vendor/bin/drush en rdf -y
+vendor/bin/drush en autoban -y
+vendor/bin/drush en ctools -y
+vendor/bin/drush en date_ical -y
+vendor/bin/drush en fullcalendar_view -y
+vendor/bin/drush en fullcalendarview_generator -y
+vendor/bin/drush en ds -y
+vendor/bin/drush en registration -y
+vendor/bin/drush en registration_workflow -y
+vendor/bin/drush en registration_confirmation -y
+vendor/bin/drush en registration_scheduled_action -y
+vendor/bin/drush en inline_entity_form -y
+vendor/bin/drush en registration_inline_entity_form -y
+vendor/bin/drush en migrate -y
+vendor/bin/drush en migrate_drupal -y
+vendor/bin/drush en migrate_drupal_ui -y
+vendor/bin/drush en field_group_migrate -y
+vendor/bin/drush en datetime_range -y
+vendor/bin/drush en file -y
+vendor/bin/drush en media -y
+vendor/bin/drush en media_library -y
+vendor/bin/drush en image -y
+vendor/bin/drush en viewfield -y
+##vendor/bin/drush en civicrm -y 
+vendor/bin/drush en civicrmtheme -y
+vendor/bin/drush en civicrm_entity -y
+vendor/bin/drush cr
+
+
+
+
+
+
+

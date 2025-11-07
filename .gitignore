@@ -1,0 +1,66 @@
+ Ignore vendor directory (managed by Composer)
+vendor/
+
+# Ignore Drupal's files directory
+web/sites/*/files/
+web/core
+
+# Ignore sensitive settings files
+/web/sites/*/settings.local.php
+/web/sites/*/services.yml
+
+# Ignore temporary files
+/.env
+*.log
+*.cache
+web/core/install.php
+
+# Ignore IDE-specific files
+.idea/
+*.sublime-project
+*.sublime-workspace
+web/sites/default/settings.php
+web/sites/default/civicrm.settings.php
+
+# Contrib directories (commit custom code only)
+web/modules/contrib
+web/themes/contrib
+web/profiles/contrib
+web/libraries
+
+# Drush
+drush-backups
+.drush
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS/Environment
+.DS_Store
+Thumbs.db
+.env
+.env.local
+.env.*.local
+
+# Logs and reports
+*.log
+drupal-check-report.xml
+*.sql
+*.sql.gz
+
+# Temporary build files
+build/
+dist/
+
+# Node.js (if using for themes)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# PHPStorm or other IDE specifics
+.phpunit.result.cache
+

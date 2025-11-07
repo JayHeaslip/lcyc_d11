@@ -1,0 +1,70 @@
+vendor/bin/drush migrate:import d7_system_authorize
+vendor/bin/drush migrate:import d7_system_cron
+vendor/bin/drush migrate:import d7_system_date
+vendor/bin/drush migrate:import d7_system_file
+vendor/bin/drush migrate:import d7_system_mail
+
+                 
+vendor/bin/drush migrate:import d7_user_flood
+vendor/bin/drush migrate:import d7_user_mail 
+vendor/bin/drush migrate:import d7_user_role 
+vendor/bin/drush migrate:import d7_user_settings
+vendor/bin/drush migrate:import d7_user
+
+vendor/bin/drush migrate:import d7_taxonomy_vocabulary
+vendor/bin/drush migrate:import d7_field
+vendor/bin/drush migrate:import d7_node_type
+vendor/bin/drush migrate:import d7_field_instance
+vendor/bin/drush migrate:import d7_file
+vendor/bin/drush migrate:import d7_node:page
+vendor/bin/drush migrate:import d7_node:forum
+vendor/bin/drush migrate:import d7_node:story
+vendor/bin/drush migrate:import d7_node:book
+vendor/bin/drush migrate:import d7_node:date
+vendor/bin/drush migrate:import d7_comment_type
+vendor/bin/drush migrate:import d7_comment_field
+vendor/bin/drush migrate:import d7_comment_field_instance
+
+vendor/bin/drush migrate:import d7_comment_entity_display
+vendor/bin/drush migrate:import d7_comment_entity_form_display
+vendor/bin/drush migrate:import d7_comment_entity_form_display_subject
+
+vendor/bin/drush migrate:import d7_node_settings
+vendor/bin/drush migrate:import d7_node_title_label
+vendor/bin/drush migrate:import d7_node:book
+vendor/bin/drush migrate:import d7_node:date
+vendor/bin/drush migrate:import d7_node:forum
+vendor/bin/drush migrate:import d7_node:page
+vendor/bin/drush migrate:import d7_node:story
+vendor/bin/drush migrate:import d7_node_complete:book
+vendor/bin/drush migrate:import d7_node_complete:date
+vendor/bin/drush migrate:import d7_node_complete:forum
+vendor/bin/drush migrate:import d7_node_complete:page 
+vendor/bin/drush migrate:import d7_node_complete:story
+vendor/bin/drush migrate:import d7_node_revision:book
+vendor/bin/drush migrate:import d7_node_revision:date
+
+vendor/bin/drush migrate:import d7_book
+vendor/bin/drush migrate:import book_settings
+
+vendor/bin/drush migrate:import d7_filter_format
+vendor/bin/drush migrate:import d7_action
+vendor/bin/drush migrate:import d7_block
+vendor/bin/drush migrate:import d7_dblog_settings
+vendor/bin/drush migrate:import d7_view_modes
+vendor/bin/drush migrate:import d7_field_formatter_settings
+vendor/bin/drush migrate:import d7_field_instance_widget_settings
+vendor/bin/drush migrate:import d7_filter_settings
+vendor/bin/drush migrate:import d7_global_theme_settings
+vendor/bin/drush migrate:import d7_image_settings
+vendor/bin/drush migrate:import d7_image_styles
+vendor/bin/drush migrate:import d7_menu
+vendor/bin/drush migrate:import d7_menu_links
+vendor/bin/drush migrate:import d7_search_page
+vendor/bin/drush migrate:import d7_taxonomy_vocabulary
+vendor/bin/drush migrate:import d7_taxonomy_term:forums
+vendor/bin/drush migrate:import d7_theme_settings
+vendor/bin/drush migrate:import d7_url_alias
+vendor/bin/drush migrate:import block_content_type
+vendor/bin/drush migrate:import block_content_body_field
+vendor/bin/drush migrate:import d7_custom_block
