@@ -5,9 +5,11 @@ vendor/
 web/sites/*/files/
 web/core
 
+
+
 # Ignore sensitive settings files
-/web/sites/*/settings.local.php
-/web/sites/*/services.yml
+web/sites/*/settings.local.php
+web/sites/*/services.yml
 
 # Ignore temporary files
 /.env
@@ -64,3 +66,6 @@ yarn-error.log
 # PHPStorm or other IDE specifics
 .phpunit.result.cache
 
+# add custom css 
+!web/core/themes/olivero/olivero.libraries.yml
+!web/core/themes/olivero/css/custom.css
