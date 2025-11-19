@@ -1,0 +1,8 @@
+name: 'Custom Theme Conditions'
+type: module
+description: 'Custom conditions for Theme Switcher, including Current User ID.'
+core_version_requirement: ^10 || ^11
+package: Custom
+dependencies:
+  - drupal:theme_switcher
+  
