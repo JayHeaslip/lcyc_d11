@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+  theme:
+    - lcyc
+id: lcyc_login
+theme: lcyc
+region: sidebar_second
+weight: 20
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: 'User login'
+  provider: user
+  label_display: visible
+visibility: {  }

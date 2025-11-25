@@ -1,0 +1,6 @@
+# book_navigation_remover.info.yml
+name: Book Navigation Remover
+type: module
+description: 'Disables the book navigation menu from the site output.'
+core_version_requirement: ^9 || ^10 || ^11
+package: Custom

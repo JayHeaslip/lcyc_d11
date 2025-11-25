@@ -1,0 +1,46 @@
+name: LCYC
+version: '0.1'
+type: theme
+'base theme': at_core
+'base theme original': 7.1.1
+'subtheme type': adaptive_subtheme
+layout: page-layout
+description: 'Theme for LCYC <br>Base: at_core (7.1.1) <br>Generated: Wed 19th, Nov, 2025 - 6:43'
+core_version_requirement: '^10 || ^11'
+regions:
+  leaderboard: Leaderboard
+  header_first: 'Header first'
+  header_second: 'Header second'
+  navbar: Navbar
+  highlighted: Highlighted
+  features_first: 'Features first'
+  features_second: 'Features second'
+  features_third: 'Features third'
+  content_prefix: 'Content prefix'
+  content: 'Main content'
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  content_suffix: 'Content suffix'
+  subfeatures_first: 'Sub-features first'
+  subfeatures_second: 'Sub-features second'
+  subfeatures_third: 'Sub-features third'
+  subfeatures_fourth: 'Sub-features fourth'
+  footer: Footer
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+tags: 'adaptivetheme sub-theme'
+libraries-extend:
+  quickedit/quickedit:
+    - lcyc/quickedit
+stylesheets-remove:
+  - '@stable/css/node/node.preview.css'
+  - '@stable/css/node/node.module.css'
+  - '@stable/css/views/views.module.css'
+  - '@stable/css/system/components/tablesort.module.css'
+  - '@classy/css/components/file.css'
+features:
+  - logo
+  - favicon
+  - node_user_picture
+  - comment_user_picture
+  - comment_user_verification
