@@ -38,7 +38,7 @@
         "drupal/core-recommended": "^11.2",
         "drupal/corporateclean": "^1.0",
         "drupal/ctools": "^4.1",
-        "drupal/date_ical": "^4",
+        "drupal/date_ical": "^4.0",
         "drupal/devel": "^5.4",
         "drupal/devel_generate": "^5.4",
         "drupal/ds": "^3.0",
@@ -59,11 +59,11 @@
         "drupal/token": "^1.16",
         "drupal/vapn": "^3.0",
         "drupal/viewfield": "^3.0@beta",
-        "drupal/views_ical": "^1.0@alpha",
         "drupal/views_slideshow": "^5.0",
         "drupal/vvjs": "^1.0",
         "drupal/webprofiler": "^11.1",
-        "drush/drush": "^13.6"
+        "drush/drush": "^13.6",
+        "kigkonsult/icalcreator": "^2.41"
     },
     "conflict": {
         "drupal/drupal": "*"

@@ -1,16 +1,25 @@
+/* Hides the Book module's Previous/Up/Next pager links */
+.book-pager {
+  display: none !important;
+}
+
+.text-content {
+    font-family: "PT Sans";
+}
+
 html {
-  font-size: 16px; /* Mobile */
+    font-size: 16px; /* Mobile */
 }
 
 @media (min-width: 768px) {
   html {
-    font-size: 17px; /* Tablet */
+    font-size: 16px; /* Tablet */
   }
 }
 
 @media (min-width: 1024px) {
   html {
-    font-size: 18px; /* Desktop */
+    font-size: 16px; /* Desktop */
   }
 }
 
@@ -21,16 +30,17 @@ h1 {
     font-weight: 700;
 }
 
-h2 {
-    font-size: 1.75rem;           /* 36px base */
+h2 .node__title .teaser__title {
+    font-size: 1.167rem;           /* 36px base */
     line-height: 1.25;
     margin-bottom: 1.5rem;
     font-weight: 700;
 }
 
 p {
-    font-size: 0.875rem;           /* 36px base */
+    font-size: 16px;
     line-height: 1;
     margin-bottom: 1.5rem;
-    font-weight: 700;
+    font-weight: 400;
+    color: rgb(34,34,34);
 }

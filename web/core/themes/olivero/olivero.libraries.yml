@@ -5,6 +5,7 @@ global-styling:
       css/base/fonts.css: {}
       css/base/variables.css: {}
       css/base/base.css: {}
+      css/custom.css: {}
     layout:
       css/layout/layout.css: {}
       css/layout/grid.css: {}
@@ -48,7 +49,6 @@ global-styling:
       css/components/table.css: {}
       css/components/text-content.css: {}
       css/components/wide-content.css: {}
-      
 
   js:
     js/checkbox.js: {}

@@ -1,6 +1,0 @@
-# book_navigation_remover.services.yml
-services:
-  book_navigation_remover.remove_subscriber:
-    class: Drupal\book_navigation_remover\EventSubscriber\RemoveBookNavigationSubscriber
-    tags:
-      - { name: event_subscriber }
