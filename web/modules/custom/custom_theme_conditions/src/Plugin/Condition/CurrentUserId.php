@@ -37,15 +37,18 @@ class CurrentUserId extends ConditionPluginBase implements ContainerFactoryPlugi
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    $form['user_id'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('User ID'),
-      '#description' => $this->t('Enter the user ID (UID) to match against the current user.'),
-      '#default_value' => $this->configuration['user_id'] ?? '',
-      '#required' => TRUE,
-    ];
-
-    return parent::buildConfigurationForm($form, $form_state);
+      $form['user_id'] = [
+           '#type' => 'textfield',
+     	   '#title' => $this->t('User ID'),
+	   '#description' => $this->t('Enter the user ID (UID) to match against the current user.'),
+	   '#default_value' => $this->configuration['user_id'] ?? '',
+     	   '#required' => FALSE,
+           '#maxlength' => 10,
+	   '#attributes' => ['type' => 'number', 'min' => 0],
+	   '#element_validate' => [[$this, 'validateUserId']],
+      ];
+ 
+      return parent::buildConfigurationForm($form, $form_state);
   }
 
   /**
@@ -87,6 +90,21 @@ class CurrentUserId extends ConditionPluginBase implements ContainerFactoryPlugi
    */
   public function defaultConfiguration() {
     return ['user_id' => ''] + parent::defaultConfiguration();
+  }
+
+ public function validateUserId(array &$element, FormStateInterface $form_state) {
+    $uid = $element['#value'];
+
+     if (empty($uid) || $uid === '') {
+      return; 
+    }
+
+    // Ensure the value is a valid integer string representation.
+    if (!is_numeric($uid) || $uid < 0 || strpos($uid, '.') !== FALSE) {
+      $form_state->setError($element, $this->t('The User ID must be a non-negative integer.'));
+    }
+    // Also, cast the value to an integer before storage for clean data.
+    $form_state->setValueForElement($element, (int) $uid);
   }
 
 }

@@ -1,0 +1,56 @@
+name: lcyc_radix
+description: "lcyc_radix theme based on <a href='https://www.drupal.org/project/radix' target='_blank'>Radix 6.x</a> and Bootstrap 5.x"
+screenshot: screenshot.png
+'alt text': 'lcyc_radix theme screenshot'
+core_version_requirement: ^11
+engine: twig
+type: theme
+'base theme': radix
+starterkit: true
+'interface translation project': lcyc_radix
+'interface translation server pattern': themes/custom/lcyc_radix/translations/%language.po
+
+# Define the regions for the Block Layout interface.
+regions:
+  # Header for logo/branding, contained in a Bootstrap container.
+  header: 'Header'
+
+# Navigation bar, typically used for the main menu block.
+  navbar: 'Main Navigation Bar'
+
+# Region for the full-width slideshow at the top of the main area.
+  slideshow: 'Slideshow'
+  
+# The main content area where nodes, views, and sidebars are typically placed.
+  content: 'Content'
+
+# Region for the sidebar that needs to be tall.
+  sidebar_tall: 'Tall Sidebar'
+  
+# The region for the four equal-sized blocks (our custom section).
+  highlight_row: 'Highlight Row (Four Blocks)'
+
+# The region for the full-width footer content.
+  footer_full: 'Full Width Footer'
+
+  # Drupal standard regions that Radix likely includes, kept for completeness.
+  breadcrumb: 'Breadcrumb'
+libraries:
+  - lcyc_radix/style
+ckeditor5-stylesheets:
+  - build/css/main.style.css
+libraries-extend:
+  core/drupal.ajax:
+    - lcyc_radix/drupal.ajax
+  core/drupal.checkbox:
+    - lcyc_radix/drupal.checkbox
+  core/drupal.message:
+    - lcyc_radix/drupal.message
+  core/drupal.progress:
+    - lcyc_radix/drupal.progress
+  clientside_validation_jquery/cv.jquery.validate:
+    - lcyc_radix/jquery.validate
+version: 6.0.2
+project: radix
+datestamp: 1746711574
+generator: 'radix_starterkit:6.0.2'

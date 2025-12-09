@@ -1,0 +1,80 @@
+// Global elements styling, e.g. for headings, buttons, links, etc.
+// -----------------------------------------------------------------------------
+// Global elements styling, e.g. for headings, buttons, links, etc.
+// -----------------------------------------------------------------------------
+.block--system-branding .navbar-brand__logo img {
+  width: 100px;
+  height: 72px;
+  filter:
+    drop-shadow(2px 0 0 white)
+    drop-shadow(-2px 0 0 white)
+    drop-shadow(0 2px 0 white)
+    drop-shadow(0 -2px 0 white);
+}
+
+/* Target the header wrapper ID */
+#header {
+    min-height: 7rem;
+  /* Use flexbox to center content vertically if needed */
+  display: flex;
+  align-items: center; 
+}
+
+/* --- Global Font Setup --- */
+/* You should first ensure PT Sans is loaded (e.g., via Google Fonts in your theme's libraries or header). */
+body {
+  font-family: 'PT Sans', sans-serif;
+}
+
+/* --- Site Name Styling (40px) --- */
+/* Target the site name, which Radix often wraps in a .site-name class */
+.block-system-branding-block {
+    background-color: #242d64;
+    padding: 30px;
+}
+.navbar-brand__text {
+    font-size: 40px;
+  /* Prevent the font size from being overridden by Bootstrap's h1 class */
+    line-height: 1;
+    margin-left: 20px;
+    color: white;
+}
+.navbar-brand__text .small {
+    font-size: 20px;
+  /* Prevent the font size from being overridden by Bootstrap's h1 class */
+  line-height: 1; 
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+/* Target the main menu block and force horizontal display of list items on desktop */
+.navbar-nav {
+    font-size: 1.25rem;
+    color: white;
+    background-color: #242d64;
+    flex-direction: row;
+    margin-top: 5px;
+}
+
+.nav-link:hover{
+text-decoration-line: underline;
+text-decoration-color: white;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+.vvjs-item-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

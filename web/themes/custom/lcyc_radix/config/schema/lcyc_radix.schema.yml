@@ -1,0 +1,5 @@
+# Schema for the configuration files of the lcyc_radix theme.
+
+lcyc_radix.settings:
+  type: theme_settings
+  label: 'lcyc_radix settings'

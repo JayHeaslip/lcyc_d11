@@ -1,0 +1,4 @@
+name: My Module
+type: module
+description: Custom module for dynamic menu links.
+core_version_requirement: ^10 || ^11

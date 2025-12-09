@@ -1,0 +1,104 @@
+{#
+  Template for the overall page structure.
+  Based on a typical Bootstrap layout using Radix regions.
+#}
+
+<div id="page-wrapper">
+
+  {# --- HEADER (Banner Role) --- #}
+  <header role="banner" id="header" class="header py-1">
+    <div class="container">
+      {# The 'header' region typically holds the logo, site name, and perhaps search forms #}
+      {{ page.header }}
+    </div>
+  </header>
+
+  {# --- Navigation Bar --- #}
+  {% if page.navbar %}
+    <nav role="navigation" aria-label="{{ 'Main navigation'|t }}" class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+      <div class="container">
+
+        {# 1. Navbar Toggler (for mobile/collapsed view) #}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="{{ 'Toggle navigation'|t }}">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        {# 2. The Collapse Wrapper (essential for horizontal layout when expanded) #}
+        <div class="collapse navbar-collapse" id="navbarContent">
+
+          {# This is where your main menu block ({{ page.navbar }}) should be placed #}
+          {{ page.navbar }}
+
+        </div>
+
+      </div>
+    </nav>
+  {% endif %}
+
+  <main role="main" id="main-content" class="py-2">
+
+    {# 1. Combined Content and Sidebar Regions (Flexbox enabled) #}
+    <div class="container">
+      {# Use the Bootstrap row to create the two-column layout #}
+      <div class="row">
+
+        {# --- LEFT SIDE: Main Column (10 columns wide) --- #}
+        <div class="col-md-10">
+
+          {# 1a. Slideshow Region (now inside the main column) #}
+          {% if page.slideshow %}
+            <section id="slideshow-region" class="mb-4">
+              {{ page.slideshow }}
+            </section>
+          {% endif %}
+
+          {# 1b. Primary Content Region #}
+          {% if page.content %}
+            {{ page.content }}
+          {% endif %}
+        </div>
+
+        {# --- RIGHT SIDE: Tall Sidebar Column (3 columns wide) --- #}
+        <div class="col-md-2">
+          {% if page.sidebar_tall %}
+            <aside class="p-3 border h-100 bg-light">
+              {{ page.sidebar_tall }}
+            </aside>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+
+  {# 2. Four Equal Size Blocks Region (Keep this outside the main content/sidebar columns) #}
+  {% if page.highlight_row %}
+    <section id="highlight-row" class="py-1 bg-light">
+      <div class="container">
+        <div class="row">
+          {# The Bootstrap class 'col-md-3' ensures 4 columns of equal width (12 / 4 = 3) on medium screens and up. #}
+          <div class="col-md-3">
+            {{ page.highlight_row.block_1 }}
+          </div>
+          <div class="col-md-3">
+            {{ page.highlight_row.block_2 }}
+          </div>
+          <div class="col-md-3">
+            {{ page.highlight_row.block_3 }}
+          </div>
+          <div class="col-md-3">
+            {{ page.highlight_row.block_4 }}
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  {# Full-Width Footer #}
+  <footer role="contentinfo" id="footer" class="footer py-5 mt-4 bg-dark text-white">
+    <div class="container-fluid">
+      {{ page.footer_full }}
+    </div>
+  </footer>
+
+  </main>
+</div>
