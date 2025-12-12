@@ -10,3 +10,21 @@ $includes_path = __DIR__ . '/includes/*.theme';
 foreach (glob($includes_path) as $file) {
   require_once __DIR__ . '/includes/' . basename($file);
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function lcyc_radix_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // Check if we are targeting the user login form.
+  if ($form_id == 'user_login_form') {
+    
+    // The 'actions' element is the render array element that produces 
+    // the <div data-drupal-selector="edit-actions"...>
+    
+    // Add the 'py-4' class to the existing array of classes.
+    $form['actions']['#attributes']['class'][] = 'py-4';
+    
+    // You can optionally remove a class if needed. For example:
+    // $form['actions']['#attributes']['class'] = array_diff($form['actions']['#attributes']['class'], ['some-other-class-to-remove']);
+  }
+}

@@ -1,9 +1,0 @@
-my_module.user_email_link:
-  title: 'User Email'  # Fallback title (overridden by the plugin)
-  route_name: entity.user.canonical
-  #url: internal:/user/edit  # Replace with your desired static path, e.g., /user/edit or /some/other/path
-  # Or use route_name: user.page if preferring a route
-  menu_name: main
-  weight: 10
-  expanded: true
-  class: Drupal\my_module\Plugin\Menu\UserEmailMenuLink  # Points to your custom plugin class

@@ -37,6 +37,10 @@ a:hover {
     text-decoration: underline;
 }
 
-.navbar-nav li:last-child {
-  margin-left: auto;
-}
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1440px // <-- Increase the XXL breakpoint here (default is 1320px)
+) !default;

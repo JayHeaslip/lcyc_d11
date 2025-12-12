@@ -78,3 +78,31 @@ text-decoration-color: white;
   height: 100%;
   object-fit: cover;
 }
+
+/* Target the <img> element specifically inside its Drupal field container.
+This ensures the style only applies to this image field.
+*/
+.field--name-field-image img {
+  /* 1. Centering the Image */
+  /* This is necessary for 'margin: 0 auto;' to work on an image */
+  display: block; 
+  /* Centers a block-level element horizontally */
+  margin-left: auto;
+  margin-right: auto;
+
+  /* 2. Adding Space After the Image */
+  /* Adds 30 pixels of space below the image. Adjust '30px' as needed. */
+  margin-bottom: 30px; 
+
+  /* Optional: Set the top margin to zero so it doesn't inherit odd spacing,
+  or use a shorthand: margin: 0 auto 30px auto; 
+  */
+  margin-top: 0; 
+}
+
+/* Target the content element for inline fields */
+.field--label-inline .field__item {
+  /* Add space to the left of the content */
+  margin-left: 10px; 
+  /* Or use padding if you prefer: padding-left: 10px; */
+}
