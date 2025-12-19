@@ -1,0 +1,16 @@
+uuid: 95bffeb3-6335-461e-8120-a11e08ceb343
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    parent: 'main:'
+name: Poll
+type: poll
+description: 'A <em>poll</em> is a question with a set of possible responses. A <em>poll</em>, once created, automatically provides a simple running count of the number of votes received for each response.'
+help: null
+new_revision: false
+preview_mode: 1
+display_submitted: true

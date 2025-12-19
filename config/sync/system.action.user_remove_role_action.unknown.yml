@@ -1,0 +1,14 @@
+uuid: 5ecae0ed-5f96-4621-849e-a7658fcb75d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.unknown
+  module:
+    - user
+id: user_remove_role_action.unknown
+label: 'Remove the unknown role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: unknown

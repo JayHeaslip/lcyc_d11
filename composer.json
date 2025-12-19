@@ -64,7 +64,7 @@
         "drupal/views_slideshow": "^5.0",
         "drupal/vvjs": "^1.0",
         "drupal/webprofiler": "^11.1",
-        "drush/drush": "^13.6",
+        "drush/drush": "^13",
         "kigkonsult/icalcreator": "^2.41"
     },
     "conflict": {

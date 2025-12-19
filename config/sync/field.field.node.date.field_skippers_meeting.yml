@@ -1,0 +1,19 @@
+uuid: fcc479e6-e634-4d05-beca-9a009749b7e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_skippers_meeting
+    - node.type.date
+id: node.date.field_skippers_meeting
+field_name: field_skippers_meeting
+entity_type: node
+bundle: date
+label: 'Skippers Meeting'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

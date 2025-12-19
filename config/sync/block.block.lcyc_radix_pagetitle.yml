@@ -1,0 +1,18 @@
+uuid: d5f87132-f323-44f2-a555-0b37cd602181
+langcode: en
+status: true
+dependencies:
+  theme:
+    - lcyc_radix
+id: lcyc_radix_pagetitle
+theme: lcyc_radix
+region: content
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

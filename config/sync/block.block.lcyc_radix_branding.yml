@@ -1,0 +1,25 @@
+uuid: 285d4980-181c-4819-b009-f7bfab864036
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - lcyc_radix
+_core:
+  default_config_hash: jiCWr2vytV8wQx_--l4S1olrpUeyfyz69hc0LajP3dg
+id: lcyc_radix_branding
+theme: lcyc_radix
+region: header
+weight: -5
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility: {  }

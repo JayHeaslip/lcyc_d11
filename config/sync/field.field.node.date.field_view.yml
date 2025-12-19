@@ -1,0 +1,58 @@
+uuid: 0a904031-db56-4821-a9b7-62bd9d5d1c49
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_view
+    - node.type.date
+  module:
+    - viewfield
+id: node.date.field_view
+field_name: field_view
+entity_type: node
+bundle: date
+label: 'Race Management'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  force_default: false
+  allowed_views:
+    race_committee: race_committee
+    signup_available_signups: '0'
+    signup_current_signups: '0'
+    event_calendar: '0'
+    event_list: '0'
+    fleet: '0'
+    registrants: '0'
+    comments_recent: '0'
+    popular: '0'
+    viper_640_registrants: '0'
+    cruising_event_list: '0'
+    adaptive_slideshow: '0'
+    cruising_block: '0'
+    club_block: '0'
+    racing_block: '0'
+    story_date_range: '0'
+    results_block: '0'
+    weather: '0'
+    j_70_registrants: '0'
+    etchells_registrants: '0'
+    sportboat_registrants: '0'
+    registrants_phrf: '0'
+    signup_user_vbo_admin_list: '0'
+    junior_sailing_block: '0'
+    signup_user_admin_list: '0'
+    signup_user_list: '0'
+    signup_user: '0'
+    cameras_block: '0'
+    civicrm_my_activities: '0'
+    archive: '0'
+    frontpage: '0'
+  allowed_display_types:
+    block: block
+  handler: 'default:view'
+  handler_settings: {  }
+field_type: viewfield

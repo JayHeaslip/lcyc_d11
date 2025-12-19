@@ -1,0 +1,20 @@
+uuid: 2cdbf627-bed7-4994-9da1-eff3d343634e
+langcode: en
+status: true
+dependencies:
+  theme:
+    - lcyc_radix
+_core:
+  default_config_hash: dQWtEe8Hb7Jxqs3dA2-kyFdklChhe7t1-WgJchwMNzQ
+id: lcyc_radix_local_actions
+theme: lcyc_radix
+region: header
+weight: -1
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

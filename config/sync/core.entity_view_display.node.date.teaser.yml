@@ -1,0 +1,68 @@
+uuid: 6999514d-8f68-4e67-ae52-40b4ff29534a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.date.body
+    - field.field.node.date.field_date
+    - field.field.node.date.field_image
+    - field.field.node.date.field_information
+    - field.field.node.date.field_pro
+    - field.field.node.date.field_race_committee
+    - field.field.node.date.field_series
+    - field.field.node.date.field_skippers_meeting
+    - field.field.node.date.field_view
+    - field.field.node.date.upload
+    - node.type.date
+  module:
+    - datetime
+    - image
+    - text
+    - user
+id: node.date.teaser
+targetEntityType: node
+bundle: date
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: long
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_information: true
+  field_pro: true
+  field_race_committee: true
+  field_series: true
+  field_skippers_meeting: true
+  field_view: true
+  upload: true

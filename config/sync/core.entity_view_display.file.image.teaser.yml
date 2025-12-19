@@ -1,0 +1,18 @@
+uuid: 3f2a3584-bfae-45e8-86a8-135f3b0ba885
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.file.teaser
+    - field.field.file.image.field_file_image_alt_text
+    - field.field.file.image.field_file_image_title_text
+  module:
+    - file
+id: file.image.teaser
+targetEntityType: file
+bundle: image
+mode: teaser
+content: {  }
+hidden:
+  field_file_image_alt_text: true
+  field_file_image_title_text: true

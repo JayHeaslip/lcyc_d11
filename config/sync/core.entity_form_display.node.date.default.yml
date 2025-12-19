@@ -1,0 +1,168 @@
+uuid: 5d7c22d0-4a06-4ff5-852e-107b2be76d40
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.date.body
+    - field.field.node.date.field_date
+    - field.field.node.date.field_image
+    - field.field.node.date.field_information
+    - field.field.node.date.field_pro
+    - field.field.node.date.field_race_committee
+    - field.field.node.date.field_series
+    - field.field.node.date.field_skippers_meeting
+    - field.field.node.date.field_view
+    - field.field.node.date.upload
+    - image.style.thumbnail
+    - node.type.date
+  module:
+    - datetime_range
+    - file
+    - image
+    - path
+    - registration_inline_entity_form
+    - text
+    - viewfield
+id: node.date.default
+targetEntityType: node
+bundle: date
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 7
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_date:
+    type: daterange_datelist
+    weight: 2
+    region: content
+    settings:
+      increment: 15
+      date_order: YMD
+      time_type: '24'
+    third_party_settings: {  }
+  field_image:
+    type: image_image
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_information:
+    type: text_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pro:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_race_committee:
+    type: inline_entity_form_settings
+    weight: 10
+    region: content
+    settings:
+      hide_register_tab: false
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings: {  }
+  field_series:
+    type: text_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_skippers_meeting:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_view:
+    type: viewfield_select
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 120
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 16
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  upload:
+    type: file_generic
+    weight: 8
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+hidden: {  }

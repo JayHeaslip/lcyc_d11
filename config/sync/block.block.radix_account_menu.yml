@@ -1,0 +1,42 @@
+uuid: bc1e1c06-b9fc-49a7-9e69-5c82da541347
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - book
+    - system
+  theme:
+    - radix
+_core:
+  default_config_hash: gmxYWWHmgbe0Pnv8y48ZLSLH5mEHejOjAP6RLxUfdzU
+id: radix_account_menu
+theme: radix
+region: navbar_branding
+weight: -6
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User account menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility:
+  book:
+    id: book
+    books:
+      155: '155'
+      165: '165'
+      171: '171'
+      172: '172'
+      759: '759'
+      1749: '1749'
+      1874: '1874'
+      1985: '1985'
+    negate: 0
+    context_mapping:
+      node: '@node.node_route_context:node'

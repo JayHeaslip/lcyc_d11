@@ -1,0 +1,47 @@
+uuid: 02bc130a-a375-40c5-9479-c862af98e7c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.book
+    - node.type.page
+  module:
+    - book
+    - contextual
+    - node
+    - path
+    - search
+    - system
+    - toolbar
+id: editor
+label: editor
+weight: 5
+is_admin: false
+permissions:
+  - 'access administration pages'
+  - 'access content'
+  - 'access content overview'
+  - 'access contextual links'
+  - 'access printer-friendly version'
+  - 'access site reports'
+  - 'access toolbar'
+  - 'access user profiles'
+  - 'administer book outlines'
+  - 'administer nodes'
+  - 'administer search'
+  - 'administer url aliases'
+  - 'change own username'
+  - 'create book content'
+  - 'create page content'
+  - 'create url aliases'
+  - 'delete any book content'
+  - 'delete any page content'
+  - 'delete own book content'
+  - 'delete own page content'
+  - 'edit any book content'
+  - 'edit any page content'
+  - 'edit own book content'
+  - 'edit own page content'
+  - 'search content'
+  - 'use advanced search'
+  - 'view the administration theme'

@@ -1,0 +1,18 @@
+uuid: bf449ccb-0940-4b93-a702-94e3bb78e978
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - tools
+    parent: 'tools:'
+name: 'Blog entry'
+type: blog
+description: 'A blog is a regularly updated journal or diary made up of individual posts shown in reversed chronological order. Each member of the site may create and maintain a blog.'
+help: null
+new_revision: false
+preview_mode: 1
+display_submitted: true

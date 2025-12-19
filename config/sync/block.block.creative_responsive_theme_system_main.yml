@@ -1,0 +1,20 @@
+uuid: 40619eeb-5a5a-4e9c-bc87-186140a4e7e4
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - creative_responsive_theme
+id: creative_responsive_theme_system_main
+theme: creative_responsive_theme
+region: ''
+weight: -26
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: ''
+  label_display: '0'
+  provider: system
+visibility: {  }

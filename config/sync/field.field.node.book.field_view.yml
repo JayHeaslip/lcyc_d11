@@ -1,0 +1,45 @@
+uuid: 5a19334d-c149-468f-889f-aad45ea5caf7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_view
+    - node.type.book
+  module:
+    - viewfield
+id: node.book.field_view
+field_name: field_view
+entity_type: node
+bundle: book
+label: View
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  force_default: false
+  allowed_views:
+    signup_available_signups: '0'
+    signup_current_signups: '0'
+    signup_user_admin_list: '0'
+    admin_content_taxonomy: '0'
+    admin_user_user: '0'
+    event_calendar: '0'
+    event_list: '0'
+    fleet: '0'
+    registrants: '0'
+    comments_recent: '0'
+    popular: '0'
+    admin_content_comment: '0'
+    admin_content_node: '0'
+    archive: '0'
+    frontpage: '0'
+    rules_scheduler: '0'
+    signup_user_list: '0'
+    tracker: '0'
+  allowed_display_types:
+    block: block
+  handler: 'default:view'
+  handler_settings: {  }
+field_type: viewfield

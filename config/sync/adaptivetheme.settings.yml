@@ -1,0 +1,10 @@
+features:
+  name: 1
+  favicon: 1
+logo:
+  use_default: 0
+  path: files/images/logo10.png
+favicon:
+  use_default: 0
+  path: files/images/favicon.png
+  mimetype: image/png

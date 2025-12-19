@@ -1,0 +1,47 @@
+uuid: 501dfba6-28d4-4bca-9983-34298317dadb
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+    - user
+  theme:
+    - kalatheme
+id: kalatheme_user_login
+theme: kalatheme
+region: ''
+weight: 3
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: User
+  label_display: visible
+  provider: user
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: |-
+      /admin
+      /admin/*
+      /civicrm
+      /civicrm/*
+      /club/volunteer
+      /racing/phrf
+      /racing/phrf/*
+      /racing/registration
+      /racing/registration/*
+      /calendar
+      /calendar/*
+      /events
+      /events/board
+      /events/cruising
+      /events/social
+      /events/junior_sailing
+      /events/racing
+      /events/phrf
+      /events/wednesday
+      /events/weekend
+      /events/lccs
+      /events/one-design

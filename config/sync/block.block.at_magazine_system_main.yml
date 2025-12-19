@@ -1,0 +1,22 @@
+uuid: 44c8c5cb-c1d1-4703-8e10-218fbce1e15e
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - olivero
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: at_magazine_system_main
+theme: olivero
+region: content
+weight: -26
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: ''
+  label_display: '0'
+  provider: system
+visibility: {  }

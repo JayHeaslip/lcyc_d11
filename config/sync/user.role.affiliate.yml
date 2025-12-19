@@ -1,0 +1,18 @@
+uuid: ecb208a9-7520-42a1-81e4-31147eb8736a
+langcode: en
+status: true
+dependencies:
+  module:
+    - book
+    - search
+    - system
+id: affiliate
+label: member
+weight: 3
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access printer-friendly version'
+  - 'change own username'
+  - 'search content'
+  - 'use advanced search'

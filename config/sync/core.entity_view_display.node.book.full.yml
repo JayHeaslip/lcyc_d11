@@ -1,0 +1,76 @@
+uuid: a3f89727-c43d-414f-b6d3-4dadd3259960
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.book.body
+    - field.field.node.book.field_embed
+    - field.field.node.book.field_image
+    - field.field.node.book.field_view
+    - field.field.node.book.upload
+    - image.style.large
+    - node.type.book
+  module:
+    - file
+    - image
+    - layout_builder
+    - text
+    - user
+    - viewfield
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+_core:
+  default_config_hash: lrWCKW-8TUgNpYanCoBHhtHNRgnWE7forO2NtIeDxxY
+id: node.book.full
+targetEntityType: node
+bundle: book
+mode: full
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  book_navigation:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: file
+      image_style: large
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_view:
+    type: viewfield_default
+    label: hidden
+    settings:
+      view_title: hidden
+      always_build_output: false
+      empty_view_title: hidden
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  upload:
+    type: file_table
+    label: hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  field_embed: true
+  links: true
+  vapn: true

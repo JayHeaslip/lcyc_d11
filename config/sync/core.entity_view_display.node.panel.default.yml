@@ -1,0 +1,19 @@
+uuid: 73709c0b-910d-4e61-baff-cb215189f9ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.panel
+  module:
+    - user
+id: node.panel.default
+targetEntityType: node
+bundle: panel
+mode: default
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

@@ -1,0 +1,47 @@
+uuid: d20fc115-212e-4039-8f32-66ac4bfefb5b
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+    - user
+  theme:
+    - lcyc_info
+id: lcyc_info_user_login
+theme: lcyc_info
+region: ''
+weight: 3
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: User
+  label_display: visible
+  provider: user
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: |-
+      /admin
+      /admin/*
+      /civicrm
+      /civicrm/*
+      /club/volunteer
+      /racing/phrf
+      /racing/phrf/*
+      /racing/registration
+      /racing/registration/*
+      /calendar
+      /calendar/*
+      /events
+      /events/board
+      /events/cruising
+      /events/social
+      /events/junior_sailing
+      /events/racing
+      /events/phrf
+      /events/wednesday
+      /events/weekend
+      /events/lccs
+      /events/one-design

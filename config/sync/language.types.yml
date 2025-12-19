@@ -1,0 +1,19 @@
+all:
+  - language_interface
+  - language_content
+  - language_url
+configurable:
+  - language_interface
+enabled: {  }
+locked:
+  content: language_content_locked
+  url: language_url_locked
+negotiation:
+  language_url:
+    enabled:
+      language-url: 0
+      language-url-fallback: 1
+  language_interface:
+    enabled: {  }
+  language_content:
+    enabled: {  }

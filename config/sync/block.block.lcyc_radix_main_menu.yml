@@ -1,0 +1,27 @@
+uuid: 8270a952-8d4c-4238-b50a-e60336aa08e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - lcyc_radix
+_core:
+  default_config_hash: n7Yhr8o8SzZNhsbMIHQywqU5sWOgtFThchF3TmdUGwQ
+id: lcyc_radix_main_menu
+theme: lcyc_radix
+region: header
+weight: -4
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 3
+  expand_all_items: false
+visibility: {  }

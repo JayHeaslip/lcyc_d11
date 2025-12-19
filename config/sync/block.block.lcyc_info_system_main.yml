@@ -1,0 +1,20 @@
+uuid: 5d707f46-8c98-44cf-8f7f-12e410c18c98
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - lcyc_info
+id: lcyc_info_system_main
+theme: lcyc_info
+region: ''
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: ''
+  label_display: '0'
+  provider: system
+visibility: {  }

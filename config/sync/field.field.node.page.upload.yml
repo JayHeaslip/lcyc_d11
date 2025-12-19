@@ -1,0 +1,27 @@
+uuid: 65d7ff6e-9e7a-4f56-b3f1-917743e053cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.upload
+    - node.type.page
+  module:
+    - file
+id: node.page.upload
+field_name: upload
+entity_type: node
+bundle: page
+label: 'File attachments'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: ''
+  file_extensions: 'jpg jpeg gif png txt html doc xls pdf ppt pps odt ods odp blw'
+  max_filesize: '7 MB'
+  description_field: true
+field_type: file

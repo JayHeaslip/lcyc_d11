@@ -1,0 +1,23 @@
+uuid: 57580dc6-b056-4c1b-ad04-5cb8faceb61a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_race_committee
+    - node.type.date
+  module:
+    - registration
+id: node.date.field_race_committee
+field_name: field_race_committee
+entity_type: node
+bundle: date
+label: 'Race Committee'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_types:
+    - race_commi
+field_type: registration

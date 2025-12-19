@@ -1,0 +1,22 @@
+uuid: 5c1d6795-114c-4d82-875b-63c526460f6e
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - lcyc_radix
+_core:
+  default_config_hash: 123djuEshxmPtoG0gn94piR8vO1b3u-UQTamq_4yYQs
+id: lcyc_radix_content
+theme: lcyc_radix
+region: content
+weight: -4
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

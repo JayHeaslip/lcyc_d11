@@ -1,0 +1,19 @@
+uuid: 76250a14-ee13-4826-b2ba-56938c31923e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - registration
+id: node.field_race_committee
+field_name: field_race_committee
+entity_type: node
+type: registration
+settings: {  }
+module: registration
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,47 @@
+uuid: 943c8a87-ceaf-42a2-9ca9-dd1ce32e6b6a
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+    - user
+  theme:
+    - bootstrap_business
+id: bootstrap_business_user_login
+theme: bootstrap_business
+region: ''
+weight: -26
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: User
+  label_display: visible
+  provider: user
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: |-
+      /admin
+      /admin/*
+      /civicrm
+      /civicrm/*
+      /club/volunteer
+      /racing/phrf
+      /racing/phrf/*
+      /racing/registration
+      /racing/registration/*
+      /calendar
+      /calendar/*
+      /events
+      /events/board
+      /events/cruising
+      /events/social
+      /events/junior_sailing
+      /events/racing
+      /events/phrf
+      /events/wednesday
+      /events/weekend
+      /events/lccs
+      /events/one-design

@@ -1,0 +1,20 @@
+uuid: 8d1485cf-71ed-41a7-acc5-d6956c9ec5d4
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - bootstrap_barrio
+id: bootstrap_barrio_system_main
+theme: bootstrap_barrio
+region: ''
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: ''
+  label_display: '0'
+  provider: system
+visibility: {  }

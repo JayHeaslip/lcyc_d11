@@ -1,0 +1,21 @@
+uuid: 8b40b769-3bcb-4293-8e2f-97d1235de7da
+langcode: en
+status: true
+dependencies:
+  config:
+    - workflows.workflow.registration
+  module:
+    - registration_confirmation
+third_party_settings:
+  registration_confirmation:
+    enable: true
+    subject: 'Race Committee Signup for [node:title] on [node:field_date]'
+    message:
+      value: "Thank you for signing up for Race Committee duty for an upcoming event at the Lake Champlain Yacht Club. Please contact the PRO for the event or the Race Management Group if you have any questions (crew_match@lcyc.info).\r\n"
+      format: '1'
+id: race_commi
+label: 'Race Committee Signup'
+workflow: registration
+defaultState: complete
+heldExpireTime: 1
+heldExpireState: canceled

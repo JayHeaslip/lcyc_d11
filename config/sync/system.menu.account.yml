@@ -1,0 +1,10 @@
+uuid: 6abd93f6-1a12-4be6-9cb4-cffd943d4c5d
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: M_Bh81osDyUQ4wV0GgU_NdBNqkzM87sLxjaCdFj9mnw
+id: account
+label: 'User Menu'
+description: "The <em>User</em> menu contains links related to the user's account, as well as the 'Log out' link."
+locked: true

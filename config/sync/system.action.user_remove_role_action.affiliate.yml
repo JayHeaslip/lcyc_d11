@@ -1,0 +1,14 @@
+uuid: e55aec8b-b2dc-40ef-8329-ac8921676a74
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.affiliate
+  module:
+    - user
+id: user_remove_role_action.affiliate
+label: 'Remove the affiliate role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: affiliate

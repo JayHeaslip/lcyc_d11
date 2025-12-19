@@ -1,0 +1,49 @@
+uuid: 3aeb221c-4429-4a92-b7b7-10de0af8613a
+langcode: en
+status: false
+dependencies:
+  module:
+    - search
+    - system
+  theme:
+    - bootstrap_business
+id: bootstrap_business_search_form
+theme: bootstrap_business
+region: ''
+weight: -31
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: ''
+  label_display: '0'
+  provider: search
+  page_id: null
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: |-
+      /admin
+      /admin/*
+      /civicrm
+      /civicrm/*
+      /club/volunteer
+      /racing/phrf
+      /racing/phrf/*
+      /racing/registration
+      /racing/registration/*
+      /calendar
+      /calendar/*
+      /events
+      /events/board
+      /events/cruising
+      /events/social
+      /events/junior_sailing
+      /events/racing
+      /events/phrf
+      /events/wednesday
+      /events/weekend
+      /events/lccs
+      /events/one-design
+      /events/singlehanded

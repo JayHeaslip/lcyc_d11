@@ -1,0 +1,15 @@
+uuid: 245f20b6-0cbc-4065-8b5b-c74c61d4624c
+langcode: en
+status: true
+dependencies: {  }
+name: '540'
+label: '540'
+effects:
+  3293aa14-d7e0-45af-a04c-021d7521b593:
+    uuid: 3293aa14-d7e0-45af-a04c-021d7521b593
+    id: image_scale
+    weight: 1
+    data:
+      width: null
+      height: 540
+      upscale: false

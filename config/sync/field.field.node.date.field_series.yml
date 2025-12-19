@@ -1,0 +1,22 @@
+uuid: 6bc69220-dba2-4e6d-8ff7-8314cd9cb74b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_series
+    - node.type.date
+  module:
+    - text
+id: node.date.field_series
+field_name: field_series
+entity_type: node
+bundle: date
+label: Series
+description: "Use keywords for events list like: Board, Cruising, Social, Junior Sailing, Racing\r\n\r\nPlease select Raw HTML for Text Format."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text

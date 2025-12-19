@@ -1,0 +1,25 @@
+uuid: 1af3c062-dfae-4935-a5bc-a2b1812f3019
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.tools
+  module:
+    - system
+  theme:
+    - radix
+id: radix_navigation
+theme: radix
+region: navbar_branding
+weight: 0
+provider: null
+plugin: 'system_menu_block:tools'
+settings:
+  id: 'system_menu_block:tools'
+  label: Navigation
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: null
+  expand_all_items: false
+visibility: {  }

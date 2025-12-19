@@ -1,0 +1,22 @@
+uuid: efd482ad-70e0-4c73-bab8-ca121b14cf59
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - lcyc_radix
+_core:
+  default_config_hash: MFQipD6IPuJTnQ46CjYsMDYBAGjQrT-OVwRCE6vBBYo
+id: lcyc_radix_messages
+theme: lcyc_radix
+region: header
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

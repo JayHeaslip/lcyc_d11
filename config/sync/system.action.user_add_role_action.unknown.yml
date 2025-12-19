@@ -1,0 +1,14 @@
+uuid: df43b288-3a1c-4d69-8b0f-5e810d5ff47b
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.unknown
+  module:
+    - user
+id: user_add_role_action.unknown
+label: 'Add the unknown role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: unknown

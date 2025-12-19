@@ -1,0 +1,24 @@
+uuid: 5c90edd2-1f29-48d6-ae4d-9082a7951abe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.story
+  module:
+    - text
+id: node.story.body
+field_name: body
+entity_type: node
+bundle: story
+label: Body
+description: 'Stories are articles in their simplest form: they have a title, a teaser and a body, but can be extended by other modules. The teaser is part of the body too. Stories may be used as a personal blog or for news articles.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

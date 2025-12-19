@@ -1,0 +1,15 @@
+uuid: 761f8b99-5812-4939-9a2f-469b3d9032eb
+langcode: en
+status: true
+dependencies: {  }
+name: 1920x640
+label: 1920x640
+effects:
+  e00d5e24-9a0c-4386-befd-f6a5ea34a0c7:
+    uuid: e00d5e24-9a0c-4386-befd-f6a5ea34a0c7
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1920
+      height: 640
+      anchor: center-center

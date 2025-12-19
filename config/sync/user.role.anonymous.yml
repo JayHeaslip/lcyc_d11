@@ -1,0 +1,26 @@
+uuid: ecc15f19-866a-4865-9480-d7eb3239e554
+langcode: en
+status: true
+dependencies:
+  module:
+    - civicrm
+    - media
+    - search
+    - system
+_core:
+  default_config_hash: 6WavjUYXIegP9AAg2zXGx54MWIVoomC3SZhNiqe-Dyk
+id: anonymous
+label: 'anonymous user'
+weight: 1
+is_admin: false
+permissions:
+  - 'access all custom data'
+  - 'access content'
+  - 'profile create'
+  - 'profile edit'
+  - 'profile view'
+  - 'search content'
+  - 'use advanced search'
+  - 'view event info'
+  - 'view event participants'
+  - 'view media'

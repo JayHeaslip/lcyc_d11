@@ -1,0 +1,121 @@
+uuid: 90481a3f-2663-4afa-a416-83dc5118281a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.date.body
+    - field.field.node.date.field_date
+    - field.field.node.date.field_image
+    - field.field.node.date.field_information
+    - field.field.node.date.field_pro
+    - field.field.node.date.field_race_committee
+    - field.field.node.date.field_series
+    - field.field.node.date.field_skippers_meeting
+    - field.field.node.date.field_view
+    - field.field.node.date.upload
+    - image.style.1920
+    - node.type.date
+  module:
+    - datetime_range
+    - file
+    - image
+    - registration
+    - text
+    - user
+    - viewfield
+id: node.date.default
+targetEntityType: node
+bundle: date
+mode: default
+content:
+  body:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_date:
+    type: daterange_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+      from_to: both
+      separator: '-'
+    third_party_settings: {  }
+    weight: -1
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: '1920'
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_information:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_pro:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_race_committee:
+    type: registration_form
+    label: above
+    settings:
+      show_reason: false
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_series:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_skippers_meeting:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_view:
+    type: viewfield_default
+    label: above
+    settings:
+      view_title: hidden
+      always_build_output: false
+      empty_view_title: hidden
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  upload:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
+hidden: {  }

@@ -1,0 +1,20 @@
+uuid: 8c55aed9-f25e-4b7d-97ff-4171d881af5f
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - at_panels_everywhere
+id: at_panels_everywhere_system_main
+theme: at_panels_everywhere
+region: ''
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: ''
+  label_display: '0'
+  provider: system
+visibility: {  }

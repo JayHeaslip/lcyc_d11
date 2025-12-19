@@ -1,0 +1,46 @@
+uuid: fbee4159-08a0-4f03-96aa-c087d7b33c29
+langcode: en
+status: true
+dependencies:
+  config:
+    - registration.type.race_commi
+  module:
+    - civicrm
+    - media
+    - node
+    - registration
+    - search
+    - system
+    - vapn
+_core:
+  default_config_hash: cFrlqjtkTfvY3RGccjJkPf1SGIfJ942IrxTLWAO4mgA
+id: authenticated
+label: 'authenticated user'
+weight: 2
+is_admin: false
+permissions:
+  - 'access CiviMail subscribe/unsubscribe pages'
+  - 'access all custom data'
+  - 'access content'
+  - 'access uploaded files'
+  - 'administer own race_commi registration'
+  - 'change own username'
+  - 'create race_commi registration self'
+  - 'delete own race_commi registration'
+  - 'edit my contact'
+  - 'make online contributions'
+  - 'profile create'
+  - 'profile edit'
+  - 'profile view'
+  - 'register for events'
+  - 'search content'
+  - 'update own race_commi registration'
+  - 'use advanced search'
+  - 'use vapn'
+  - 'view event info'
+  - 'view event participants'
+  - 'view media'
+  - 'view my contact'
+  - 'view own race_commi registration'
+  - 'view own registration'
+  - 'view own unpublished content'

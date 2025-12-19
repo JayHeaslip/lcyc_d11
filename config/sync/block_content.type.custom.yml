@@ -1,0 +1,8 @@
+uuid: 89075bda-76ae-41e3-a171-5957677773c4
+langcode: en
+status: true
+dependencies: {  }
+id: custom
+label: Custom
+revision: false
+description: 'Custom block to hold html.'

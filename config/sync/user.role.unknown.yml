@@ -1,0 +1,14 @@
+uuid: 08726aa8-3e2e-422f-bd31-74b8a6ab943a
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - system
+id: unknown
+label: unknown
+weight: 0
+is_admin: false
+permissions:
+  - 'access content'
+  - 'view media'

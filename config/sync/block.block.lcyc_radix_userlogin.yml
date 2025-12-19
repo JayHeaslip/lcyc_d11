@@ -1,0 +1,20 @@
+uuid: 82839107-7950-44d7-a96b-2bcd3ee775b1
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+  theme:
+    - lcyc_radix
+id: lcyc_radix_userlogin
+theme: lcyc_radix
+region: sidebar_tall
+weight: -1
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: 'User login'
+  label_display: visible
+  provider: user
+visibility: {  }

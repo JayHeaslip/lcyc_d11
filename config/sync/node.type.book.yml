@@ -1,0 +1,22 @@
+uuid: b38ebcd5-7e8c-4f87-b0d6-0fa7044955b2
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+  enforced:
+    module:
+      - book
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: xvVZ9piiDxh4ziNyl-YqCT5vF8nI7xyupTdQWlN-Hxk
+name: 'Book page'
+type: book
+description: 'A <em>book page</em> is a page of content, organized into a collection of related entries collectively known as a <em>book</em>. A <em>book page</em> automatically displays links to adjacent pages, providing a simple navigation system for organizing and reviewing structured content.'
+help: null
+new_revision: false
+preview_mode: 1
+display_submitted: false

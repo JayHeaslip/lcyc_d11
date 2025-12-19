@@ -1,0 +1,51 @@
+uuid: d4995ce0-274c-477d-b3f5-4766f66ec1ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.story.body
+    - field.field.node.story.field_image
+    - field.field.node.story.upload
+    - node.type.story
+  module:
+    - file
+    - image
+    - text
+    - user
+id: node.story.default
+targetEntityType: node
+bundle: story
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: file
+      image_style: adaptive_image
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  upload:
+    type: file_table
+    label: hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+hidden: {  }

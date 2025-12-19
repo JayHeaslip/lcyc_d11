@@ -1,0 +1,22 @@
+uuid: 9ae0ad68-13ba-484b-82af-10625eb17871
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - lcyc_radix
+_core:
+  default_config_hash: sYUWrQxvizC8F6cbscKFXpAOUd-uU6ZCOwnfU6I0t0M
+id: lcyc_radix_breadcrumbs
+theme: lcyc_radix
+region: header
+weight: -2
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

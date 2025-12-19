@@ -1,0 +1,15 @@
+uuid: 47bc0f46-dd6b-4acb-a1f2-feaf2159d9b1
+langcode: en
+status: true
+dependencies: {  }
+id: reminder
+label: Reminder
+weight: 0
+datetime:
+  length: 7
+  type: days
+  position: before
+plugin: dispatch_event_on_close_action
+target_langcode: und
+configuration:
+  plugin_date: ''

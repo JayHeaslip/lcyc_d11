@@ -1,0 +1,20 @@
+uuid: 6991b5c1-5e1c-4464-882f-64b66bb390c5
+langcode: en
+status: true
+dependencies:
+  theme:
+    - lcyc_radix
+_core:
+  default_config_hash: Jj1kYFejQwpVVGVoBrOE0m73qzJHW4HlEmuPQAvdLGA
+id: lcyc_radix_page_title
+theme: lcyc_radix
+region: header
+weight: -2
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

@@ -1,0 +1,18 @@
+uuid: e4b1b827-2a27-42d9-a355-145bbfd0241b
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Slide
+type: slides
+description: 'Display pictures at the top of the home page'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

@@ -1,0 +1,19 @@
+uuid: 5d01ccb4-af34-4db2-a698-7e210af8db8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pro
+    - node.type.date
+id: node.date.field_pro
+field_name: field_pro
+entity_type: node
+bundle: date
+label: 'Principal Race Officer'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

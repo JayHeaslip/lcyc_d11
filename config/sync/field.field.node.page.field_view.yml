@@ -1,0 +1,53 @@
+uuid: a6608f82-baa5-4129-a0ec-e5f51d5c0014
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_view
+    - node.type.page
+  module:
+    - viewfield
+id: node.page.field_view
+field_name: field_view
+entity_type: node
+bundle: page
+label: View
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  force_default: false
+  allowed_views:
+    c: '0'
+    comment: '0'
+    content: '0'
+    block_content: '0'
+    content_registration_summary: '0'
+    files: '0'
+    frontpage: '0'
+    manage_registrations: '0'
+    media: '0'
+    media_library: '0'
+    user_admin_people: '0'
+    profiles: '0'
+    comments_recent: '0'
+    content_recent: '0'
+    registrations: '0'
+    taxonomy_term: '0'
+    user_registrations: '0'
+    watchdog: '0'
+    who_s_new: '0'
+    who_s_online: '0'
+  allowed_display_types:
+    block: block
+    embed: embed
+    default: '0'
+    feed: '0'
+    page: '0'
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: viewfield

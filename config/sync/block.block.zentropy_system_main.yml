@@ -1,0 +1,20 @@
+uuid: b99a5415-6f05-4d47-93ea-bfd5b4b7d0af
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - zentropy
+id: zentropy_system_main
+theme: zentropy
+region: ''
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: ''
+  label_display: '0'
+  provider: system
+visibility: {  }

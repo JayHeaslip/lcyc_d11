@@ -1,0 +1,22 @@
+uuid: a4d619e9-c0d9-447d-bbf0-e90830ba4873
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_information
+    - node.type.date
+  module:
+    - text
+id: node.date.field_information
+field_name: field_information
+entity_type: node
+bundle: date
+label: Information
+description: "This is the limited text for the table view on the events page.\r\n\r\nPlease select Raw HTML for Text Format."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text
