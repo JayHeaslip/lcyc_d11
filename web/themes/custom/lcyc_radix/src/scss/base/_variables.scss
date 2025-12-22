@@ -44,3 +44,5 @@ $container-max-widths: (
   xl: 1140px,
   xxl: 1440px // <-- Increase the XXL breakpoint here (default is 1320px)
 ) !default;
+
+$primary:       rgb(0,52,127); // Example: Deep navy for .btn-primary

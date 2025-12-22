@@ -28,3 +28,15 @@ function lcyc_radix_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
     // $form['actions']['#attributes']['class'] = array_diff($form['actions']['#attributes']['class'], ['some-other-class-to-remove']);
   }
 }
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function lcyc_radix_preprocess_page(&$variables) {
+  // Load the current user display name (respects hook_user_format_name_alter if any).
+  $current_user = \Drupal::currentUser();
+  $variables['current_user_name'] = $current_user->getDisplayName();
+
+  // Optional: Add user ID if needed for links.
+  $variables['current_user_id'] = $current_user->id();
+}

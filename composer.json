@@ -19,6 +19,7 @@
         "civicrm/civicrm-drupal-8": "5.75.1",
         "civicrm/civicrm-packages": "5.75.1",
         "civicrm/cli-tools": "^2025.06",
+        "civicrm/composer-downloads-plugin": "^4.0",
         "composer/installers": "^2.3",
         "drupal/adaptivetheme": "^7.1",
         "drupal/admin_toolbar": "^3.6",
@@ -30,6 +31,7 @@
         "drupal/book": "^2.0",
         "drupal/bootstrap_layout_builder": "^2.2",
         "drupal/bootstrap_styles": "^1.2",
+        "drupal/civicrm_drush": "^4.0",
         "drupal/civicrm_entity": "^4.0",
         "drupal/color": "^2.x-dev",
         "drupal/core-composer-scaffold": "^11.2",
@@ -39,7 +41,8 @@
         "drupal/corporateclean": "^1.0",
         "drupal/ctools": "^4.1",
         "drupal/date_ical": "^4.0",
-        "drupal/devel": "^5.4",
+        "drupal/devel": "^5.5",
+        "drupal/devel_entity_updates": "5.0.x-dev@dev",
         "drupal/devel_generate": "^5.4",
         "drupal/ds": "^3.0",
         "drupal/field_group": "^4.0",
@@ -48,6 +51,7 @@
         "drupal/fullcalendar_view": "^5.2",
         "drupal/imce": "^3.1",
         "drupal/inline_entity_form": "^3.0@RC",
+        "drupal/jquery_ui_accordion": "^2.1",
         "drupal/login_emailusername": "^3.0.1",
         "drupal/login_monitor": "^1.0",
         "drupal/mahi": "^1.1",
@@ -65,12 +69,13 @@
         "drupal/vvjs": "^1.0",
         "drupal/webprofiler": "^11.1",
         "drush/drush": "^13",
-        "kigkonsult/icalcreator": "^2.41"
+        "kigkonsult/icalcreator": "^2.41",
+        "mglaman/composer-drupal-lenient": "^1.0"
     },
     "conflict": {
         "drupal/drupal": "*"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
         "allow-plugins": {
@@ -83,6 +88,7 @@
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
             "drupal/core-recipe-unpack": true,
+            "mglaman/composer-drupal-lenient": true,
             "php-http/discovery": true,
             "php-tuf/composer-integration": true,
             "phpstan/extension-installer": true
@@ -148,6 +154,9 @@
                 "      composer remove drupal/core-project-message"
             ]
         },
-        "enable-patching": "true"
+        "enable-patching": "true",
+        "drupal-lenient": {
+            "allowed-list": ["drupal/devel_entity_updates"]
+        }
     }
 }

@@ -12,28 +12,12 @@ starterkit: true
 
 # Define the regions for the Block Layout interface.
 regions:
-  # Header for logo/branding, contained in a Bootstrap container.
   header: 'Header'
-
-# Navigation bar, typically used for the main menu block.
   navbar: 'Main Navigation Bar'
-
-# Region for the full-width slideshow at the top of the main area.
   slideshow: 'Slideshow'
-  
-# The main content area where nodes, views, and sidebars are typically placed.
   content: 'Content'
-
-# Region for the sidebar that needs to be tall.
   sidebar_tall: 'Tall Sidebar'
-  
-# The region for the four equal-sized blocks (our custom section).
-  highlight_row: 'Highlight Row (Four Blocks)'
-
-# The region for the full-width footer content.
   footer_full: 'Full Width Footer'
-
-  # Drupal standard regions that Radix likely includes, kept for completeness.
   breadcrumb: 'Breadcrumb'
 libraries:
   - lcyc_radix/style

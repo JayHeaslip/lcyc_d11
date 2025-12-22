@@ -106,3 +106,27 @@ This ensures the style only applies to this image field.
   margin-left: 10px; 
   /* Or use padding if you prefer: padding-left: 10px; */
 }
+
+/* Your specific background color */
+.custom-navbar-bg {
+  background-color: #123456 !important; /* Replace with your hex code */
+}
+
+/* Ensure the UL takes up the full width of the navbar-nav wrapper */
+.navbar-nav > .block > .block__content > ul {
+  display: flex;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Push the LAST list item to the right */
+.navbar-nav > .block > .block__content > ul > li:last-child {
+  margin-left: auto;
+}
+
+/* Ensure links are white */
+.navbar-nav .nav-link {
+  color: #ffffff !important;
+}
