@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.book.field_image
     - field.field.node.book.field_view
     - field.field.node.book.upload
-    - image.style.large
     - node.type.book
   module:
     - file
@@ -46,7 +45,7 @@ content:
     label: hidden
     settings:
       image_link: file
-      image_style: large
+      image_style: ''
       image_loading:
         attribute: lazy
     third_party_settings: {  }
@@ -72,5 +71,6 @@ content:
     region: content
 hidden:
   field_embed: true
+  langcode: true
   links: true
   vapn: true

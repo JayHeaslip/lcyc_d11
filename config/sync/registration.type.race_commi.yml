@@ -6,6 +6,7 @@ dependencies:
     - workflows.workflow.registration
   module:
     - registration_confirmation
+    - registration_waitlist
 third_party_settings:
   registration_confirmation:
     enable: true
@@ -13,6 +14,9 @@ third_party_settings:
     message:
       value: "Thank you for signing up for Race Committee duty for an upcoming event at the Lake Champlain Yacht Club. Please contact the PRO for the event or the Race Management Group if you have any questions (crew_match@lcyc.info).\r\n"
       format: '1'
+  registration_waitlist:
+    autofill_sort_field: registration_id
+    autofill_sort_order: ASC
 id: race_commi
 label: 'Race Committee Signup'
 workflow: registration

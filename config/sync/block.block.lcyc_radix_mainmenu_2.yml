@@ -1,4 +1,4 @@
-uuid: 8270a952-8d4c-4238-b50a-e60336aa08e4
+uuid: 83fc79ef-7843-485d-862d-2b991a481446
 langcode: en
 status: true
 dependencies:
@@ -8,20 +8,18 @@ dependencies:
     - system
   theme:
     - lcyc_radix
-_core:
-  default_config_hash: n7Yhr8o8SzZNhsbMIHQywqU5sWOgtFThchF3TmdUGwQ
-id: lcyc_radix_main_menu
+id: lcyc_radix_mainmenu_2
 theme: lcyc_radix
-region: header
-weight: -4
+region: navbar
+weight: 0
 provider: null
 plugin: 'system_menu_block:main'
 settings:
   id: 'system_menu_block:main'
-  label: 'Main navigation'
+  label: 'Main menu'
   label_display: '0'
   provider: system
   level: 1
-  depth: 3
+  depth: null
   expand_all_items: false
 visibility: {  }

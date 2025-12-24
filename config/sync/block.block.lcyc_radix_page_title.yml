@@ -9,7 +9,7 @@ _core:
 id: lcyc_radix_page_title
 theme: lcyc_radix
 region: header
-weight: -2
+weight: -5
 provider: null
 plugin: page_title_block
 settings:

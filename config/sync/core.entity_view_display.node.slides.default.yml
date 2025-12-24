@@ -5,8 +5,10 @@ dependencies:
   config:
     - field.field.node.slides.field_slide_image
     - field.field.node.slides.field_title
+    - image.style.slideshow_1076x400
     - node.type.slides
   module:
+    - media
     - text
     - user
 id: node.slides.default
@@ -15,12 +17,15 @@ bundle: slides
 mode: default
 content:
   field_slide_image:
-    type: entity_reference_label
-    label: above
+    type: media_thumbnail
+    label: hidden
     settings:
-      link: true
+      image_link: ''
+      image_style: slideshow_1076x400
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
-    weight: 2
+    weight: 0
     region: content
   field_title:
     type: text_default

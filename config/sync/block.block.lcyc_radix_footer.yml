@@ -13,7 +13,7 @@ _core:
 id: lcyc_radix_footer
 theme: lcyc_radix
 region: header
-weight: 2
+weight: 1
 provider: null
 plugin: 'system_menu_block:footer'
 settings:
