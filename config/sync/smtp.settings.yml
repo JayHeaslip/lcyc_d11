@@ -1,0 +1,4 @@
+smtp_timeout: 30
+smtp_keepalive: false
+smtp_debug_level: 1
+smtp_allowhtml: false

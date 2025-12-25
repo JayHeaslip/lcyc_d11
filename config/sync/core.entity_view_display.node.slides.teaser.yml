@@ -1,6 +1,6 @@
 uuid: 97246515-01cb-44e7-957d-c052198b7d77
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
@@ -22,3 +22,4 @@ content:
 hidden:
   field_slide_image: true
   field_title: true
+  langcode: true

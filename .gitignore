@@ -44,6 +44,12 @@ Thumbs.db
 .env.local
 .env.*.local
 
+.ddev/
+!.ddev/commands/
+!.ddev/commands/web/
+!.ddev/commands/host/
+!.ddev/commands/db/
+
 # Logs and reports
 *.log
 drupal-check-report.xml

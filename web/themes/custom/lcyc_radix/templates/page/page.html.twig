@@ -1,77 +1,101 @@
 {#
-  Template for the overall page structure.
-  Based on a typical Bootstrap layout using Radix regions.
+Template for the overall page structure.
+Based on a typical Bootstrap layout using Radix regions.
 #}
 
 <div id="page-wrapper">
-
+  
   {# --- HEADER (Banner Role) --- #}
-  <header role="banner" id="header" class="header py-1">
-    <div class="container">
+  <header role="banner" id="header" class="header px-0 py-1">
+    <div class="container custom-navbar-bg">
       {# The 'header' region typically holds the logo, site name, and perhaps search forms #}
-      {{ page.header }}
+	{{ page.header }}
     </div>
   </header>
-
+  
   {# --- Navigation Bar --- #}
-  {% if page.navbar %}
-    <nav role="navigation" aria-label="{{ 'Main navigation'|t }}" class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
-      <div class="container">
+  <nav role="navigation" aria-label="{{ 'Main navigation'|t }}" class="navbar navbar-expand-lg navbar-dark p-0">
+    <div class="container custom-navbar-bg py-2">
+      
+      {# Toggler for mobile #}
+      <button class="navbar-toggler mx-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+	<span class="navbar-toggler-icon"></span>
+      </button>
 
-        {# 1. Navbar Toggler (for mobile/collapsed view) #}
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="{{ 'Toggle navigation'|t }}">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        {# 2. The Collapse Wrapper (essential for horizontal layout when expanded) #}
-        <div class="collapse navbar-collapse" id="navbarContent">
-
-          {# This is where your main menu block ({{ page.navbar }}) should be placed #}
-          {{ page.navbar }}
-
-        </div>
+      <div class="collapse navbar-collapse" id="navbarContent">
+	<div class="navbar-nav me-auto px-0">
+	  {{ page.navbar }}
+	</div>
+	
+	<!-- User menu on the far right -->
+	{% if logged_in %}
+	<div class="nav-item dropdown">
+	  <a href="#" 
+             class="nav-link dropdown-toggle text-white d-flex align-items-center" 
+             id="userDropdown" 
+             role="button" 
+             data-bs-toggle="dropdown" 
+             aria-expanded="false">
+            {{ current_user_name|default('My Account') }}
+	  </a>
+	  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="/user">View profile</a></li>
+            <li><a class="dropdown-item" href="/user/{{ user.id }}/edit">Edit profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/user/logout">Log out</a></li>
+	  </ul>
+	</div>
+	{% else %}
+	<!-- Optional: Show login link when not logged in -->
+	<a href="/user/login" class="nav-link text-white">Log in</a>
+	{% endif %}
 
       </div>
-    </nav>
-  {% endif %}
-
+    </div>
+  </nav>
+  
+  {# --- Breadcrumbs --- #}
+  <div class="container mt-2">
+    {{ page.breadcrumb }}
+  </div>
+  
   <main role="main" id="main-content" class="py-2">
-
+    
     {# 1. Combined Content and Sidebar Regions (Flexbox enabled) #}
     <div class="container">
       {# Use the Bootstrap row to create the two-column layout #}
       <div class="row">
-
+	
         {# --- LEFT SIDE: Main Column (10 columns wide) --- #}
         <div class="col-md-10">
-
+	  
           {# 1a. Slideshow Region (now inside the main column) #}
           {% if page.slideshow %}
-            <section id="slideshow-region" class="mb-4">
-              {{ page.slideshow }}
-            </section>
+          <section id="slideshow-region" class="mb-4">
+            {{ page.slideshow }}
+          </section>
           {% endif %}
-
+	  
           {# 1b. Primary Content Region #}
           {% if page.content %}
-            {{ page.content }}
+          {{ page.content }}
           {% endif %}
         </div>
-
+	
         {# --- RIGHT SIDE: Tall Sidebar Column (3 columns wide) --- #}
         <div class="col-md-2">
           {% if page.sidebar_tall %}
-            <aside class="p-3 border h-100 bg-light">
-              {{ page.sidebar_tall }}
-            </aside>
+          <aside class="p-3 border h-100 bg-light">
+            {{ page.sidebar_tall }}
+          </aside>
           {% endif %}
         </div>
-
+	
       </div>
     </div>
-
-  {# 2. Four Equal Size Blocks Region (Keep this outside the main content/sidebar columns) #}
-  {% if page.highlight_row %}
+    
+    {# 2. Four Equal Size Blocks Region (Keep this outside the main content/sidebar columns) #}
+    {% if page.highlight_row %}
     <section id="highlight-row" class="py-1 bg-light">
       <div class="container">
         <div class="row">
@@ -91,8 +115,9 @@
         </div>
       </div>
     </section>
-  {% endif %}
+    {% endif %}
 
+  </main>
   {# Footer #}
   <footer role="contentinfo" id="footer" class="footer py-5 mt-4">
     <div class="container bg-dark text-white text-center">
@@ -104,3 +129,4 @@
       {# page.footer_full #}
     </div>
   </footer>
+</div>
