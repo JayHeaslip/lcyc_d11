@@ -1,4 +1,4 @@
-uuid: 9ae0ad68-13ba-484b-82af-10625eb17871
+uuid: 67caa45f-7534-4269-820e-9ac5915110d4
 langcode: en
 status: true
 dependencies:
@@ -6,12 +6,10 @@ dependencies:
     - system
   theme:
     - lcyc_radix
-_core:
-  default_config_hash: sYUWrQxvizC8F6cbscKFXpAOUd-uU6ZCOwnfU6I0t0M
-id: lcyc_radix_breadcrumbs
+id: system_breadcrumb_block
 theme: lcyc_radix
-region: header
-weight: -2
+region: breadcrumb
+weight: 0
 provider: null
 plugin: system_breadcrumb_block
 settings:
@@ -19,4 +17,8 @@ settings:
   label: Breadcrumbs
   label_display: '0'
   provider: system
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: "<front>\r\n"
