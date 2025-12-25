@@ -14,7 +14,7 @@ Based on a typical Bootstrap layout using Radix regions.
   </header>
   
   {# --- Navigation Bar --- #}
-  <nav role="navigation" aria-label="{{ 'Main navigation'|t }}" class="navbar navbar-expand-lg sticky-top navbar-dark p-0">
+  <nav role="navigation" aria-label="{{ 'Main navigation'|t }}" class="navbar navbar-expand-lg navbar-dark p-0">
     <div class="container custom-navbar-bg py-2">
       
       {# Toggler for mobile #}
@@ -53,7 +53,12 @@ Based on a typical Bootstrap layout using Radix regions.
       </div>
     </div>
   </nav>
-
+  
+  {# --- Breadcrumbs --- #}
+  <div class="container mt-2">
+    {{ page.breadcrumb }}
+  </div>
+  
   <main role="main" id="main-content" class="py-2">
     
     {# 1. Combined Content and Sidebar Regions (Flexbox enabled) #}
