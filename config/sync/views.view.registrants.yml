@@ -1,0 +1,1267 @@
+uuid: 01a98017-f722-45b8-838b-d2e3c7069bdc
+langcode: en
+status: true
+dependencies:
+  module:
+    - civicrm_entity
+    - options
+    - user
+id: registrants
+label: Registrants
+module: views
+description: ''
+tag: ''
+base_table: civicrm_participant
+base_field: id
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: Registrants
+      fields:
+        name:
+          id: name
+          table: users_field_data
+          field: name
+          relationship: user
+          group_type: group
+          admin_label: ''
+          entity_type: user
+          entity_field: name
+          plugin_id: field
+          label: Owner
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: user_name
+          settings:
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        co_owners_6:
+          id: co_owners_6
+          table: civicrm_value_boat_1
+          field: co_owners_6
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: co_owners_6
+          plugin_id: civicrm_entity_custom_field
+          label: Co-Owners
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          type: string
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: 0
+        club_17:
+          id: club_17
+          table: civicrm_value_boat_1
+          field: club_17
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: club_17
+          plugin_id: civicrm_entity_custom_field
+          label: Club
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          type: string
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: 0
+        name_1:
+          id: name_1
+          table: civicrm_value_boat_1
+          field: name_1
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: name_1
+          plugin_id: civicrm_entity_custom_field
+          label: 'Boat Name'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          type: string
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: 0
+        sail_country_19:
+          id: sail_country_19
+          table: civicrm_value_boat_1
+          field: sail_country_19
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: sail_country_19
+          plugin_id: civicrm_entity_custom_field
+          label: Country
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          type: string
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: 0
+        sail_number_21:
+          id: sail_number_21
+          table: civicrm_value_boat_1
+          field: sail_number_21
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: sail_number_21
+          plugin_id: civicrm_entity_custom_field
+          label: Sail
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: 1
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: 0
+        bow_number_20:
+          id: bow_number_20
+          table: civicrm_value_boat_1
+          field: bow_number_20
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: bow_number_20
+          plugin_id: civicrm_entity_custom_field
+          label: Bow
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: 1
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: 0
+        model_2:
+          id: model_2
+          table: civicrm_value_boat_1
+          field: model_2
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: model_2
+          plugin_id: civicrm_entity_custom_field
+          label: Model
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          type: string
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: 0
+        displacement_27:
+          id: displacement_27
+          table: civicrm_value_boat_1
+          field: displacement_27
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: displacement_27
+          plugin_id: civicrm_entity_custom_field
+          label: Displacement
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: 1
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: 0
+        phrf_4:
+          id: phrf_4
+          table: civicrm_value_boat_1
+          field: phrf_4
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: phrf_4
+          plugin_id: civicrm_entity_custom_field
+          label: PHRF
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: 1
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: 0
+        class_5:
+          id: class_5
+          table: civicrm_value_boat_1
+          field: class_5
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: class_5
+          plugin_id: civicrm_entity_custom_field
+          label: Class
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          type: list_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: 0
+        wednesdays_23:
+          id: wednesdays_23
+          table: civicrm_value_boat_1
+          field: wednesdays_23
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: wednesdays_23
+          plugin_id: civicrm_entity_custom_field
+          label: Wednesdays
+          exclude: false
+          alter:
+            alter_text: false
+            text: WN
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 1
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: true
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          type: list_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: 0
+        weekends_24:
+          id: weekends_24
+          table: civicrm_value_boat_1
+          field: weekends_24
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: weekends_24
+          plugin_id: civicrm_entity_custom_field
+          label: Weekends
+          exclude: false
+          alter:
+            alter_text: false
+            text: WE
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 1
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: true
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          type: list_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: 0
+        one_design_25:
+          id: one_design_25
+          table: civicrm_value_boat_1
+          field: one_design_25
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: one_design_25
+          plugin_id: civicrm_entity_custom_field
+          label: One-Design
+          exclude: false
+          alter:
+            alter_text: false
+            text: OD
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 1
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: true
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          type: list_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: 0
+      pager:
+        type: none
+        options:
+          offset: 0
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: none
+        options: {  }
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts:
+        class_5:
+          id: class_5
+          table: civicrm_value_boat_1
+          field: class_5
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: custom_5
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+        phrf_4:
+          id: phrf_4
+          table: civicrm_value_boat_1
+          field: phrf_4
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: custom_4
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+        model_2:
+          id: model_2
+          table: civicrm_value_boat_1
+          field: model_2
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: custom_2
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+        bow_number_20:
+          id: bow_number_20
+          table: civicrm_value_boat_1
+          field: bow_number_20
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: custom_20
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+        sail_number_21:
+          id: sail_number_21
+          table: civicrm_value_boat_1
+          field: sail_number_21
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: custom_21
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+      arguments: {  }
+      filters:
+        title:
+          id: title
+          table: civicrm_event
+          field: title
+          relationship: event_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_event
+          entity_field: title
+          plugin_id: string
+          operator: '='
+          value: 'LCYC Racing Season'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        one_design_25:
+          id: one_design_25
+          table: civicrm_value_boat_1
+          field: one_design_25
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: custom_25
+          plugin_id: civicrm_entity_in_operator
+          operator: in
+          value:
+            R: R
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        wednesdays_23:
+          id: wednesdays_23
+          table: civicrm_value_boat_1
+          field: wednesdays_23
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: custom_23
+          plugin_id: civicrm_entity_in_operator
+          operator: in
+          value:
+            JaM: JaM
+            Spin: Spin
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        weekends_24:
+          id: weekends_24
+          table: civicrm_value_boat_1
+          field: weekends_24
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: custom_24
+          plugin_id: civicrm_entity_in_operator
+          operator: in
+          value:
+            JaM: JaM
+            Spin: Spin
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+          2: OR
+      style:
+        type: table
+      row:
+        type: fields
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
+      relationships:
+        event_id:
+          id: event_id
+          table: civicrm_participant
+          field: event_id
+          relationship: none
+          group_type: group
+          admin_label: 'CiviCRM Event'
+          entity_type: civicrm_participant
+          entity_field: event_id
+          plugin_id: standard
+          required: true
+        contact_id:
+          id: contact_id
+          table: civicrm_participant
+          field: contact_id
+          relationship: none
+          group_type: group
+          admin_label: 'CiviCRM Contact'
+          entity_type: civicrm_participant
+          entity_field: contact_id
+          plugin_id: standard
+          required: true
+        user:
+          id: user
+          table: civicrm_contact
+          field: user
+          relationship: contact_id
+          group_type: group
+          admin_label: User
+          entity_type: civicrm_contact
+          plugin_id: civicrm_entity_civicrm_contact_user
+          required: true
+          domain_id: {  }
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: false
+          content: 'Total: @total'
+      footer: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+      tags: {  }
+  block_1:
+    id: block_1
+    display_title: Block
+    display_plugin: block
+    position: 1
+    display_options:
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+      tags: {  }

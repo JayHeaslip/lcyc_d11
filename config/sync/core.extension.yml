@@ -7,7 +7,6 @@ module:
   autoban: 0
   autoban_dblog: 0
   automated_cron: 0
-  ban: 0
   basic_auth: 0
   big_pipe: 0
   block: 0
@@ -33,12 +32,7 @@ module:
   datetime_range: 0
   dblog: 0
   devel: 0
-  devel_entity_updates: 0
   devel_generate: 0
-  ds: 0
-  ds_devel: 0
-  ds_extras: 0
-  ds_switch_view_mode: 0
   dynamic_page_cache: 0
   editor: 0
   entity: 0
@@ -67,6 +61,7 @@ module:
   locale: 0
   login_emailusername: 0
   login_redirect: 0
+  meaofd: 0
   media: 0
   media_library: 0
   media_library_form_element: 0
@@ -74,7 +69,6 @@ module:
   menu_ui: 0
   migrate: 0
   migrate_drupal: 0
-  migrate_drupal_ui: 0
   mysql: 0
   node: 0
   options: 0
@@ -97,7 +91,6 @@ module:
   registration_workflow: 0
   responsive_image: 0
   rest: 0
-  rules: 0
   search: 0
   serialization: 0
   settings_tray: 0
@@ -114,7 +107,6 @@ module:
   token: 0
   toolbar: 0
   tracer: 0
-  typed_data: 0
   update: 0
   user: 0
   vapn: 0
@@ -125,6 +117,7 @@ module:
   views_ui: 0
   vvjs: 0
   workflows: 0
+  civicrm_entity: 1
   content_translation: 10
 theme:
   claro: 0

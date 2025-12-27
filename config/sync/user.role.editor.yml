@@ -42,6 +42,7 @@ permissions:
   - 'edit any page content'
   - 'edit own book content'
   - 'edit own page content'
+  - 'rebuild node access permissions'
   - 'search content'
   - 'use advanced search'
   - 'view the administration theme'

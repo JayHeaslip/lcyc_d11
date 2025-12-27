@@ -1,0 +1,22 @@
+uuid: 48841dcd-d448-451b-8987-83d6ffdfa5e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.poll
+id: node.poll.promote
+field_name: promote
+entity_type: node
+bundle: poll
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
