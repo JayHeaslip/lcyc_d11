@@ -20,12 +20,16 @@ content:
     type: image
     label: hidden
     settings:
-      image_style: thumbnail
       image_link: content
+      image_style: thumbnail
       image_loading:
         attribute: lazy
     third_party_settings: {  }
     weight: 0
     region: content
 hidden:
+  civicrm_dashboard: true
+  civicrm_profiles: true
+  civicrm_record: true
+  langcode: true
   member_for: true

@@ -33,4 +33,5 @@ content:
 hidden:
   field_image: true
   field_view: true
+  langcode: true
   upload: true

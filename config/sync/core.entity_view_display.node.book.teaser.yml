@@ -50,5 +50,6 @@ content:
 hidden:
   field_embed: true
   field_view: true
+  langcode: true
   upload: true
   vapn: true

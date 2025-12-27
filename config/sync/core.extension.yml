@@ -23,8 +23,8 @@ module:
   color: 0
   comment: 0
   config: 0
+  config_translation: 0
   contact: 0
-  content_translation: 0
   contextual: 0
   ctools_entity_mask: 0
   custom_theme_conditions: 0
@@ -125,6 +125,7 @@ module:
   views_ui: 0
   vvjs: 0
   workflows: 0
+  content_translation: 10
 theme:
   claro: 0
   radix: 0

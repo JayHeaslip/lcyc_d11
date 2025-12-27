@@ -45,4 +45,5 @@ hidden:
   field_series: true
   field_skippers_meeting: true
   field_view: true
+  langcode: true
   upload: true
