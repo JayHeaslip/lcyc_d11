@@ -1,133 +1,175 @@
-// Global elements styling, e.g. for headings, buttons, links, etc.
+// =============================================================================
+// GLOBAL ELEMENTS & COMPONENTS
+// =============================================================================
+
+// 1. Header & Branding
 // -----------------------------------------------------------------------------
-// Global elements styling, e.g. for headings, buttons, links, etc.
-// -----------------------------------------------------------------------------
+#header {
+  min-height: 7rem;
+  display: flex;
+  align-items: center;
+}
+
+.block-system-branding-block {
+  background-color: #242d64;
+  padding: 30px;
+}
+
 .block--system-branding .navbar-brand__logo img {
   width: 100px;
   height: 72px;
-  filter:
+  filter: 
     drop-shadow(2px 0 0 white)
     drop-shadow(-2px 0 0 white)
     drop-shadow(0 2px 0 white)
     drop-shadow(0 -2px 0 white);
 }
 
-/* Target the header wrapper ID */
-#header {
-    min-height: 7rem;
-  /* Use flexbox to center content vertically if needed */
-  display: flex;
-  align-items: center; 
+.navbar-brand__text {
+  font-size: 40px;
+  line-height: 1;
+  margin-left: 20px;
+  color: white;
+
+  .small {
+    font-size: 20px;
+    line-height: 1;
+  }
 }
 
-/* --- Global Font Setup --- */
-/* You should first ensure PT Sans is loaded (e.g., via Google Fonts in your theme's libraries or header). */
+// 2. Typography
+// -----------------------------------------------------------------------------
 body {
   font-family: 'PT Sans', sans-serif;
 }
 
-/* --- Site Name Styling (40px) --- */
-/* Target the site name, which Radix often wraps in a .site-name class */
-.block-system-branding-block {
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.25rem; }
+
+// 3. Main Navigation
+// -----------------------------------------------------------------------------
+
+.bg-custom-dark {
     background-color: #242d64;
-    padding: 30px;
 }
 
-.navbar-brand__text {
-    font-size: 40px;
-  /* Prevent the font size from being overridden by Bootstrap's h1 class */
-    line-height: 1;
-    margin-left: 20px;
-    color: white;
-}
-.navbar-brand__text .small {
-    font-size: 20px;
-  /* Prevent the font size from being overridden by Bootstrap's h1 class */
-  line-height: 1; 
-}
-
-h2 {
-  font-size: 1.5rem;
-}
-
-h1 {
-  font-size: 1.5rem;
-}
-
-h2 {
-  font-size: 1.25rem;
-}
-
-/* Target the main menu block and force horizontal display of list items on desktop */
 .navbar-nav {
-    font-size: 1.25rem;
+  font-size: 1.25rem;
+  color: white;
+  margin-top: 5px; // keep your original top spacing
+
+  .nav-link {
+    color: white !important;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: white;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 2px;
+    }
+  }
+}
+
+// Make main menu stretch full width + push last item right
+.navbar-expand-lg .navbar-nav {
+  width: 100%;
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+
+  .nav-item {
+    flex: 0 0 auto;
+  }
+
+  .nav-item:last-child {
+    margin-left: auto; // Pushes the last main menu item right
+  }
+}
+
+// Target the actual <ul> inside the block (more reliable selector)
+.navbar-nav .block .block__content > ul {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+
+  > li:last-child {
+    margin-left: auto;
+  }
+}
+
+// Style the user dropdown to match dark navbar
+.dropdown-menu {
+  background-color: #242d64;
+  border-color: #1a234e; // slightly darker border
+  margin-top: 0.25rem;
+}
+
+.dropdown-item {
+  color: white;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.15);
     color: white;
-    background-color: #242d64;
-    flex-direction: row;
-    margin-top: 5px;
+  }
 }
 
-.nav-link:hover{
-text-decoration-line: underline;
-text-decoration-color: white;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 2px;
+// 4. Content / Fields
+// -----------------------------------------------------------------------------
+.field--name-field-image img {
+  display: block;
+  margin: 0 auto 30px auto;
 }
 
+.field--label-inline .field__item {
+  margin-left: 10px;
+}
+
+// 5. Media / View Styles
+// -----------------------------------------------------------------------------
 .vvjs-item-inner img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Target the <img> element specifically inside its Drupal field container.
-This ensures the style only applies to this image field.
-*/
-.field--name-field-image img {
-  /* 1. Centering the Image */
-  /* This is necessary for 'margin: 0 auto;' to work on an image */
-  display: block; 
-  /* Centers a block-level element horizontally */
-  margin-left: auto;
-  margin-right: auto;
+// Fix sidebar overflow & prevent floating mess on front page
+.path-frontpage {
+  // Force sidebar content to respect its column width
+  .col-lg-3,
+  .col-md-4,
+  .col-lg-9 + .col-lg-3,
+  .col-md-8 + .col-md-4 {
+    .block,
+    .views-element-container,
+    .view {
+      overflow: hidden;           // Stop horizontal overflow
+      word-wrap: break-word;      // Break long words
+    }
 
-  /* 2. Adding Space After the Image */
-  /* Adds 30 pixels of space below the image. Adjust '30px' as needed. */
-  margin-bottom: 30px; 
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      float: none !important;     // Kill any rogue floats from Views/content
+      margin: 0 auto 1rem;
+    }
+  }
 
-  /* Optional: Set the top margin to zero so it doesn't inherit odd spacing,
-  or use a shorthand: margin: 0 auto 30px auto; 
-  */
-  margin-top: 0; 
-}
+  // Sidebar styling improvements
+  aside[ class*="sidebar_tall" ] {
+    background-color: #f8f9fa;     // Light bg if not already
+    border-radius: 0.375rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+  }
 
-/* Target the content element for inline fields */
-.field--label-inline .field__item {
-  /* Add space to the left of the content */
-  margin-left: 10px; 
-  /* Or use padding if you prefer: padding-left: 10px; */
-}
-
-/* Your specific background color */
-.custom-navbar-bg {
-  background-color: #123456 !important; /* Replace with your hex code */
-}
-
-/* Ensure the UL takes up the full width of the navbar-nav wrapper */
-.navbar-nav > .block > .block__content > ul {
-  display: flex;
-  width: 100%;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* Push the LAST list item to the right */
-.navbar-nav > .block > .block__content > ul > li:last-child {
-  margin-left: auto;
-}
-
-/* Ensure links are white */
-.navbar-nav .nav-link {
-  color: #ffffff !important;
+  // Hide duplicates if Views renders title multiple times
+  .view-header h2:not(:first-child),
+  .view-content h2 + h2 {
+    display: none;
+  }
 }

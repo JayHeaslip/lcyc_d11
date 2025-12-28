@@ -7,49 +7,49 @@ Based on a typical Bootstrap layout using Radix regions.
   
   {# --- HEADER (Banner Role) --- #}
   <header role="banner" id="header" class="header px-0 py-1">
-    <div class="container custom-navbar-bg">
+    <div class="container">
       {# The 'header' region typically holds the logo, site name, and perhaps search forms #}
-	{{ page.header }}
+      {{ page.header }}
     </div>
   </header>
   
   {# --- Navigation Bar --- #}
-  <nav role="navigation" aria-label="{{ 'Main navigation'|t }}" class="navbar navbar-expand-lg navbar-dark p-0">
-    <div class="container custom-navbar-bg py-2">
+  <nav role="navigation" aria-label="{{ 'Main navigation'|t }}" 
+       class="navbar navbar-expand-lg navbar-dark px-0 py-1">  {# ← Add background class here #}
+    <div class="container">  
       
       {# Toggler for mobile #}
       <button class="navbar-toggler mx-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
 	<span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarContent">
+      <div class="collapse bg-custom-dark navbar-collapse" id="navbarContent">
 	<div class="navbar-nav me-auto px-0">
 	  {{ page.navbar }}
 	</div>
 	
-	<!-- User menu on the far right -->
+	{# User menu on the far right #}
 	{% if logged_in %}
 	<div class="nav-item dropdown">
-	  <a href="#" 
-             class="nav-link dropdown-toggle text-white d-flex align-items-center" 
-             id="userDropdown" 
-             role="button" 
-             data-bs-toggle="dropdown" 
+          <a href="#"
+             class="nav-link dropdown-toggle text-white d-flex align-items-center"
+             id="userDropdown"
+             role="button"
+             data-bs-toggle="dropdown"
              aria-expanded="false">
             {{ current_user_name|default('My Account') }}
-	  </a>
-	  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
             <li><a class="dropdown-item" href="/user">View profile</a></li>
             <li><a class="dropdown-item" href="/user/{{ user.id }}/edit">Edit profile</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="/user/logout">Log out</a></li>
-	  </ul>
+          </ul>
 	</div>
 	{% else %}
-	<!-- Optional: Show login link when not logged in -->
+	{# Optional: Show login link when not logged in #}
 	<a href="/user/login" class="nav-link text-white">Log in</a>
 	{% endif %}
-
       </div>
     </div>
   </nav>
@@ -60,16 +60,12 @@ Based on a typical Bootstrap layout using Radix regions.
   </div>
   
   <main role="main" id="main-content" class="py-2">
-    
-    {# 1. Combined Content and Sidebar Regions (Flexbox enabled) #}
     <div class="container">
       {# Use the Bootstrap row to create the two-column layout #}
       <div class="row">
-	
-        {# --- LEFT SIDE: Main Column (10 columns wide) --- #}
-        <div class="col-md-10">
-	  
-          {# 1a. Slideshow Region (now inside the main column) #}
+	{# --- LEFT SIDE: Main Column (bigger) --- #}
+	<div class="col-lg-9 col-md-8">   {# ← Changed: more space for main content #}
+          {# 1a. Slideshow Region #}
           {% if page.slideshow %}
           <section id="slideshow-region" class="mb-4">
             {{ page.slideshow }}
@@ -80,44 +76,20 @@ Based on a typical Bootstrap layout using Radix regions.
           {% if page.content %}
           {{ page.content }}
           {% endif %}
-        </div>
-	
-        {# --- RIGHT SIDE: Tall Sidebar Column (3 columns wide) --- #}
-        <div class="col-md-2">
+	</div>
+
+	{# --- RIGHT SIDE: Sidebar Column (narrow but usable) --- #}
+	<div class="col-lg-3 col-md-4">   {# ← Changed: 3 or 4 columns wide #}
           {% if page.sidebar_tall %}
-          <aside class="p-3 border h-100 bg-light">
+          <aside class="p-3 border bg-light sticky-top" style="top: 2rem;">  {# Optional: make it sticky #}
             {{ page.sidebar_tall }}
           </aside>
           {% endif %}
-        </div>
-	
+	</div>
       </div>
     </div>
-    
-    {# 2. Four Equal Size Blocks Region (Keep this outside the main content/sidebar columns) #}
-    {% if page.highlight_row %}
-    <section id="highlight-row" class="py-1 bg-light">
-      <div class="container">
-        <div class="row">
-          {# The Bootstrap class 'col-md-3' ensures 4 columns of equal width (12 / 4 = 3) on medium screens and up. #}
-          <div class="col-md-3">
-            {{ page.highlight_row.block_1 }}
-          </div>
-          <div class="col-md-3">
-            {{ page.highlight_row.block_2 }}
-          </div>
-          <div class="col-md-3">
-            {{ page.highlight_row.block_3 }}
-          </div>
-          <div class="col-md-3">
-            {{ page.highlight_row.block_4 }}
-          </div>
-        </div>
-      </div>
-    </section>
-    {% endif %}
-
   </main>
+
   {# Footer #}
   <footer role="contentinfo" id="footer" class="footer py-5 mt-4">
     <div class="container bg-dark text-white text-center">

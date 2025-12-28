@@ -1,48 +1,43 @@
 /**
- * Variables
- * Variables should follow the $component-state-property-size formula for
- * consistent naming. Examples:
- * $nav-link-disabled-color
- * $modal-content-box-shadow-xs 
- *
- * Customization:
- * To customize Bootstrap variables:
- * Copy the desired variable from node_modules/bootstrap/scss/_variables.scss
- * @see https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
- * Change the value and remove the !default flag.
- * Examples:
- * $body-bg: #000;
- * $body-color: $gray-100;
+ * Theme Variables
+ * Follows Bootstrap variable override pattern
  */
 
+// Main brand color
+$primary: rgb(0, 52, 127);
+
+// Body text
+$bs-body-color: rgb(34, 34, 34);
+
+// Typography
 $navbar-brand-font-size: 2.5rem;
-$bs-body-color: rgb(34,34,34);
 
-.navbar-nav .nav-link {
-  --bs-nav-link-padding-x: 0.5rem;
-  --bs-nav-link-padding-y: 0rem;
-}
-
-
-.book-pager {
-  display: none !important;
-}
-
-a {
-    color: rgb(0,52,127);
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
+// Container widths (increased xxl breakpoint)
 $container-max-widths: (
   sm: 540px,
   md: 720px,
   lg: 960px,
   xl: 1140px,
-  xxl: 1440px // <-- Increase the XXL breakpoint here (default is 1320px)
+  xxl: 1440px
 ) !default;
 
-$primary:       rgb(0,52,127); // Example: Deep navy for .btn-primary
+// Navigation tweaks
+:root {
+  --bs-nav-link-padding-x: 0.1rem;
+  --bs-nav-link-padding-y: 0rem;
+}
+
+// Hide book pager everywhere
+.book-pager {
+  display: none !important;
+}
+
+// Global link styles
+a {
+  color: $primary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
