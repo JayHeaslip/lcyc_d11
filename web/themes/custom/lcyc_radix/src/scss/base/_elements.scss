@@ -222,7 +222,7 @@ $breakpoint-md: 768px;           // matches Bootstrap md breakpoint
 // =============================================
 // Base responsive images in body content
 // =============================================
-body .text-formatted {
+.field--name-body {
   img {
     max-width: 100%;
     height: auto !important;     // overrides any inline height
