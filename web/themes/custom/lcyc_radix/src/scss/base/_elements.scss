@@ -1,46 +1,62 @@
 // =============================================================================
-// GLOBAL ELEMENTS & COMPONENTS
+// GLOBAL ELEMENTS & BASE STYLES
 // =============================================================================
+
+body {
+    font-family: $font-family-sans-serif;
+}
+
+a {
+    color: $primary;
+    text-decoration: none;
+    &:hover { text-decoration: underline; }
+}
+
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.25rem; }
+
+.book-pager { display: none !important; }
+
 
 // 1. Header & Branding
 // -----------------------------------------------------------------------------
 #header {
-  min-height: 7rem;
-  display: flex;
-  align-items: center;
+    min-height: 7rem;
+    display: flex;
+    align-items: center;
 }
 
 .block-system-branding-block {
-  background-color: #242d64;
-  padding: 30px;
+    background-color: #242d64;
+    padding: 30px;
 }
 
 .block--system-branding .navbar-brand__logo img {
-  width: 100px;
-  height: 72px;
-  filter: 
-    drop-shadow(2px 0 0 white)
-    drop-shadow(-2px 0 0 white)
-    drop-shadow(0 2px 0 white)
-    drop-shadow(0 -2px 0 white);
+    width: 100px;
+    height: 72px;
+    filter: 
+	drop-shadow(2px 0 0 white)
+	drop-shadow(-2px 0 0 white)
+	drop-shadow(0 2px 0 white)
+	drop-shadow(0 -2px 0 white);
 }
 
 .navbar-brand__text {
-  font-size: 40px;
-  line-height: 1;
-  margin-left: 20px;
-  color: white;
-
-  .small {
-    font-size: 20px;
+    font-size: 40px;
     line-height: 1;
-  }
+    margin-left: 20px;
+    color: white;
+
+    .small {
+	font-size: 20px;
+	line-height: 1;
+    }
 }
 
 // 2. Typography
 // -----------------------------------------------------------------------------
 body {
-  font-family: 'PT Sans', sans-serif;
+    font-family: 'PT Sans', sans-serif;
 }
 
 h1 { font-size: 1.5rem; }
@@ -54,122 +70,202 @@ h2 { font-size: 1.25rem; }
 }
 
 .navbar-nav {
-  font-size: 1.25rem;
-  color: white;
-  margin-top: 5px; // keep your original top spacing
-
-  .nav-link {
-    color: white !important;
-
-    &:hover {
-      text-decoration: underline;
-      text-decoration-color: white;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 2px;
-    }
-  }
-}
-
-// Make main menu stretch full width + push last item right
-.navbar-expand-lg .navbar-nav {
-  width: 100%;
-  display: flex !important;
-  flex-direction: row;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-
-  .nav-item {
-    flex: 0 0 auto;
-  }
-
-  .nav-item:last-child {
-    margin-left: auto; // Pushes the last main menu item right
-  }
-}
-
-// Target the actual <ul> inside the block (more reliable selector)
-.navbar-nav .block .block__content > ul {
-  width: 100%;
-  display: flex;
-  flex-wrap: nowrap;
-  margin: 0;
-  padding: 0;
-
-  > li:last-child {
-    margin-left: auto;
-  }
-}
-
-// Style the user dropdown to match dark navbar
-.dropdown-menu {
-  background-color: #242d64;
-  border-color: #1a234e; // slightly darker border
-  margin-top: 0.25rem;
-}
-
-.dropdown-item {
-  color: white;
-
-  &:hover,
-  &:focus {
-    background-color: rgba(255, 255, 255, 0.15);
+    font-size: 1.25rem;
     color: white;
-  }
+    margin-top: 5px; // keep your original top spacing
+
+    .nav-link {
+	color: white !important;
+
+	&:hover {
+	    text-decoration: underline;
+	    text-decoration-color: white;
+	    text-decoration-thickness: 2px;
+	    text-underline-offset: 2px;
+	}
+    }
+}
+// =============================================================================
+// HEADER & BRANDING
+// =============================================================================
+
+#header {
+    min-height: 7rem;
+    display: flex;
+    align-items: center;
 }
 
-// 4. Content / Fields
-// -----------------------------------------------------------------------------
+.block-system-branding-block {
+    background-color: $brand-dark;
+    padding: 30px;
+
+    .navbar-brand__logo img {
+	width: 100px;
+	height: 72px;
+	filter: drop-shadow(2px 0 0 white) drop-shadow(-2px 0 0 white) 
+		drop-shadow(0 2px 0 white) drop-shadow(0 -2px 0 white);
+    }
+
+    .navbar-brand__text {
+	font-size: 40px;
+	line-height: 1;
+	margin-left: 20px;
+	color: white;
+
+	.small {
+	    font-size: 20px;
+	    line-height: 1;
+	}
+    }
+}
+
+// =============================================================================
+// NAVIGATION
+// =============================================================================
+
+.bg-custom-dark { background-color: $brand-dark; }
+
+.navbar-nav {
+    width: 100%;
+    font-size: 1.25rem;
+    margin-top: 0px;
+
+    .nav-link {
+	color: white !important;
+	&:hover {
+	    text-decoration: underline;
+	    text-decoration-thickness: 2px;
+	    text-underline-offset: 2px;
+	}
+    }
+
+    // Flexbox logic for main menu
+    .navbar-expand-lg & {
+	display: flex !important;
+	flex-direction: row;
+	align-items: center;
+
+	.nav-item:last-child {
+	    margin-left: auto; 
+	}
+    }
+}
+
+// Dropdowns
+.dropdown-menu {
+    background-color: $brand-dark;
+    border-color: darken($brand-dark, 10%);
+    margin-top: 0.25rem;
+
+    .dropdown-item {
+	color: white;
+	&:hover, &:focus {
+	    background-color: rgba(255, 255, 255, 0.15);
+	    color: white;
+	}
+    }
+}
+
+// =============================================================================
+// CONTENT & MEDIA
+// =============================================================================
+
 .field--name-field-image img {
-  display: block;
-  margin: 0 auto 30px auto;
+    display: block;
+    margin: 0 auto 30px;
 }
 
 .field--label-inline .field__item {
-  margin-left: 10px;
+    margin-left: 10px;
 }
 
-// 5. Media / View Styles
-// -----------------------------------------------------------------------------
 .vvjs-item-inner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-// Fix sidebar overflow & prevent floating mess on front page
+// =============================================================================
+// SIDEBAR & FRONT PAGE FIXES
+// =============================================================================
+
 .path-frontpage {
-  // Force sidebar content to respect its column width
-  .col-lg-3,
-  .col-md-4,
-  .col-lg-9 + .col-lg-3,
-  .col-md-8 + .col-md-4 {
-    .block,
-    .views-element-container,
-    .view {
-      overflow: hidden;           // Stop horizontal overflow
-      word-wrap: break-word;      // Break long words
+    // Target sidebars generically via Radix/Bootstrap classes
+    [class*="sidebar"] {
+	background-color: #f8f9fa;
+	border-radius: 0.375rem;
+	box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+	
+	.block, .view {
+	    overflow: hidden;
+	    word-wrap: break-word;
+	}
+	
+	img {
+	    max-width: 100%;
+	    height: auto;
+	    display: block;
+	    float: none !important;
+	    margin: 0 auto 1rem;
+	}
     }
+}
 
-    img {
-      max-width: 100%;
-      height: auto;
+
+// =============================================
+// for image display in body
+// =============================================
+$image-float-margin: 1rem;
+$image-float-max-width: 33%;
+$breakpoint-md: 768px;           // matches Bootstrap md breakpoint
+
+// =============================================
+// Base responsive images in body content
+// =============================================
+body .text-formatted {
+  img {
+    max-width: 100%;
+    height: auto !important;     // overrides any inline height
+    display: block;              // better behavior with floats & margins
+  }
+}
+
+// =============================================
+// Floating images (right & left)
+// =============================================
+img {
+  &.float-right,
+  &[style*="float: right"] {
+    float: right;
+    margin: 0 0 $image-float-margin $image-float-margin;
+    max-width: $image-float-max-width !important;
+
+    // Optional: nicer rounded corners or shadow
+    // border-radius: 0.375rem;
+    // box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+
+  &.float-left,
+  &[style*="float: left"] {
+    float: left;
+    margin: 0 $image-float-margin $image-float-margin 0;
+    max-width: $image-float-max-width !important;
+  }
+}
+
+// =============================================
+// Mobile behavior - stack images full-width
+// =============================================
+@media (max-width: $breakpoint-md) {
+  img {
+    &.float-right,
+    &.float-left,
+    &[style*="float: right"],
+    &[style*="float: left"] {
+      float: none;
       display: block;
-      float: none !important;     // Kill any rogue floats from Views/content
-      margin: 0 auto 1rem;
+      margin: 0 auto $image-float-margin;
+      max-width: 100% !important;
     }
-  }
-
-  // Sidebar styling improvements
-  aside[ class*="sidebar_tall" ] {
-    background-color: #f8f9fa;     // Light bg if not already
-    border-radius: 0.375rem;
-    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
-  }
-
-  // Hide duplicates if Views renders title multiple times
-  .view-header h2:not(:first-child),
-  .view-content h2 + h2 {
-    display: none;
   }
 }

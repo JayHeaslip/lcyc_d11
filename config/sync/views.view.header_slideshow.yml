@@ -158,11 +158,11 @@ display:
       style:
         type: views_vvjs
         options:
-          time_in_seconds: 5000
+          time_in_seconds: 15000
           navigation: none
           enable_deeplink: false
           deeplink_identifier: ''
-          animation: a-bottom
+          animation: a-left
           arrows: none
           unique_id: 24407573
           hero_slideshow: false
