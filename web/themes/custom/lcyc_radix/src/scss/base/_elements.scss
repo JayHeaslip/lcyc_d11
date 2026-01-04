@@ -32,12 +32,26 @@ h2 { font-size: 1.25rem; }
     padding: 30px;
 
     .navbar-brand__logo img {
-	width: 100px;
-	height: 72px;
+	height: auto;
+	max-height: 72px;
+	width: auto;
 	filter: drop-shadow(2px 0 0 white) drop-shadow(-2px 0 0 white) 
 		drop-shadow(0 2px 0 white) drop-shadow(0 -2px 0 white);
     }
 
+    // Mobile (below lg ~992px, but you can use md/sm)
+    @media (max-width: 991.98px) {     // lg breakpoint
+	.navbar-brand__logo img {
+	    max-height: 40px;              // smaller on mobile/tablet – try 35-45px
+	}
+    }
+
+    @media (max-width: 575.98px) {     // extra small (phones)
+	.navbar-brand__logo img {
+	    max-height: 35px;              // even smaller if needed
+	}
+    }
+    
     .navbar-brand__text {
 	font-size: 40px;
 	line-height: 1;
@@ -47,6 +61,28 @@ h2 { font-size: 1.25rem; }
 	.small {
 	    font-size: 20px;
 	    line-height: 1;
+	}
+    }
+
+    @media (max-width: 991.98px) {
+	.navbar-brand__text {
+	    font-size: 30px;
+
+	    .small {
+		font-size: 15px;
+		line-height: 1;
+	    }
+	}
+    }
+
+    @media (max-width: 575.98px) {
+	.navbar-brand__text {
+	    font-size: 20px;
+
+	    .small {
+		font-size: 10px;
+		line-height: 1;
+	    }
 	}
     }
 }

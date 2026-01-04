@@ -13,7 +13,7 @@ Based on a typical Bootstrap layout using Radix regions.
   
   {# --- Navigation Bar --- #}
   <nav role="navigation" aria-label="{{ 'Main navigation'|t }}" 
-       class="navbar navbar-expand-lg navbar-dark container bg-custom-dark px-0 my-1 py-1"
+       class="navbar navbar-expand-lg navbar-dark container-fluid container-lg container bg-custom-dark px-0 my-1 py-1"
        data-bs-theme="dark">
     <div class="container">  
       
@@ -62,8 +62,7 @@ Based on a typical Bootstrap layout using Radix regions.
     {{ page.breadcrumb }}
   </div>
   
-  <main role="main" id="main-content" class="py-2">
-    <div class="container">
+  <main role="main" id="main-content" class="py-2 container-fluid container-lg">
       {# Use the Bootstrap row to create the two-column layout #}
       <div class="row">
 	{# --- LEFT SIDE: Main Column (bigger) --- #}
@@ -90,7 +89,6 @@ Based on a typical Bootstrap layout using Radix regions.
           {% endif %}
 	</div>
       </div>
-    </div>
   </main>
 
   {# Footer #}
