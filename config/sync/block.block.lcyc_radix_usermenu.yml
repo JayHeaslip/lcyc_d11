@@ -1,23 +1,23 @@
-uuid: 83fc79ef-7843-485d-862d-2b991a481446
+uuid: de7ccbfb-4ace-4175-9f8f-7e6a62999d9a
 langcode: en
 status: false
 dependencies:
   config:
-    - system.menu.main
+    - system.menu.account
   module:
     - system
   theme:
     - lcyc_radix
-id: lcyc_radix_mainmenu_2
+id: lcyc_radix_usermenu
 theme: lcyc_radix
 region: header
 weight: 0
 provider: null
-plugin: 'system_menu_block:main'
+plugin: 'system_menu_block:account'
 settings:
-  id: 'system_menu_block:main'
-  label: 'Main menu'
-  label_display: '0'
+  id: 'system_menu_block:account'
+  label: 'User Menu'
+  label_display: visible
   provider: system
   level: 1
   depth: null

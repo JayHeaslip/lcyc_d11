@@ -1,6 +1,6 @@
-uuid: 83fc79ef-7843-485d-862d-2b991a481446
+uuid: 2b16c12c-daf4-4a9d-8614-764426e86ff3
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - system.menu.main
@@ -8,9 +8,9 @@ dependencies:
     - system
   theme:
     - lcyc_radix
-id: lcyc_radix_mainmenu_2
+id: lcyc_radix_mainmenu
 theme: lcyc_radix
-region: header
+region: navbar
 weight: 0
 provider: null
 plugin: 'system_menu_block:main'
