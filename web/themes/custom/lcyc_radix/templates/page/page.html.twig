@@ -6,16 +6,15 @@ Based on a typical Bootstrap layout using Radix regions.
 <div id="page-wrapper">
   
   {# --- HEADER (Banner Role) --- #}
-  <header role="banner" id="header" class="header px-0 py-1">
-    <div class="container">
+  <header role="banner" id="header" class="header px-0 py-1 container bg-custom-dark">
       {# The 'header' region typically holds the logo, site name, and perhaps search forms #}
       {{ page.header }}
-    </div>
   </header>
   
   {# --- Navigation Bar --- #}
   <nav role="navigation" aria-label="{{ 'Main navigation'|t }}" 
-       class="navbar navbar-expand-lg navbar-dark px-0 py-1">  {# ← Add background class here #}
+       class="navbar navbar-expand-lg navbar-dark container bg-custom-dark px-0 my-1 py-1"
+       data-bs-theme="dark">
     <div class="container">  
       
       {# Toggler for mobile #}
@@ -23,33 +22,37 @@ Based on a typical Bootstrap layout using Radix regions.
 	<span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse bg-custom-dark navbar-collapse" id="navbarContent">
+      <div class="collapse navbar-collapse" id="navbarContent">
 	<div class="navbar-nav me-auto px-0">
 	  {{ page.navbar }}
 	</div>
 	
 	{# User menu on the far right #}
-	{% if logged_in %}
-	<div class="nav-item dropdown">
-          <a href="#"
-             class="nav-link dropdown-toggle text-white d-flex align-items-center"
-             id="userDropdown"
-             role="button"
-             data-bs-toggle="dropdown"
-             aria-expanded="false">
-            {{ current_user_name|default('My Account') }}
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-            <li><a class="dropdown-item" href="/user">View profile</a></li>
-            <li><a class="dropdown-item" href="/user/{{ user.id }}/edit">Edit profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="/user/logout">Log out</a></li>
-          </ul>
-	</div>
+	<ul class="navbar-nav ms-lg-3">
+	  {% if logged_in %}
+	  <li class="nav-item dropdown">
+            <a href="#"
+               class="nav-link dropdown-toggle text-white d-flex align-items-center"
+               id="userDropdown"
+               role="button"
+               data-bs-toggle="dropdown"
+               aria-expanded="false">
+              {{ current_user_name|default('My Account') }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li><a class="dropdown-item" href="/user">View profile</a></li>
+              <li><a class="dropdown-item" href="/user/{{ user.id }}/edit">Edit profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/user/logout">Log out</a></li>
+            </ul>
+	  </li>
 	{% else %}
-	{# Optional: Show login link when not logged in #}
-	<a href="/user/login" class="nav-link text-white">Log in</a>
-	{% endif %}
+	  {# Show login link when not logged in #}
+	  <li>
+	    <a href="/user/login" class="nav-link text-white">Log in</a>
+	  </li>
+	  {% endif %}
+	</ul>
       </div>
     </div>
   </nav>

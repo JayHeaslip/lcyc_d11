@@ -26,7 +26,18 @@ mix
   })
   .disableNotifications()
   .options({
-    processCssUrls: false,
+      processCssUrls: false,
+      // Add this block to ensure Autoprefixer is active and configured
+      postCss: [
+	  require('autoprefixer'),
+      ],
+      // Optional: tweak autoprefixer settings if needed
+      autoprefixer: {
+	  enabled: true,
+	  options: {
+              cascade: false,
+	  }
+      }
   });
 
 /*

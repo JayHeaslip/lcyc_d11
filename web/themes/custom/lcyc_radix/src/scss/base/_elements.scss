@@ -17,74 +17,6 @@ h2 { font-size: 1.25rem; }
 
 .book-pager { display: none !important; }
 
-
-// 1. Header & Branding
-// -----------------------------------------------------------------------------
-#header {
-    min-height: 7rem;
-    display: flex;
-    align-items: center;
-}
-
-.block-system-branding-block {
-    background-color: #242d64;
-    padding: 30px;
-}
-
-.block--system-branding .navbar-brand__logo img {
-    width: 100px;
-    height: 72px;
-    filter: 
-	drop-shadow(2px 0 0 white)
-	drop-shadow(-2px 0 0 white)
-	drop-shadow(0 2px 0 white)
-	drop-shadow(0 -2px 0 white);
-}
-
-.navbar-brand__text {
-    font-size: 40px;
-    line-height: 1;
-    margin-left: 20px;
-    color: white;
-
-    .small {
-	font-size: 20px;
-	line-height: 1;
-    }
-}
-
-// 2. Typography
-// -----------------------------------------------------------------------------
-body {
-    font-family: 'PT Sans', sans-serif;
-}
-
-h1 { font-size: 1.5rem; }
-h2 { font-size: 1.25rem; }
-
-// 3. Main Navigation
-// -----------------------------------------------------------------------------
-
-.bg-custom-dark {
-    background-color: #242d64;
-}
-
-.navbar-nav {
-    font-size: 1.25rem;
-    color: white;
-    margin-top: 5px; // keep your original top spacing
-
-    .nav-link {
-	color: white !important;
-
-	&:hover {
-	    text-decoration: underline;
-	    text-decoration-color: white;
-	    text-decoration-thickness: 2px;
-	    text-underline-offset: 2px;
-	}
-    }
-}
 // =============================================================================
 // HEADER & BRANDING
 // =============================================================================
@@ -120,50 +52,72 @@ h2 { font-size: 1.25rem; }
 }
 
 // =============================================================================
-// NAVIGATION
+// NAVIGATION (updated)
 // =============================================================================
 
-.bg-custom-dark { background-color: $brand-dark; }
+.bg-custom-dark { 
+    background-color: $brand-dark; 
+}
 
 .navbar-nav {
-    width: 100%;
     font-size: 1.25rem;
-    margin-top: 0px;
 
     .nav-link {
-	color: white !important;
-	&:hover {
-	    text-decoration: underline;
-	    text-decoration-thickness: 2px;
-	    text-underline-offset: 2px;
-	}
+        color: white !important;
+	padding: 0.55rem 0.85rem !important;
+	white-space: nowrap;
+	
+        &:hover {
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 2px;
+        }
     }
 
-    // Flexbox logic for main menu
-    .navbar-expand-lg & {
-	display: flex !important;
-	flex-direction: row;
-	align-items: center;
+    .dropdown-toggle {
+	padding: 0.55rem 0.85rem !important;
+    }    
 
-	.nav-item:last-child {
-	    margin-left: auto; 
-	}
+    @media (min-width: 992px) {  // lg breakpoint
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.35rem;               
+
+
     }
 }
 
-// Dropdowns
-.dropdown-menu {
-    background-color: $brand-dark;
-    border-color: darken($brand-dark, 10%);
-    margin-top: 0.25rem;
+.navbar-collapse {
+    width : 100%;
+}
 
-    .dropdown-item {
-	color: white;
-	&:hover, &:focus {
-	    background-color: rgba(255, 255, 255, 0.15);
-	    color: white;
-	}
-    }
+// Dropdown menu styling
+.dropdown-menu {
+     margin-top: 0.25rem;
+    z-index: 1021 !important;
+}
+
+.navbar .nav-link {
+  padding-top:    0.4rem !important;
+  padding-bottom: 0.4rem !important;
+}
+
+/* Safety net for alignment */
+.navbar-collapse {
+  width: 100%;
+}
+
+.navbar-toggler {
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25) !important;
+  }
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
 }
 
 // =============================================================================

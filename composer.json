@@ -67,7 +67,8 @@
         "drupal/webprofiler": "^11.1",
         "drush/drush": "^13",
         "kigkonsult/icalcreator": "^2.41",
-        "mglaman/composer-drupal-lenient": "^1.0"
+        "mglaman/composer-drupal-lenient": "^1.0",
+        "scssphp/scssphp": "1.10.*"
     },
     "conflict": {
         "drupal/drupal": "*"
