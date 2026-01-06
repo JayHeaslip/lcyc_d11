@@ -120,7 +120,12 @@ h2 { font-size: 1.25rem; }
         align-items: center;
         gap: 0.35rem;               
 
-
+	.navbar-toggler {
+	    margin-left: 0 !important;          // Remove any default left margin
+	    margin-right: auto !important;      // Push to left in flex context
+	    order: -1;
+	    
+	}
     }
 }
 
