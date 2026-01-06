@@ -1,0 +1,23 @@
+uuid: 524d9169-004e-45b6-ba1c-d2409c29eb49
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:custom:fd7ec139-1617-444c-85a0-9ff0286ff53a'
+  module:
+    - block_content
+  theme:
+    - lcyc_radix
+id: lcyc_radix_copyright
+theme: lcyc_radix
+region: footer_full
+weight: 0
+provider: null
+plugin: 'block_content:fd7ec139-1617-444c-85a0-9ff0286ff53a'
+settings:
+  id: 'block_content:fd7ec139-1617-444c-85a0-9ff0286ff53a'
+  label: ' Copyright'
+  label_display: '0'
+  provider: block_content
+  view_mode: full
+visibility: {  }
