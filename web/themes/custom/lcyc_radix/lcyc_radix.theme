@@ -35,8 +35,19 @@ function lcyc_radix_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
 function lcyc_radix_preprocess_page(&$variables) {
   // Load the current user display name (respects hook_user_format_name_alter if any).
   $current_user = \Drupal::currentUser();
-  $variables['current_user_name'] = $current_user->getDisplayName();
+
+  $variables['current_user_name'] = [
+     '#markup' => $current_user->getDisplayName(),
+     '#cache' => [
+        'contexts' => ['user'],
+      ],
+  ];
 
   // Optional: Add user ID if needed for links.
-  $variables['current_user_id'] = $current_user->id();
+  $variables['current_user_id'] = [
+    '#plain_text' => $current_user->id(),
+    '#cache' => [
+      'contexts' => ['user'],
+    ],
+  ];
 }
