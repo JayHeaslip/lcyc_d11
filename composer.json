@@ -21,12 +21,8 @@
         "civicrm/cli-tools": "^2025.06",
         "civicrm/composer-downloads-plugin": "^4.0",
         "composer/installers": "^2.3",
-        "drupal/adaptivetheme": "^7.1",
         "drupal/admin_toolbar": "^3.6",
-        "drupal/at_core": "^7.0",
-        "drupal/at_tool": "^3.1",
         "drupal/autoban": "^1.11",
-        "drupal/basecore": "^1.0",
         "drupal/blazy": "^3.0",
         "drupal/book": "^2.0",
         "drupal/bootstrap_layout_builder": "^2.2",
@@ -38,7 +34,6 @@
         "drupal/core-project-message": "^11.2",
         "drupal/core-recipe-unpack": "^11.2",
         "drupal/core-recommended": "^11.2",
-        "drupal/corporateclean": "^1.0",
         "drupal/ctools": "^4.1",
         "drupal/date_ical": "^4.0",
         "drupal/devel": "^5.5",
@@ -51,7 +46,6 @@
         "drupal/jquery_ui_accordion": "^2.1",
         "drupal/login_emailusername": "^3.0.1",
         "drupal/login_monitor": "^1.0",
-        "drupal/mahi": "^1.1",
         "drupal/meaofd": "^1",
         "drupal/profile": "^1.12",
         "drupal/radix": "^6.0",
@@ -155,6 +149,11 @@
         "enable-patching": "true",
         "drupal-lenient": {
             "allowed-list": ["drupal/devel_entity_updates"]
-        }
+        },
+	"compile-mode": "whitelist",
+	"compile-whitelist": [
+            "civicrm/composer-compile-lib",
+            "civicrm/civicrm-core"
+	]
     }
 }

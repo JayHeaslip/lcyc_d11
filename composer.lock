@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "76ce34d3eaa8e50116fbabdc661492d8",
+    "content-hash": "b1be2e1b67525182b08ec72616c14e38",
     "packages": [
         {
             "name": "adrienrn/php-mimetyper",
@@ -2769,56 +2769,6 @@
             "time": "2026-01-02T16:01:13+00:00"
         },
         {
-            "name": "drupal/adaptivetheme",
-            "version": "7.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/adaptivetheme.git",
-                "reference": "7.1.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/adaptivetheme-7.1.1.zip",
-                "reference": "7.1.1",
-                "shasum": "0afc93c0741fca53ea6b541ae6dc415d5d0e1000"
-            },
-            "require": {
-                "drupal/core": "^10 || ^11"
-            },
-            "require-dev": {
-                "drupal/stable": "*"
-            },
-            "type": "drupal-theme",
-            "extra": {
-                "drupal": {
-                    "version": "7.1.1",
-                    "datestamp": "1738511032",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Jeff Burnz",
-                    "homepage": "https://www.drupal.org/user/61393"
-                },
-                {
-                    "name": "mattbloomfield",
-                    "homepage": "https://www.drupal.org/user/3620586"
-                }
-            ],
-            "homepage": "https://www.drupal.org/project/adaptivetheme",
-            "support": {
-                "source": "https://git.drupalcode.org/project/adaptivetheme"
-            }
-        },
-        {
             "name": "drupal/admin_toolbar",
             "version": "3.6.3",
             "source": {
@@ -2909,97 +2859,6 @@
             }
         },
         {
-            "name": "drupal/at_core",
-            "version": "7.1.1",
-            "require": {
-                "drupal/adaptivetheme": "^7",
-                "drupal/core": "^10 || ^11",
-                "drupal/stable": "*"
-            },
-            "type": "metapackage",
-            "extra": {
-                "drupal": {
-                    "version": "7.1.1",
-                    "datestamp": "1738511032",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Jeff Burnz",
-                    "homepage": "https://www.drupal.org/user/61393"
-                },
-                {
-                    "name": "mattbloomfield",
-                    "homepage": "https://www.drupal.org/user/3620586"
-                }
-            ],
-            "description": "Base theme only - do not set to default. Use the AT Theme Generator to generate or clone a theme to get started. This is a new version of the original Adaptive Theme Project. Credit to Jeff Burnz, developer of the original. Now using Gitlab CI. Updated branch and tagging conventions",
-            "homepage": "https://www.drupal.org/project/adaptivetheme",
-            "support": {
-                "source": "https://git.drupalcode.org/project/adaptivetheme"
-            }
-        },
-        {
-            "name": "drupal/at_tool",
-            "version": "3.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/at_tool.git",
-                "reference": "3.1.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/at_tool-3.1.2.zip",
-                "reference": "3.1.2",
-                "shasum": "0cf155882aabaf33d8d3b2fb4bf3b0c9146e1b2f"
-            },
-            "require": {
-                "drupal/adaptivetheme": "^7.0",
-                "drupal/core": "^10 || ^11"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "3.1.2",
-                    "datestamp": "1715439755",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Matt",
-                    "homepage": "http://adaptivethemes.com",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Rushikesh Raval",
-                    "homepage": "https://www.drupal.org/user/3773114"
-                }
-            ],
-            "description": "Tools to support Adaptivetheme 8.x and sub-themes, includes the AT Theme Generator.",
-            "homepage": "https://www.drupal.org/project/at_tool",
-            "support": {
-                "source": "http://git.drupal.org/project/at_tool.git",
-                "issues": "https://www.drupal.org/project/issues/at_tool",
-                "irc": "irc://irc.freenode.org/drupal-contribute"
-            }
-        },
-        {
             "name": "drupal/autoban",
             "version": "1.12.0",
             "source": {
@@ -3044,55 +2903,6 @@
             "homepage": "https://www.drupal.org/project/autoban",
             "support": {
                 "source": "https://git.drupalcode.org/project/autoban"
-            }
-        },
-        {
-            "name": "drupal/basecore",
-            "version": "1.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/basecore.git",
-                "reference": "1.0.4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/basecore-1.0.4.zip",
-                "reference": "1.0.4",
-                "shasum": "d88c7ddc50a5c18b297eeaae8e107eafd44f4822"
-            },
-            "require": {
-                "drupal/core": "^8 || ^9 || ^10 || ^11"
-            },
-            "type": "drupal-theme",
-            "extra": {
-                "drupal": {
-                    "version": "1.0.4",
-                    "datestamp": "1750938931",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL"
-            ],
-            "authors": [
-                {
-                    "name": "evankay",
-                    "homepage": "https://www.drupal.org/user/2912669"
-                },
-                {
-                    "name": "skounis",
-                    "homepage": "https://www.drupal.org/user/877552"
-                }
-            ],
-            "description": "More than Theme's base theme",
-            "homepage": "https://www.drupal.org/project/basecore",
-            "support": {
-                "source": "https://git.drupalcode.org/project/basecore",
-                "url": "https://morethanthemes.com"
             }
         },
         {
@@ -3900,58 +3710,6 @@
                 "source": "https://github.com/drupal/core-recommended/tree/11.3.1"
             },
             "time": "2025-12-18T14:22:29+00:00"
-        },
-        {
-            "name": "drupal/corporateclean",
-            "version": "1.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/corporateclean.git",
-                "reference": "1.0.5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/corporateclean-1.0.5.zip",
-                "reference": "1.0.5",
-                "shasum": "2eb4568cc1ceab0d477a5da6f5100eb2a20ce905"
-            },
-            "require": {
-                "drupal/core": "^10 || ^11"
-            },
-            "type": "drupal-theme",
-            "extra": {
-                "drupal": {
-                    "version": "1.0.5",
-                    "datestamp": "1750939497",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "evankay",
-                    "homepage": "https://www.drupal.org/user/2912669"
-                },
-                {
-                    "name": "gtsopour",
-                    "homepage": "https://www.drupal.org/user/829430"
-                },
-                {
-                    "name": "skounis",
-                    "homepage": "https://www.drupal.org/user/877552"
-                }
-            ],
-            "description": "A flexible theme with a responsive, mobile-first layout.",
-            "homepage": "https://www.drupal.org/project/corporateclean",
-            "support": {
-                "source": "https://git.drupalcode.org/project/corporateclean"
-            }
         },
         {
             "name": "drupal/ctools",
@@ -4902,50 +4660,6 @@
             }
         },
         {
-            "name": "drupal/mahi",
-            "version": "1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/mahi.git",
-                "reference": "1.1.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/mahi-1.1.2.zip",
-                "reference": "1.1.2",
-                "shasum": "2a732cac3dd1c646e3cd6f8e836858dca41be832"
-            },
-            "require": {
-                "drupal/core": "^9 || ^10 || ^11"
-            },
-            "type": "drupal-theme",
-            "extra": {
-                "drupal": {
-                    "version": "1.1.2",
-                    "datestamp": "1759756870",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "ravis",
-                    "homepage": "https://www.drupal.org/user/79351"
-                }
-            ],
-            "description": "<p>Mahi is a light weight modern Drupal 9, 10, 11 theme by <a href=\"https://drupar.com/\" target=\"_blank\">Drupar.com</a></p><p><a href=\"https://drupar.com/theme/mahi\" target=\"_blank\">Theme Homepage</a> | <a href=\"https://drupar.com/doc/mahi\" target=\"_blank\">User Guide</a></p>",
-            "homepage": "https://www.drupal.org/project/mahi",
-            "support": {
-                "source": "https://git.drupalcode.org/project/mahi"
-            }
-        },
-        {
             "name": "drupal/meaofd",
             "version": "1.1.0",
             "source": {
@@ -5464,62 +5178,6 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/smtp",
                 "issues": "https://www.drupal.org/project/issues/smtp"
-            }
-        },
-        {
-            "name": "drupal/stable",
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/stable.git",
-                "reference": "2.1.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/stable-2.1.0.zip",
-                "reference": "2.1.0",
-                "shasum": "fb2b010190e492e976e1db9692a8a46d5b7d15bb"
-            },
-            "require": {
-                "drupal/core": "^10.3 || ^11"
-            },
-            "type": "drupal-theme",
-            "extra": {
-                "drupal": {
-                    "version": "2.1.0",
-                    "datestamp": "1721202956",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "bnjmnm",
-                    "homepage": "https://www.drupal.org/user/2369194"
-                },
-                {
-                    "name": "lauriii",
-                    "homepage": "https://www.drupal.org/user/1078742"
-                },
-                {
-                    "name": "rajeshreeputra",
-                    "homepage": "https://www.drupal.org/user/3418561"
-                },
-                {
-                    "name": "star-szr",
-                    "homepage": "https://www.drupal.org/user/1167326"
-                }
-            ],
-            "description": "A base theme using Drupal core markup and CSS.",
-            "homepage": "https://www.drupal.org/project/stable",
-            "support": {
-                "source": "https://git.drupalcode.org/project/stable"
             }
         },
         {
