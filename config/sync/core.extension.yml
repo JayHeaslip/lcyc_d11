@@ -3,7 +3,6 @@ module:
   admin_toolbar_search: 0
   admin_toolbar_tools: 0
   announcements_feed: 0
-  at_tool: 0
   autoban: 0
   autoban_dblog: 0
   automated_cron: 0
@@ -123,4 +122,6 @@ theme:
   claro: 0
   radix: 0
   lcyc_radix: 0
+  stable9: 0
+  starterkit_theme: 0
 profile: standard
