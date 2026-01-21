@@ -23,9 +23,9 @@ module:
   config: 0
   config_translation: 0
   contact: 0
+  content_access: 0
   contextual: 0
   ctools_entity_mask: 0
-  custom_theme_conditions: 0
   date_ical: 0
   datetime: 0
   datetime_range: 0
@@ -42,8 +42,10 @@ module:
   field_ui: 0
   file: 0
   filter: 0
+  fixed_block_content: 0
   fullcalendar_view: 0
   fullcalendarview_generator: 0
+  hal: 0
   help: 0
   history: 0
   image: 0
@@ -102,13 +104,11 @@ module:
   taxonomy: 0
   telephone: 0
   text: 0
-  theme_switcher: 0
   token: 0
   toolbar: 0
   tracer: 0
   update: 0
   user: 0
-  vapn: 0
   viewfield: 0
   views: 0
   views_slideshow: 0
@@ -124,4 +124,5 @@ theme:
   lcyc_radix: 0
   stable9: 0
   starterkit_theme: 0
+  olivero: 0
 profile: standard

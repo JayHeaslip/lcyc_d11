@@ -1,18 +1,20 @@
-uuid: d5f87132-f323-44f2-a555-0b37cd602181
+uuid: d5ba60c0-bb3f-4bcc-80c6-d741098421dd
 langcode: en
 status: true
 dependencies:
   theme:
     - lcyc_radix
-id: lcyc_radix_pagetitle
+id: lcyc_radix_tabs
 theme: lcyc_radix
 region: content
-weight: -4
+weight: -5
 provider: null
-plugin: page_title_block
+plugin: local_tasks_block
 settings:
-  id: page_title_block
-  label: 'Page title'
+  id: local_tasks_block
+  label: Tabs
   label_display: '0'
   provider: core
+  primary: true
+  secondary: true
 visibility: {  }

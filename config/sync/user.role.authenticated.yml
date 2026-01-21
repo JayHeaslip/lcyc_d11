@@ -11,7 +11,6 @@ dependencies:
     - registration
     - search
     - system
-    - vapn
 _core:
   default_config_hash: cFrlqjtkTfvY3RGccjJkPf1SGIfJ942IrxTLWAO4mgA
 id: authenticated
@@ -36,7 +35,6 @@ permissions:
   - 'search content'
   - 'update own race_commi registration'
   - 'use advanced search'
-  - 'use vapn'
   - 'view event info'
   - 'view event participants'
   - 'view media'

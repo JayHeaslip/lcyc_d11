@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "00a44a98e77895011280040206183924",
+    "content-hash": "3cb444a134c07b304eb4f97b1a2e2747",
     "packages": [
         {
             "name": "adrienrn/php-mimetyper",
@@ -389,16 +389,16 @@
         },
         {
             "name": "civicrm/civicrm-core",
-            "version": "6.9.1",
+            "version": "6.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-core.git",
-                "reference": "f3af43ebed87dacf13de28ba94fa94449da874bc"
+                "reference": "340118b8e2f7c35594efc67849e1963d11f1ff42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-core/zipball/f3af43ebed87dacf13de28ba94fa94449da874bc",
-                "reference": "f3af43ebed87dacf13de28ba94fa94449da874bc",
+                "url": "https://api.github.com/repos/civicrm/civicrm-core/zipball/340118b8e2f7c35594efc67849e1963d11f1ff42",
+                "reference": "340118b8e2f7c35594efc67849e1963d11f1ff42",
                 "shasum": ""
             },
             "require": {
@@ -469,9 +469,6 @@
                 "xkerman/restricted-unserialize": "~1.1",
                 "zetacomponents/base": "1.9.*",
                 "zetacomponents/mail": "~1.9.4"
-            },
-            "conflict": {
-                "padaliyajay/php-autoprefixer": "1.5"
             },
             "type": "library",
             "extra": {
@@ -898,7 +895,7 @@
             ],
             "description": "Open source constituent relationship management for non-profits, NGOs and advocacy organizations.",
             "support": {
-                "source": "https://github.com/civicrm/civicrm-core/tree/6.9.1"
+                "source": "https://github.com/civicrm/civicrm-core/tree/6.10.0"
             },
             "funding": [
                 {
@@ -906,20 +903,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2025-12-18T01:22:34+00:00"
+            "time": "2026-01-08T04:40:36+00:00"
         },
         {
             "name": "civicrm/civicrm-drupal-8",
-            "version": "6.9.1",
+            "version": "6.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-drupal-8.git",
-                "reference": "8e40921e6598d3d673e24c8b976e95b3ba9855f1"
+                "reference": "c87dd22be960a0c3d00ca4f6a7d30ec045081e28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-drupal-8/zipball/8e40921e6598d3d673e24c8b976e95b3ba9855f1",
-                "reference": "8e40921e6598d3d673e24c8b976e95b3ba9855f1",
+                "url": "https://api.github.com/repos/civicrm/civicrm-drupal-8/zipball/c87dd22be960a0c3d00ca4f6a7d30ec045081e28",
+                "reference": "c87dd22be960a0c3d00ca4f6a7d30ec045081e28",
                 "shasum": ""
             },
             "require": {
@@ -959,7 +956,7 @@
             ],
             "description": "Open source constituent relationship management for non-profits, NGOs and advocacy organizations.",
             "support": {
-                "source": "https://github.com/civicrm/civicrm-drupal-8/tree/6.9.1"
+                "source": "https://github.com/civicrm/civicrm-drupal-8/tree/6.10.0"
             },
             "funding": [
                 {
@@ -967,11 +964,11 @@
                     "type": "custom"
                 }
             ],
-            "time": "2025-11-28T01:30:43+00:00"
+            "time": "2025-11-28T03:08:32+00:00"
         },
         {
             "name": "civicrm/civicrm-packages",
-            "version": "6.9.1",
+            "version": "6.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-packages.git",
@@ -987,7 +984,7 @@
             "notification-url": "https://packagist.org/downloads/",
             "description": "Legacy third party dependencies for CiviCRM",
             "support": {
-                "source": "https://github.com/civicrm/civicrm-packages/tree/6.9.1"
+                "source": "https://github.com/civicrm/civicrm-packages/tree/6.10.0"
             },
             "time": "2025-05-30T06:28:12+00:00"
         },
@@ -2679,16 +2676,16 @@
         },
         {
             "name": "dompdf/php-font-lib",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dompdf/php-font-lib.git",
-                "reference": "6137b7d4232b7f16c882c75e4ca3991dbcf6fe2d"
+                "reference": "a6e9a688a2a80016ac080b97be73d3e10c444c9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dompdf/php-font-lib/zipball/6137b7d4232b7f16c882c75e4ca3991dbcf6fe2d",
-                "reference": "6137b7d4232b7f16c882c75e4ca3991dbcf6fe2d",
+                "url": "https://api.github.com/repos/dompdf/php-font-lib/zipball/a6e9a688a2a80016ac080b97be73d3e10c444c9a",
+                "reference": "a6e9a688a2a80016ac080b97be73d3e10c444c9a",
                 "shasum": ""
             },
             "require": {
@@ -2696,7 +2693,7 @@
                 "php": "^7.1 || ^8.0"
             },
             "require-dev": {
-                "symfony/phpunit-bridge": "^3 || ^4 || ^5 || ^6"
+                "phpunit/phpunit": "^7.5 || ^8 || ^9 || ^10 || ^11 || ^12"
             },
             "type": "library",
             "autoload": {
@@ -2718,9 +2715,9 @@
             "homepage": "https://github.com/dompdf/php-font-lib",
             "support": {
                 "issues": "https://github.com/dompdf/php-font-lib/issues",
-                "source": "https://github.com/dompdf/php-font-lib/tree/1.0.1"
+                "source": "https://github.com/dompdf/php-font-lib/tree/1.0.2"
             },
-            "time": "2024-12-02T14:37:59+00:00"
+            "time": "2026-01-20T14:10:26+00:00"
         },
         {
             "name": "dompdf/php-svg-lib",
@@ -3022,17 +3019,17 @@
         },
         {
             "name": "drupal/bootstrap_styles",
-            "version": "1.2.2",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/bootstrap_styles.git",
-                "reference": "1.2.2"
+                "reference": "1.2.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bootstrap_styles-1.2.2.zip",
-                "reference": "1.2.2",
-                "shasum": "792761c26f479990c77eddd5754047df59123688"
+                "url": "https://ftp.drupal.org/files/projects/bootstrap_styles-1.2.3.zip",
+                "reference": "1.2.3",
+                "shasum": "80abcc9b9620e483080ad42a1c3ea8e829dd4be8"
             },
             "require": {
                 "drupal/core": "^10.3 || ^11",
@@ -3041,8 +3038,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.2.2",
-                    "datestamp": "1765119310",
+                    "version": "1.2.3",
+                    "datestamp": "1768758179",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3250,6 +3247,61 @@
             "homepage": "https://www.drupal.org/project/color",
             "support": {
                 "source": "https://git.drupalcode.org/project/color"
+            }
+        },
+        {
+            "name": "drupal/content_access",
+            "version": "2.1.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/content_access.git",
+                "reference": "2.1.0-rc1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/content_access-2.1.0-rc1.zip",
+                "reference": "2.1.0-rc1",
+                "shasum": "ad859cc391f8d6d3f6b9c981fac916bb95802732"
+            },
+            "require": {
+                "drupal/core": "^9.4 || ^10 || ^11"
+            },
+            "require-dev": {
+                "drupal/acl": "~1.0 || ~2.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.1.0-rc1",
+                    "datestamp": "1740665551",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "fago",
+                    "homepage": "https://www.drupal.org/user/16747"
+                },
+                {
+                    "name": "gisle",
+                    "homepage": "https://www.drupal.org/user/409554"
+                },
+                {
+                    "name": "steven jones",
+                    "homepage": "https://www.drupal.org/user/99644"
+                }
+            ],
+            "description": "Provides flexible content access control.",
+            "homepage": "https://drupal.org/project/content_access",
+            "support": {
+                "source": "https://git.drupalcode.org/project/content_access"
             }
         },
         {
@@ -4074,6 +4126,56 @@
             }
         },
         {
+            "name": "drupal/fixed_block_content",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/fixed_block_content.git",
+                "reference": "8.x-1.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/fixed_block_content-8.x-1.4.zip",
+                "reference": "8.x-1.4",
+                "shasum": "bf5035846418156857bd94bc6139aea339a884bb"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10 || ^11",
+                "drupal/hal": "^1.0 || ^2.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.4",
+                    "datestamp": "1743628825",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Manuel Adan",
+                    "homepage": "https://www.drupal.org/user/516420",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Provides fixed placements for custom blocks.",
+            "homepage": "http://drupal.org/project/fixed_block_content",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://cgit.drupalcode.org/fixed_block_content",
+                "issues": "https://drupal.org/project/issues/fixed_block_content"
+            }
+        },
+        {
             "name": "drupal/fullcalendar_view",
             "version": "5.2.5",
             "source": {
@@ -4124,6 +4226,60 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/fullcalendar_view",
                 "issues": "http://drupal.org/project/issues/fullcalendar_view"
+            }
+        },
+        {
+            "name": "drupal/hal",
+            "version": "2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/hal.git",
+                "reference": "2.0.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/hal-2.0.4.zip",
+                "reference": "2.0.4",
+                "shasum": "5d98f2ebbc7952d183278351d24d3e51ea18c8ee"
+            },
+            "require": {
+                "drupal/core": "^10 || ^11"
+            },
+            "require-dev": {
+                "drupal/aggregator": "2.x-dev",
+                "drupal/entity_reference_revisions": "1.x-dev",
+                "drupal/rdf": "^2.1 || 3.0.x-dev",
+                "drupal/tour": "^1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.4",
+                    "datestamp": "1738532063",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "bbrala",
+                    "homepage": "https://www.drupal.org/user/3366066"
+                },
+                {
+                    "name": "larowlan",
+                    "homepage": "https://www.drupal.org/user/395439"
+                }
+            ],
+            "description": "Hypermedia Application Language (HAL)",
+            "homepage": "https://www.drupal.org/project/hal",
+            "support": {
+                "source": "https://git.drupalcode.org/project/hal"
             }
         },
         {
@@ -5114,62 +5270,6 @@
             }
         },
         {
-            "name": "drupal/theme_switcher",
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/theme_switcher.git",
-                "reference": "2.1.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/theme_switcher-2.1.0.zip",
-                "reference": "2.1.0",
-                "shasum": "4aa9b119c9c992fd9930fa50f97cd89959c3bafb"
-            },
-            "require": {
-                "drupal/core": "^8.9 || ^9 || ^10 || ^11"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "2.1.0",
-                    "datestamp": "1732010759",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "amarincolas",
-                    "homepage": "https://www.drupal.org/user/3529039"
-                },
-                {
-                    "name": "anybody",
-                    "homepage": "https://www.drupal.org/user/291091"
-                },
-                {
-                    "name": "carlos romero",
-                    "homepage": "https://www.drupal.org/user/3722452"
-                },
-                {
-                    "name": "mkalkbrenner",
-                    "homepage": "https://www.drupal.org/user/124705"
-                }
-            ],
-            "description": "Switches active themes on specific conditions.",
-            "homepage": "https://www.drupal.org/project/theme_switcher",
-            "support": {
-                "source": "https://git.drupalcode.org/project/theme_switcher"
-            }
-        },
-        {
             "name": "drupal/token",
             "version": "1.17.0",
             "source": {
@@ -5302,67 +5402,6 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/tracer",
                 "issues": "https://drupal.org/project/issues/tracer"
-            }
-        },
-        {
-            "name": "drupal/vapn",
-            "version": "3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/vapn.git",
-                "reference": "3.0.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/vapn-3.0.0.zip",
-                "reference": "3.0.0",
-                "shasum": "80ee4b01a99fbd33d6117a4c9dfb0d2a5e3955d6"
-            },
-            "require": {
-                "drupal/core": "^9.5 || ^10 || ^11",
-                "php": ">=8.0"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "3.0.0",
-                    "datestamp": "1748863745",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "andrechun",
-                    "homepage": "https://www.drupal.org/user/367558"
-                },
-                {
-                    "name": "franco cazzaro",
-                    "homepage": "https://www.drupal.org/user/3340804"
-                },
-                {
-                    "name": "jaydip makawana",
-                    "homepage": "https://www.drupal.org/user/3621830"
-                },
-                {
-                    "name": "mikat",
-                    "homepage": "https://www.drupal.org/user/2727763"
-                },
-                {
-                    "name": "rafuel92",
-                    "homepage": "https://www.drupal.org/user/2287180"
-                }
-            ],
-            "description": "Adds view permission for each node.",
-            "homepage": "https://www.drupal.org/project/vapn",
-            "support": {
-                "source": "https://git.drupalcode.org/project/vapn"
             }
         },
         {
@@ -7775,16 +7814,16 @@
         },
         {
             "name": "padaliyajay/php-autoprefixer",
-            "version": "1.4",
+            "version": "1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/padaliyajay/php-autoprefixer.git",
-                "reference": "17ac9d20c0e4521163a061d4f99f3d31f88e797e"
+                "reference": "0fe905f63ba87c130eb712b69eb81a660c8127c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padaliyajay/php-autoprefixer/zipball/17ac9d20c0e4521163a061d4f99f3d31f88e797e",
-                "reference": "17ac9d20c0e4521163a061d4f99f3d31f88e797e",
+                "url": "https://api.github.com/repos/padaliyajay/php-autoprefixer/zipball/0fe905f63ba87c130eb712b69eb81a660c8127c6",
+                "reference": "0fe905f63ba87c130eb712b69eb81a660c8127c6",
                 "shasum": ""
             },
             "require": {
@@ -7808,9 +7847,9 @@
             "description": "CSS Autoprefixer written in pure PHP.",
             "support": {
                 "issues": "https://github.com/padaliyajay/php-autoprefixer/issues",
-                "source": "https://github.com/padaliyajay/php-autoprefixer/tree/1.4"
+                "source": "https://github.com/padaliyajay/php-autoprefixer/tree/1.5"
             },
-            "time": "2022-08-02T02:37:28+00:00"
+            "time": "2025-12-01T07:31:35+00:00"
         },
         {
             "name": "pear/archive_tar",
@@ -8233,16 +8272,16 @@
         },
         {
             "name": "pear/net_smtp",
-            "version": "1.12.1",
+            "version": "1.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pear/Net_SMTP.git",
-                "reference": "5d7ba854d75a7c207d8581de1cc6fd2895ae2518"
+                "reference": "76173b3ee542a683127ab5429612b6ea519db64d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pear/Net_SMTP/zipball/5d7ba854d75a7c207d8581de1cc6fd2895ae2518",
-                "reference": "5d7ba854d75a7c207d8581de1cc6fd2895ae2518",
+                "url": "https://api.github.com/repos/pear/Net_SMTP/zipball/76173b3ee542a683127ab5429612b6ea519db64d",
+                "reference": "76173b3ee542a683127ab5429612b6ea519db64d",
                 "shasum": ""
             },
             "require": {
@@ -8298,7 +8337,7 @@
                 "issues": "https://github.com/pear/Net_SMTP/issues",
                 "source": "https://github.com/pear/Net_SMTP"
             },
-            "time": "2024-04-15T19:42:15+00:00"
+            "time": "2026-01-04T22:03:47+00:00"
         },
         {
             "name": "pear/net_socket",
@@ -8826,16 +8865,16 @@
         },
         {
             "name": "phpoffice/phpspreadsheet",
-            "version": "2.4.2",
+            "version": "2.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "931ad61fb2c229063fc4e7e665fb52b87249cc56"
+                "reference": "3b204d00c19f9d809f8d2374f408b197f37ad0bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/931ad61fb2c229063fc4e7e665fb52b87249cc56",
-                "reference": "931ad61fb2c229063fc4e7e665fb52b87249cc56",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/3b204d00c19f9d809f8d2374f408b197f37ad0bd",
+                "reference": "3b204d00c19f9d809f8d2374f408b197f37ad0bd",
                 "shasum": ""
             },
             "require": {
@@ -8857,8 +8896,6 @@
                 "markbaker/complex": "^3.0",
                 "markbaker/matrix": "^3.0",
                 "php": ">=8.1.0 <8.6.0",
-                "psr/http-client": "^1.0",
-                "psr/http-factory": "^1.0",
                 "psr/simple-cache": "^1.0 || ^2.0 || ^3.0"
             },
             "require-dev": {
@@ -8909,6 +8946,9 @@
                 },
                 {
                     "name": "Adrien Crivelli"
+                },
+                {
+                    "name": "Owen Leibman"
                 }
             ],
             "description": "PHPSpreadsheet - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
@@ -8925,9 +8965,9 @@
             ],
             "support": {
                 "issues": "https://github.com/PHPOffice/PhpSpreadsheet/issues",
-                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/2.4.2"
+                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/2.4.3"
             },
-            "time": "2025-11-24T15:59:19+00:00"
+            "time": "2026-01-11T06:08:40+00:00"
         },
         {
             "name": "phpoffice/phpword",
@@ -14423,6 +14463,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/color": 20,
+        "drupal/content_access": 5,
         "drupal/inline_entity_form": 5,
         "drupal/rdf": 10,
         "drupal/viewfield": 10

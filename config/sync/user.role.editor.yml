@@ -3,10 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.custom
     - node.type.book
     - node.type.page
   module:
+    - block_content
     - book
+    - content_access
     - contextual
     - node
     - path
@@ -32,17 +35,25 @@ permissions:
   - 'administer url aliases'
   - 'change own username'
   - 'create book content'
+  - 'create custom block content'
   - 'create page content'
   - 'create url aliases'
   - 'delete any book content'
+  - 'delete any custom block content'
+  - 'delete any custom block content revisions'
   - 'delete any page content'
   - 'delete own book content'
   - 'delete own page content'
   - 'edit any book content'
+  - 'edit any custom block content'
   - 'edit any page content'
   - 'edit own book content'
   - 'edit own page content'
+  - 'grant content access'
+  - 'grant own content access'
   - 'rebuild node access permissions'
+  - 'revert any custom block content revisions'
   - 'search content'
   - 'use advanced search'
+  - 'view any custom block content history'
   - 'view the administration theme'

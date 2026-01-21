@@ -25,10 +25,11 @@ h2 { font-size: 1.25rem; }
     min-height: 7rem;
     display: flex;
     align-items: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .block-system-branding-block {
-    background-color: $brand-dark;
+    background: linear-gradient(180deg, #767d94 0%, #656c82 100%);
     padding: 30px;
 
     .navbar-brand__logo img {
@@ -92,7 +93,7 @@ h2 { font-size: 1.25rem; }
 // =============================================================================
 
 .bg-custom-dark { 
-    background-color: $brand-dark; 
+    background: linear-gradient(180deg, #767d94 0%, #656c82 100%);
 }
 
 .bg-custom-dark-nav { 
