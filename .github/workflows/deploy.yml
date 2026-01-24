@@ -1,0 +1,71 @@
+name: Drupal 11 Dual-Environment Deploy
+
+on:
+  push:
+    branches: [ master, staging ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      # SAFETY CHECK: Validates composer files before building
+
+      - name: Debug Target
+        run: |
+	  echo "The current branch is: ${{ github.ref }}"
+          echo "The calculated target is: ${{ github.ref == 'refs/heads/master' && '/home/lcyc/lcyc.info' || '/home/lcyc/d11.lcyc.info' }}"
+
+###      - name: Validate Composer
+###        run: composer validate --strict
+###
+###      - name: Install Dependencies
+###        run: composer install --no-dev --optimize-autoloader
+###
+###      - name: Deploy to Server
+###        uses: appleboy/scp-action@master
+###        with:
+###          host: ${{ secrets.HOST }}
+###          username: ${{ secrets.USERNAME }}
+###          key: ${{ secrets.SSH_KEY }}
+###          # Dynamically choose the folder based on the branch
+###          target: ${{ github.ref == 'refs/heads/master' && '/home/lcyc/lcyc.info' || '/home/lcyc/d11.lcyc.info' }}
+###          source: "."
+###          rm: false 
+###
+###      - name: Run Remote Commands
+###        uses: appleboy/ssh-action@master
+###        with:
+###          host: ${{ secrets.HOST }}
+###          username: ${{ secrets.USERNAME }}
+###          key: ${{ secrets.SSH_KEY }}
+###          script: |
+###            # 1. Set variables based on branch
+###            if [ "${{ github.ref }}" = "refs/heads/master" ]; then
+###              SITE_PATH="/home/lcyc/lcyc.info"
+###              SHARED_PATH="/home/lcyc/shared/production"
+###            else
+###              SITE_PATH="/home/lcyc/d11.lcyc.info"
+###              SHARED_PATH="/home/lcyc/shared/staging"
+###            fi
+###
+###            cd $SITE_PATH
+###
+###	    # 2. CREATE BACKUP
+###            # Saves a gzipped SQL file to your shared folder with a timestamp
+###            mkdir -p $SHARED_PATH/backups
+###            vendor/bin/drush sql:dump --gzip --result-file=$SHARED_PATH/backups/pre-deploy-${ENV}-$(date +%F-%H%M).sql
+###
+###	    # 3. Re-apply symlinks (to ensure they survive the file transfer)
+###            ln -sf $SHARED_PATH/settings.php sites/default/settings.php
+###            
+###            # 4. Execute Drupal deployment
+###            vendor/bin/drush deploy -y
+###	    
