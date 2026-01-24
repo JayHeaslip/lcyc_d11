@@ -18,28 +18,23 @@ jobs:
 
       # SAFETY CHECK: Validates composer files before building
 
-      - name: Debug Target
-        run: |
-          echo "The current branch is: ${{ github.ref }}"
-          echo "The calculated target is: ${{ github.ref == 'refs/heads/master' && '/home/lcyc/lcyc.info' || '/home/lcyc/d11.lcyc.info' }}"
+      - name: Validate Composer
+        run: composer validate --strict
 
-###      - name: Validate Composer
-###        run: composer validate --strict
-###
-###      - name: Install Dependencies
-###        run: composer install --no-dev --optimize-autoloader
-###
-###      - name: Deploy to Server
-###        uses: appleboy/scp-action@master
-###        with:
-###          host: ${{ secrets.HOST }}
-###          username: ${{ secrets.USERNAME }}
-###          key: ${{ secrets.SSH_KEY }}
-###          # Dynamically choose the folder based on the branch
-###          target: ${{ github.ref == 'refs/heads/master' && '/home/lcyc/lcyc.info' || '/home/lcyc/d11.lcyc.info' }}
-###          source: "."
-###          rm: false 
-###
+      - name: Install Dependencies
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: Deploy to Server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          # Dynamically choose the folder based on the branch
+          target: ${{ github.ref == 'refs/heads/master' && '/home/lcyc/lcyc.info' || '/home/lcyc/d11.lcyc.info' }}
+          source: "."
+          rm: false 
+
 ###      - name: Run Remote Commands
 ###        uses: appleboy/ssh-action@master
 ###        with:
@@ -68,4 +63,3 @@ jobs:
 ###            
 ###            # 4. Execute Drupal deployment
 ###            vendor/bin/drush deploy -y
-###	    
