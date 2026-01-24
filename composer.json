@@ -15,9 +15,9 @@
         }
     ],
     "require": {
-        "civicrm/civicrm-core": "6.10.0",
-        "civicrm/civicrm-drupal-8": "6.10.0",
-        "civicrm/civicrm-packages": "6.10.0",
+        "civicrm/civicrm-core": "^6.10",
+        "civicrm/civicrm-drupal-8": "^6.10",
+        "civicrm/civicrm-packages": "^6.10",
         "civicrm/cli-tools": "^2025.06",
         "civicrm/composer-downloads-plugin": "^4.0",
         "composer/installers": "^2.3",
