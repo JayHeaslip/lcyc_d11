@@ -88,6 +88,11 @@
         "sort-packages": true
     },
     "extra": {
+	"compile-mode": "whitelist",
+	"compile-whitelist": [
+            "civicrm/civicrm-core",
+            "civicrm/composer-compile-lib"
+	],
         "drupal-scaffold": {
             "locations": {
                 "web-root": "web/"
