@@ -20,7 +20,7 @@ jobs:
 
       - name: Debug Target
         run: |
-	  echo "The current branch is: ${{ github.ref }}"
+          echo "The current branch is: ${{ github.ref }}"
           echo "The calculated target is: ${{ github.ref == 'refs/heads/master' && '/home/lcyc/lcyc.info' || '/home/lcyc/d11.lcyc.info' }}"
 
 ###      - name: Validate Composer
