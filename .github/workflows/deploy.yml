@@ -24,6 +24,13 @@ jobs:
       - name: Install Dependencies
         run: composer install --no-dev --optimize-autoloader
 
+      - name: Debug SSH_KEY secret contents (safe check)
+        run: |
+          echo "Length of SSH_KEY: ${{ secrets.SSH_KEY != '' && length(secrets.SSH_KEY) || 'empty' }}"
+          echo "First line: $$   (echo '   $${{ secrets.SSH_KEY }}' | head -n 1)"
+          echo "Last line: $$   (echo '   $${{ secrets.SSH_KEY }}' | tail -n 1)"
+          echo "Number of lines: $$   (echo '   $${{ secrets.SSH_KEY }}' | wc -l)"
+		       
       - name: Test SSH connection
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -32,14 +39,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: whoami && echo "Connection successful"
 
-      - name: Debug SSH_KEY secret contents (safe check)
-        run: |
-          echo "Length of SSH_KEY: ${{ secrets.SSH_KEY != '' && length(secrets.SSH_KEY) || 'empty' }}"
-          echo "First line: $$   (echo '   $${{ secrets.SSH_KEY }}' | head -n 1)"
-          echo "Last line: $$   (echo '   $${{ secrets.SSH_KEY }}' | tail -n 1)"
-          echo "Number of lines: $$   (echo '   $${{ secrets.SSH_KEY }}' | wc -l)"
-          shell: bash
-		       
       - name: Deploy to Server
         uses: appleboy/scp-action@master
         with:
