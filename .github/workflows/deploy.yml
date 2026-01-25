@@ -58,7 +58,7 @@ jobs:
           script: |
             cd $TARGET_PATH
 
-            PHP_BIN="usr/local/php83/bin/php"
+            PHP_BIN="/usr/local/php83/bin/php"
             
             # Database Backup (Safety First)
             mkdir -p $SHARED_PATH/backups
