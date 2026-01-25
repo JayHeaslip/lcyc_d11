@@ -11,7 +11,7 @@ jobs:
       # Centralized logic for paths
       TARGET_PATH: ${{ github.ref == 'refs/heads/main' && '/home/lcyc/lcyc.info' || '/home/lcyc/d11.lcyc.info' }}
       SHARED_PATH: ${{ github.ref == 'refs/heads/main' && '/home/lcyc/shared/prod' || '/home/lcyc/shared/staging' }}
-      URI: ${{ github.ref == 'refs/heads/main' && "https://lcyc.info" || "https://d11.lcyc.info"
+      URI: ${{ github.ref == 'refs/heads/main' && "https://lcyc.info" || "https://d11.lcyc.info" }}
 
     steps:
       - name: Checkout Code
