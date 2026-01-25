@@ -1,12 +1,18 @@
-name: Drupal 11 Dual-Environment Deploy
+name: Drupal 11 Multi-Environment Deploy
 
 on:
   push:
-    branches: [ master, staging ]
+    branches: [ main, staging ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      # Centralized logic for paths
+      TARGET_PATH: ${{ github.ref == 'refs/heads/main' && '/home/lcyc/lcyc.info' || '/home/lcyc/d11.lcyc.info' }}
+      SHARED_PATH: ${{ github.ref == 'refs/heads/main' && '/home/lcyc/shared/prod' || '/home/lcyc/shared/staging' }}
+      URI: ${{ github.ref == 'refs/heads/main' && "https://lcyc.info" || "https://d11.lcyc.info"
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -15,22 +21,22 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
+          extensions: gd, mbstring, pdo_mysql, zip
+          tools: composer:v2
 
-      # SAFETY CHECK: Validates composer files before building
+      - name: Validate & Install PHP Dependencies
+        run: |
+          composer validate --strict
+          composer install --no-dev --optimize-autoloader
 
-      - name: Validate Composer
-        run: composer validate --strict
-
-      - name: Install Dependencies
-        run: composer install --no-dev --optimize-autoloader
-
-      - name: Test SSH connection
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Setup Node.js & Build Theme
+        uses: actions/setup-node@v4
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          script: whoami && echo "Connection successful"
+          node-version: '20'
+      - run: |
+          cd web/themes/custom/lcyc_radix
+          npm install
+          npm run production
 
       - name: Deploy to Server
         uses: appleboy/scp-action@master
@@ -38,41 +44,29 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          # Dynamically choose the folder based on the branch
-          target: ${{ github.ref == 'refs/heads/master' && '/home/lcyc/lcyc.info' || '/home/lcyc/d11.lcyc.info' }}
+          target: ${{ env.TARGET_PATH }}
           source: "."
-          rm: false 
+          rm: false
 
-      - name: Run Remote Commands
+      - name: Remote Post-Deploy (Backup & Sync)
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            # 1. Set variables based on branch
-            if [ "${{ github.ref }}" = "refs/heads/master" ]; then
-              SITE_PATH="/home/lcyc/lcyc.info"
-              SHARED_PATH="/home/lcyc/shared/production"
-              ENV="production"
-              SITE="https://lcyc.info"
-            else
-              SITE_PATH="/home/lcyc/d11.lcyc.info"
-              SHARED_PATH="/home/lcyc/shared/staging"
-              ENV="staging"
-              SITE="https://d11.lcyc.info"
-            fi
-
-            cd $SITE_PATH
-
-            # 1. Re-apply symlinks (to ensure they survive the file transfer)
-            ln -sf $SHARED_PATH/settings.php web/sites/default/settings.php
-            ln -sf $SHARED_PATH/civicrm.settings.php web/sites/default/civicrm.settings.php
-
-            # 2. CREATE BACKUP
-            # Saves a gzipped SQL file to your shared folder with a timestamp
-            mkdir -p $SHARED_PATH/backups
-            vendor/bin/drush sql:dump --gzip --extra-dump=--no-tablespaces --result-file=$SHARED_PATH/backups/pre-deploy-${ENV}-$(date +%F-%H%M).sql
+            cd ${{ env.TARGET_PATH }}
             
-            # 4. Execute Drupal deployment
-            vendor/bin/drush -l $SITE deploy -y
+            # 1. Database Backup (Safety First)
+            mkdir -p ${{ env.SHARED_PATH }}/backups
+            vendor/bin/drush sql:dump --gzip --extra-dump=--no-tablespaces --result-file=${{ env.SHARED_PATH }}/backups/pre-deploy-$(date +%F-%H%M).sql
+            
+            # 2. Re-link Permanent Files
+            ln -sf ${{ env.SHARED_PATH }}/settings.php web/sites/default/settings.php
+            ln -sf ${{ env.SHARED_PATH }}/civicrm.settings.php web/sites/default/civicrm.settings.php
+            
+            # 3. CiviCRM Permission Fix
+            chmod 644 web/sites/default/civicrm.settings.php
+            
+            # 4. Drupal Deploy Sequence
+            vendor/bin/drush -l ${{ env.URI }} deploy -y
