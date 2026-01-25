@@ -11,7 +11,7 @@ jobs:
       # Centralized logic for paths
       TARGET_PATH: ${{ github.ref == 'refs/heads/main' && '/home/lcyc/lcyc.info' || '/home/lcyc/d11.lcyc.info' }}
       SHARED_PATH: ${{ github.ref == 'refs/heads/main' && '/home/lcyc/shared/prod' || '/home/lcyc/shared/staging' }}
-      URI: ${{ github.ref == 'refs/heads/main' && "https://lcyc.info" || "https://d11.lcyc.info" }}
+      URI: ${{ github.ref == 'refs/heads/main' && 'https://lcyc.info' || 'https://d11.lcyc.info' }}
 
     steps:
       - name: Checkout Code
@@ -54,19 +54,23 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
+          envs: TARGET_PATH,SHARED_PATH,URI
           script: |
-            cd ${{ env.TARGET_PATH }}
+            cd $TARGET_PATH
             
-            # 1. Database Backup (Safety First)
-            mkdir -p ${{ env.SHARED_PATH }}/backups
+            # Database Backup (Safety First)
+            mkdir -p $SHARED_PATH/backups
             vendor/bin/drush sql:dump --gzip --extra-dump=--no-tablespaces --result-file=${{ env.SHARED_PATH }}/backups/pre-deploy-$(date +%F-%H%M).sql
+            # DELETE OLD BACKUPS (Older than 7 days)
+            # This finds files in the backup dir ending in .sql.gz and removes them if they are 7+ days old
+            find $SHARED_PATH/backups -type f -name "*.sql.gz" -mtime +7 -delete            
+
+            # Re-link Permanent Files
+            ln -sf $SHARED_PATH/settings.php web/sites/default/settings.php
+            ln -sf $SHARED_PATH/civicrm.settings.php web/sites/default/civicrm.settings.php
             
-            # 2. Re-link Permanent Files
-            ln -sf ${{ env.SHARED_PATH }}/settings.php web/sites/default/settings.php
-            ln -sf ${{ env.SHARED_PATH }}/civicrm.settings.php web/sites/default/civicrm.settings.php
-            
-            # 3. CiviCRM Permission Fix
+            # CiviCRM Permission Fix
             chmod 644 web/sites/default/civicrm.settings.php
             
-            # 4. Drupal Deploy Sequence
-            vendor/bin/drush -l ${{ env.URI }} deploy -y
+            # Drupal Deploy Sequence
+            vendor/bin/drush -l $URI deploy -y
