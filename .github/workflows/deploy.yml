@@ -27,9 +27,9 @@ jobs:
       - name: Test SSH connection
         uses: appleboy/ssh-action@v1.0.3
         with:
-        host: ${{ secrets.SERVER_HOST }}
-        username: ${{ secrets.SERVER_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: whoami && echo "Connection successful"
 
       - name: Deploy to Server
@@ -61,12 +61,12 @@ jobs:
 ###
 ###            cd $SITE_PATH
 ###
-###	    # 2. CREATE BACKUP
+###         # 2. CREATE BACKUP
 ###            # Saves a gzipped SQL file to your shared folder with a timestamp
 ###            mkdir -p $SHARED_PATH/backups
 ###            vendor/bin/drush sql:dump --gzip --result-file=$SHARED_PATH/backups/pre-deploy-${ENV}-$(date +%F-%H%M).sql
 ###
-###	    # 3. Re-apply symlinks (to ensure they survive the file transfer)
+###         # 3. Re-apply symlinks (to ensure they survive the file transfer)
 ###            ln -sf $SHARED_PATH/settings.php sites/default/settings.php
 ###            
 ###            # 4. Execute Drupal deployment
