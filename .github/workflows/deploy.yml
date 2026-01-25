@@ -26,11 +26,13 @@ jobs:
 
       - name: Debug SSH_KEY secret contents (safe check)
         run: |
-          echo "Length of SSH_KEY: ${{ secrets.SSH_KEY != '' && length(secrets.SSH_KEY) || 'empty' }}"
-          echo "First line: $$   (echo '   $${{ secrets.SSH_KEY }}' | head -n 1)"
-          echo "Last line: $$   (echo '   $${{ secrets.SSH_KEY }}' | tail -n 1)"
-          echo "Number of lines: $$   (echo '   $${{ secrets.SSH_KEY }}' | wc -l)"
-		       
+          echo "Length of SSH_KEY: ${#SECRET_VALUE}"
+          echo "First line: $(echo "$SECRET_VALUE" | head -n 1)"
+          echo "Last line: $(echo "$SECRET_VALUE" | tail -n 1)"
+          echo "Number of lines: $(echo "$SECRET_VALUE" | wc -l)"
+        env:
+          SECRET_VALUE: ${{ secrets.SSH_KEY }}
+
       - name: Test SSH connection
         uses: appleboy/ssh-action@v1.0.3
         with:
