@@ -33,6 +33,7 @@ jobs:
         env:
           SECRET_VALUE: ${{ secrets.SSH_KEY }}
 
+
       - name: Test SSH connection
         uses: appleboy/ssh-action@v1.0.3
         with:
