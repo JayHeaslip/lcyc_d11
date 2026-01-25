@@ -57,10 +57,13 @@ jobs:
           envs: TARGET_PATH,SHARED_PATH,URI
           script: |
             cd $TARGET_PATH
+
+            PHP_BIN="usr/local/php83/bin/php"
             
             # Database Backup (Safety First)
             mkdir -p $SHARED_PATH/backups
-            vendor/bin/drush sql:dump --gzip --extra-dump=--no-tablespaces --result-file=${{ env.SHARED_PATH }}/backups/pre-deploy-$(date +%F-%H%M).sql
+            $PHP_BIN vendor/bin/drush sql:dump --gzip --extra-dump=--no-tablespaces --result-file=${{ env.SHARED_PATH }}/backups/pre-deploy-$(date +%F-%H%M).sql
+
             # DELETE OLD BACKUPS (Older than 7 days)
             # This finds files in the backup dir ending in .sql.gz and removes them if they are 7+ days old
             find $SHARED_PATH/backups -type f -name "*.sql.gz" -mtime +7 -delete            
@@ -73,4 +76,4 @@ jobs:
             chmod 644 web/sites/default/civicrm.settings.php
             
             # Drupal Deploy Sequence
-            vendor/bin/drush -l $URI deploy -y
+            $PHP_BIN vendor/bin/drush -l $URI deploy -y
