@@ -24,15 +24,6 @@ jobs:
       - name: Install Dependencies
         run: composer install --no-dev --optimize-autoloader
 
-      - name: Debug SSH_KEY secret contents (safe check)
-        run: |
-          echo "Length of SSH_KEY: ${#SECRET_VALUE}"
-          echo "First line: $(echo "$SECRET_VALUE" | head -n 1)"
-          echo "Last line: $(echo "$SECRET_VALUE" | tail -n 1)"
-          echo "Number of lines: $(echo "$SECRET_VALUE" | wc -l)"
-        env:
-          SECRET_VALUE: ${{ secrets.SSH_KEY }}
-
       - name: Test SSH connection
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -52,31 +43,36 @@ jobs:
           source: "."
           rm: false 
 
-###      - name: Run Remote Commands
-###        uses: appleboy/ssh-action@master
-###        with:
-###          host: ${{ secrets.HOST }}
-###          username: ${{ secrets.USERNAME }}
-###          key: ${{ secrets.SSH_KEY }}
-###          script: |
-###            # 1. Set variables based on branch
-###            if [ "${{ github.ref }}" = "refs/heads/master" ]; then
-###              SITE_PATH="/home/lcyc/lcyc.info"
-###              SHARED_PATH="/home/lcyc/shared/production"
-###            else
-###              SITE_PATH="/home/lcyc/d11.lcyc.info"
-###              SHARED_PATH="/home/lcyc/shared/staging"
-###            fi
-###
-###            cd $SITE_PATH
-###
-###         # 2. CREATE BACKUP
-###            # Saves a gzipped SQL file to your shared folder with a timestamp
-###            mkdir -p $SHARED_PATH/backups
-###            vendor/bin/drush sql:dump --gzip --result-file=$SHARED_PATH/backups/pre-deploy-${ENV}-$(date +%F-%H%M).sql
-###
-###         # 3. Re-apply symlinks (to ensure they survive the file transfer)
-###            ln -sf $SHARED_PATH/settings.php sites/default/settings.php
-###            
-###            # 4. Execute Drupal deployment
-###            vendor/bin/drush deploy -y
+      - name: Run Remote Commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            # 1. Set variables based on branch
+            if [ "${{ github.ref }}" = "refs/heads/master" ]; then
+              SITE_PATH="/home/lcyc/lcyc.info"
+              SHARED_PATH="/home/lcyc/shared/production"
+              ENV="production"
+              SITE="https://lcyc.info"
+            else
+              SITE_PATH="/home/lcyc/d11.lcyc.info"
+              SHARED_PATH="/home/lcyc/shared/staging"
+              ENV="staging"
+              SITE="https://d11.lcyc.info"
+            fi
+
+            cd $SITE_PATH
+
+            # 1. Re-apply symlinks (to ensure they survive the file transfer)
+            ln -sf $SHARED_PATH/settings.php web/sites/default/settings.php
+            ln -sf $SHARED_PATH/civicrm.settings.php web/sites/default/civicrm.settings.php
+
+            # 2. CREATE BACKUP
+            # Saves a gzipped SQL file to your shared folder with a timestamp
+            mkdir -p $SHARED_PATH/backups
+            vendor/bin/drush sql:dump --gzip --extra-dump=--no-tablespaces --result-file=$SHARED_PATH/backups/pre-deploy-${ENV}-$(date +%F-%H%M).sql
+            
+            # 4. Execute Drupal deployment
+            vendor/bin/drush -l $SITE deploy -y
