@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * Implements hook_requirements().
+ */
+function deploy_tracker_requirements($phase) {
+  $requirements = [];
+
+  // We only want this to show up on the "Status Report" page
+  if ($phase === 'runtime') {
+    $revision = \Drupal::state()->get('system.deployment_revision', t('No revision recorded yet.'));
+
+    $requirements['deployment_revision'] = [
+      'title' => t('Current Git Revision'),
+      'value' => $revision,
+      'severity' => REQUIREMENT_INFO,
+      'description' => t('The commit hash deployed by your GitHub Action.'),
+    ];
+  }
+
+  return $requirements;
+}

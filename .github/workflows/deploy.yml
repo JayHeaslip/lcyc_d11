@@ -74,6 +74,10 @@ jobs:
             
             # CiviCRM Permission Fix
             chmod 644 web/sites/default/civicrm.settings.php
-            
+
+            # We use the first 7 characters for a cleaner look in the UI
+            SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+            ./vendor/bin/drush state:set system.deployment_revision "$SHORT_SHA"            
+
             # Drupal Deploy Sequence
             $PHP_BIN vendor/bin/drush -l $URI deploy -y
