@@ -31,6 +31,7 @@ module:
   datetime: 0
   datetime_range: 0
   dblog: 0
+  deploy_tracker: 0
   devel: 0
   devel_generate: 0
   dynamic_page_cache: 0
@@ -110,6 +111,7 @@ module:
   tracer: 0
   update: 0
   user: 0
+  vapn: 0
   viewfield: 0
   views: 0
   views_slideshow: 0
