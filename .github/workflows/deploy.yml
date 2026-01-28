@@ -54,7 +54,9 @@ jobs:
 
       - name: Create deploy archive
         run: |
-          tar -czf deploy.tar.gz \
+          mkdir -p deploy-archive
+          tar -czf deploy-archive/deploy.tar.gz \
+          --exclude='./deploy-archive' \
           --exclude='.git' \
           --exclude='vendor' \
           --exclude='node_modules' \
@@ -69,7 +71,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           target: ${{ env.TARGET_PATH }}
-          source: "deploy.tar.gz"
+          source: "deploy-archive/deploy.tar.gz"
           overwrite: true
 
       - name: Remote Post-Deploy (Backup & Sync)
@@ -93,7 +95,7 @@ jobs:
             find $SHARED_PATH/backups -type f -name "*.sql.gz" -mtime +7 -delete            
 
             # extract file
-            tar -xzf deploy.tar.gz
+            tar -xzf deploy-archive/deploy.tar.gz
             rm deploy.tar.gz
             
             # Re-link Permanent Files
