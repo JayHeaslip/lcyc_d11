@@ -47,9 +47,7 @@ jobs:
           target: ${{ env.TARGET_PATH }}
           source: "."
           rm: false
-          exclude: |
-            web/sites/default/default.settings.php
-            web/sites/default/default.services.yml
+          overwrite: true
 
       - name: Remote Post-Deploy (Backup & Sync)
         uses: appleboy/ssh-action@master
@@ -80,8 +78,8 @@ jobs:
 
             # Create a combined string: "a1b2c3d on 2026-05-20"
             DEPLOY_INFO="$(echo ${{ github.sha }} | cut -c1-7) on $(date +'%Y-%m-%d %H:%M')"
-            ./vendor/bin/drush en deploy_tracker -y
             ./vendor/bin/drush state:set system.deployment_revision "$SDEPLOY_INFO"            
 
             # Drupal Deploy Sequence
             $PHP_BIN vendor/bin/drush -l $URI deploy -y
+            ./vendor/bin/drush en deploy_tracker -y
