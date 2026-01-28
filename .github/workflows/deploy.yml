@@ -17,12 +17,26 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+        # Cache Composer dependencies
+      - name: Cache Composer packages
+        uses: actions/cache@v4
+        id: composer-cache  # Optional: useful for conditional steps
+        with:
+          path: ~/.cache/composer
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
           extensions: gd, mbstring, pdo_mysql, zip
           tools: composer:v2
+
+      - name: Configure Composer GitHub token
+        run: |
+          composer config -g github-oauth.github.com ${{ secrets.COMPOSER_GITHUB_TOKEN }}
 
       - name: Validate & Install PHP Dependencies
         run: |
