@@ -55,6 +55,7 @@
         "drupal/registration": "^3.4",
         "drupal/smtp": "^1.4",
         "drupal/token": "^1.16",
+        "drupal/vapn": "^3.0",
         "drupal/viewfield": "^3.0@beta",
         "drupal/views_slideshow": "^5.0",
         "drupal/vvjs": "^1.0",

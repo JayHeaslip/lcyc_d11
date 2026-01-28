@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9414fb45efacb1d799c5a8f3f9f85261",
+    "content-hash": "78c4ae4271d061fcd551cfc63528f981",
     "packages": [
         {
             "name": "adrienrn/php-mimetyper",
@@ -5465,6 +5465,67 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/tracer",
                 "issues": "https://drupal.org/project/issues/tracer"
+            }
+        },
+        {
+            "name": "drupal/vapn",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/vapn.git",
+                "reference": "3.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/vapn-3.0.0.zip",
+                "reference": "3.0.0",
+                "shasum": "80ee4b01a99fbd33d6117a4c9dfb0d2a5e3955d6"
+            },
+            "require": {
+                "drupal/core": "^9.5 || ^10 || ^11",
+                "php": ">=8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "3.0.0",
+                    "datestamp": "1748863745",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "andrechun",
+                    "homepage": "https://www.drupal.org/user/367558"
+                },
+                {
+                    "name": "franco cazzaro",
+                    "homepage": "https://www.drupal.org/user/3340804"
+                },
+                {
+                    "name": "jaydip makawana",
+                    "homepage": "https://www.drupal.org/user/3621830"
+                },
+                {
+                    "name": "mikat",
+                    "homepage": "https://www.drupal.org/user/2727763"
+                },
+                {
+                    "name": "rafuel92",
+                    "homepage": "https://www.drupal.org/user/2287180"
+                }
+            ],
+            "description": "Adds view permission for each node.",
+            "homepage": "https://www.drupal.org/project/vapn",
+            "support": {
+                "source": "https://git.drupalcode.org/project/vapn"
             }
         },
         {
