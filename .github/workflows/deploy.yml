@@ -47,6 +47,9 @@ jobs:
           target: ${{ env.TARGET_PATH }}
           source: "."
           rm: false
+          exclude: |
+            web/sites/default/default.settings.php
+            web/sites/default/default.services.yml
 
       - name: Remote Post-Deploy (Backup & Sync)
         uses: appleboy/ssh-action@master
