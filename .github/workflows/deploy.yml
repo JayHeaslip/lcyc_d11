@@ -107,7 +107,11 @@ jobs:
 
             # Create a combined string: "a1b2c3d on 2026-05-20"
             DEPLOY_INFO="$(echo ${{ github.sha }} | cut -c1-7) on $(date +'%Y-%m-%d %H:%M')"
-            $PHP_BIN vendor/bin/drush state:set system.deployment_revision "$DEPLOY_INFO"
+            echo "DEBUG: DEPLOY_INFO is set to: '$DEPLOY_INFO'"
+            echo "DEBUG: Running drush state:set system.deployment_revision '$DEPLOY_INFO'"
+            $PHP_BIN vendor/bin/drush state:set system.deployment_revision "$DEPLOY_INFO" --format=string
+            # Verify it immediately
+            $PHP_BIN vendor/bin/drush state:get system.deployment_revision
 
             # Drupal Deploy Sequence
             $PHP_BIN vendor/bin/drush -l $URI deploy -y
