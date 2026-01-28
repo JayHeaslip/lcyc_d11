@@ -38,6 +38,16 @@ jobs:
           npm install
           npm run production
 
+      - name: Create deploy archive
+        run: |
+          tar -czf deploy.tar.gz \
+          --exclude='.git' \
+          --exclude='vendor' \
+          --exclude='node_modules' \
+          --exclude='web/sites/default/files' \
+          --exclude='.github' \
+          .
+              
       - name: Deploy to Server
         uses: appleboy/scp-action@v1
         with:
@@ -45,8 +55,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           target: ${{ env.TARGET_PATH }}
-          source: "."
-          rm: false
+          source: "deploy.tar.gz"
           overwrite: true
 
       - name: Remote Post-Deploy (Backup & Sync)
@@ -69,6 +78,10 @@ jobs:
             # This finds files in the backup dir ending in .sql.gz and removes them if they are 7+ days old
             find $SHARED_PATH/backups -type f -name "*.sql.gz" -mtime +7 -delete            
 
+            # extract file
+            tar -xzf deploy.tar.gz
+            rm deploy.tar.gz
+            
             # Re-link Permanent Files
             ln -sf $SHARED_PATH/settings.php web/sites/default/settings.php
             ln -sf $SHARED_PATH/civicrm.settings.php web/sites/default/civicrm.settings.php
