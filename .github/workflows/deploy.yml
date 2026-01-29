@@ -65,55 +65,57 @@ jobs:
           --exclude='.github' \
           .
               
-      - name: Deploy to Server
-        uses: appleboy/scp-action@v1
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          target: ${{ env.TARGET_PATH }}
-          source: "deploy-archive/deploy.tar.gz"
-          overwrite: true
+      - name: Deploy files via SCP (clean & fast)
+        run: |
+          echo "${{ secrets.SSH_KEY }}" > key
+          chmod 600 key
+          scp -i key -o StrictHostKeyChecking=no -r deploy-archive/deploy.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:"${{ env.TARGET_PATH }}/deploy-archive/"
 
-      - name: Remote Post-Deploy (Backup & Sync)
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          envs: TARGET_PATH,SHARED_PATH,URI
-          script: |
+      - name: Prepare short SHA for deploy info
+        run: echo "DEPLOY_SHA_SHORT=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
+
+        - name: Remote Post-Deploy (SSH commands)
+        run: |
+          echo "${{ secrets.SSH_KEY }}" > key
+          chmod 600 key
+
+          ssh -i key -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
             set -e
-            cd $TARGET_PATH || { echo "Failed to cd"; exit 1; }
 
+            # Export the values passed from runner
+            TARGET_PATH="${{ env.TARGET_PATH }}"
+            SHARED_PATH="${{ env.SHARED_PATH }}"
+            URI="${{ env.URI }}"
+
+            cd "$TARGET_PATH" || { echo "Failed to cd"; exit 1; }
             PHP_BIN="/usr/local/php83/bin/php"
             
             # Database Backup (Safety First)
-            mkdir -p $SHARED_PATH/backups
-            $PHP_BIN vendor/bin/drush sql:dump --quiet --gzip --extra-dump=--no-tablespaces --result-file=${{ env.SHARED_PATH }}/backups/pre-deploy-$(date +%F-%H%M).sql
+            mkdir -p "$SHARED_PATH/backups"
+            $PHP_BIN vendor/bin/drush sql:dump --quiet --gzip --extra-dump=--no-tablespaces --result-file="$SHARED_PATH/backups/pre-deploy-$(date +%F-%H%M).sql"
 
             # DELETE OLD BACKUPS (Older than 7 days)
             # This finds files in the backup dir ending in .sql.gz and removes them if they are 7+ days old
-            find $SHARED_PATH/backups -type f -name "*.sql.gz" -mtime +7 -delete            
+            find "$SHARED_PATH/backups" -type f -name "*.sql.gz" -mtime +7 -delete            
 
             # extract file
             tar -xzf deploy-archive/deploy.tar.gz
-            rm -f deploy-archive/deploy.tar.gz
+            rm -rf deploy-archive
             
             # Re-link Permanent Files
-            ln -sf $SHARED_PATH/settings.php web/sites/default/settings.php
-            ln -sf $SHARED_PATH/civicrm.settings.php web/sites/default/civicrm.settings.php
+            ln -sf "$SHARED_PATH/settings.php" web/sites/default/settings.php
+            ln -sf "$SHARED_PATH/civicrm.settings.php" web/sites/default/civicrm.settings.php
             
             # CiviCRM Permission Fix
             chmod 644 web/sites/default/civicrm.settings.php
 
             # Create a combined string: "a1b2c3d on 2026-05-20"
-            DEPLOY_INFO="$(echo ${{ github.sha }} | cut -c1-7) on $(date +'%Y-%m-%d %H:%M')"
-            echo "DEBUG: DEPLOY_INFO is set to: '$DEPLOY_INFO'"
-            echo "DEBUG: Running drush state:set system.deployment_revision '$DEPLOY_INFO'"
+            DEPLOY_INFO="${DEPLOY_SHA_SHORT} on $(date +'%Y-%m-%d %H:%M')"
             $PHP_BIN vendor/bin/drush state:set system.deployment_revision "$DEPLOY_INFO" --quiet
-            # Verify it immediately
-            $PHP_BIN vendor/bin/drush state:get system.deployment_revision || echo "State get failed!"
 
             # Drupal Deploy Sequence
-            $PHP_BIN vendor/bin/drush -l $URI deploy -y --quiet
+            $PHP_BIN vendor/bin/drush -l "$URI" deploy -y --quiet 2>/dev/null || { echo "Drush deploy failed! Check logs."; exit 1; }
+            echo "Deployment complete."
+            
+          EOF
+    
