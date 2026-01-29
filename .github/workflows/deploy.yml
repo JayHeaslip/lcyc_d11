@@ -99,6 +99,7 @@ jobs:
             find "$SHARED_PATH/backups" -type f -name "*.sql.gz" -mtime +7 -delete            
 
             # extract file
+            mkdir -p deploy-archive
             tar -xzf deploy-archive/deploy.tar.gz
             rm -rf deploy-archive
             
