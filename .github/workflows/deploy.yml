@@ -61,6 +61,8 @@ jobs:
           --exclude='vendor' \
           --exclude='node_modules' \
           --exclude='web/sites/default/files' \
+          --exclude='web/sites/default/default.services.yml' \
+          --exclude='web/sites/default/default.services.php' \
           --exclude='.github' \
           .
               
@@ -96,7 +98,7 @@ jobs:
 
             # extract file
             tar -xzf deploy-archive/deploy.tar.gz
-            rm deploy.tar.gz
+            rm deploy-archive/deploy.tar.gz
             
             # Re-link Permanent Files
             ln -sf $SHARED_PATH/settings.php web/sites/default/settings.php
