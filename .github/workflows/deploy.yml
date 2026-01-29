@@ -83,7 +83,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           envs: TARGET_PATH,SHARED_PATH,URI
           script: |
-            cd $TARGET_PATH
+            set -e
+            cd $TARGET_PATH || { echo "Failed to cd"; exit 1; }
 
             PHP_BIN="/usr/local/php83/bin/php"
             
@@ -96,8 +97,8 @@ jobs:
             find $SHARED_PATH/backups -type f -name "*.sql.gz" -mtime +7 -delete            
 
             # extract file
-            tar -xzf tar.gz
-            rm deploy.tar.gz
+            tar -xzf deploy-archive/tar.gz
+            rm -f deploy-archive/deploy.tar.gz
             
             # Re-link Permanent Files
             ln -sf $SHARED_PATH/settings.php web/sites/default/settings.php
@@ -112,7 +113,7 @@ jobs:
             echo "DEBUG: Running drush state:set system.deployment_revision '$DEPLOY_INFO'"
             $PHP_BIN vendor/bin/drush state:set system.deployment_revision "$DEPLOY_INFO" --format=string
             # Verify it immediately
-            $PHP_BIN vendor/bin/drush state:get system.deployment_revision
+            $PHP_BIN vendor/bin/drush state:get system.deployment_revision || echo "State get failed!"
 
             # Drupal Deploy Sequence
             $PHP_BIN vendor/bin/drush -l $URI deploy -y
