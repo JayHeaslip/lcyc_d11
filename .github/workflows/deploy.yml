@@ -111,7 +111,7 @@ jobs:
             DEPLOY_INFO="$(echo ${{ github.sha }} | cut -c1-7) on $(date +'%Y-%m-%d %H:%M')"
             echo "DEBUG: DEPLOY_INFO is set to: '$DEPLOY_INFO'"
             echo "DEBUG: Running drush state:set system.deployment_revision '$DEPLOY_INFO'"
-            $PHP_BIN vendor/bin/drush.php state:set system.deployment_revision "$DEPLOY_INFO" --format=string --quiet
+            $PHP_BIN vendor/bin/drush.php state:set system.deployment_revision "$DEPLOY_INFO" --quiet
             # Verify it immediately
             $PHP_BIN vendor/bin/drush.php state:get system.deployment_revision || echo "State get failed!"
 
