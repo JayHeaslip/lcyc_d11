@@ -87,13 +87,14 @@ jobs:
           echo "${{ secrets.SSH_KEY }}" > key
           chmod 600 key
 
-          ssh -i key -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
+          ssh -i key -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << EOF
             set -e
 
             # Export the values passed from runner
             TARGET_PATH="${{ env.TARGET_PATH }}"
             SHARED_PATH="${{ env.SHARED_PATH }}"
             URI="${{ env.URI }}"
+            DEPLOY_SHA_SHORT="${{ env.DEPLOY_SHA_SHORT }}"
 
             cd "$TARGET_PATH" || { echo "Failed to cd"; exit 1; }
             PHP_BIN="/usr/local/php83/bin/php"
@@ -119,8 +120,8 @@ jobs:
 
             # Create a combined string: "a1b2c3d on 2026-05-20"
             DEPLOY_INFO="${DEPLOY_SHA_SHORT} on $(date +'%Y-%m-%d %H:%M')"
-            echo "Deployment revision: $DEPLOY_INFO"
-            $PHP_BIN vendor/bin/drush state:set system.deployment_revision "$DEPLOY_INFO" --vv
+            echo "Deployment revision: \$DEPLOY_INFO"
+            $PHP_BIN vendor/bin/drush state:set system.deployment_revision "\$DEPLOY_INFO" --vv
 
             # Drupal Deploy Sequence
             $PHP_BIN vendor/bin/drush -l "$URI" deploy -y --quiet 2>/dev/null || { echo "Drush deploy failed! Check logs."; exit 1; }
