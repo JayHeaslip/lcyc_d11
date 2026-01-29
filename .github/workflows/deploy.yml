@@ -74,7 +74,7 @@ jobs:
       - name: Prepare short SHA for deploy info
         run: echo "DEPLOY_SHA_SHORT=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
 
-        - name: Remote Post-Deploy (SSH commands)
+      - name: Remote Post-Deploy (SSH commands)
         run: |
           echo "${{ secrets.SSH_KEY }}" > key
           chmod 600 key
