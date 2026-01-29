@@ -65,6 +65,14 @@ jobs:
           --exclude='.github' \
           .
               
+      - name: Ensure remote deploy-archive directory exists
+        run: |
+          echo "${{ secrets.SSH_KEY }}" > key
+          chmod 600 key
+          ssh -i key -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "
+          mkdir -p '${{ env.TARGET_PATH }}/deploy-archive/'
+          "
+            
       - name: Deploy files via SCP (clean & fast)
         run: |
           echo "${{ secrets.SSH_KEY }}" > key
@@ -99,7 +107,6 @@ jobs:
             find "$SHARED_PATH/backups" -type f -name "*.sql.gz" -mtime +7 -delete            
 
             # extract file
-            mkdir -p deploy-archive
             tar -xzf deploy-archive/deploy.tar.gz
             rm -rf deploy-archive
             
