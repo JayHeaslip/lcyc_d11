@@ -121,7 +121,7 @@ jobs:
             # Create a combined string: "a1b2c3d on 2026-05-20"
             DEPLOY_INFO="${DEPLOY_SHA_SHORT} on $(date +'%Y-%m-%d %H:%M')"
             echo "Deployment revision: \$DEPLOY_INFO"
-            $PHP_BIN vendor/bin/drush state:set system.deployment_revision "\$DEPLOY_INFO" --vv
+            $PHP_BIN vendor/bin/drush state:set -vv system.deployment_revision "\$DEPLOY_INFO"
 
             # Drupal Deploy Sequence
             $PHP_BIN vendor/bin/drush -l "$URI" deploy -y --quiet 2>/dev/null || { echo "Drush deploy failed! Check logs."; exit 1; }
