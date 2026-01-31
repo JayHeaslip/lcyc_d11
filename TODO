@@ -3,9 +3,13 @@ done
 get simplified _elements & _variables working
 get breadcrumbs working
 get admin menu on top
+performance settings in settings.php, see email on 12/24
+install civicrm cli
+   composer require civicrm/cli-tools
+
+checklist before pushing to staging
 
 todo
 ----------------
-get simplified _elements & _variables working
-performance settings in settings.php, see email on 12/24
- 
+
+

@@ -18,7 +18,7 @@
         "civicrm/civicrm-core": "^6.10",
         "civicrm/civicrm-drupal-8": "^6.10",
         "civicrm/civicrm-packages": "^6.10",
-        "civicrm/cli-tools": "^2025.06",
+        "civicrm/cli-tools": "^2025.12",
         "civicrm/composer-downloads-plugin": "^4.0",
         "composer/installers": "^2.3",
         "drupal/admin_toolbar": "^3.6",
@@ -29,7 +29,7 @@
         "drupal/civicrm_drush": "^4.0",
         "drupal/civicrm_entity": "^4.0",
         "drupal/color": "^2.x-dev",
-        "drupal/content_access": "^2.1@RC",
+        "drupal/content_access": "2.1.0-rc2",
         "drupal/core-composer-scaffold": "^11.2",
         "drupal/core-project-message": "^11.2",
         "drupal/core-recipe-unpack": "^11.2",
@@ -60,10 +60,12 @@
         "drupal/views_slideshow": "^5.0",
         "drupal/vvjs": "^1.0",
         "drupal/webprofiler": "^11.1",
-        "drush/drush": "^13",
+        "drush/drush": "^13.7",
         "kigkonsult/icalcreator": "^2.41",
         "mglaman/composer-drupal-lenient": "^1.0",
-        "scssphp/scssphp": "1.10.*"
+        "psy/psysh": "0.12.19",
+        "scssphp/scssphp": "1.10.*",
+        "symfony/process": "^7.4"
     },
     "conflict": {
         "drupal/drupal": "*"

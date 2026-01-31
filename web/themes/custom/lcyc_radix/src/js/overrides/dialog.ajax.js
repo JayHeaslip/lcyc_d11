@@ -37,9 +37,7 @@
       settings.dialog.close = (event) => {
         for (
           // eslint-disable-next-line
-          var _len = arguments.length,
-            args = Array(_len > 1 ? _len - 1 : 0),
-            _key = 1;
+          var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1;
           _key < _len;
           _key++
         ) {
@@ -68,10 +66,7 @@
             if ($originalButton[0].tagName === 'A') {
               $originalButton[0].click();
             } else {
-              $originalButton
-                .trigger('mousedown')
-                .trigger('mouseup')
-                .trigger('click');
+              $originalButton.trigger('mousedown').trigger('mouseup').trigger('click');
               e.preventDefault();
             }
           },
@@ -123,10 +118,7 @@
 
     // Do some extra things here, set Drupal.autocomplete options to render
     // autocomplete box inside the modal.
-    if (
-      Drupal.autocomplete !== undefined &&
-      Drupal.autocomplete.options !== undefined
-    ) {
+    if (Drupal.autocomplete !== undefined && Drupal.autocomplete.options !== undefined) {
       Drupal.autocomplete.options.appendTo = response.selector;
     }
 
@@ -140,17 +132,10 @@
 
     ajax.commands.insert(ajax, response, status);
 
-    if (
-      !response.dialogOptions.drupalAutoButtons ||
-      response.dialogOptions.drupalAutoButtons !== 'false'
-    ) {
+    if (!response.dialogOptions.drupalAutoButtons || response.dialogOptions.drupalAutoButtons !== 'false') {
       response.dialogOptions.drupalAutoButtons = true;
-      if (
-        response.dialogOptions.buttons === undefined ||
-        response.dialogOptions.buttons.length <= 0
-      ) {
-        response.dialogOptions.buttons =
-          Drupal.behaviors.dialog.prepareDialogButtons($dialog);
+      if (response.dialogOptions.buttons === undefined || response.dialogOptions.buttons.length <= 0) {
+        response.dialogOptions.buttons = Drupal.behaviors.dialog.prepareDialogButtons($dialog);
       }
     } else {
       response.dialogOptions.drupalAutoButtons = false;
@@ -193,9 +178,9 @@
   };
 
   // eslint-disable-next-line
-  $(window).on("dialog:aftercreate", (e, dialog, $element, settings) => {
+  $(window).on('dialog:aftercreate', (e, dialog, $element, settings) => {
     // eslint-disable-next-line
-    $element.on("click.dialog", ".dialog-cancel", (e) => {
+    $element.on('click.dialog', '.dialog-cancel', (e) => {
       dialog.close('cancel');
       e.preventDefault();
       e.stopPropagation();
@@ -207,10 +192,7 @@
 
     // Do some extra things here, set Drupal.autocomplete options to render
     // autocomplete box inside the modal.
-    if (
-      Drupal.autocomplete !== undefined &&
-      Drupal.autocomplete.options !== undefined
-    ) {
+    if (Drupal.autocomplete !== undefined && Drupal.autocomplete.options !== undefined) {
       if (Drupal.autocomplete.options.appendTo !== undefined) {
         delete Drupal.autocomplete.options.appendTo;
       }

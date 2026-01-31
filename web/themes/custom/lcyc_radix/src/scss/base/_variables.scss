@@ -1,28 +1,28 @@
-
+@use "sass:color";
 // =============================================================================
 // THEME VARIABLES (Bootstrap Overrides)
 // =============================================================================
 
 // 1. Colors
-$primary: rgb(101,108,146);
-$brand-dark: rgb(101,108,146);
-$brand-dark-nav: rgb(40,42,50);
+$primary: rgb(101, 108, 146);
+$brand-dark: rgb(101, 108, 146);
+$brand-dark-nav: rgb(40, 42, 50);
 $body-color: rgb(34, 34, 34);
 
 // Navbar (dark variant – very useful in Radix)
-$navbar-dark-color:             white;
-$navbar-dark-hover-color:       white;
-$navbar-dark-active-color:      white;
-$navbar-dark-brand-color:       white;
+$navbar-dark-color: white;
+$navbar-dark-hover-color: white;
+$navbar-dark-active-color: white;
+$navbar-dark-brand-color: white;
 $navbar-dark-brand-hover-color: white;
+
 .navbar {
   --bs-navbar-padding-y: 0.35rem;
 }
 
 // 2. Typography
-$font-family-sans-serif: 'PT Sans', sans-serif;
+$font-family-sans-serif: "PT Sans", sans-serif;
 $navbar-brand-font-size: 2.5rem;
-
 
 // 3. Grid & Containers
 // increased xxl breakpoint
@@ -38,13 +38,13 @@ $container-max-widths: (
 :root {
   --bs-nav-link-padding-x: 0.1rem;
   --bs-nav-link-fontsize: 1.25rem;
-  --bs-nav-link-padding-y: 0rem;
+  --bs-nav-link-padding-y: 0;
   --bs-body-color: #{$body-color};
 }
 
 // Dropdow=ns
-$dropdown-bg:                   $brand-dark;
-$dropdown-border-color:         darken($brand-dark, 10%);
-$dropdown-link-color:           white;
-$dropdown-link-hover-color:     white;
-$dropdown-link-hover-bg:        rgba(255,255,255,0.15);
+$dropdown-bg: $brand-dark;
+$dropdown-border-color: color.adjust($primary, $lightness, -10%);
+$dropdown-link-color: white;
+$dropdown-link-hover-color: white;
+$dropdown-link-hover-bg: rgba(255, 255, 255, 0.15);

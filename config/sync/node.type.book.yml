@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - content_access
     - menu_ui
   enforced:
     module:
@@ -11,6 +12,16 @@ third_party_settings:
   menu_ui:
     available_menus: {  }
     parent: ''
+  content_access:
+    view_own:
+      - anonymous
+      - authenticated
+      - administrator
+    view:
+      - anonymous
+      - authenticated
+      - administrator
+    per_node: true
 _core:
   default_config_hash: xvVZ9piiDxh4ziNyl-YqCT5vF8nI7xyupTdQWlN-Hxk
 name: 'Book page'

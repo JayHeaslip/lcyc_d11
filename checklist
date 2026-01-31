@@ -1,0 +1,28 @@
+Drupal status report (/admin/reports/status) — no red/orange items (especially schema, requirements, Twig debug off)
+
+CiviCRM System Status (Administer → System Settings → System Status) — resolve everything except expected dev warnings
+
+Run ddev drush status and ddev exec vendor/bin/cv api System.flush → check output
+
+Run ddev drush watchdog:show --severity=emergency,critical,alert,error — make sure no recent fatal errors/admin/reports/status
+
+Export config - ddev drush cex
+
+Check CiviCRM → Administer → System Settings → Debugging and Error Handling → production settings (backtrace off, Smarty caching on, etc.)
+
+Confirm CiviCRM Entity module (if used) is compatible and configured correctly
+
+Run CiviCRM DB upgrade script if schema changed (ddev exec cv upgrade:db or via UI)
+
+Run ddev drush updatedb (Drupal DB updates)
+
+CiviCRM → Administer → System Settings → Cleanup Caches and Update Paths
+
+Run ddev drush civicrm:api job.execute manually → watch for failures
+
+List all CiviCRM extensions (ddev exec cv ext:list --installed) — confirm all are production-compatible and up-to-date
+
+Test sending:
+  Single transactional email (e.g. password reset)
+  Test mailing from CiviMail
+  Scheduled mailing (create dummy one, schedule 5 min in future, force-run cron)

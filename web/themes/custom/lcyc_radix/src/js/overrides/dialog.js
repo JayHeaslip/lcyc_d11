@@ -71,9 +71,7 @@
         .addClass('modal fade')
         .attr('tabindex', '-1')
         .attr('role', 'dialog')
-        .wrapInner(
-          '<div class="modal-dialog"><div class="modal-content"><div class="modal-body"></div></div></div>',
-        );
+        .wrapInner('<div class="modal-dialog"><div class="modal-content"><div class="modal-body"></div></div></div>');
     }
     const dialog = {
       open: false,
@@ -90,21 +88,20 @@
       const modalFooter = $('<div class="modal-footer">');
       // eslint-disable-next-line func-names
       $.each(buttons, function () {
-        const buttonObject = this;
         const classes = [settings.buttonClass, settings.buttonPrimaryClass];
 
         const button = $('<button type="button">');
-        if (buttonObject.attributes !== undefined) {
-          $(button).attr(buttonObject.attributes);
+        if (this.attributes !== undefined) {
+          $(button).attr(this.attributes);
         }
         $(button)
-          .addClass(buttonObject.class)
+          .addClass(this.class)
           .click((e) => {
-            if (buttonObject.click !== undefined) {
-              buttonObject.click(e);
+            if (this.click !== undefined) {
+              this.click(e);
             }
           })
-          .html(buttonObject.text);
+          .html(this.text);
 
         if (
           $(button).attr('class') &&
@@ -117,9 +114,7 @@
 
         $(modalFooter).append(button);
       });
-      if (
-        $('.modal-dialog .modal-content .modal-footer', $element).length > 0
-      ) {
+      if ($('.modal-dialog .modal-content .modal-footer', $element).length > 0) {
         $('.modal-dialog .modal-content .modal-footer', $element).remove();
       }
       if ($(modalFooter).html().length > 0) {
@@ -129,11 +124,7 @@
 
     function dispatchDialogEvent(eventType, dialog, element, settings) {
       if (typeof DrupalDialogEvent === 'undefined') {
-        $(window).trigger(`dialog:${eventType}`, [
-          dialog,
-          $(element),
-          settings,
-        ]);
+        $(window).trigger(`dialog:${eventType}`, [dialog, $(element), settings]);
       } else {
         const event = new DrupalDialogEvent(eventType, dialog, settings || {});
         element.dispatchEvent(event);
@@ -141,22 +132,14 @@
     }
 
     function openDialog(settings) {
-      settings = $.extend(
-        { drupalAutoButtons: true },
-        drupalSettings.dialog,
-        options,
-        settings,
-      );
+      settings = $.extend({ drupalAutoButtons: true }, drupalSettings.dialog, options, settings);
 
       dispatchDialogEvent('beforecreate', dialog, $element.get(0), settings);
 
       $(window).trigger('dialog:beforecreate', [dialog, $element, settings]);
 
       if (settings.dialogClasses !== undefined) {
-        $('.modal-dialog', $element)
-          .removeAttr('class')
-          .addClass('modal-dialog')
-          .addClass(settings.dialogClasses);
+        $('.modal-dialog', $element).removeAttr('class').addClass('modal-dialog').addClass(settings.dialogClasses);
       }
 
       $($element).attr('data-settings', JSON.stringify(settings));
@@ -192,10 +175,7 @@
         $element.find('.modal-dialog').css('pointer-events', 'auto'); // Ensure dialog itself is still interactive
       }
 
-      if (
-        settingIsTrue(settings.drupalAutoButtons) &&
-        settings.buttons.length > 0
-      ) {
+      if (settingIsTrue(settings.drupalAutoButtons) && settings.buttons.length > 0) {
         updateButtons(settings.buttons);
       }
 

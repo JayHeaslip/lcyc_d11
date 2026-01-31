@@ -27,32 +27,20 @@
 
       // Input group.
       $(element).parent('.input-group').addClass(inputGroupClass);
-      $(element)
-        .parent('.form-floating')
-        .parent('.input-group')
-        .addClass(inputGroupClass);
+      $(element).parent('.form-floating').parent('.input-group').addClass(inputGroupClass);
 
       // Form floating.
-      $(element)
-        .parent('.form-floating')
-        .addClass(elementErrorClass)
-        .removeClass(elementValidClass);
+      $(element).parent('.form-floating').addClass(elementErrorClass).removeClass(elementValidClass);
     },
     unhighlight(element) {
       $(element).removeClass(elementErrorClass).addClass(elementValidClass);
 
       // Input group.
       $(element).parent('.input-group').addClass(inputGroupClass);
-      $(element)
-        .parent('.form-floating')
-        .parent('.input-group')
-        .addClass(inputGroupClass);
+      $(element).parent('.form-floating').parent('.input-group').addClass(inputGroupClass);
 
       // Form floating.
-      $(element)
-        .parent('.form-floating')
-        .removeClass(elementErrorClass)
-        .addClass(elementValidClass);
+      $(element).parent('.form-floating').removeClass(elementErrorClass).addClass(elementValidClass);
     },
     errorPlacement(error, element) {
       // If the element is in an input group, place the error message as
