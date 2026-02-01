@@ -44,7 +44,7 @@ $container-max-widths: (
 
 // Dropdow=ns
 $dropdown-bg: $brand-dark;
-$dropdown-border-color: color.adjust($primary, $lightness, -10%);
+$dropdown-border-color: color.adjust($primary, $lightness: -10%);
 $dropdown-link-color: white;
 $dropdown-link-hover-color: white;
 $dropdown-link-hover-bg: rgba(255, 255, 255, 0.15);
