@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b95e75f5cf474efde3b1c8a3ad10979",
+    "content-hash": "5aee0825ef4e96deedfa409903d791e1",
     "packages": [
         {
             "name": "adrienrn/php-mimetyper",
@@ -14592,6 +14592,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/color": 20,
+        "drupal/content_access": 5,
         "drupal/inline_entity_form": 5,
         "drupal/rdf": 10,
         "drupal/viewfield": 10
