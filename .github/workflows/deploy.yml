@@ -90,6 +90,9 @@ jobs:
           ssh -T -i key -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
             set -euo pipefail
 
+            # ── Set timezone override FIRST ──
+            export TZ='America/New_York'
+
             TARGET_PATH="${{ env.TARGET_PATH }}"
             SHARED_PATH="${{ env.SHARED_PATH }}"
             URI="${{ env.URI }}"
@@ -115,7 +118,6 @@ jobs:
             chmod 644 web/sites/default/civicrm.settings.php
 
             # → e.g. "a1b2c3d on 2026-05-20 14:35 EDT"
-            TZ=America/New_York
             NOW="$(date +'%Y-%m-%d %H:%M %Z')"
             DEPLOY_INFO="${DEPLOY_SHA_SHORT} on $NOW"
             echo "Deployment revision: \$DEPLOY_INFO"
