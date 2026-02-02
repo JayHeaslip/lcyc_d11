@@ -87,48 +87,44 @@ jobs:
         run: |
           echo "${{ secrets.SSH_KEY }}" > key
           chmod 600 key
+          ssh -T -i key -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
+            set -euo pipefail
 
-          ssh -i key -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << EOF
-            set -e
-
-            # Export the values passed from runner
             TARGET_PATH="${{ env.TARGET_PATH }}"
             SHARED_PATH="${{ env.SHARED_PATH }}"
             URI="${{ env.URI }}"
             BRANCH="${{ env.BRANCH }}"
             DEPLOY_SHA_SHORT="${{ env.DEPLOY_SHA_SHORT }}"
 
-            cd "$TARGET_PATH" || { echo "Failed to cd"; exit 1; }
+            cd "$TARGET_PATH" || { echo "Failed to cd to $TARGET_PATH"; exit 1; }
+
             PHP_BIN="/usr/local/php83/bin/php"
             
-            # Database Backup (Safety First)
             mkdir -p "$SHARED_PATH/backups"
+
             $PHP_BIN vendor/bin/drush sql:dump --quiet --gzip --extra-dump=--no-tablespaces --result-file="$SHARED_PATH/backups/pre-deploy-$BRANCH-$(date +%F-%H%M).sql"
 
-            # DELETE OLD BACKUPS (Older than 7 days)
-            # This finds files in the backup dir ending in .sql.gz and removes them if they are 7+ days old
             find "$SHARED_PATH/backups" -type f -name "*.sql.gz" -mtime +7 -delete            
 
-            # extract file
             tar -xzf deploy-archive/deploy.tar.gz
             rm -rf deploy-archive
             
-            # Re-link Permanent Files
             ln -sf "$SHARED_PATH/settings.php" web/sites/default/settings.php
             ln -sf "$SHARED_PATH/civicrm.settings.php" web/sites/default/civicrm.settings.php
             
-            # CiviCRM Permission Fix
             chmod 644 web/sites/default/civicrm.settings.php
 
             # → e.g. "a1b2c3d on 2026-05-20 14:35 EDT"
             TZ=America/New_York
-            NOW=$(date +'%Y-%m-%d %H:%M %Z')   # %Z shows EDT/EST/PST/etc.
+            NOW="$(date +'%Y-%m-%d %H:%M %Z')"
             DEPLOY_INFO="${DEPLOY_SHA_SHORT} on $NOW"
             echo "Deployment revision: \$DEPLOY_INFO"
+
             $PHP_BIN vendor/bin/drush state:set -vv system.deployment_revision "\$DEPLOY_INFO"
 
             # Drupal Deploy Sequence
             $PHP_BIN vendor/bin/drush -l "$URI" deploy -y -v
+
             echo "Deployment complete."
             
           EOF
