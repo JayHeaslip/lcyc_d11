@@ -14,4 +14,4 @@ fast_404:
 js:
   preprocess: false
   gzip: true
-deployment_identifier: 'staging @ 88d4940'
+
