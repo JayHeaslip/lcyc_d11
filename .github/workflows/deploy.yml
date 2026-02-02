@@ -121,7 +121,11 @@ jobs:
             chmod 644 web/sites/default/civicrm.settings.php
 
             # Create a combined string: "a1b2c3d on 2026-05-20"
-            DEPLOY_INFO="${DEPLOY_SHA_SHORT} on $(date +'%Y-%m-%d %H:%M')"
+
+            TZ=America/New_York
+            NOW=$(date +'%Y-%m-%d %H:%M %Z')   # %Z shows EDT/EST/PST/etc.
+            # → e.g. "a1b2c3d on 2026-05-20 14:35 EDT"
+            DEPLOY_INFO="${DEPLOY_SHA_SHORT} on $NOW"
             echo "Deployment revision: \$DEPLOY_INFO"
             $PHP_BIN vendor/bin/drush state:set -vv system.deployment_revision "\$DEPLOY_INFO"
 
