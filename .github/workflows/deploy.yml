@@ -1,4 +1,4 @@
-name: Drupal 11 Multi-Environment Deploy
+name: Drupal 11 Multi-Environment Deploy (main,staging)
 
 on:
   push:
