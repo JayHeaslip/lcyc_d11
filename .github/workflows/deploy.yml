@@ -88,46 +88,53 @@ jobs:
           echo "${{ secrets.SSH_KEY }}" > key
           chmod 600 key
           ssh -T -i key -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
-            set -euo pipefail
-
-            # ── Set timezone override FIRST ──
-            export TZ='America/New_York'
-
-            TARGET_PATH="${{ env.TARGET_PATH }}"
-            SHARED_PATH="${{ env.SHARED_PATH }}"
-            URI="${{ env.URI }}"
-            BRANCH="${{ env.BRANCH }}"
-            DEPLOY_SHA_SHORT="${{ env.DEPLOY_SHA_SHORT }}"
-
-            cd "$TARGET_PATH" || { echo "Failed to cd to $TARGET_PATH"; exit 1; }
-
-            PHP_BIN="/usr/local/php83/bin/php"
-            
-            mkdir -p "$SHARED_PATH/backups"
-
-            $PHP_BIN vendor/bin/drush sql:dump --quiet --gzip --extra-dump=--no-tablespaces --result-file="$SHARED_PATH/backups/pre-deploy-$BRANCH-$(date +%F-%H%M).sql"
-
-            find "$SHARED_PATH/backups" -type f -name "*.sql.gz" -mtime +7 -delete            
-
-            tar -xzf deploy-archive/deploy.tar.gz
-            rm -rf deploy-archive
-            
-            ln -sf "$SHARED_PATH/settings.php" web/sites/default/settings.php
-            ln -sf "$SHARED_PATH/civicrm.settings.php" web/sites/default/civicrm.settings.php
-            
-            chmod 644 web/sites/default/civicrm.settings.php
-
-            # → e.g. "a1b2c3d on 2026-05-20 14:35 EDT"
-            NOW="$(date +'%Y-%m-%d %H:%M %Z')"
-            DEPLOY_INFO="${DEPLOY_SHA_SHORT} on $NOW"
-            echo "Deployment revision: \$DEPLOY_INFO"
-
-            $PHP_BIN vendor/bin/drush state:set -vv system.deployment_revision "\$DEPLOY_INFO"
-
-            # Drupal Deploy Sequence
-            $PHP_BIN vendor/bin/drush -l "$URI" deploy -y -v
-
-            echo "Deployment complete."
-            
+          set -euo pipefail
+          # ── Set timezone override FIRST ──
+          export TZ='America/New_York'
+          TARGET_PATH="${{ env.TARGET_PATH }}"
+          SHARED_PATH="${{ env.SHARED_PATH }}"
+          URI="${{ env.URI }}"
+          BRANCH="${{ env.BRANCH }}"
+          DEPLOY_SHA_SHORT="${{ env.DEPLOY_SHA_SHORT }}"
+          cd "$TARGET_PATH" || { echo "Failed to cd to $TARGET_PATH"; exit 1; }
+          PHP_BIN="/usr/local/php83/bin/php"
+          
+          # Add diagnostics BEFORE Drush
+          echo "=== Pre-Drush diagnostics ==="
+          pwd
+          ls -l vendor/bin/drush || echo "vendor/bin/drush MISSING!"
+          $PHP_BIN vendor/bin/drush --version || echo "Drush version check failed"
+          $PHP_BIN vendor/bin/drush -l "$URI" status --fields=bootstrap,db-status --format=string -v
+          
+          mkdir -p "$SHARED_PATH/backups"
+          $PHP_BIN vendor/bin/drush sql:dump --quiet --gzip --extra-dump=--no-tablespaces --result-file="$SHARED_PATH/backups/pre-deploy-$BRANCH-$(date +%F-%H%M).sql"
+          find "$SHARED_PATH/backups" -type f -name "*.sql.gz" -mtime +7 -delete
+          tar -xzf deploy-archive/deploy.tar.gz
+          rm -rf deploy-archive
+          
+          ln -sf "$SHARED_PATH/settings.php" web/sites/default/settings.php
+          ln -sf "$SHARED_PATH/civicrm.settings.php" web/sites/default/civicrm.settings.php
+          
+          chmod 644 web/sites/default/civicrm.settings.php
+          # → e.g. "a1b2c3d on 2026-05-20 14:35 EDT"
+          NOW="$(date +'%Y-%m-%d %H:%M %Z')"
+          DEPLOY_INFO="${DEPLOY_SHA_SHORT} on $NOW"
+          echo "Deployment revision: $DEPLOY_INFO"   # Removed \$ to actually expand
+          $PHP_BIN vendor/bin/drush state:set -vv system.deployment_revision "$DEPLOY_INFO"
+          
+          # Drupal Deploy Sequence - crank verbosity, redirect stderr to stdout, force output
+          echo "=== Starting drush deploy ==="
+          $PHP_BIN vendor/bin/drush -l "$URI" deploy -y -vv 2>&1   # -vv + stderr→stdout
+          # Or break it out for max visibility:
+          # $PHP_BIN vendor/bin/drush -l "$URI" updatedb -y -vv 2>&1
+          # $PHP_BIN vendor/bin/drush -l "$URI" config:import -y -vv --preview 2>&1   # Preview first
+          # $PHP_BIN vendor/bin/drush -l "$URI" config:import -y -vv 2>&1
+          # $PHP_BIN vendor/bin/drush -l "$URI" cr -vv 2>&1
+          
+          echo "=== Post-deploy checks ==="
+          $PHP_BIN vendor/bin/drush -l "$URI" pm:list --status=enabled | grep vite || echo "vite NOT enabled!"
+          $PHP_BIN vendor/bin/drush -l "$URI" config:status -v
+          
+          echo "Deployment complete."
           EOF
-    
+
