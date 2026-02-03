@@ -89,6 +89,7 @@ jobs:
           chmod 600 key
           ssh -T -i key -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
           set -euo pipefail
+          
           # ── Set timezone override FIRST ──
           export TZ='America/New_York'
           TARGET_PATH="${{ env.TARGET_PATH }}"
