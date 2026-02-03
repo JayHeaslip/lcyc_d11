@@ -58,6 +58,7 @@
         "drupal/vapn": "^3.0",
         "drupal/viewfield": "^3.0@beta",
         "drupal/views_slideshow": "^5.0",
+        "drupal/vite": "^1.5",
         "drupal/vvjs": "^1.0",
         "drupal/webprofiler": "^11.1",
         "drush/drush": "^13.7",

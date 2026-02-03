@@ -50,7 +50,7 @@ jobs:
       - run: |
           cd web/themes/custom/lcyc_radix
           npm install
-          npm run production
+          npm run build
 
       - name: Create deploy archive
         run: |

@@ -6,6 +6,7 @@ body {
   font-family: $font-family-sans-serif;
 }
 
+
 a {
   color: $primary;
   text-decoration: none;
@@ -26,10 +27,10 @@ h2 { font-size: 1.25rem; }
   display: flex;
   align-items: center;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  background: linear-gradient(180deg, lighten($brand-dark, 20%) 0%, $brand-dark 100%);
 }
 
 .block-system-branding-block {
-  background: linear-gradient(180deg, #767d94 0%, #656c82 100%);
   padding: 30px;
 
   .navbar-brand__logo img {
@@ -91,10 +92,6 @@ h2 { font-size: 1.25rem; }
 // =============================================================================
 // NAVIGATION (updated)
 // =============================================================================
-
-.bg-custom-dark {
-  background: linear-gradient(180deg, #767d94 0%, #656c82 100%);
-}
 
 .bg-custom-dark-nav {
   background-color: $brand-dark-nav;

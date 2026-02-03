@@ -1,9 +1,10 @@
 style:
+  vite: true
   css:
     theme:
-      build/css/main.style.css: {}
+      src/scss/main.style.scss: {}
   js:
-    build/js/main.script.js: {}
+    src/js/main.script.js: {}
   dependencies:
     - core/drupal
 
