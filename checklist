@@ -4,7 +4,12 @@ CiviCRM System Status (Administer → System Settings → System Status) — res
 
 Run ddev drush status and ddev exec vendor/bin/cv api System.flush → check output
 
-Run ddev drush watchdog:show --severity=emergency,critical,alert,error — make sure no recent fatal errors/admin/reports/status
+Make sure no recent fatal errors/admin/reports/status
+    ddev drush watchdog:show --severity=Emergency
+    ddev drush watchdog:show --severity=Critical
+    ddev drush watchdog:show --severity=Alert
+    ddev drush watchdog:show --severity=Error
+    
 
 Export config - ddev drush cex
 

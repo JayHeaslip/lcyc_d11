@@ -4,8 +4,26 @@
 
 body {
   font-family: $font-family-sans-serif;
+  background-color: $lcyc-soft-bg;
+  color: $lcyc-text-main;
 }
 
+.btn-primary, .cta-link {
+  border: 2px solid $lcyc-white;
+  background-color: $lcyc-slate;
+  color: $lcyc-off-white;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  padding: 8px 18px;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+      background-color: $lcyc-navy;
+      color: $lcyc-white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+}
 
 a {
   color: $primary;
@@ -27,7 +45,7 @@ h2 { font-size: 1.25rem; }
   display: flex;
   align-items: center;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  background: linear-gradient(180deg, lighten($brand-dark, 20%) 0%, $brand-dark 100%);
+  background: linear-gradient(180deg, lighten($lcyc-navy, 10%) 0%, $lcyc-navy 100%);
 }
 
 .block-system-branding-block {
@@ -37,8 +55,9 @@ h2 { font-size: 1.25rem; }
     height: auto;
     max-height: 72px;
     width: auto;
-    filter: drop-shadow(2px 0 0 white) drop-shadow(-2px 0 0 white)
-      drop-shadow(0 2px 0 white) drop-shadow(0 -2px 0 white);
+    filter: drop-shadow(1px 1px 0 white) 
+        drop-shadow(-1px -1px 0 white) 
+        drop-shadow(0 0 3px rgba(255,255,255,0.5));
   }
 
   // Mobile (below lg ~992px, but you can use md/sm)
@@ -94,18 +113,22 @@ h2 { font-size: 1.25rem; }
 // =============================================================================
 
 .bg-custom-dark-nav {
-  background-color: $brand-dark-nav;
+  background-color: $lcyc-navy
 }
 
 .navbar-nav {
   font-size: 1.25rem;
 
   .nav-link {
-    color: white !important;
-    padding: 0.55rem 0.85rem !important;
-    white-space: nowrap;
+      color: $lcyc-off-white !important;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+      padding: 0.55rem 0.85rem !important;
+      white-space: nowrap;
 
-    &:hover {
+    &:hover, &:focus {
+      background-color: $lcyc-slate;
+      color: $lcyc-white !important; 
       text-decoration: underline;
       text-decoration-thickness: 2px;
       text-underline-offset: 2px;
@@ -188,9 +211,11 @@ h2 { font-size: 1.25rem; }
 .path-frontpage {
   // Target sidebars generically via Radix/Bootstrap classes
   [class*="sidebar"] {
-    background-color: #f8f9fa;
-    border-radius: 0.375rem;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+      background: $white;
+      border: 1px solid darken($lcyc-soft-bg, 5%);
+      border-radius: 4px;
+      padding: 1.5rem;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 
     .block,
     .view {
@@ -204,6 +229,11 @@ h2 { font-size: 1.25rem; }
       display: block;
       float: none !important;
       margin: 0 auto 1rem;
+    }
+    h2, h3 {
+	color: $lcyc-navy;
+	border-bottom: 2px solid $lcyc-white;
+	padding-bottom: 0.5rem;
     }
   }
 }

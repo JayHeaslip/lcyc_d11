@@ -1,5 +1,8 @@
 name: Drupal 11 Multi-Environment Deploy (main,staging)
 
+permissions:
+  contents: read
+
 on:
   workflow_dispatch:
   push:
@@ -31,13 +34,13 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.3'
+          php-version: '8.4'
           extensions: gd, mbstring, pdo_mysql, zip
           tools: composer:v2
 
       - name: Configure Composer GitHub token
         run: |
-          composer config -g github-oauth.github.com ${{ secrets.COMPOSER_GITHUB_TOKEN }}
+          composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
 
       - name: Validate & Install PHP Dependencies
         run: |
@@ -100,13 +103,21 @@ jobs:
           BRANCH="${{ env.BRANCH }}"
           DEPLOY_SHA_SHORT="${{ env.DEPLOY_SHA_SHORT }}"
           cd "$TARGET_PATH" || { echo "Failed to cd to $TARGET_PATH"; exit 1; }
+
+          # ── Enable maintenance mode EARLY ───────────────────────────────────────
+          echo "=== Enabling maintenance mode ==="
+          drush -l "$URI" maint:set 1 || drush -l "$URI" state:set system.maintenance_mode 1 --input-format=integer
+          drush -l "$URI" cr   # important: flush cache so visitors immediately see maintenance page
+
+          # Optional: nicer message (you can customize or remove)
+          drush -l "$URI" config:set system.maintenance message "Site is being updated — back in a few minutes." -y
           
           # Add diagnostics BEFORE Drush
           echo "=== Pre-Drush diagnostics ==="
           pwd
           ls -l vendor/bin/drush || echo "vendor/bin/drush MISSING!"
           drush --version || echo "Drush version check failed"
-          drush -l "$URI" status --fields=bootstrap,db-status --format=string -v
+          drush -l "$URI" status --fields=bootstrap,db-status --format=string
           
           mkdir -p "$SHARED_PATH/backups"
           drush sql:dump --quiet --gzip --extra-dump=--no-tablespaces --result-file="$SHARED_PATH/backups/pre-deploy-$BRANCH-$(date +%F-%H%M).sql"
@@ -122,11 +133,11 @@ jobs:
           NOW="$(date +'%Y-%m-%d %H:%M %Z')"
           DEPLOY_INFO="${DEPLOY_SHA_SHORT} on $NOW"
           echo "Deployment revision: $DEPLOY_INFO"   # Removed \$ to actually expand
-          drush -l "$URI" state:set -vv system.deployment_revision "$DEPLOY_INFO"
+          drush -l "$URI" state:set -v system.deployment_revision "$DEPLOY_INFO"
           
           # Drupal Deploy Sequence - crank verbosity, redirect stderr to stdout, force output
           echo "=== Starting drush deploy ==="
-          drush -l "$URI" deploy -y -vv 2>&1   # -vv + stderr→stdout
+          drush -l "$URI" deploy -y -v 2>&1   
           # Or break it out for max visibility:
           # $PHP_BIN vendor/bin/drush -l "$URI" updatedb -y -vv 2>&1
           # $PHP_BIN vendor/bin/drush -l "$URI" config:import -y -vv --preview 2>&1   # Preview first
@@ -136,6 +147,14 @@ jobs:
           echo "=== Post-deploy checks ==="
           drush -l "$URI" pm:list --status=enabled | grep vite || echo "vite NOT enabled!"
           drush -l "$URI" config:status -v
+
+          # ── Disable maintenance mode at the very end ─────────────────────────────
+          echo "=== Disabling maintenance mode ==="
+          drush -l "$URI" maint:set 0 || drush -l "$URI" state:set system.maintenance_mode 0 --input-format=integer
+          drush -l "$URI" cr   # final rebuild
+
+          # Optional: clear the custom maintenance message
+          drush -l "$URI" config:delete system.maintenance message -y 2>/dev/null || true
           
           echo "Deployment complete."
           EOF

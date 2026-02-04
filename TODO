@@ -11,5 +11,7 @@ checklist before pushing to staging
 
 todo
 ----------------
-
+get rid of deprecation warnings:
+    npm run build
+    civicrm smarty4
 
