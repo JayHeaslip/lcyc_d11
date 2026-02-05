@@ -13,11 +13,11 @@
         "build": "vite build",
         "preview": "vite preview",
         "postinstall": "find node_modules/ -name '*.info' -type f -delete",
-        "biome:format": "biome format --write src/ components/",
-        "biome:lint": "biome lint --apply src/ components/",
-        "biome:check": "biome check --apply src/ components/",
-        "stylint": "npx stylelint '**/*.scss'",
-        "stylint-fix": "npx stylelint '**/*.scss' --fix"
+        "format": "biome format --write src/ components/",
+        "lint": "biome lint --apply src/ components/",
+        "check": "biome check --apply src/ components/",
+        "fix": "biome check --write src/ components/",
+        "quality": "biome check --write src/ components/"
     },
     "devDependencies": {
         "@biomejs/biome": "^1.4.1",
@@ -31,9 +31,6 @@
         "sass": "^1.63.6",
         "sass-loader": "^13.0.2",
         "stylelint": "^14.1.0",
-        "stylelint-config-prettier": "^9.0.3",
-        "stylelint-config-recess-order": "^3.0.0",
-        "stylelint-config-standard-scss": "^6.1.0",
         "vite": "^7.3.1"
     }
 }

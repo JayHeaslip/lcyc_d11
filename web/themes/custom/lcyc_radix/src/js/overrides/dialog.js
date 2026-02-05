@@ -6,7 +6,7 @@
  */
 /* eslint-disable no-undef, no-jquery/no-css */
 
-(($, Drupal, drupalSettings) => {
+;(($, Drupal, drupalSettings) => {
   /**
    * Default dialog options.
    *
@@ -32,10 +32,10 @@
     buttonClass: 'btn',
     buttonPrimaryClass: 'btn-primary',
     close: function close(event) {
-      Drupal.modal(event.target).close();
-      Drupal.detachBehaviors(event.target, null, 'unload');
+      Drupal.modal(event.target).close()
+      Drupal.detachBehaviors(event.target, null, 'unload')
     },
-  };
+  }
 
   /**
    * @typedef {object} Drupal.dialog~dialogDefinition
@@ -64,44 +64,46 @@
    *   The dialog instance.
    */
   Drupal.dialog = (element, options) => {
-    let undef;
-    const $element = $(element);
+    let undef
+    const $element = $(element)
     if (!$element.hasClass('modal')) {
       $element
         .addClass('modal fade')
         .attr('tabindex', '-1')
         .attr('role', 'dialog')
-        .wrapInner('<div class="modal-dialog"><div class="modal-content"><div class="modal-body"></div></div></div>');
+        .wrapInner(
+          '<div class="modal-dialog"><div class="modal-content"><div class="modal-body"></div></div></div>',
+        )
     }
     const dialog = {
       open: false,
       returnValue: undef,
-    };
+    }
 
     function settingIsTrue(setting) {
-      return setting !== undefined && (setting === true || setting === 'true');
+      return setting !== undefined && (setting === true || setting === 'true')
     }
 
     function updateButtons(buttons) {
-      const settings = $.extend({}, drupalSettings.dialog, options);
+      const settings = $.extend({}, drupalSettings.dialog, options)
 
-      const modalFooter = $('<div class="modal-footer">');
+      const modalFooter = $('<div class="modal-footer">')
       // eslint-disable-next-line func-names
       $.each(buttons, function () {
-        const classes = [settings.buttonClass, settings.buttonPrimaryClass];
+        const classes = [settings.buttonClass, settings.buttonPrimaryClass]
 
-        const button = $('<button type="button">');
+        const button = $('<button type="button">')
         if (this.attributes !== undefined) {
-          $(button).attr(this.attributes);
+          $(button).attr(this.attributes)
         }
         $(button)
           .addClass(this.class)
           .click((e) => {
             if (this.click !== undefined) {
-              this.click(e);
+              this.click(e)
             }
           })
-          .html(this.text);
+          .html(this.text)
 
         if (
           $(button).attr('class') &&
@@ -109,117 +111,120 @@
             .attr('class')
             .match(/\bbtn-.*/)
         ) {
-          $(button).addClass(classes.join(' '));
+          $(button).addClass(classes.join(' '))
         }
 
-        $(modalFooter).append(button);
-      });
+        $(modalFooter).append(button)
+      })
       if ($('.modal-dialog .modal-content .modal-footer', $element).length > 0) {
-        $('.modal-dialog .modal-content .modal-footer', $element).remove();
+        $('.modal-dialog .modal-content .modal-footer', $element).remove()
       }
       if ($(modalFooter).html().length > 0) {
-        $(modalFooter).appendTo($('.modal-dialog .modal-content', $element));
+        $(modalFooter).appendTo($('.modal-dialog .modal-content', $element))
       }
     }
 
     function dispatchDialogEvent(eventType, dialog, element, settings) {
       if (typeof DrupalDialogEvent === 'undefined') {
-        $(window).trigger(`dialog:${eventType}`, [dialog, $(element), settings]);
+        $(window).trigger(`dialog:${eventType}`, [dialog, $(element), settings])
       } else {
-        const event = new DrupalDialogEvent(eventType, dialog, settings || {});
-        element.dispatchEvent(event);
+        const event = new DrupalDialogEvent(eventType, dialog, settings || {})
+        element.dispatchEvent(event)
       }
     }
 
     function openDialog(settings) {
-      settings = $.extend({ drupalAutoButtons: true }, drupalSettings.dialog, options, settings);
+      settings = $.extend({ drupalAutoButtons: true }, drupalSettings.dialog, options, settings)
 
-      dispatchDialogEvent('beforecreate', dialog, $element.get(0), settings);
+      dispatchDialogEvent('beforecreate', dialog, $element.get(0), settings)
 
-      $(window).trigger('dialog:beforecreate', [dialog, $element, settings]);
+      $(window).trigger('dialog:beforecreate', [dialog, $element, settings])
 
       if (settings.dialogClasses !== undefined) {
-        $('.modal-dialog', $element).removeAttr('class').addClass('modal-dialog').addClass(settings.dialogClasses);
+        $('.modal-dialog', $element)
+          .removeAttr('class')
+          .addClass('modal-dialog')
+          .addClass(settings.dialogClasses)
       }
 
-      $($element).attr('data-settings', JSON.stringify(settings));
+      $($element).attr('data-settings', JSON.stringify(settings))
 
       // The modal dialog header.
       if (settingIsTrue(settings.dialogShowHeader)) {
-        let modalHeader = '<div class="modal-header">';
-        const heading = settings.dialogHeadingLevel;
+        let modalHeader = '<div class="modal-header">'
+        const heading = settings.dialogHeadingLevel
 
         if (settingIsTrue(settings.dialogShowHeaderTitle)) {
-          modalHeader += `<h${heading} class="modal-title">${settings.title}</h${heading}>`;
+          modalHeader += `<h${heading} class="modal-title">${settings.title}</h${heading}>`
         }
 
         modalHeader += `<button type="button" class="close btn-close" data-bs-dismiss="modal" data-dismiss="modal" aria-label="${Drupal.t(
           'Close',
-        )}"><span aria-hidden="true" class="visually-hidden">&times;</span></button>`;
+        )}"><span aria-hidden="true" class="visually-hidden">&times;</span></button>`
 
-        $(modalHeader).prependTo($('.modal-dialog .modal-content', $element));
+        $(modalHeader).prependTo($('.modal-dialog .modal-content', $element))
       }
 
       if (settingIsTrue(settings.dialogStatic)) {
-        $($element).attr('data-bs-backdrop', 'static');
-        $($element).attr('data-bs-keyboard', 'false');
+        $($element).attr('data-bs-backdrop', 'static')
+        $($element).attr('data-bs-keyboard', 'false')
       }
 
       // Non-modal configuration: Remove backdrop and allow interaction with the page.
       if (!settings.modal) {
-        $($element).attr('data-bs-backdrop', 'false');
-        $($element).attr('data-bs-keyboard', 'true');
+        $($element).attr('data-bs-backdrop', 'false')
+        $($element).attr('data-bs-keyboard', 'true')
 
         // Set pointer-events: none; for non-modal dialogs to allow interaction with the page.
-        $element.css('pointer-events', 'none');
-        $element.find('.modal-dialog').css('pointer-events', 'auto'); // Ensure dialog itself is still interactive
+        $element.css('pointer-events', 'none')
+        $element.find('.modal-dialog').css('pointer-events', 'auto') // Ensure dialog itself is still interactive
       }
 
       if (settingIsTrue(settings.drupalAutoButtons) && settings.buttons.length > 0) {
-        updateButtons(settings.buttons);
+        updateButtons(settings.buttons)
       }
 
       if ($element.modal !== undefined) {
-        $element.modal(settings);
-        $element.modal('show');
+        $element.modal(settings)
+        $element.modal('show')
       }
 
-      const originalResizeSetting = settings.autoResize;
-      settings.autoResize = false;
-      dispatchDialogEvent('aftercreate', dialog, $element.get(0), settings);
-      settings.autoResize = originalResizeSetting;
+      const originalResizeSetting = settings.autoResize
+      settings.autoResize = false
+      dispatchDialogEvent('aftercreate', dialog, $element.get(0), settings)
+      settings.autoResize = originalResizeSetting
     }
 
     function closeDialog(value) {
       if ($element.modal !== undefined) {
-        $element.modal('hide');
+        $element.modal('hide')
       }
-      dialog.returnValue = value;
-      dialog.open = false;
+      dialog.returnValue = value
+      dialog.open = false
     }
 
     dialog.updateButtons = (buttons) => {
-      updateButtons(buttons);
-    };
+      updateButtons(buttons)
+    }
 
     dialog.show = () => {
-      openDialog({ modal: false });
-    };
+      openDialog({ modal: false })
+    }
     dialog.showModal = () => {
-      openDialog({ modal: true });
-    };
+      openDialog({ modal: true })
+    }
     dialog.close = () => {
-      closeDialog({});
-    };
+      closeDialog({})
+    }
 
     $element.on('hide.bs.modal', () => {
-      dispatchDialogEvent('beforeclose', dialog, $element.get(0));
-    });
+      dispatchDialogEvent('beforeclose', dialog, $element.get(0))
+    })
 
     $element.on('hidden.bs.modal', () => {
-      dispatchDialogEvent('afterclose', dialog, $element.get(0));
-    });
+      dispatchDialogEvent('afterclose', dialog, $element.get(0))
+    })
 
-    return dialog;
-  };
-})(jQuery, Drupal, drupalSettings);
+    return dialog
+  }
+})(jQuery, Drupal, drupalSettings)

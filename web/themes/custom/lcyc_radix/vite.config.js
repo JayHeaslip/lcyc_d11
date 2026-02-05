@@ -20,7 +20,13 @@ export default defineConfig({
     devSourcemap: true,
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "sass:math";`,
+          additionalData: `@use "sass:math";`,
+          silenceDeprecations: [
+	      'import',
+	      'if-function',
+              'color-functions',
+	      'global-builtin'
+	  ]
       },
     },
   },
