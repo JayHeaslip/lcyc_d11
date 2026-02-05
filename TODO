@@ -12,6 +12,8 @@ checklist before pushing to staging
 todo
 ----------------
 get rid of deprecation warnings:
-    npm run build
-    civicrm smarty4
+    civicrm smarty4 - need civicrm v 6.12.x
+get npm run dev working
+get fixed block content working
+check assign_roles operation
 

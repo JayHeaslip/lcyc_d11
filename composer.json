@@ -65,7 +65,7 @@
         "kigkonsult/icalcreator": "^2.41",
         "mglaman/composer-drupal-lenient": "^1.0",
         "psy/psysh": "0.12.19",
-        "scssphp/scssphp": "1.10.*",
+        "scssphp/scssphp": "^1.10",
         "symfony/process": "^7.4"
     },
     "conflict": {

@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
 
 export default defineConfig({
   base: './', // Good for Drupal subfolder
@@ -11,7 +11,7 @@ export default defineConfig({
       input: {
         main: './src/scss/main.style.scss',
         app: './src/js/main.script.js',
-        bootstrap: './src/scss/_bootstrap.scss'
+        bootstrap: './src/scss/_bootstrap.scss',
       },
     },
   },
@@ -20,30 +20,25 @@ export default defineConfig({
     devSourcemap: true,
     preprocessorOptions: {
       scss: {
-          additionalData: `@use "sass:math";`,
-          silenceDeprecations: [
-	      'import',
-	      'if-function',
-              'color-functions',
-	      'global-builtin'
-	  ]
+        additionalData: `@use "sass:math";`,
+        silenceDeprecations: ['import', 'if-function', 'color-functions', 'global-builtin'],
       },
     },
   },
 
   server: {
-    host: '0.0.0.0',              // Required in Docker/DDEV
+    host: '0.0.0.0', // Required in Docker/DDEV
     port: 5173,
-    strictPort: true,             // Keeps port consistent — good!
+    strictPort: true, // Keeps port consistent — good!
 
     // Use DDEV's primary URL dynamically (safer than hardcoding)
     origin: `${process.env.DDEV_PRIMARY_URL || 'https://d11.lcyc.info.ddev.site'}:5173`,
 
     // Better HMR config for DDEV (avoids websocket connection failures)
     hmr: {
-      host: 'd11.lcyc.info.ddev.site',   // Or use process.env.DDEV_HOSTNAME if available
-      protocol: 'wss',                   // Use secure websocket since DDEV is HTTPS
-      clientPort: 5173,                  // Ensures browser connects to the exposed port
+      host: 'd11.lcyc.info.ddev.site', // Or use process.env.DDEV_HOSTNAME if available
+      protocol: 'wss', // Use secure websocket since DDEV is HTTPS
+      clientPort: 5173, // Ensures browser connects to the exposed port
       // overlay: true,                  // Optional: show errors in browser overlay
     },
 
@@ -63,4 +58,4 @@ export default defineConfig({
       credentials: true,
     },
   },
-});
+})
