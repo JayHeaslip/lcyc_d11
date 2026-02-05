@@ -111,6 +111,7 @@ jobs:
           URI="${{ env.URI }}"
           BRANCH="${{ env.BRANCH }}"
           DEPLOY_SHA_SHORT="${{ env.DEPLOY_SHA_SHORT }}"
+
           cd "$TARGET_PATH" || { echo "Failed to cd to $TARGET_PATH"; exit 1; }
 
           # ── Enable maintenance mode EARLY ───────────────────────────────────────
@@ -130,6 +131,8 @@ jobs:
           
           mkdir -p "$SHARED_PATH/backups"
           drush sql:dump --quiet --gzip --extra-dump=--no-tablespaces --result-file="$SHARED_PATH/backups/pre-deploy-$BRANCH-$(date +%F-%H%M).sql"
+          drush sql:dump --database=civicrm --quiet --gzip --extra-dump=--no-tablespaces --result-file="$SHARED_PATH/backups/civicrm-pre-deploy-$BRANCH-$(date +%F-%H%M).sql"
+
           find "$SHARED_PATH/backups" -type f -name "*.sql.gz" -mtime +7 -delete
           tar -xzf deploy-archive/deploy.tar.gz
           rm -rf deploy-archive
