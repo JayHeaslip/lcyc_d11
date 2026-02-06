@@ -134,7 +134,7 @@ jobs:
           drush sql:dump --database=civicrm --quiet --gzip --extra-dump=--no-tablespaces --result-file="$SHARED_PATH/backups/civicrm-pre-deploy-$BRANCH-$(date +%F-%H%M).sql"
 
           find "$SHARED_PATH/backups" -type f -name "*.sql.gz" -mtime +7 -delete
-          tar -xzf deploy-archive/deploy.tar.gz
+          tar -xvzf deploy-archive/deploy.tar.gz
           rm -rf deploy-archive
           
           ln -sf "$SHARED_PATH/settings.php" web/sites/default/settings.php
