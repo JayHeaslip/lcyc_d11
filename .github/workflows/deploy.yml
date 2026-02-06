@@ -103,6 +103,15 @@ jobs:
           ssh -T -i key -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
           set -euo pipefail
 
+          source ~/.bash_profile 2>/dev/null || true
+          export TZ='America/New_York'
+
+          TARGET_PATH="${{ env.TARGET_PATH }}"
+          SHARED_PATH="${{ env.SHARED_PATH }}"
+          URI="${{ env.URI }}"
+          BRANCH="${{ env.BRANCH }}"
+          DEPLOY_SHA_SHORT="${{ env.DEPLOY_SHA_SHORT }}"
+
           # ────────────────────────────────────────────────────────────────
           #  DEPLOY START HEADER
           # ────────────────────────────────────────────────────────────────
@@ -116,9 +125,6 @@ jobs:
           echo "=============================================================="
           echo "::endgroup::"
           echo ""
-
-          source ~/.bash_profile 2>/dev/null || true
-          export TZ='America/New_York'
 
           cd "$TARGET_PATH" || { 
             echo "::error::Cannot change to target directory: ${TARGET_PATH}"
