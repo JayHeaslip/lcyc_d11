@@ -180,7 +180,7 @@ jobs:
           if [ ! -f vendor/autoload.php ] || [ composer.lock -nt vendor/autoload.php ]; then
             echo "composer.lock is newer or vendor/ missing → running composer install"
             export COMPOSER_MEMORY_LIMIT=-1
-            composer install \
+            php /home/lcyc/composer.phar install \
               --no-dev \
               --prefer-dist \
               --optimize-autoloader \
