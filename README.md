@@ -1,11 +1,4 @@
 ### Drupal 11 version of the Lake Champlain Yacht Club website
 
-To deploy to production, on the production server:
-* cd "web site root"
-* git pull
-* composer install --no-dev
-* drush -l "site url" updb
-* drush cim -y
-* In web/themes/custom/lcyc_radix
-  * npm run production
-* drush cr
+Deployment is done using github actions. The deployment script is in .github/workflows/deploy.yml.
+Click on the Actions tab to see deploymentg examples.
