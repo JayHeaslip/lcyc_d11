@@ -225,7 +225,7 @@ jobs:
           # ────────────────────────────────────────────────────────────────
           echo "::group::8. Post-deploy checks"
           echo "=== Post-deploy quick checks ==="
-          drush -l "$URI" status --fields=bootstrap,database,theme,drush-version --format=string || echo "::warning::drush status command failed"
+          drush -l "$URI" status --fields=bootstrap,db-status,theme,drush-version --format=string || echo "::warning::drush status command failed"
           echo ""
           drush -l "$URI" pm:list --status=enabled --type=module | grep -E 'civicrm|vite|token|pathauto' || echo "::warning::Some expected modules not visible"
           echo "::endgroup::"
@@ -233,7 +233,7 @@ jobs:
           # ────────────────────────────────────────────────────────────────
           echo "::group::9. Deploy log"
           echo "=== Saving full deploy log ==="
-          LOG_DIR="$SHARED_PATH/loglos"
+          LOG_DIR="$SHARED_PATH/logs"
           mkdir -p "$LOG_DIR"
           DEPLOY_LOG="$LOG_DIR/deploy-${TIMESTAMP}-${BRANCH}-${DEPLOY_SHA_SHORT}.log"
 
