@@ -54,6 +54,7 @@
         "drupal/rdf": "^3.0@beta",
         "drupal/registration": "^3.4",
         "drupal/smtp": "^1.4",
+        "drupal/theme_switcher": "^2",
         "drupal/token": "^1.16",
         "drupal/vapn": "^3.0",
         "drupal/viewfield": "^3.0@beta",
