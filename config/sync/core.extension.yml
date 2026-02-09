@@ -27,6 +27,7 @@ module:
   contextual: 0
   crop: 0
   ctools_entity_mask: 0
+  custom_theme_conditions: 0
   date_ical: 0
   datetime: 0
   datetime_range: 0
