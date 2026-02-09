@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Implements hook_requirements().
+ */
+function deploy_tracker_requirements($phase) {
+
+  $requirements = [];
+
+  // We only want this to show up on the "Status Report" page
+  if ($phase === 'runtime') {
+    // Fetch the new combined info string
+    $info = \Drupal::state()->get('system.deployment_revision', t('No deployment data available.'));
+
+    $requirements['deployment_info'] = [
+      'title' => t('Deployment Revision'),
+      'value' => $info ?: t('Variable is empty in database. Run drush state:set.'),
+      'severity' => $info ? REQUIREMENT_INFO : REQUIREMENT_WARNING,
+    ];
+  }
+
+  return $requirements;
+}

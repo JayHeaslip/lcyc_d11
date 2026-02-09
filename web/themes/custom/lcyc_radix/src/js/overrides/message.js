@@ -3,7 +3,7 @@
  * message.js
  * Credit to: Pierre Dureau (pdureau) for the initial code.
  */
-((Drupal) => {
+;((Drupal) => {
   /**
    * Helper function to map Drupal types to Bootstrap classes.
    *
@@ -16,8 +16,8 @@
       error: 'danger',
       warning: 'warning',
       info: 'info',
-    };
-  };
+    }
+  }
 
   /**
    * Retrieves the classes for a specific message type.
@@ -29,9 +29,9 @@
    *   The classes to add, space separated.
    */
   Drupal.Message.getMessageTypeClass = (type) => {
-    const classes = Drupal.Message.getMessageTypeClasses();
-    return `alert alert-${classes[type] || 'success'}`;
-  };
+    const classes = Drupal.Message.getMessageTypeClasses()
+    return `alert alert-${classes[type] || 'success'}`
+  }
 
   /**
    * @inheritDoc
@@ -42,8 +42,8 @@
       error: Drupal.t('Error message'),
       warning: Drupal.t('Warning message'),
       info: Drupal.t('Informative message'),
-    };
-  };
+    }
+  }
 
   /**
    * Retrieves a label for a specific message type.
@@ -55,9 +55,9 @@
    *   The message type label.
    */
   Drupal.Message.getMessageTypeLabel = (type) => {
-    const labels = Drupal.Message.getMessageTypeLabels();
-    return labels[type];
-  };
+    const labels = Drupal.Message.getMessageTypeLabels()
+    return labels[type]
+  }
 
   /**
    * Map of the message type aria-role values.
@@ -71,8 +71,8 @@
       error: 'alert',
       warning: 'alert',
       info: 'status',
-    };
-  };
+    }
+  }
 
   /**
    * Retrieves the aria-role for a specific message type.
@@ -84,30 +84,30 @@
    *   The message type role.
    */
   Drupal.Message.getMessageTypeRole = (type) => {
-    const labels = Drupal.Message.getMessageTypeRoles();
-    return labels[type];
-  };
+    const labels = Drupal.Message.getMessageTypeRoles()
+    return labels[type]
+  }
 
   /**
    * @inheritDoc
    */
   Drupal.theme.message = (message, options) => {
     // @todo use the pattern alert directly if possible in JS.
-    options = options || {};
+    options = options || {}
     const wrapper = Drupal.theme(
       'messageWrapper',
       options.id || new Date().getTime(),
       options.type || 'status',
-    );
+    )
 
     if (options.dismissible === undefined || !!options.dismissible) {
-      wrapper.classList.add('alert-dismissible', 'fade', 'show');
-      wrapper.appendChild(Drupal.theme('messageClose'));
+      wrapper.classList.add('alert-dismissible', 'fade', 'show')
+      wrapper.appendChild(Drupal.theme('messageClose'))
     }
-    wrapper.innerHTML += message && message.text;
+    wrapper.innerHTML += message && message.text
 
-    return wrapper;
-  };
+    return wrapper
+  }
 
   /**
    * Themes the message container.
@@ -121,18 +121,18 @@
    *   A constructed HTMLElement.
    */
   Drupal.theme.messageWrapper = (id, type) => {
-    const wrapper = document.createElement('div');
-    const label = Drupal.Message.getMessageTypeLabel(type);
-    wrapper.setAttribute('class', Drupal.Message.getMessageTypeClass(type));
-    wrapper.setAttribute('role', Drupal.Message.getMessageTypeRole(type));
-    wrapper.setAttribute('aria-label', label);
-    wrapper.setAttribute('data-drupal-message-id', id);
-    wrapper.setAttribute('data-drupal-message-type', type);
+    const wrapper = document.createElement('div')
+    const label = Drupal.Message.getMessageTypeLabel(type)
+    wrapper.setAttribute('class', Drupal.Message.getMessageTypeClass(type))
+    wrapper.setAttribute('role', Drupal.Message.getMessageTypeRole(type))
+    wrapper.setAttribute('aria-label', label)
+    wrapper.setAttribute('data-drupal-message-id', id)
+    wrapper.setAttribute('data-drupal-message-type', type)
     if (label) {
-      wrapper.appendChild(Drupal.theme('messageLabel', label));
+      wrapper.appendChild(Drupal.theme('messageLabel', label))
     }
-    return wrapper;
-  };
+    return wrapper
+  }
 
   /**
    * Themes the message close button.
@@ -142,14 +142,14 @@
    */
   Drupal.theme.messageClose = () => {
     // @todo use the pattern button_close directly if possible in JS.
-    const element = document.createElement('button');
-    element.setAttribute('class', 'btn-close');
-    element.setAttribute('type', 'button');
-    element.setAttribute('role', 'button');
-    element.setAttribute('data-bs-dismiss', 'alert');
-    element.setAttribute('aria-label', Drupal.t('Close'));
-    return element;
-  };
+    const element = document.createElement('button')
+    element.setAttribute('class', 'btn-close')
+    element.setAttribute('type', 'button')
+    element.setAttribute('role', 'button')
+    element.setAttribute('data-bs-dismiss', 'alert')
+    element.setAttribute('aria-label', Drupal.t('Close'))
+    return element
+  }
 
   /**
    * Themes the message container.
@@ -161,9 +161,9 @@
    *   A constructed HTMLElement.
    */
   Drupal.theme.messageLabel = (label) => {
-    const element = document.createElement('h4');
-    element.setAttribute('class', 'visually-hidden');
-    element.innerHTML = label;
-    return element;
-  };
-})(Drupal);
+    const element = document.createElement('h4')
+    element.setAttribute('class', 'visually-hidden')
+    element.innerHTML = label
+    return element
+  }
+})(Drupal)

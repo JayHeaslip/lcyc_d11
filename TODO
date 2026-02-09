@@ -3,9 +3,17 @@ done
 get simplified _elements & _variables working
 get breadcrumbs working
 get admin menu on top
+performance settings in settings.php, see email on 12/24
+install civicrm cli
+   composer require civicrm/cli-tools
+
+checklist before pushing to staging
 
 todo
 ----------------
-get simplified _elements & _variables working
-performance settings in settings.php, see email on 12/24
- 
+get rid of deprecation warnings:
+    civicrm smarty4 - need civicrm v 6.12.x
+get npm run dev working
+get fixed block content working
+check assign_roles operation
+

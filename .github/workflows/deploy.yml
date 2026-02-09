@@ -1,0 +1,279 @@
+name: Drupal 11 Multi-Environment Deploy (main,staging)
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, staging ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      # Centralized logic for paths
+      BRANCH: ${{ github.ref == 'refs/heads/main' && 'main' || 'staging' }}
+      TARGET_PATH: ${{ github.ref == 'refs/heads/main' && '/home/lcyc/lcyc.info' || '/home/lcyc/d11.lcyc.info' }}
+      SHARED_PATH: ${{ github.ref == 'refs/heads/main' && '/home/lcyc/shared/prod' || '/home/lcyc/shared/staging' }}
+      URI: ${{ github.ref == 'refs/heads/main' && 'https://lcyc.info' || 'https://d11.lcyc.info' }}
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Cache Composer packages
+        uses: actions/cache@v4
+        id: composer-cache  # Optional: useful for conditional steps
+        with:
+          path: ~/.cache/composer
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: gd, mbstring, pdo_mysql, zip
+          tools: composer:v2
+
+      - name: Configure Composer GitHub token
+        run: |
+          composer config -g github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Validate & Install PHP Dependencies
+        run: |
+          composer validate --strict
+          composer install --prefer-dist --no-dev --optimize-autoloader --no-progress
+
+      - name: Setup Node.js & Build Theme
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: |
+          cd web/themes/custom/lcyc_radix
+          npm ci
+          npm run build
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        id: node-cache
+        with:
+          path: ~/.npm
+          key: $$   {{ runner.os }}-node-   $${{ hashFiles('web/themes/custom/lcyc_radix/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+            
+      - name: Create deploy archive
+        run: |
+          mkdir -p deploy-archive
+          tar -czf deploy-archive/deploy.tar.gz \
+          --exclude='./deploy-archive' \
+          --exclude='.git' \
+          --exclude='vendor' \
+          --exclude='node_modules' \
+          --exclude='web/sites/default/files' \
+          --exclude='web/sites/default/default.services.yml' \
+          --exclude='web/sites/default/default.settings.php' \
+          --exclude='.github' \
+          .
+              
+      - name: Ensure remote deploy-archive directory exists
+        run: |
+          echo "${{ secrets.SSH_KEY }}" > key
+          chmod 600 key
+          ssh -i key -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "
+          mkdir -p '${{ env.TARGET_PATH }}/deploy-archive/'
+          "
+            
+      - name: Deploy files via SCP (clean & fast)
+        run: |
+          echo "${{ secrets.SSH_KEY }}" > key
+          chmod 600 key
+          scp -i key -o StrictHostKeyChecking=no -r deploy-archive/deploy.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:"${{ env.TARGET_PATH }}/deploy-archive/"
+
+      - name: Prepare short SHA for deploy info
+        run: echo "DEPLOY_SHA_SHORT=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
+
+      - name: Remote Post-Deploy (SSH commands)
+        run: |
+          echo "${{ secrets.SSH_KEY }}" > key
+          chmod 600 key
+          ssh -T -i key -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
+          set -euo pipefail
+
+          source ~/.bash_profile 2>/dev/null || true
+          export TZ='America/New_York'
+
+          TARGET_PATH="${{ env.TARGET_PATH }}"
+          SHARED_PATH="${{ env.SHARED_PATH }}"
+          URI="${{ env.URI }}"
+          BRANCH="${{ env.BRANCH }}"
+          DEPLOY_SHA_SHORT="${{ env.DEPLOY_SHA_SHORT }}"
+
+          # ────────────────────────────────────────────────────────────────
+          #  DEPLOY START HEADER
+          # ────────────────────────────────────────────────────────────────
+          echo "::group::Deployment started"
+          echo "=============================================================="
+          echo "DEPLOY STARTED: $(date '+%Y-%m-%d %H:%M:%S %Z')   branch=${BRANCH}"
+          echo "Target:       ${TARGET_PATH}"
+          echo "URI:          ${URI}"
+          echo "Commit:       ${DEPLOY_SHA_SHORT} (${{ github.sha }})"
+          echo "Triggered by: ${{ github.actor || 'manual dispatch' }}"
+          echo "=============================================================="
+          echo "::endgroup::"
+          echo ""
+
+          cd "$TARGET_PATH" || { 
+            echo "::error::Cannot change to target directory: ${TARGET_PATH}"
+            exit 1; 
+          }
+
+          # ────────────────────────────────────────────────────────────────
+          echo "::group::1. Maintenance mode"
+          echo "=== Enabling maintenance mode ==="
+          drush -l "$URI" maint:set 1 2>/dev/null || drush -l "$URI" state:set system.maintenance_mode 1 --input-format=integer -y
+          drush -l "$URI" cr --quiet || echo "::warning::Cache rebuild failed while enabling maintenance mode"
+          drush -l "$URI" config:set system.maintenance message "Site is being updated — back shortly." -y 2>/dev/null || true
+          echo "::endgroup::"
+
+          # ────────────────────────────────────────────────────────────────
+          echo "::group::2. Database backups"
+          echo "=== Creating database backups ==="
+          mkdir -p "$SHARED_PATH/backups"
+          TIMESTAMP="$(date +%F-%H%M%S)"
+
+          drush sql:dump --quiet --gzip --extra-dump=--no-tablespaces \
+            --result-file="$SHARED_PATH/backups/pre-deploy-${BRANCH}-${TIMESTAMP}.sql" || {
+              echo "::warning::Drupal database backup failed"
+            }
+
+          drush sql:dump --database=civicrm --quiet --gzip --extra-dump=--no-tablespaces \
+            --result-file="$SHARED_PATH/backups/civicrm-pre-deploy-${BRANCH}-${TIMESTAMP}.sql" 2>/dev/null || echo "::warning::CiviCRM backup skipped (database may not exist)"
+
+          find "$SHARED_PATH/backups" -type f -name "*.sql.gz" -mtime +7 -delete
+          echo "::endgroup::"
+
+          # ────────────────────────────────────────────────────────────────
+          echo "::group::3. Code extraction"
+          echo "=== Extracting new code ==="
+          tar -xzf deploy-archive/deploy.tar.gz || { 
+            echo "::error::Failed to extract deployment archive"
+            exit 1; 
+          }
+          rm -rf deploy-archive
+          echo "::endgroup::"
+
+          # ────────────────────────────────────────────────────────────────
+          echo "::group::4. Shared config links"
+          echo "=== Linking shared configuration files ==="
+          ln -sf "$SHARED_PATH/settings.php"           web/sites/default/settings.php
+          ln -sf "$SHARED_PATH/civicrm.settings.php"   web/sites/default/civicrm.settings.php
+          chmod 644 web/sites/default/civicrm.settings.php 2>/dev/null || true
+          echo "::endgroup::"
+
+          # ────────────────────────────────────────────────────────────────
+          echo "::group::5. Vendor dependencies"
+          echo "=== Installing / updating vendor dependencies ==="
+          if [ ! -f vendor/autoload.php ] || [ composer.lock -nt vendor/autoload.php ]; then
+            echo "composer.lock is newer or vendor/ missing → running composer install"
+            export COMPOSER_MEMORY_LIMIT=-1
+            php /home/lcyc/composer.phar install \
+              --no-dev \
+              --prefer-dist \
+              --optimize-autoloader \
+              --no-progress \
+              --no-interaction 2>&1 | tee /tmp/composer-install.log || {
+                echo "::error::Composer install failed"
+                exit 1
+              }
+          else
+            echo "vendor/ appears up to date"
+          fi
+
+          if [ ! -f vendor/autoload.php ]; then
+            echo "::error::vendor/autoload.php is missing after composer install attempt"
+            exit 1
+          fi
+          echo "::endgroup::"
+
+          # ────────────────────────────────────────────────────────────────
+          echo "::group::6. Deployment info"
+          echo "=== Recording deployment info ==="
+          NOW="$(date '+%Y-%m-%d %H:%M %Z')"
+          DEPLOY_INFO="${DEPLOY_SHA_SHORT} on $NOW"
+          echo "Setting deployment revision: $DEPLOY_INFO"
+          drush -l "$URI" state:set system.deployment_revision "$DEPLOY_INFO" -y
+          echo "::endgroup::"
+
+          # ────────────────────────────────────────────────────────────────
+          echo "::group::7. Drush deploy (critical step)"
+          echo "=== Running drush deploy ==="
+          echo "Command: drush -l $URI deploy -y -v"
+          drush -l "$URI" deploy -y -v 2>&1 | tee /tmp/drush-deploy-${TIMESTAMP}.log
+          DRUSH_EXIT=$?
+          echo "drush deploy exit code: $DRUSH_EXIT"
+
+          if [ $DRUSH_EXIT -ne 0 ]; then
+            echo "::error::drush deploy failed (exit code $DRUSH_EXIT)"
+            # We don't exit here so the log still gets saved and maintenance mode gets turned off
+          fi
+          echo "::endgroup::"
+
+          # ────────────────────────────────────────────────────────────────
+          echo "::group::8. Post-deploy checks"
+          echo "=== Post-deploy quick checks ==="
+          drush -l "$URI" status --fields=bootstrap,db-status,theme,drush-version --format=string || echo "::warning::drush status command failed"
+          echo ""
+          drush -l "$URI" pm:list --status=enabled --type=module | grep -E 'civicrm|vite|token|pathauto' || echo "::warning::Some expected modules not visible"
+          echo "::endgroup::"
+
+          # ────────────────────────────────────────────────────────────────
+          echo "::group::9. Deploy log"
+          echo "=== Saving full deploy log ==="
+          LOG_DIR="$SHARED_PATH/logs"
+          mkdir -p "$LOG_DIR"
+          DEPLOY_LOG="$LOG_DIR/deploy-${TIMESTAMP}-${BRANCH}-${DEPLOY_SHA_SHORT}.log"
+
+          {
+            echo "Deployment log for ${URI}"
+            echo "Branch:     ${BRANCH}"
+            echo "Commit:     ${DEPLOY_SHA_SHORT} (${{ github.sha }})"
+            echo "Started:    $(date '+%Y-%m-%d %H:%M:%S %Z')"
+            echo "User:       ${{ github.actor || 'manual' }}"
+            echo ""
+            echo "Deployment revision: $(drush -l "$URI" state:get system.deployment_revision 2>/dev/null || echo 'not set')"
+            echo ""
+            echo "Drush deploy output:"
+            echo "----------------------------------------"
+            cat /tmp/drush-deploy-${TIMESTAMP}.log 2>/dev/null || echo "(no drush log captured)"
+            echo "----------------------------------------"
+            echo ""
+            echo "Final status:"
+            drush -l "$URI" status --format=yaml 2>/dev/null || echo "drush status failed"
+          } > "$DEPLOY_LOG"
+
+          echo "Full log saved to: $DEPLOY_LOG"
+          find "$LOG_DIR" -type f -name "deploy-*.log" -mtime +30 -delete
+          echo "::endgroup::"
+
+          # ────────────────────────────────────────────────────────────────
+          echo "::group::10. Finishing deployment"
+          echo "=== Disabling maintenance mode ==="
+          drush -l "$URI" maint:set 0 2>/dev/null || drush -l "$URI" state:set system.maintenance_mode 0 --input-format=integer -y
+          drush -l "$URI" cr --quiet
+          drush -l "$URI" config:delete system.maintenance message -y 2>/dev/null || true
+          echo "::endgroup::"
+
+          # ────────────────────────────────────────────────────────────────
+          echo "::group::Deployment finished"
+          echo "=============================================================="
+          echo "DEPLOY FINISHED: $(date '+%Y-%m-%d %H:%M:%S %Z')"
+          echo "Final exit code: $?"
+          echo "=============================================================="
+          echo "::endgroup::"
+          echo ""
+
+          EOF

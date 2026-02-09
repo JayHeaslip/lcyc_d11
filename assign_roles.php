@@ -1,5 +1,7 @@
 <?php
 
+// to run: drush scr assign_roles.php
+
 use Drupal\user\Entity\User;
 
 $emails = [
@@ -332,6 +334,10 @@ $emails = [
 "wnmarti@gmail.com"
 ];
 
+$memberCount = 0;
+$notFound = 0;
+$alreadyAssigned = 0;
+
 foreach ($emails as $email) {
   $users = \Drupal::entityTypeManager()->getStorage('user')->loadByProperties(['mail' => $email]);
   $user = reset($users);
@@ -341,10 +347,19 @@ foreach ($emails as $email) {
       $user->addRole('member');
       $user->save();
       print "Assigned 'member' role to user with email: $email (UID: " . $user->id() . ")\n";
+      $memberCount++;
     } else {
       print "User with email $email already has the 'member' role.\n";
+      $alreadyAssigned++;
     }
   } else {
     print "No user found with email: $email\n";
+    $notFound++;
   }
 }
+// Print summary after the loop
+
+print "\n";  // optional empty line for readability
+print "Assigned 'member' role to $memberCount user(s).\n";
+print "$alreadyAssigned user(s) already had the member role.\n";
+print "$notFound members were not found in the Drupal account list\n";

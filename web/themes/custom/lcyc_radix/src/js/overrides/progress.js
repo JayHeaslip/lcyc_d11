@@ -4,7 +4,7 @@
  * Credit to: Pierre Dureau (pdureau) for the initial code.
  */
 
-(($, Drupal) => {
+;(($, Drupal) => {
   /**
    * Theme function for the progress bar.
    *
@@ -27,8 +27,8 @@
       `</div>` +
       `<div class="progress__description"></div>` +
       `</div>`
-    );
-  };
+    )
+  }
 
   $.extend(
     Drupal.ProgressBar.prototype,
@@ -49,22 +49,22 @@
             .find('.progress-bar')
             // eslint-disable-next-line func-names
             .each(function () {
-              this.style.width = `${percentage}%`;
-            });
-          $(this.element).find('.progress-bar').html(`${percentage}%`);
-          $(this.element).find('.progress').attr('aria-valuenow', percentage);
+              this.style.width = `${percentage}%`
+            })
+          $(this.element).find('.progress-bar').html(`${percentage}%`)
+          $(this.element).find('.progress').attr('aria-valuenow', percentage)
         }
         if (message) {
           // Remove the unnecessary whitespace at the end of the message.
-          message = message.replace(/<br\/>&nbsp;|\s*$/, '');
+          message = message.replace(/<br\/>&nbsp;|\s*$/, '')
 
-          $('.progress__description', this.element).html(message);
+          $('.progress__description', this.element).html(message)
         }
         if (label) {
-          $('.progress__label', this.element).html(label);
+          $('.progress__label', this.element).html(label)
         }
         if (this.updateCallback) {
-          this.updateCallback(percentage, message, this);
+          this.updateCallback(percentage, message, this)
         }
       },
 
@@ -85,13 +85,13 @@
               'Close',
             )}"></button>` +
             `</div>`,
-        );
-        $(this.element).before(newError).hide();
+        )
+        $(this.element).before(newError).hide()
 
         if (this.errorCallback) {
-          this.errorCallback(this);
+          this.errorCallback(this)
         }
       },
     },
-  );
-})(jQuery, Drupal);
+  )
+})(jQuery, Drupal)

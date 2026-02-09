@@ -4,13 +4,12 @@
  * Credit to: Pierre Dureau (pdureau) for the initial code.
  */
 
-((Drupal) => {
+;((Drupal) => {
   /**
    * Theme function for a checkbox.
    *
    * @return {string}
    *   The HTML markup for the checkbox.
    */
-  Drupal.theme.checkbox = () =>
-    `<input type="checkbox" class="form-checkbox form-check-input">`;
-})(Drupal);
+  Drupal.theme.checkbox = () => `<input type="checkbox" class="form-checkbox form-check-input">`
+})(Drupal)

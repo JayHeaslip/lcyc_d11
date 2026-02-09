@@ -4,8 +4,8 @@
  * Credit to: Pierre Dureau (pdureau) for the initial code.
  */
 
-((Drupal, drupalSettings) => {
-  const activeClass = 'active';
+;((Drupal, drupalSettings) => {
+  const activeClass = 'active'
 
   /**
    * Append active class.
@@ -24,20 +24,18 @@
   Drupal.behaviors.activeLinks = {
     attach(context) {
       // Start by finding all potentially active links.
-      const { path } = drupalSettings;
-      const queryString = JSON.stringify(path.currentQuery);
+      const { path } = drupalSettings
+      const queryString = JSON.stringify(path.currentQuery)
       const querySelector = path.currentQuery
         ? `[data-drupal-link-query='${queryString}']`
-        : ':not([data-drupal-link-query])';
-      const originalSelectors = [
-        `[data-drupal-link-system-path="${path.currentPath}"]`,
-      ];
-      let selectors;
+        : ':not([data-drupal-link-query])'
+      const originalSelectors = [`[data-drupal-link-system-path="${path.currentPath}"]`]
+      let selectors
 
       // If this is the front page, we have to check for the <front> path as
       // well.
       if (path.isFront) {
-        originalSelectors.push('[data-drupal-link-system-path="<front>"]');
+        originalSelectors.push('[data-drupal-link-system-path="<front>"]')
       }
 
       // Add language filtering.
@@ -45,31 +43,29 @@
         // Links without any hreflang attributes (most of them).
         originalSelectors.map((selector) => `${selector}:not([hreflang])`),
         // Links with hreflang equals to the current language.
-        originalSelectors.map(
-          (selector) => `${selector}[hreflang="${path.currentLanguage}"]`,
-        ),
-      );
+        originalSelectors.map((selector) => `${selector}[hreflang="${path.currentLanguage}"]`),
+      )
 
       // Add query string selector for pagers, exposed filters.
-      selectors = selectors.map((current) => current + querySelector);
+      selectors = selectors.map((current) => current + querySelector)
 
       // Query the DOM.
-      const activeLinks = context.querySelectorAll(selectors.join(','));
-      const il = activeLinks.length;
+      const activeLinks = context.querySelectorAll(selectors.join(','))
+      const il = activeLinks.length
       for (let i = 0; i < il; i++) {
-        activeLinks[i].classList.add(activeClass);
+        activeLinks[i].classList.add(activeClass)
       }
     },
     detach(context, settings, trigger) {
       if (trigger === 'unload') {
         const activeLinks = context.querySelectorAll(
           `[data-drupal-link-system-path].${activeClass}`,
-        );
-        const il = activeLinks.length;
+        )
+        const il = activeLinks.length
         for (let i = 0; i < il; i++) {
-          activeLinks[i].classList.remove(activeClass);
+          activeLinks[i].classList.remove(activeClass)
         }
       }
     },
-  };
-})(Drupal, drupalSettings);
+  }
+})(Drupal, drupalSettings)

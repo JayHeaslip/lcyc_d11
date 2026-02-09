@@ -15,10 +15,10 @@
         }
     ],
     "require": {
-        "civicrm/civicrm-core": "6.10.0",
-        "civicrm/civicrm-drupal-8": "6.10.0",
-        "civicrm/civicrm-packages": "6.10.0",
-        "civicrm/cli-tools": "^2025.06",
+        "civicrm/civicrm-core": "^6.10",
+        "civicrm/civicrm-drupal-8": "^6.10",
+        "civicrm/civicrm-packages": "^6.10",
+        "civicrm/cli-tools": "^2025.12",
         "civicrm/composer-downloads-plugin": "^4.0",
         "composer/installers": "^2.3",
         "drupal/admin_toolbar": "^3.6",
@@ -55,14 +55,18 @@
         "drupal/registration": "^3.4",
         "drupal/smtp": "^1.4",
         "drupal/token": "^1.16",
+        "drupal/vapn": "^3.0",
         "drupal/viewfield": "^3.0@beta",
         "drupal/views_slideshow": "^5.0",
+        "drupal/vite": "^1.5",
         "drupal/vvjs": "^1.0",
         "drupal/webprofiler": "^11.1",
-        "drush/drush": "^13",
+        "drush/drush": "^13.7",
         "kigkonsult/icalcreator": "^2.41",
         "mglaman/composer-drupal-lenient": "^1.0",
-        "scssphp/scssphp": "1.10.*"
+        "psy/psysh": "0.12.19",
+        "scssphp/scssphp": "^1.10",
+        "symfony/process": "^7.4"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -88,9 +92,17 @@
         "sort-packages": true
     },
     "extra": {
+	"compile-mode": "whitelist",
+	"compile-whitelist": [
+            "civicrm/civicrm-core",
+            "civicrm/composer-compile-lib"
+	],
         "drupal-scaffold": {
             "locations": {
                 "web-root": "web/"
+            },
+	    "file-mapping": {
+		"[web-root]/.htaccess": false
             }
         },
         "installer-paths": {
