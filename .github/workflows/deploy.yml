@@ -15,7 +15,7 @@ jobs:
       # Centralized logic for paths
       BRANCH: ${{ github.ref == 'refs/heads/main' && 'main' || 'staging' }}
       TARGET_PATH: ${{ github.ref == 'refs/heads/main' && '/home/lcyc/lcyc.info' || '/home/lcyc/d11.lcyc.info' }}
-      SHARED_PATH: ${{ github.ref == 'refs/heads/main' && '/home/lcyc/shared/prod' || '/home/lcyc/shared/staging' }}
+      SHARED_PATH: ${{ github.ref == 'refs/heads/main' && '/home/lcyc/shared/production' || '/home/lcyc/shared/staging' }}
       URI: ${{ github.ref == 'refs/heads/main' && 'https://lcyc.info' || 'https://d11.lcyc.info' }}
 
     steps:
