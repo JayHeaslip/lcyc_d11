@@ -51,6 +51,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'web/themes/custom/lcyc_radix/package-lock.json'
       - run: |
           cd web/themes/custom/lcyc_radix
           npm ci
@@ -61,9 +63,16 @@ jobs:
         id: node-cache
         with:
           path: ~/.npm
-          key: $$   {{ runner.os }}-node-   $${{ hashFiles('web/themes/custom/lcyc_radix/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('web/themes/custom/lcyc_radix/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
+      - name: Install & Build (only if cache miss)
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: |
+          cd web/themes/custom/lcyc_radix
+          npm ci
+          npm run build            
             
       - name: Create deploy archive
         run: |
@@ -132,31 +141,7 @@ jobs:
           }
 
           # ────────────────────────────────────────────────────────────────
-          echo "::group::1. Maintenance mode"
-          echo "=== Enabling maintenance mode ==="
-          drush -l "$URI" maint:set 1 2>/dev/null || drush -l "$URI" state:set system.maintenance_mode 1 --input-format=integer -y
-          drush -l "$URI" cr --quiet || echo "::warning::Cache rebuild failed while enabling maintenance mode"
-          drush -l "$URI" config:set system.maintenance message "Site is being updated — back shortly." -y 2>/dev/null || true
-          echo "::endgroup::"
-
-          # ────────────────────────────────────────────────────────────────
-          echo "::group::2. Database backups"
-          echo "=== Creating database backups ==="
-          mkdir -p "$SHARED_PATH/backups"
-          TIMESTAMP="$(date +%F-%H%M%S)"
-
-          drush sql:dump --quiet --gzip --extra-dump=--no-tablespaces \
-            --result-file="$SHARED_PATH/backups/pre-deploy-${BRANCH}-${TIMESTAMP}.sql" || {
-              echo "::warning::Drupal database backup failed"
-            }
-
-          drush sql:dump --database=civicrm --quiet --gzip --extra-dump=--no-tablespaces \
-            --result-file="$SHARED_PATH/backups/civicrm-pre-deploy-${BRANCH}-${TIMESTAMP}.sql" 2>/dev/null || echo "::warning::CiviCRM backup skipped (database may not exist)"
-
-          find "$SHARED_PATH/backups" -type f -name "*.sql.gz" -mtime +7 -delete
-          echo "::endgroup::"
-
-          echo "::group::3. Code extraction & clean sync"
+          echo "::group::1. Code extraction & clean sync"
           echo "=== Preparing clean deployment ==="
           
           # Create a fresh temp dir for extraction (unique per deploy to avoid conflicts)
@@ -186,7 +171,7 @@ jobs:
             --exclude='web/.htaccess' \
             --exclude='web/robots.txt' \
             "$TEMP_DEPLOY_DIR/" \
-            "$TARGET_PATH/" || [ $? -eq 0 ] ||[ $? -eq 23 ] || [ $? -eq 24 ]
+            "$TARGET_PATH/" || [ $? -eq 0 ] || [ $? -eq 23 ] || [ $? -eq 24 ]
 
           if [ $? -ne 0 ] && [ $? -ne 23 ] && [ $? -ne 24 ]; then
             echo "::error::rsync failed with unexpected exit code $?"
@@ -201,7 +186,7 @@ jobs:
           echo "::endgroup::"
 
           # ────────────────────────────────────────────────────────────────
-          echo "::group::4. Shared config links"
+          echo "::group::2. Shared config links"
           echo "=== Linking shared configuration files ==="
           ln -sf "$SHARED_PATH/settings.php"           web/sites/default/settings.php
           ln -sf "$SHARED_PATH/civicrm.settings.php"   web/sites/default/civicrm.settings.php
@@ -209,7 +194,7 @@ jobs:
           echo "::endgroup::"
 
           # ────────────────────────────────────────────────────────────────
-          echo "::group::5. Vendor dependencies"
+          echo "::group::3. Vendor dependencies"
           echo "=== Installing / updating vendor dependencies ==="
           if [ ! -f vendor/autoload.php ] || [ composer.lock -nt vendor/autoload.php ]; then
             echo "composer.lock is newer or vendor/ missing → running composer install"
@@ -233,20 +218,56 @@ jobs:
           fi
           echo "::endgroup::"
 
+          # NEW optional: Verify Drush (helps debug)
+          echo "::group::3.1 Verify Drush availability"
+          DRUSH="$TARGET_PATH/vendor/bin/drush"
+          if [ -f "$DRUSH" ]; then
+            echo "Drush ready: $($DRUSH --version)"
+          else
+            echo "::error::Drush binary missing after vendor install!"
+          exit 1
+          fi
+          echo "::endgroup::"
+          
+          # ────────────────────────────────────────────────────────────────
+          echo "::group::4. Maintenance mode"
+          echo "=== Enabling maintenance mode ==="
+          $DRUSH -l "$URI" maint:set 1 2>/dev/null || $DRUSH -l "$URI" state:set system.maintenance_mode 1 --input-format=integer -y
+          $DRUSH -l "$URI" cr --quiet || echo "::warning::Cache rebuild failed while enabling maintenance mode"
+          $DRUSH -l "$URI" config:set system.maintenance message "Site is being updated — back shortly." -y 2>/dev/null || true
+          echo "::endgroup::"
+
+          # ────────────────────────────────────────────────────────────────
+          echo "::group::5. Database backups"
+          echo "=== Creating database backups ==="
+          mkdir -p "$SHARED_PATH/backups"
+          TIMESTAMP="$(date +%F-%H%M%S)"
+
+          $DRUSH sql:dump --quiet --gzip --extra-dump=--no-tablespaces \
+            --result-file="$SHARED_PATH/backups/pre-deploy-${BRANCH}-${TIMESTAMP}.sql" || {
+              echo "::warning::Drupal database backup failed"
+            }
+
+          $DRUSH sql:dump --database=civicrm --quiet --gzip --extra-dump=--no-tablespaces \
+            --result-file="$SHARED_PATH/backups/civicrm-pre-deploy-${BRANCH}-${TIMESTAMP}.sql" 2>/dev/null || echo "::warning::CiviCRM backup skipped (database may not exist)"
+
+          find "$SHARED_PATH/backups" -type f -name "*.sql.gz" -mtime +7 -delete
+          echo "::endgroup::"
+
           # ────────────────────────────────────────────────────────────────
           echo "::group::6. Deployment info"
           echo "=== Recording deployment info ==="
           NOW="$(date '+%Y-%m-%d %H:%M %Z')"
           DEPLOY_INFO="${DEPLOY_SHA_SHORT} on $NOW"
           echo "Setting deployment revision: $DEPLOY_INFO"
-          drush -l "$URI" state:set system.deployment_revision "$DEPLOY_INFO" -y
+          $DRUSH -l "$URI" state:set system.deployment_revision "$DEPLOY_INFO" -y
           echo "::endgroup::"
 
           # ────────────────────────────────────────────────────────────────
           echo "::group::7. Drush deploy (critical step)"
           echo "=== Running drush deploy ==="
           echo "Command: drush -l $URI deploy -y -v"
-          drush -l "$URI" deploy -y -v 2>&1 | tee /tmp/drush-deploy-${TIMESTAMP}.log
+          $DRUSH -l "$URI" deploy -y -v 2>&1 | tee /tmp/drush-deploy-${TIMESTAMP}.log
           DRUSH_EXIT=$?
           echo "drush deploy exit code: $DRUSH_EXIT"
 
@@ -259,9 +280,9 @@ jobs:
           # ────────────────────────────────────────────────────────────────
           echo "::group::8. Post-deploy checks"
           echo "=== Post-deploy quick checks ==="
-          drush -l "$URI" status --fields=bootstrap,db-status,theme,drush-version --format=string || echo "::warning::drush status command failed"
+          $DRUSH -l "$URI" status --fields=bootstrap,db-status,theme,drush-version --format=string || echo "::warning::drush status command failed"
           echo ""
-          drush -l "$URI" pm:list --status=enabled --type=module | grep -E 'civicrm|vite|token|pathauto' || echo "::warning::Some expected modules not visible"
+          $DRUSH -l "$URI" pm:list --status=enabled --type=module | grep -E 'civicrm|vite|token|pathauto' || echo "::warning::Some expected modules not visible"
           echo "::endgroup::"
 
           # ────────────────────────────────────────────────────────────────
@@ -286,7 +307,7 @@ jobs:
             echo "----------------------------------------"
             echo ""
             echo "Final status:"
-            drush -l "$URI" status --format=yaml 2>/dev/null || echo "drush status failed"
+            $DRUSH -l "$URI" status --format=yaml 2>/dev/null || echo "drush status failed"
           } > "$DEPLOY_LOG"
 
           echo "Full log saved to: $DEPLOY_LOG"
@@ -296,9 +317,9 @@ jobs:
           # ────────────────────────────────────────────────────────────────
           echo "::group::10. Finishing deployment"
           echo "=== Disabling maintenance mode ==="
-          drush -l "$URI" maint:set 0 2>/dev/null || drush -l "$URI" state:set system.maintenance_mode 0 --input-format=integer -y
-          drush -l "$URI" cr --quiet
-          drush -l "$URI" config:delete system.maintenance message -y 2>/dev/null || true
+          $DRUSH -l "$URI" maint:set 0 2>/dev/null || drush -l "$URI" state:set system.maintenance_mode 0 --input-format=integer -y
+          $DRUSH -l "$URI" cr --quiet
+          $DRUSH -l "$URI" config:delete system.maintenance message -y 2>/dev/null || true
           echo "::endgroup::"
 
           # ────────────────────────────────────────────────────────────────
