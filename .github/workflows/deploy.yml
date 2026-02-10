@@ -164,10 +164,13 @@ jobs:
           # --delete: delete files on destination NOT in source (this is the key!)
           # --exclude: protect writable/user-generated dirs and custom files
           rsync -a --delete \
-            --exclude='web/sites/default/files' \
+            --exclude='web/sites/default/' \
+            --exclude='web/sites/default/files/' \
             --exclude='web/sites/default/settings.php' \
             --exclude='web/sites/default/civicrm.settings.php' \
             --exclude='web/.htaccess' \
+            --exclude='web/phpinfo.php' \
+            --exclude='web/update.php' \
             --exclude='web/robots.txt' \
             "$TEMP_DEPLOY_DIR/" \
             "$TARGET_PATH/" || [ $? -eq 0 ] || [ $? -eq 23 ] || [ $? -eq 24 ]
