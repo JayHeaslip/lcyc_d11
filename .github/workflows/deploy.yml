@@ -180,13 +180,11 @@ jobs:
           # --delete: delete files on destination NOT in source (this is the key!)
           # --exclude: protect writable/user-generated dirs and custom files
           rsync -av --delete \
-            --exclude='sites/default/files' \
-            --exclude='sites/default/settings.php' \
-            --exclude='sites/default/civicrm.settings.php' \
-            --exclude='sites/default/services.yml' \     # if you have custom ones
-            --exclude='.htaccess' \                      # if customized
-            --exclude='robots.txt' \                     # if customized
-            --exclude='private/' \                       # if you have private files dir
+            --exclude='web/sites/default/files' \
+            --exclude='web/sites/default/settings.php' \
+            --exclude='web/sites/default/civicrm.settings.php' \
+            --exclude='web/.htaccess' \
+            --exclude='web/robots.txt' \
             "$TEMP_DEPLOY_DIR/" \
             "$TARGET_PATH/" || {
               echo "::error::rsync failed during deployment"
