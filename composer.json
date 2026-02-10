@@ -29,6 +29,7 @@
         "drupal/civicrm_drush": "^4.0",
         "drupal/civicrm_entity": "^4.0",
         "drupal/color": "^2.x-dev",
+        "drupal/config_split": "^2.0",
         "drupal/content_access": "^2.1@RC",
         "drupal/core-composer-scaffold": "^11.2",
         "drupal/core-project-message": "^11.2",

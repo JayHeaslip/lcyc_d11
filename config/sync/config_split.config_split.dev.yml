@@ -1,0 +1,20 @@
+uuid: 1631e384-63d3-493a-ae50-453833a4de4e
+langcode: en
+status: false
+dependencies: {  }
+id: dev
+label: dev
+description: ''
+weight: 0
+stackable: false
+no_patching: false
+storage: folder
+folder: ../config/dev
+module:
+  devel: 0
+  devel_generate: 0
+theme: {  }
+complete_list:
+  - block.block.lcyc_radix_copyright
+partial_list:
+  - block.block.lcyc_radix_copyright
