@@ -161,10 +161,9 @@ jobs:
           echo "=== Syncing new code with deletion of removed files ==="
           # Rsync from temp → live root
           # -a: archive mode (perms, times, recursive, symlinks)
-          # -v: verbose
           # --delete: delete files on destination NOT in source (this is the key!)
           # --exclude: protect writable/user-generated dirs and custom files
-          rsync -av --delete \
+          rsync -a --delete \
             --exclude='web/sites/default/files' \
             --exclude='web/sites/default/settings.php' \
             --exclude='web/sites/default/civicrm.settings.php' \
