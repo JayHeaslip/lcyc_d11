@@ -156,14 +156,47 @@ jobs:
           find "$SHARED_PATH/backups" -type f -name "*.sql.gz" -mtime +7 -delete
           echo "::endgroup::"
 
-          # ────────────────────────────────────────────────────────────────
-          echo "::group::3. Code extraction"
-          echo "=== Extracting new code ==="
-          tar -xzf deploy-archive/deploy.tar.gz || { 
+          echo "::group::3. Code extraction & clean sync"
+          echo "=== Preparing clean deployment ==="
+          
+          # Create a fresh temp dir for extraction (unique per deploy to avoid conflicts)
+          TEMP_DEPLOY_DIR="$TARGET_PATH/deploy-temp-$(date +%s)"
+          mkdir -p "$TEMP_DEPLOY_DIR"
+          
+          # Extract tar to temp dir
+          tar -xzf deploy-archive/deploy.tar.gz -C "$TEMP_DEPLOY_DIR" || {
             echo "::error::Failed to extract deployment archive"
-            exit 1; 
+            rm -rf "$TEMP_DEPLOY_DIR"
+            exit 1;
           }
-          rm -rf deploy-archive
+          
+          # Remove the uploaded tar to save space
+          rm -f deploy-archive/deploy.tar.gz
+          
+          echo "=== Syncing new code with deletion of removed files ==="
+          # Rsync from temp → live root
+          # -a: archive mode (perms, times, recursive, symlinks)
+          # -v: verbose
+          # --delete: delete files on destination NOT in source (this is the key!)
+          # --exclude: protect writable/user-generated dirs and custom files
+          rsync -av --delete \
+            --exclude='sites/default/files' \
+            --exclude='sites/default/settings.php' \
+            --exclude='sites/default/civicrm.settings.php' \
+            --exclude='sites/default/services.yml' \     # if you have custom ones
+            --exclude='.htaccess' \                      # if customized
+            --exclude='robots.txt' \                     # if customized
+            --exclude='private/' \                       # if you have private files dir
+            "$TEMP_DEPLOY_DIR/" \
+            "$TARGET_PATH/" || {
+              echo "::error::rsync failed during deployment"
+              rm -rf "$TEMP_DEPLOY_DIR"
+              exit 1;
+            }
+          
+          # Clean up temp dir
+          rm -rf "$TEMP_DEPLOY_DIR"
+          
           echo "::endgroup::"
 
           # ────────────────────────────────────────────────────────────────
