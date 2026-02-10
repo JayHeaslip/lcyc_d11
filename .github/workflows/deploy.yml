@@ -186,11 +186,14 @@ jobs:
             --exclude='web/.htaccess' \
             --exclude='web/robots.txt' \
             "$TEMP_DEPLOY_DIR/" \
-            "$TARGET_PATH/" || {
-              echo "::error::rsync failed during deployment"
-              rm -rf "$TEMP_DEPLOY_DIR"
-              exit 1;
-            }
+            "$TARGET_PATH/" || [ $? -eq 0 ] ||[ $? -eq 23 ] || [ $? -eq 24 ]
+
+          if [ $? -ne 0 ] && [ $? -ne 23 ] && [ $? -ne 24 ]; then
+            echo "::error::rsync failed with unexpected exit code $?"
+            exit 1
+          fi
+
+          echo "rsync completed successfully"
           
           # Clean up temp dir
           rm -rf "$TEMP_DEPLOY_DIR"
