@@ -159,7 +159,14 @@ jobs:
           rm -f deploy-archive/deploy.tar.gz
           
           echo "=== Syncing new code with deletion of removed files ==="
-          # Rsync from temp → live root
+          echo "=== Rsync command debug ==="
+          echo "Source (should be temp): $TEMP_DEPLOY_DIR/"
+          echo "Destination (should be live): $TARGET_PATH/"
+          echo "Listing first few items in source:"
+          ls -la "$TEMP_DEPLOY_DIR/" | head -n 15
+          echo "Listing first few items in destination:"
+          ls -la "$TARGET_PATH/" | head -n 15
+          echo "=== Starting rsync ==="          # Rsync from temp → live root
           # -a: archive mode (perms, times, recursive, symlinks)
           # --delete: delete files on destination NOT in source (this is the key!)
           # --exclude: protect writable/user-generated dirs and custom files
