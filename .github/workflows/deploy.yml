@@ -145,7 +145,7 @@ jobs:
           echo "=== Preparing clean deployment ==="
           
           # Create a fresh temp dir for extraction (unique per deploy to avoid conflicts)
-          TEMP_DEPLOY_DIR="$TARGET_PATH/deploy-temp-$(date +%s)"
+          TEMP_DEPLOY_DIR="/tmp/deploy-temp-$(date +%s)"
           mkdir -p "$TEMP_DEPLOY_DIR"
           
           # Extract tar to temp dir
@@ -158,26 +158,15 @@ jobs:
           # Remove the uploaded tar to save space
           rm -f deploy-archive/deploy.tar.gz
           
-          echo "=== Syncing new code with deletion of removed files ==="
-          echo "=== Rsync command debug ==="
-          echo "Source (should be temp): $TEMP_DEPLOY_DIR/"
-          echo "Destination (should be live): $TARGET_PATH/"
-          echo "Listing first few items in source:"
-          ls -la "$TEMP_DEPLOY_DIR/" | head -n 15
-          echo "Listing first few items in destination:"
-          ls -la "$TARGET_PATH/" | head -n 15
           echo "=== Starting rsync ==="          # Rsync from temp → live root
           # -a: archive mode (perms, times, recursive, symlinks)
           # --delete: delete files on destination NOT in source (this is the key!)
           # --exclude: protect writable/user-generated dirs and custom files
           rsync -a --delete \
-            --exclude='web/sites/default/' \
             --exclude='web/sites/default/files/' \
             --exclude='web/sites/default/settings.php' \
             --exclude='web/sites/default/civicrm.settings.php' \
             --exclude='web/.htaccess' \
-            --exclude='web/phpinfo.php' \
-            --exclude='web/update.php' \
             --exclude='web/robots.txt' \
             "$TEMP_DEPLOY_DIR/" \
             "$TARGET_PATH/" || [ $? -eq 0 ] || [ $? -eq 23 ] || [ $? -eq 24 ]
