@@ -5,6 +5,5 @@ content_access_roles_gids:
   anonymous: 2
   authenticated: 3
   administrator: 4
-  affiliate: 5
   editor: 6
   member: 7
