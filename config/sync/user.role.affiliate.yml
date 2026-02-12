@@ -7,7 +7,7 @@ dependencies:
     - search
     - system
 id: affiliate
-label: member
+label: Affiliate
 weight: 3
 is_admin: false
 permissions:

@@ -7,3 +7,4 @@ content_access_roles_gids:
   administrator: 4
   affiliate: 5
   editor: 6
+  member: 7
