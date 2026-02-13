@@ -1,0 +1,21 @@
+uuid: 48637886-c219-43ef-97a3-f7ce9112cfbb
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - lcyc_radix
+id: lcyc_radix_searchform
+theme: lcyc_radix
+region: sidebar_tall
+weight: 0
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form'
+  label_display: '0'
+  provider: search
+  page_id: null
+visibility: {  }
