@@ -85,9 +85,11 @@ jobs:
           mkdir -p '${{ env.TARGET_PATH }}/deploy-archive/'
           "
             
-      - name: Deploy files via SCP (clean & fast)
+      - name: Deploy artifact via rsync
         run: |
-          scp -i key -o StrictHostKeyChecking=no -r deploy-archive/deploy.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:"${{ env.TARGET_PATH }}/deploy-archive/"
+          rsync -avz --progress -e "ssh -i key -o StrictHostKeyChecking=no" \
+          deploy-archive/deploy.tar.gz \
+          $$   {{ secrets.USERNAME }}@   $${{ secrets.HOST }}:"${{ env.TARGET_PATH }}/deploy-archive/"
 
       - name: Prepare short SHA for deploy info
         run: echo "DEPLOY_SHA_SHORT=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
