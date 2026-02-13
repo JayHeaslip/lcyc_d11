@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Cache Composer packages
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         id: composer-cache  # Optional: useful for conditional steps
         with:
           path: ~/.cache/composer
@@ -47,33 +47,19 @@ jobs:
           composer validate --strict
           composer install --prefer-dist --no-dev --optimize-autoloader --no-progress
 
-      - name: Setup Node.js & Build Theme
-        uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: 'web/themes/custom/lcyc_radix/package-lock.json'
-      - run: |
-          cd web/themes/custom/lcyc_radix
-          npm ci
-          npm run build
+          cache-dependency-path: 'web/themes/custom/lcyc_radix/package-lock.json'   # ← critical for nested lockfile
 
-      - name: Cache node modules
-        uses: actions/cache@v4
-        id: node-cache
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('web/themes/custom/lcyc_radix/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install & Build (only if cache miss)
-        if: steps.node-cache.outputs.cache-hit != 'true'
+      - name: Install & build frontend assets
         run: |
           cd web/themes/custom/lcyc_radix
           npm ci
-          npm run build            
-            
+          npm run build
+          
       - name: Create deploy archive
         run: |
           mkdir -p deploy-archive
@@ -88,18 +74,19 @@ jobs:
           --exclude='.github' \
           .
               
-      - name: Ensure remote deploy-archive directory exists
+      - name: Prepare SSH key
         run: |
           echo "${{ secrets.SSH_KEY }}" > key
           chmod 600 key
+          
+      - name: Ensure remote deploy-archive directory exists
+        run: |
           ssh -i key -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} "
           mkdir -p '${{ env.TARGET_PATH }}/deploy-archive/'
           "
             
       - name: Deploy files via SCP (clean & fast)
         run: |
-          echo "${{ secrets.SSH_KEY }}" > key
-          chmod 600 key
           scp -i key -o StrictHostKeyChecking=no -r deploy-archive/deploy.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:"${{ env.TARGET_PATH }}/deploy-archive/"
 
       - name: Prepare short SHA for deploy info
@@ -107,8 +94,6 @@ jobs:
 
       - name: Remote Post-Deploy (SSH commands)
         run: |
-          echo "${{ secrets.SSH_KEY }}" > key
-          chmod 600 key
           ssh -T -i key -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
           set -euo pipefail
 
@@ -197,7 +182,7 @@ jobs:
           if [ ! -f vendor/autoload.php ] || [ composer.lock -nt vendor/autoload.php ]; then
             echo "composer.lock is newer or vendor/ missing → running composer install"
             export COMPOSER_MEMORY_LIMIT=-1
-            php /home/lcyc/composer.phar install \
+            vendor/bin/composer install \
               --no-dev \
               --prefer-dist \
               --optimize-autoloader \
@@ -230,7 +215,7 @@ jobs:
           # ────────────────────────────────────────────────────────────────
           echo "::group::4. Maintenance mode"
           echo "=== Enabling maintenance mode ==="
-          $DRUSH -l "$URI" maint:set 1 2>/dev/null || $DRUSH -l "$URI" state:set system.maintenance_mode 1 --input-format=integer -y
+          $DRUSH -l "$URI" state:set system.maintenance_mode 1 --input-format=integer -y
           $DRUSH -l "$URI" cr --quiet || echo "::warning::Cache rebuild failed while enabling maintenance mode"
           $DRUSH -l "$URI" config:set system.maintenance message "Site is being updated — back shortly." -y 2>/dev/null || true
           echo "::endgroup::"
@@ -297,7 +282,7 @@ jobs:
             echo "Started:    $(date '+%Y-%m-%d %H:%M:%S %Z')"
             echo "User:       ${{ github.actor || 'manual' }}"
             echo ""
-            echo "Deployment revision: $(drush -l "$URI" state:get system.deployment_revision 2>/dev/null || echo 'not set')"
+            echo "Deployment revision: $($DRUSH -l "$URI" state:get system.deployment_revision 2>/dev/null || echo 'not set')"
             echo ""
             echo "Drush deploy output:"
             echo "----------------------------------------"
@@ -315,7 +300,7 @@ jobs:
           # ────────────────────────────────────────────────────────────────
           echo "::group::10. Finishing deployment"
           echo "=== Disabling maintenance mode ==="
-          $DRUSH -l "$URI" maint:set 0 2>/dev/null || drush -l "$URI" state:set system.maintenance_mode 0 --input-format=integer -y
+          $DRUSH -l "$URI" state:set system.maintenance_mode 0 --input-format=integer -y
           $DRUSH -l "$URI" cr --quiet
           $DRUSH -l "$URI" config:delete system.maintenance message -y 2>/dev/null || true
           echo "::endgroup::"
