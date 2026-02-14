@@ -93,226 +93,228 @@ jobs:
       - name: Prepare short SHA for deploy info
         run: echo "DEPLOY_SHA_SHORT=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
 
-      - name: Remote Post-Deploy (SSH commands)
-        run: |
-          ssh -T -i key -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
-          set -euo pipefail
+      - name: Remote Post-Deploy via appleboy/ssh-action
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |        
+            set -euo pipefail
 
-          source ~/.bash_profile 2>/dev/null || true
-          export TZ='America/New_York'
+            source ~/.bash_profile 2>/dev/null || true
+            export TZ='America/New_York'
 
-          TARGET_PATH="${{ env.TARGET_PATH }}"
-          SHARED_PATH="${{ env.SHARED_PATH }}"
-          URI="${{ env.URI }}"
-          BRANCH="${{ env.BRANCH }}"
-          DEPLOY_SHA_SHORT="${{ env.DEPLOY_SHA_SHORT }}"
+            TARGET_PATH="${{ env.TARGET_PATH }}"
+            SHARED_PATH="${{ env.SHARED_PATH }}"
+            URI="${{ env.URI }}"
+            BRANCH="${{ env.BRANCH }}"
+            DEPLOY_SHA_SHORT="${{ env.DEPLOY_SHA_SHORT }}"
 
-          # ────────────────────────────────────────────────────────────────
-          #  DEPLOY START HEADER
-          # ────────────────────────────────────────────────────────────────
-          echo "::group::Deployment started"
-          echo "=============================================================="
-          echo "DEPLOY STARTED: $(date '+%Y-%m-%d %H:%M:%S %Z')   branch=${BRANCH}"
-          echo "Target:       ${TARGET_PATH}"
-          echo "URI:          ${URI}"
-          echo "Commit:       ${DEPLOY_SHA_SHORT} (${{ github.sha }})"
-          echo "Triggered by: ${{ github.actor || 'manual dispatch' }}"
-          echo "=============================================================="
-          echo "::endgroup::"
-          echo ""
+            # ────────────────────────────────────────────────────────────────
+            #  DEPLOY START HEADER
+            # ────────────────────────────────────────────────────────────────
+            echo "::group::Deployment started"
+            echo "=============================================================="
+            echo "DEPLOY STARTED: $(date '+%Y-%m-%d %H:%M:%S %Z')   branch=${BRANCH}"
+            echo "Target:       ${TARGET_PATH}"
+            echo "URI:          ${URI}"
+            echo "Commit:       ${DEPLOY_SHA_SHORT} (${{ github.sha }})"
+            echo "Triggered by: ${{ github.actor || 'manual dispatch' }}"
+            echo "=============================================================="
+            echo "::endgroup::"
+            echo ""
 
-          cd "$TARGET_PATH" || { 
-            echo "::error::Cannot change to target directory: ${TARGET_PATH}"
-            exit 1; 
-          }
+            cd "$TARGET_PATH" || { 
+              echo "::error::Cannot change to target directory: ${TARGET_PATH}"
+              exit 1; 
+            }
 
-          # ────────────────────────────────────────────────────────────────
-          echo "::group::1. Code extraction & clean sync"
-          echo "=== Preparing clean deployment ==="
+            # ────────────────────────────────────────────────────────────────
+            echo "::group::1. Code extraction & clean sync"
+            echo "=== Preparing clean deployment ==="
           
-          # Create a fresh temp dir for extraction (unique per deploy to avoid conflicts)
-          TEMP_DEPLOY_DIR="/tmp/deploy-temp-$(date +%s)"
-          mkdir -p "$TEMP_DEPLOY_DIR"
+            # Create a fresh temp dir for extraction (unique per deploy to avoid conflicts)
+            TEMP_DEPLOY_DIR="/tmp/deploy-temp-$(date +%s)"
+            mkdir -p "$TEMP_DEPLOY_DIR"
           
-          # Extract tar to temp dir
-          tar -xzf deploy-archive/deploy.tar.gz -C "$TEMP_DEPLOY_DIR" || {
-            echo "::error::Failed to extract deployment archive"
+            # Extract tar to temp dir
+            tar -xzf deploy-archive/deploy.tar.gz -C "$TEMP_DEPLOY_DIR" || {
+              echo "::error::Failed to extract deployment archive"
+              rm -rf "$TEMP_DEPLOY_DIR"
+              exit 1;
+            }
+          
+            # Remove the uploaded tar to save space
+            rm -f deploy-archive/deploy.tar.gz
+          
+            echo "=== Starting rsync ==="          # Rsync from temp → live root
+            # -a: archive mode (perms, times, recursive, symlinks)
+            # --delete: delete files on destination NOT in source (this is the key!)
+            # --exclude: protect writable/user-generated dirs and custom files
+            rsync -a --delete \
+              --exclude='web/sites/default/files/' \
+              --exclude='web/sites/default/settings.php' \
+              --exclude='web/sites/default/civicrm.settings.php' \
+              --exclude='web/.htaccess' \
+              --exclude='web/robots.txt' \
+              "$TEMP_DEPLOY_DIR/" \
+              "$TARGET_PATH/" || [ $? -eq 0 ] || [ $? -eq 23 ] || [ $? -eq 24 ]
+
+            if [ $? -ne 0 ] && [ $? -ne 23 ] && [ $? -ne 24 ]; then
+              echo "::error::rsync failed with unexpected exit code $?"
+              exit 1
+            fi
+
+            echo "rsync completed successfully"
+          
+            # Clean up temp dir
             rm -rf "$TEMP_DEPLOY_DIR"
-            exit 1;
-          }
           
-          # Remove the uploaded tar to save space
-          rm -f deploy-archive/deploy.tar.gz
-          
-          echo "=== Starting rsync ==="          # Rsync from temp → live root
-          # -a: archive mode (perms, times, recursive, symlinks)
-          # --delete: delete files on destination NOT in source (this is the key!)
-          # --exclude: protect writable/user-generated dirs and custom files
-          rsync -a --delete \
-            --exclude='web/sites/default/files/' \
-            --exclude='web/sites/default/settings.php' \
-            --exclude='web/sites/default/civicrm.settings.php' \
-            --exclude='web/.htaccess' \
-            --exclude='web/robots.txt' \
-            "$TEMP_DEPLOY_DIR/" \
-            "$TARGET_PATH/" || [ $? -eq 0 ] || [ $? -eq 23 ] || [ $? -eq 24 ]
+            echo "::endgroup::"
 
-          if [ $? -ne 0 ] && [ $? -ne 23 ] && [ $? -ne 24 ]; then
-            echo "::error::rsync failed with unexpected exit code $?"
-            exit 1
-          fi
-
-          echo "rsync completed successfully"
-          
-          # Clean up temp dir
-          rm -rf "$TEMP_DEPLOY_DIR"
-          
-          echo "::endgroup::"
-
-          # ────────────────────────────────────────────────────────────────
-          echo "::group::2. Shared config links"
-          echo "=== Linking shared configuration files ==="
-          ln -sf "$SHARED_PATH/settings.php"           web/sites/default/settings.php
-          ln -sf "$SHARED_PATH/civicrm.settings.php"   web/sites/default/civicrm.settings.php
-          chmod 644 web/sites/default/civicrm.settings.php 2>/dev/null || true
-          echo "::endgroup::"
-
-          # ────────────────────────────────────────────────────────────────
-          echo "::group::3. Vendor dependencies"
-          echo "=== Installing / updating vendor dependencies ==="
-          if [ ! -f vendor/autoload.php ] || [ composer.lock -nt vendor/autoload.php ]; then
+            # ────────────────────────────────────────────────────────────────
+            echo "::group::2. Shared config links"
+            echo "=== Linking shared configuration files ==="
+            ln -sf "$SHARED_PATH/settings.php"           web/sites/default/settings.php
+            ln -sf "$SHARED_PATH/civicrm.settings.php"   web/sites/default/civicrm.settings.php
+            chmod 644 web/sites/default/civicrm.settings.php 2>/dev/null || true
+            echo "::endgroup::"
+            
+            # ────────────────────────────────────────────────────────────────
+            echo "::group::3. Vendor dependencies"
+            echo "=== Installing / updating vendor dependencies ==="
+            if [ ! -f vendor/autoload.php ] || [ composer.lock -nt vendor/autoload.php ]; then
             echo "composer.lock is newer or vendor/ missing → running composer install"
             export COMPOSER_MEMORY_LIMIT=-1
             /home/lcyc/bin/composer install \
-              --no-dev \
-              --prefer-dist \
-              --optimize-autoloader \
-              --no-progress \
-              --no-interaction 2>&1 | tee /tmp/composer-install.log || {
-                echo "::error::Composer install failed"
-                exit 1
-              }
-          else
-            echo "vendor/ appears up to date"
-          fi
-
-          if [ ! -f vendor/autoload.php ]; then
-            echo "::error::vendor/autoload.php is missing after composer install attempt"
+            --no-dev \
+            --prefer-dist \
+            --optimize-autoloader \
+            --no-progress \
+            --no-interaction 2>&1 | tee /tmp/composer-install.log || {
+            echo "::error::Composer install failed"
             exit 1
-          fi
-          echo "::endgroup::"
-
-          # NEW optional: Verify Drush (helps debug)
-          echo "::group::3.1 Verify Drush availability"
-          DRUSH="$TARGET_PATH/vendor/bin/drush"
-          if [ -f "$DRUSH" ]; then
-            echo "Drush ready: $($DRUSH --version)"
-          else
-            echo "::error::Drush binary missing after vendor install!"
-          exit 1
-          fi
-          echo "::endgroup::"
-          
-          # ────────────────────────────────────────────────────────────────
-          echo "::group::4. Maintenance mode"
-          echo "=== Enabling maintenance mode ==="
-          $DRUSH -l "$URI" state:set system.maintenance_mode 1 --input-format=integer -y
-          $DRUSH -l "$URI" cr --quiet || echo "::warning::Cache rebuild failed while enabling maintenance mode"
-          $DRUSH -l "$URI" config:set system.maintenance message "Site is being updated — back shortly." -y 2>/dev/null || true
-          echo "::endgroup::"
-
-          # ────────────────────────────────────────────────────────────────
-          echo "::group::5. Database backups"
-          echo "=== Creating database backups ==="
-          mkdir -p "$SHARED_PATH/backups"
-          TIMESTAMP="$(date +%F-%H%M%S)"
-
-          $DRUSH sql:dump --quiet --gzip --extra-dump=--no-tablespaces \
-            --result-file="$SHARED_PATH/backups/pre-deploy-${BRANCH}-${TIMESTAMP}.sql" || {
-              echo "::warning::Drupal database backup failed"
             }
-
-          $DRUSH sql:dump --database=civicrm --quiet --gzip --extra-dump=--no-tablespaces \
+            else
+            echo "vendor/ appears up to date"
+            fi
+            
+            if [ ! -f vendor/autoload.php ]; then
+              echo "::error::vendor/autoload.php is missing after composer install attempt"
+              exit 1
+            fi
+            echo "::endgroup::"
+            
+            # NEW optional: Verify Drush (helps debug)
+            echo "::group::3.1 Verify Drush availability"
+            DRUSH="$TARGET_PATH/vendor/bin/drush"
+            if [ -f "$DRUSH" ]; then
+              echo "Drush ready: $($DRUSH --version)"
+            else
+              echo "::error::Drush binary missing after vendor install!"
+              exit 1
+            fi
+            echo "::endgroup::"
+            
+            # ────────────────────────────────────────────────────────────────
+            echo "::group::4. Maintenance mode"
+            echo "=== Enabling maintenance mode ==="
+            $DRUSH -l "$URI" state:set system.maintenance_mode 1 --input-format=integer -y
+            $DRUSH -l "$URI" cr --quiet || echo "::warning::Cache rebuild failed while enabling maintenance mode"
+            $DRUSH -l "$URI" config:set system.maintenance message "Site is being updated — back shortly." -y 2>/dev/null || true
+            echo "::endgroup::"
+            
+            # ────────────────────────────────────────────────────────────────
+            echo "::group::5. Database backups"
+            echo "=== Creating database backups ==="
+            mkdir -p "$SHARED_PATH/backups"
+            TIMESTAMP="$(date +%F-%H%M%S)"
+            
+            $DRUSH sql:dump --quiet --gzip --extra-dump=--no-tablespaces \
+            --result-file="$SHARED_PATH/backups/pre-deploy-${BRANCH}-${TIMESTAMP}.sql" || {
+            echo "::warning::Drupal database backup failed"
+            }
+            
+            $DRUSH sql:dump --database=civicrm --quiet --gzip --extra-dump=--no-tablespaces \
             --result-file="$SHARED_PATH/backups/civicrm-pre-deploy-${BRANCH}-${TIMESTAMP}.sql" 2>/dev/null || echo "::warning::CiviCRM backup skipped (database may not exist)"
-
-          find "$SHARED_PATH/backups" -type f -name "*.sql.gz" -mtime +7 -delete
-          echo "::endgroup::"
-
-          # ────────────────────────────────────────────────────────────────
-          echo "::group::6. Deployment info"
-          echo "=== Recording deployment info ==="
-          NOW="$(date '+%Y-%m-%d %H:%M %Z')"
-          DEPLOY_INFO="${DEPLOY_SHA_SHORT} on $NOW"
-          echo "Setting deployment revision: $DEPLOY_INFO"
-          $DRUSH -l "$URI" state:set system.deployment_revision "$DEPLOY_INFO" -y
-          echo "::endgroup::"
-
-          # ────────────────────────────────────────────────────────────────
-          echo "::group::7. Drush deploy (critical step)"
-          echo "=== Running drush deploy ==="
-          echo "Command: drush -l $URI deploy -y -v"
-          $DRUSH -l "$URI" deploy -y -v 2>&1 | tee /tmp/drush-deploy-${TIMESTAMP}.log
-          DRUSH_EXIT=$?
-          echo "drush deploy exit code: $DRUSH_EXIT"
-
-          if [ $DRUSH_EXIT -ne 0 ]; then
-            echo "::error::drush deploy failed (exit code $DRUSH_EXIT)"
-            # We don't exit here so the log still gets saved and maintenance mode gets turned off
-          fi
-          echo "::endgroup::"
-
-          # ────────────────────────────────────────────────────────────────
-          echo "::group::8. Post-deploy checks"
-          echo "=== Post-deploy quick checks ==="
-          $DRUSH -l "$URI" status --fields=bootstrap,db-status,theme,drush-version --format=string || echo "::warning::drush status command failed"
-          echo ""
-          $DRUSH -l "$URI" pm:list --status=enabled --type=module | grep -E 'civicrm|vite|token|pathauto' || echo "::warning::Some expected modules not visible"
-          echo "::endgroup::"
-
-          # ────────────────────────────────────────────────────────────────
-          echo "::group::9. Deploy log"
-          echo "=== Saving full deploy log ==="
-          LOG_DIR="$SHARED_PATH/logs"
-          mkdir -p "$LOG_DIR"
-          DEPLOY_LOG="$LOG_DIR/deploy-${TIMESTAMP}-${BRANCH}-${DEPLOY_SHA_SHORT}.log"
-
-          {
-            echo "Deployment log for ${URI}"
-            echo "Branch:     ${BRANCH}"
-            echo "Commit:     ${DEPLOY_SHA_SHORT} (${{ github.sha }})"
-            echo "Started:    $(date '+%Y-%m-%d %H:%M:%S %Z')"
-            echo "User:       ${{ github.actor || 'manual' }}"
+            
+            find "$SHARED_PATH/backups" -type f -name "*.sql.gz" -mtime +7 -delete
+            echo "::endgroup::"
+            
+            # ────────────────────────────────────────────────────────────────
+            echo "::group::6. Deployment info"
+            echo "=== Recording deployment info ==="
+            NOW="$(date '+%Y-%m-%d %H:%M %Z')"
+            DEPLOY_INFO="${DEPLOY_SHA_SHORT} on $NOW"
+            echo "Setting deployment revision: $DEPLOY_INFO"
+            $DRUSH -l "$URI" state:set system.deployment_revision "$DEPLOY_INFO" -y
+            echo "::endgroup::"
+            
+            # ────────────────────────────────────────────────────────────────
+            echo "::group::7. Drush deploy (critical step)"
+            echo "=== Running drush deploy ==="
+            echo "Command: drush -l $URI deploy -y -v"
+            $DRUSH -l "$URI" deploy -y -v 2>&1 | tee /tmp/drush-deploy-${TIMESTAMP}.log
+            DRUSH_EXIT=$?
+            echo "drush deploy exit code: $DRUSH_EXIT"
+            
+            if [ $DRUSH_EXIT -ne 0 ]; then
+              echo "::error::drush deploy failed (exit code $DRUSH_EXIT)"
+              # We don't exit here so the log still gets saved and maintenance mode gets turned off
+            fi
+            echo "::endgroup::"
+            
+            # ────────────────────────────────────────────────────────────────
+            echo "::group::8. Post-deploy checks"
+            echo "=== Post-deploy quick checks ==="
+            $DRUSH -l "$URI" status --fields=bootstrap,db-status,theme,drush-version --format=string || echo "::warning::drush status command failed"
             echo ""
-            echo "Deployment revision: $($DRUSH -l "$URI" state:get system.deployment_revision 2>/dev/null || echo 'not set')"
+            $DRUSH -l "$URI" pm:list --status=enabled --type=module | grep -E 'civicrm|vite|token|pathauto' || echo "::warning::Some expected modules not visible"
+            echo "::endgroup::"
+            
+            # ────────────────────────────────────────────────────────────────
+            echo "::group::9. Deploy log"
+            echo "=== Saving full deploy log ==="
+            LOG_DIR="$SHARED_PATH/logs"
+            mkdir -p "$LOG_DIR"
+            DEPLOY_LOG="$LOG_DIR/deploy-${TIMESTAMP}-${BRANCH}-${DEPLOY_SHA_SHORT}.log"
+            
+            {
+              echo "Deployment log for ${URI}"
+              echo "Branch:     ${BRANCH}"
+              echo "Commit:     ${DEPLOY_SHA_SHORT} (${{ github.sha }})"
+              echo "Started:    $(date '+%Y-%m-%d %H:%M:%S %Z')"
+              echo "User:       ${{ github.actor || 'manual' }}"
+              echo ""
+              echo "Deployment revision: $($DRUSH -l "$URI" state:get system.deployment_revision 2>/dev/null || echo 'not set')"
+              echo ""
+              echo "Drush deploy output:"
+              echo "----------------------------------------"
+              cat /tmp/drush-deploy-${TIMESTAMP}.log 2>/dev/null || echo "(no drush log captured)"
+              echo "----------------------------------------"
+              echo ""
+              echo "Final status:"
+              $DRUSH -l "$URI" status --format=yaml 2>/dev/null || echo "drush status failed"
+            } > "$DEPLOY_LOG"
+            
+            echo "Full log saved to: $DEPLOY_LOG"
+            find "$LOG_DIR" -type f -name "deploy-*.log" -mtime +30 -delete
+            echo "::endgroup::"
+            
+            # ────────────────────────────────────────────────────────────────
+            echo "::group::10. Finishing deployment"
+            echo "=== Disabling maintenance mode ==="
+            $DRUSH -l "$URI" state:set system.maintenance_mode 0 --input-format=integer -y
+            $DRUSH -l "$URI" cr --quiet
+            $DRUSH -l "$URI" config:delete system.maintenance message -y 2>/dev/null || true
+            echo "::endgroup::"
+            
+            # ────────────────────────────────────────────────────────────────
+            echo "::group::Deployment finished"
+            echo "=============================================================="
+            echo "DEPLOY FINISHED: $(date '+%Y-%m-%d %H:%M:%S %Z')"
+            echo "Final exit code: $?"
+            echo "=============================================================="
+            echo "::endgroup::"
             echo ""
-            echo "Drush deploy output:"
-            echo "----------------------------------------"
-            cat /tmp/drush-deploy-${TIMESTAMP}.log 2>/dev/null || echo "(no drush log captured)"
-            echo "----------------------------------------"
-            echo ""
-            echo "Final status:"
-            $DRUSH -l "$URI" status --format=yaml 2>/dev/null || echo "drush status failed"
-          } > "$DEPLOY_LOG"
-
-          echo "Full log saved to: $DEPLOY_LOG"
-          find "$LOG_DIR" -type f -name "deploy-*.log" -mtime +30 -delete
-          echo "::endgroup::"
-
-          # ────────────────────────────────────────────────────────────────
-          echo "::group::10. Finishing deployment"
-          echo "=== Disabling maintenance mode ==="
-          $DRUSH -l "$URI" state:set system.maintenance_mode 0 --input-format=integer -y
-          $DRUSH -l "$URI" cr --quiet
-          $DRUSH -l "$URI" config:delete system.maintenance message -y 2>/dev/null || true
-          echo "::endgroup::"
-
-          # ────────────────────────────────────────────────────────────────
-          echo "::group::Deployment finished"
-          echo "=============================================================="
-          echo "DEPLOY FINISHED: $(date '+%Y-%m-%d %H:%M:%S %Z')"
-          echo "Final exit code: $?"
-          echo "=============================================================="
-          echo "::endgroup::"
-          echo ""
-
-          EOF
