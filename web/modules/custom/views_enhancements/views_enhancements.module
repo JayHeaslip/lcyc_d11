@@ -1,0 +1,19 @@
+<?php
+
+use Drupal\views\Views;
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function views_enhancements_views_data_alter(array &$data) {
+
+  // Attach to node_field_data (since your view base is nodes of type 'date')
+  $data['node_field_data']['spaces_remaining_filter'] = [
+    'title' => t('Spaces remaining (custom filter)'),
+    'help' => t('Filter events with available spaces (computed via Registration module).'),
+    'filter' => [
+      'id' => 'views_enhancements_spaces_remaining',  // Must match your plugin's @ViewsFilter id
+      'title' => t('Spaces remaining'),
+    ],
+  ];
+}

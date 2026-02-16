@@ -1,0 +1,9 @@
+name: Views Enhancements
+type: module
+description: Custom Views filters, fields, etc.
+core_version_requirement: ^10 || ^11
+package: Custom
+dependencies:
+  - drupal:views
+  - registration:registration
+  
