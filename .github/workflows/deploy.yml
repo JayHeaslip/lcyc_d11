@@ -264,6 +264,16 @@ jobs:
               # We don't exit here so the log still gets saved and maintenance mode gets turned off
             fi
             echo "::endgroup::"
+
+            # ────────────────────────────────────────────────────────────────
+            echo "::group::7.5 Import custom block(s) from Structure Sync"
+            echo "=== Applying Structure Sync block data (safe mode) ==="
+            echo "This runs after config import inside drush deploy"
+            $DRUSH -l "$URI" structure-sync:import-blocks safe -y 2>&1 | tee /tmp/structure-sync-blocks-${TIMESTAMP}.log || {
+              echo "::warning::Structure Sync block import had non-zero exit — review /tmp/structure-sync-blocks-${TIMESTAMP}.log"
+              # Optional: decide if you want to fail the deploy here
+              # exit 1
+            }
             
             # ────────────────────────────────────────────────────────────────
             echo "::group::8. Post-deploy checks"

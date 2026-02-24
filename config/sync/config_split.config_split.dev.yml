@@ -16,5 +16,4 @@ module:
 theme: {  }
 complete_list:
   - block.block.lcyc_radix_copyright
-partial_list:
-  - block.block.lcyc_radix_copyright
+partial_list: {  }

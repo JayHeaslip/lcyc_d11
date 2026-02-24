@@ -1,0 +1,24 @@
+uuid: dc95c134-ebc1-4210-afee-6b29716fc98b
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.results_block
+  module:
+    - views
+  theme:
+    - lcyc_radix
+id: results_block
+theme: lcyc_radix
+region: sidebar_tall
+weight: -5
+provider: null
+plugin: 'views_block:results_block-block_1'
+settings:
+  id: 'views_block:results_block-block_1'
+  label: ''
+  label_display: visible
+  provider: views
+  views_label: ''
+  items_per_page: null
+visibility: {  }

@@ -27,6 +27,13 @@ function lcyc_radix_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
     // You can optionally remove a class if needed. For example:
     // $form['actions']['#attributes']['class'] = array_diff($form['actions']['#attributes']['class'], ['some-other-class-to-remove']);
   }
+  
+  // Target your specific registration form
+  if ($form_id == 'registration_race_commi_register_form') {
+    if (isset($form['actions']['submit'])) {
+      $form['actions']['submit']['#value'] = t('Sign up for RC');
+    }
+  }
 }
 
 /**

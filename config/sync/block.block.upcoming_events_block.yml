@@ -1,4 +1,4 @@
-uuid: 70afb077-5e07-4b97-b4f9-d796d8ce7a5f
+uuid: 9dadced2-0cd9-4629-9185-2453297be0f4
 langcode: en
 status: true
 dependencies:
@@ -8,10 +8,10 @@ dependencies:
     - views
   theme:
     - lcyc_radix
-id: lcyc_radix_views_block__upcoming_events_block_1
+id: upcoming_events_block
 theme: lcyc_radix
 region: sidebar_tall
-weight: 0
+weight: -6
 provider: null
 plugin: 'views_block:upcoming_events-block_1'
 settings:

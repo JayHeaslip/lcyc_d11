@@ -463,7 +463,7 @@ display:
           empty_table: false
           caption: ''
           description: ''
-          class: ''
+          class: events-table
       row:
         type: fields
       query:

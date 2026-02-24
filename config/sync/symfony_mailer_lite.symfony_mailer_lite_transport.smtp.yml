@@ -1,0 +1,20 @@
+uuid: dfaeeeed-64b5-431d-a392-7772bc5d96c2
+langcode: en
+status: true
+dependencies: {  }
+id: smtp
+label: SMTP
+plugin: smtp
+configuration:
+  user: communications@lcyc.info
+  pass: )4PP+3ycc8TZfR5
+  pass_key: ''
+  use_key_module: false
+  host: smtp.dreamhost.com
+  port: 587
+  query:
+    verify_peer: true
+    local_domain: ''
+    restart_threshold: 100
+    restart_threshold_sleep: 0
+    ping_threshold: 100

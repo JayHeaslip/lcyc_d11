@@ -1,0 +1,14 @@
+blocks:
+  -
+    info: Copyright
+    langcode: en
+    uuid: fd7ec139-1617-444c-85a0-9ff0286ff53a
+    bundle: custom
+    revision_id: null
+    rev_id_current: null
+    fields:
+      body:
+        -
+          value: '<p class="text-center mb-0 small">Copyright © 2026 LCYC</p><p class="text-center mb-0 small">Powered by <a href="https://www.drupal.org">Drupal</a></p>'
+          summary: ''
+          format: full_html
