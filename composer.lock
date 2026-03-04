@@ -390,16 +390,16 @@
         },
         {
             "name": "civicrm/civicrm-core",
-            "version": "6.11.0",
+            "version": "6.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-core.git",
-                "reference": "feca63e9853a28e88cf82a475379e3edc338472a"
+                "reference": "6993e05bb251fc9f204585581dfa718a3aeccee6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-core/zipball/feca63e9853a28e88cf82a475379e3edc338472a",
-                "reference": "feca63e9853a28e88cf82a475379e3edc338472a",
+                "url": "https://api.github.com/repos/civicrm/civicrm-core/zipball/6993e05bb251fc9f204585581dfa718a3aeccee6",
+                "reference": "6993e05bb251fc9f204585581dfa718a3aeccee6",
                 "shasum": ""
             },
             "require": {
@@ -422,7 +422,7 @@
                 "ext-xml": "*",
                 "ext-zip": "*",
                 "ezyang/htmlpurifier": "^4.13",
-                "firebase/php-jwt": ">=6.0 <7",
+                "firebase/php-jwt": ">=6.0 <8",
                 "guzzlehttp/guzzle": "^6.3 || ^7.3",
                 "guzzlehttp/psr7": "^1.9 || ^2.0",
                 "knplabs/knp-snappy": "^1.4",
@@ -897,7 +897,7 @@
             ],
             "description": "Open source constituent relationship management for non-profits, NGOs and advocacy organizations.",
             "support": {
-                "source": "https://github.com/civicrm/civicrm-core/tree/6.11.0"
+                "source": "https://github.com/civicrm/civicrm-core/tree/6.11.2"
             },
             "funding": [
                 {
@@ -905,11 +905,11 @@
                     "type": "custom"
                 }
             ],
-            "time": "2026-02-05T05:21:43+00:00"
+            "time": "2026-03-03T07:31:47+00:00"
         },
         {
             "name": "civicrm/civicrm-drupal-8",
-            "version": "6.11.0",
+            "version": "6.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-drupal-8.git",
@@ -958,7 +958,7 @@
             ],
             "description": "Open source constituent relationship management for non-profits, NGOs and advocacy organizations.",
             "support": {
-                "source": "https://github.com/civicrm/civicrm-drupal-8/tree/6.11.0"
+                "source": "https://github.com/civicrm/civicrm-drupal-8/tree/6.11.2"
             },
             "funding": [
                 {
@@ -970,7 +970,7 @@
         },
         {
             "name": "civicrm/civicrm-packages",
-            "version": "6.11.0",
+            "version": "6.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-packages.git",
@@ -986,7 +986,7 @@
             "notification-url": "https://packagist.org/downloads/",
             "description": "Legacy third party dependencies for CiviCRM",
             "support": {
-                "source": "https://github.com/civicrm/civicrm-packages/tree/6.11.0"
+                "source": "https://github.com/civicrm/civicrm-packages/tree/6.11.2"
             },
             "time": "2025-05-30T06:28:12+00:00"
         },
@@ -2875,7 +2875,8 @@
                 "drupal/core": "^9.3 || ^10 || ^11"
             },
             "require-dev": {
-                "drupal/advban": "*"
+                "drupal/advban": "*",
+                "drupal/ban": "*"
             },
             "type": "drupal-module",
             "extra": {
@@ -3932,17 +3933,17 @@
         },
         {
             "name": "drupal/date_ical",
-            "version": "4.0.13",
+            "version": "4.0.14",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/date_ical.git",
-                "reference": "4.0.13"
+                "reference": "4.0.14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/date_ical-4.0.13.zip",
-                "reference": "4.0.13",
-                "shasum": "721965069d578c9b0ebd08a2839c50054982544c"
+                "url": "https://ftp.drupal.org/files/projects/date_ical-4.0.14.zip",
+                "reference": "4.0.14",
+                "shasum": "57fdb219b5b0554b5ac8e9e0cd99cf0c1aefc7b5"
             },
             "require": {
                 "drupal/core": "^9 || ^10 || ^11 || ^12",
@@ -3951,8 +3952,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "4.0.13",
-                    "datestamp": "1758933459",
+                    "version": "4.0.14",
+                    "datestamp": "1772043227",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -5354,17 +5355,17 @@
         },
         {
             "name": "drupal/registration",
-            "version": "3.4.7",
+            "version": "3.4.9",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/registration.git",
-                "reference": "3.4.7"
+                "reference": "3.4.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/registration-3.4.7.zip",
-                "reference": "3.4.7",
-                "shasum": "b087e76d2ef411e57c3ab5e7c9662fe697b7f7ce"
+                "url": "https://ftp.drupal.org/files/projects/registration-3.4.9.zip",
+                "reference": "3.4.9",
+                "shasum": "7ff7b4973c9768cc8a18ea3b9d69c31caca2b2cf"
             },
             "require": {
                 "drupal/core": "^10.3 || ^11"
@@ -5377,8 +5378,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.4.7",
-                    "datestamp": "1771884312",
+                    "version": "3.4.9",
+                    "datestamp": "1772051406",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6443,16 +6444,16 @@
         },
         {
             "name": "firebase/php-jwt",
-            "version": "v6.11.1",
+            "version": "v7.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/firebase/php-jwt.git",
-                "reference": "d1e91ecf8c598d073d0995afa8cd5c75c6e19e66"
+                "reference": "28aa0694bcfdfa5e2959c394d5a1ee7a5083629e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/d1e91ecf8c598d073d0995afa8cd5c75c6e19e66",
-                "reference": "d1e91ecf8c598d073d0995afa8cd5c75c6e19e66",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/28aa0694bcfdfa5e2959c394d5a1ee7a5083629e",
+                "reference": "28aa0694bcfdfa5e2959c394d5a1ee7a5083629e",
                 "shasum": ""
             },
             "require": {
@@ -6500,9 +6501,9 @@
             ],
             "support": {
                 "issues": "https://github.com/firebase/php-jwt/issues",
-                "source": "https://github.com/firebase/php-jwt/tree/v6.11.1"
+                "source": "https://github.com/firebase/php-jwt/tree/v7.0.3"
             },
-            "time": "2025-04-09T20:32:01+00:00"
+            "time": "2026-02-25T22:16:40+00:00"
         },
         {
             "name": "grasmash/expander",
