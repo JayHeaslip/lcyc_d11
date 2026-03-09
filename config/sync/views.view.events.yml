@@ -297,7 +297,7 @@ display:
           entity_field: user_uid
           plugin_id: field
           label: RC
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -351,6 +351,120 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        state:
+          id: state
+          table: registration
+          field: state
+          relationship: node_registration
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: state
+          plugin_id: field
+          label: Status
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: RC
+          exclude: false
+          alter:
+            alter_text: true
+            text: "{% if state != 'canceled' %}\r\n  {{ user_uid|raw }}   {# or better: the name token #}\r\n{% endif %}"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
       pager:
         type: mini
         options:
@@ -425,6 +539,14 @@ display:
           plugin_id: bundle
           value:
             date: date
+        state:
+          id: state
+          table: registration
+          field: state
+          relationship: node_registration
+          entity_type: registration
+          entity_field: state
+          plugin_id: string
       style:
         type: table
         options:
@@ -532,6 +654,35 @@ display:
     display_plugin: block
     position: 1
     display_options:
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            date: date
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        fields: true
+        filters: false
+        filter_groups: false
       display_extenders: {  }
     cache_metadata:
       max-age: -1
@@ -640,6 +791,444 @@ display:
     display_plugin: embed
     position: 11
     display_options:
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+          label: Event
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: true
+          group_column: value
+          group_columns:
+            entity_id: entity_id
+            value: value
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_date:
+          id: field_date
+          table: node__field_date
+          field: field_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Date
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: daterange_default
+          settings:
+            timezone_override: ''
+            format_type: medium
+            from_to: both
+            separator: '-'
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_information:
+          id: field_information
+          table: node__field_information
+          field: field_information
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Information
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_pro:
+          id: field_pro
+          table: node__field_pro
+          field: field_pro
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: PRO
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        user_uid:
+          id: user_uid
+          table: registration
+          field: user_uid
+          relationship: node_registration
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: user_uid
+          plugin_id: field
+          label: RC
+          exclude: true
+          alter:
+            alter_text: false
+            text: "{% if status != 'canceled' %}\r\n  {{ registrant_name_or_link }}\r\n{% endif %"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        state:
+          id: state
+          table: registration
+          field: state
+          relationship: node_registration
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: state
+          plugin_id: field
+          label: Status
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: RC
+          exclude: false
+          alter:
+            alter_text: true
+            text: "{% if state != 'canceled' %}\r\n  {{ user_uid|raw }}   {# or better: the name token #}\r\n{% endif %}"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
       filters:
         status:
           id: status
@@ -661,6 +1250,7 @@ display:
           plugin_id: bundle
           value:
             date: date
+          group: 1
         field_series_value:
           id: field_series_value
           table: node__field_series
@@ -700,13 +1290,99 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        state:
+          id: state
+          table: registration
+          field: state
+          relationship: node_registration
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: state
+          plugin_id: string
+          operator: '!='
+          value: canceled
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        state_1:
+          id: state_1
+          table: registration
+          field: state
+          relationship: node_registration
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: state
+          plugin_id: string
+          operator: empty
+          value: ''
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
           1: AND
+          2: OR
       defaults:
+        group_by: false
+        fields: false
         filters: false
         filter_groups: false
+      group_by: false
       display_description: ''
       display_extenders: {  }
     cache_metadata:
@@ -748,6 +1424,7 @@ display:
           plugin_id: bundle
           value:
             date: date
+          group: 1
         title:
           id: title
           table: node_field_data
@@ -789,10 +1466,93 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        state:
+          id: state
+          table: registration
+          field: state
+          relationship: node_registration
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: state
+          plugin_id: string
+          operator: '!='
+          value: canceled
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        state_1:
+          id: state_1
+          table: registration
+          field: state
+          relationship: node_registration
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: state
+          plugin_id: string
+          operator: empty
+          value: ''
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
           1: AND
+          2: OR
       defaults:
         filters: false
         filter_groups: false
@@ -1098,6 +1858,7 @@ display:
           plugin_id: bundle
           value:
             date: date
+          group: 1
         field_series_value:
           id: field_series_value
           table: node__field_series
@@ -1137,10 +1898,93 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        state_1:
+          id: state_1
+          table: registration
+          field: state
+          relationship: node_registration
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: state
+          plugin_id: string
+          operator: empty
+          value: ''
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        state:
+          id: state
+          table: registration
+          field: state
+          relationship: node_registration
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: state
+          plugin_id: string
+          operator: '!='
+          value: canceled
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
           1: AND
+          2: OR
       defaults:
         filters: false
         filter_groups: false
@@ -1185,6 +2029,7 @@ display:
           plugin_id: bundle
           value:
             date: date
+          group: 1
         field_series_value:
           id: field_series_value
           table: node__field_series
@@ -1224,10 +2069,93 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        state:
+          id: state
+          table: registration
+          field: state
+          relationship: node_registration
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: state
+          plugin_id: string
+          operator: '!='
+          value: canceled
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        state_1:
+          id: state_1
+          table: registration
+          field: state
+          relationship: node_registration
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: state
+          plugin_id: string
+          operator: empty
+          value: ''
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
           1: AND
+          2: OR
       defaults:
         filters: false
         filter_groups: false
@@ -1272,6 +2200,7 @@ display:
           plugin_id: bundle
           value:
             date: date
+          group: 1
         field_series_value:
           id: field_series_value
           table: node__field_series
@@ -1311,10 +2240,93 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        state:
+          id: state
+          table: registration
+          field: state
+          relationship: node_registration
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: state
+          plugin_id: string
+          operator: '!='
+          value: canceled
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        state_1:
+          id: state_1
+          table: registration
+          field: state
+          relationship: node_registration
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: state
+          plugin_id: string
+          operator: empty
+          value: ''
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
           1: AND
+          2: OR
       defaults:
         filters: false
         filter_groups: false
@@ -1555,10 +2567,93 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        state:
+          id: state
+          table: registration
+          field: state
+          relationship: node_registration
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: state
+          plugin_id: string
+          operator: '!='
+          value: canceled
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        state_1:
+          id: state_1
+          table: registration
+          field: state
+          relationship: node_registration
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: state
+          plugin_id: string
+          operator: empty
+          value: ''
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
           1: AND
+          2: OR
       defaults:
         filters: false
         filter_groups: false
@@ -1603,6 +2698,7 @@ display:
           plugin_id: bundle
           value:
             date: date
+          group: 1
         field_series_value:
           id: field_series_value
           table: node__field_series
@@ -1642,10 +2738,93 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        state:
+          id: state
+          table: registration
+          field: state
+          relationship: node_registration
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: state
+          plugin_id: string
+          operator: '!='
+          value: canceled
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        state_1:
+          id: state_1
+          table: registration
+          field: state
+          relationship: node_registration
+          group_type: group
+          admin_label: ''
+          entity_type: registration
+          entity_field: state
+          plugin_id: string
+          operator: empty
+          value: ''
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
           1: AND
+          2: OR
       defaults:
         filters: false
         filter_groups: false

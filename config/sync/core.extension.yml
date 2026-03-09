@@ -86,7 +86,6 @@ module:
   registration: 0
   registration_admin_overrides: 0
   registration_cancel_by: 0
-  registration_change_host: 0
   registration_confirmation: 0
   registration_inline_entity_form: 0
   registration_purger: 0
