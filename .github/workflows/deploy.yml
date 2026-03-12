@@ -87,7 +87,7 @@ jobs:
             
       - name: Deploy artifact via rsync
         run: |
-          rsync -avz --exclude='.dh-diag' --progress --no-times -e "ssh -i key -o StrictHostKeyChecking=no" \
+          rsync -avz --progress -e "ssh -i key -o StrictHostKeyChecking=no" \
           deploy-archive/deploy.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:"${{ env.TARGET_PATH }}/deploy-archive/"
 
       - name: Prepare short SHA for deploy info
@@ -153,6 +153,7 @@ jobs:
             # --delete: delete files on destination NOT in source (this is the key!)
             # --exclude: protect writable/user-generated dirs and custom files
             rsync -a --delete \
+              --exclude='web/.dh-diag' \
               --exclude='web/sites/default/files/' \
               --exclude='web/sites/default/settings.php' \
               --exclude='web/sites/default/civicrm.settings.php' \
