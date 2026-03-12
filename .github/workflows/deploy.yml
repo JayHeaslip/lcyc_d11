@@ -87,7 +87,7 @@ jobs:
             
       - name: Deploy artifact via rsync
         run: |
-          rsync -rvzc --no-owner --no-group --no-perms --progress --no-times -e "ssh -i key -o StrictHostKeyChecking=no" \
+          rsync -avz --exclude='.dh-diag' --progress --no-times -e "ssh -i key -o StrictHostKeyChecking=no" \
           deploy-archive/deploy.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:"${{ env.TARGET_PATH }}/deploy-archive/"
 
       - name: Prepare short SHA for deploy info
