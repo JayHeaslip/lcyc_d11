@@ -59,7 +59,6 @@
         "drupal/symfony_mailer_lite": "^2.0",
         "drupal/theme_switcher": "^2",
         "drupal/token": "^1.16",
-        "drupal/vapn": "^3.0",
         "drupal/viewfield": "^3.0@beta",
         "drupal/views_slideshow": "^5.0",
         "drupal/vite": "^1.5",
