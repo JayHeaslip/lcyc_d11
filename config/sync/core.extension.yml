@@ -113,7 +113,6 @@ module:
   tracer: 0
   update: 0
   user: 0
-  vapn: 0
   viewfield: 0
   views: 0
   views_enhancements: 0
