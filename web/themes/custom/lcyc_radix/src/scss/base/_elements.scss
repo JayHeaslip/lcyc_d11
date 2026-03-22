@@ -351,3 +351,11 @@ img {
   color: white;
   text-decoration: underline;
 }
+
+/* Target the media library modal and general dialogs */
+.media-library-widget-modal,
+.ui-dialog,
+#drupal-modal,
+.dialog--media-library {
+  z-index: 1500 !important;   /* or even 2000+ if your sidebar is very high */
+}
