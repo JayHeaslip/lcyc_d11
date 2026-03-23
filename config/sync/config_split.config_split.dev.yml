@@ -14,6 +14,5 @@ module:
   devel: 0
   devel_generate: 0
 theme: {  }
-complete_list:
-  - block.block.lcyc_radix_copyright
+complete_list: {  }
 partial_list: {  }

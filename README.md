@@ -6,7 +6,7 @@ Click on the Actions tab to see deployment examples.
 To make updates on the staging branch, first sync up staging to latest main:
 
   * git checkout staging
-  * get fetch origin
+  * git fetch origin
   * git reset --hard origin/main
   * git push origin staging --force
   
