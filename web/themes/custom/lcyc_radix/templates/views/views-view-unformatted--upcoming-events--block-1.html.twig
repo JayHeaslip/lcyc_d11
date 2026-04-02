@@ -1,0 +1,53 @@
+{# views-view-unformatted--upcoming-events--block-1.html.twig #}
+
+{% if title %}
+  <h3 class="block__title">{{ title }}</h3>
+{% endif %}
+
+{% set previous_group = '' %}
+
+{% for row in rows %}
+
+  {# Extract only YYYY-MM-DD for grouping (handles datetime with T) #}
+  {% set full_date = '' %}
+  {% if row.content['#row']._entity.field_date is defined %}
+    {% set full_date = row.content['#row']._entity.field_date[0].value|default('') %}
+  {% elseif row.content['#row']._entity.field_event_date is defined %}
+    {% set full_date = row.content['#row']._entity.field_event_date[0].value|default('') %}
+  {% endif %}
+
+  {% set group = full_date|split('T')|first|default('') %}
+
+  {# New day starts #}
+  {% if group != previous_group and group is not empty %}
+
+    {# Close previous group #}
+    {% if previous_group is not empty %}
+      </div> {# /.events-for-day #}
+    </div> {# /.diy-event-group #}
+    {% endif %}
+
+    {# Calendar box #}
+    <div class="diy-event-group">
+      <div class="event-date calendar-box">
+        {% set timestamp = group|date('U') %}
+        <div class="month">{{ timestamp|date('M')|upper }}</div>
+        <div class="day">{{ timestamp|date('j') }}</div>
+        <div class="weekday">{{ timestamp|date('D') }}</div>
+      </div>
+      <div class="events-for-day">
+  {% endif %}
+
+  {# Individual event with card styling #}
+  <div class="event-item">
+    {{ row.content }}
+  </div>
+
+  {% set previous_group = group %}
+{% endfor %}
+
+{# Close last group #}
+{% if previous_group is not empty %}
+    </div> {# /.events-for-day #}
+  </div> {# /.diy-event-group #}
+{% endif %}

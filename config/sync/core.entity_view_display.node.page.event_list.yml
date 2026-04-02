@@ -1,0 +1,42 @@
+uuid: ff794d5d-3a94-4c2e-ba61-0e0f4ed70601
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.event_list
+    - field.field.node.page.body
+    - field.field.node.page.field_image
+    - field.field.node.page.field_view
+    - field.field.node.page.upload
+    - node.type.page
+  module:
+    - layout_builder
+    - user
+    - viewfield
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+_core:
+  default_config_hash: M_Y8L5tfmhx7DR143E05YyZSpvgil6VFvqcfBWykalg
+id: node.page.event_list
+targetEntityType: node
+bundle: page
+mode: event_list
+content:
+  field_view:
+    type: viewfield_default
+    label: hidden
+    settings:
+      view_title: hidden
+      always_build_output: false
+      empty_view_title: hidden
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_image: true
+  langcode: true
+  links: true
+  upload: true

@@ -360,6 +360,7 @@ img {
   z-index: 1500 !important;   /* or even 2000+ if your sidebar is very high */
 }
 
+/* calendar styling */
 /* Target the event container and title for wrapping */
 .fc-day-grid-event .fc-content {
     white-space: normal !important;
@@ -373,4 +374,60 @@ img {
 /* Optional: Adds a tiny bit of padding so text doesn't hit the edges */
 .fc-day-grid-event .fc-content {
     padding: 2px;
+}
+
+/* Sidebar / Event List Styling */
+.diy-event-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  align-items: flex-start;
+}
+
+.calendar-box {
+  width: 46px;           /* adjust size as needed */
+  flex-shrink: 0;
+  background: #f8f9fa;
+  border: 2px solid #333;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 3px 4px 8px rgba(0,0,0,0.15);
+  text-align: center;
+  line-height: 1;
+  font-family: system-ui, sans-serif;
+}
+
+.calendar-box .month {
+  background: #c00;               /* red header like real calendars */
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 3px 0;
+}
+
+.calendar-box .day {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222;
+  padding: 8px 0 5px 0;
+  line-height: 14px;
+}
+
+.calendar-box .weekday {
+  font-size: 0.6rem;
+  color: #555;
+  padding-bottom: 2px;
+  text-transform: uppercase;
+}
+
+/* Event side */
+.event-item {
+  flex: 1;
+  padding: 0 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);   /* soft shadow */
+  border-bottom: 1px solid #eee;
+}
+
+.event-item:last-child {
+  border-bottom: none;
 }
