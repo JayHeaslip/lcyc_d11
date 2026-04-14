@@ -7,7 +7,7 @@ label: SMTP
 plugin: smtp
 configuration:
   user: communications@lcyc.info
-  pass: )4PP+3ycc8TZfR5
+  pass: ''
   pass_key: ''
   use_key_module: false
   host: smtp.dreamhost.com
