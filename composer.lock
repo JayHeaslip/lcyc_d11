@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "69ebedae7a9f7adc3105cb72ad5ba85d",
+    "content-hash": "1492bbcd996eb990916edd8d962ab51d",
     "packages": [
         {
             "name": "adrienrn/php-mimetyper",
@@ -4430,6 +4430,76 @@
             }
         },
         {
+            "name": "drupal/honeypot",
+            "version": "2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/honeypot.git",
+                "reference": "2.2.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/honeypot-2.2.2.zip",
+                "reference": "2.2.2",
+                "shasum": "828872d31d1a2c37a818cacae7fcd77a60996c66"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11"
+            },
+            "require-dev": {
+                "drupal/rules": "^4.0",
+                "drupal/webform": "^6.2"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.2.2",
+                    "datestamp": "1739854442",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jeff Geerling",
+                    "homepage": "https://www.drupal.org/user/389011",
+                    "email": "geerlingguy@mac.com"
+                },
+                {
+                    "name": "manuel garcia",
+                    "homepage": "https://www.drupal.org/user/213194"
+                },
+                {
+                    "name": "tr",
+                    "homepage": "https://www.drupal.org/user/202830"
+                },
+                {
+                    "name": "vijaycs85",
+                    "homepage": "https://www.drupal.org/user/93488"
+                }
+            ],
+            "description": "Mitigates spam form submissions using the honeypot method.",
+            "homepage": "https://www.drupal.org/project/honeypot",
+            "keywords": [
+                "deterrent",
+                "form",
+                "honeypot",
+                "honeytrap",
+                "php",
+                "spam"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/honeypot",
+                "issues": "https://www.drupal.org/project/issues/honeypot"
+            }
+        },
+        {
             "name": "drupal/imce",
             "version": "3.1.4",
             "source": {
@@ -5751,6 +5821,60 @@
             "homepage": "https://www.drupal.org/project/token",
             "support": {
                 "source": "https://git.drupalcode.org/project/token"
+            }
+        },
+        {
+            "name": "drupal/trace_mail_log",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/trace_mail_log.git",
+                "reference": "1.1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/trace_mail_log-1.1.2.zip",
+                "reference": "1.1.2",
+                "shasum": "56bf6cd4df0a60a50925b16e9487788ed37c1fee"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11"
+            },
+            "suggest": {
+                "drupal/mailsystem": "^4.0 - For Mail System integration with basic mail logging.",
+                "drupal/symfony_mailer": "^1.0 - For Symfony Mailer integration with full SMTP transcript support.",
+                "drupal/webform": "^6.2 - For email status column in webform submissions."
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.1.2",
+                    "datestamp": "1769429043",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "fte",
+                    "homepage": "https://www.drupal.org/user/3334442"
+                },
+                {
+                    "name": "g.brnt",
+                    "homepage": "https://www.drupal.org/user/3815204"
+                }
+            ],
+            "description": "Logs all email operations with SMTP transcripts for delivery verification.",
+            "homepage": "https://www.drupal.org/project/trace_mail_log",
+            "support": {
+                "source": "https://git.drupalcode.org/project/trace_mail_log",
+                "issues": "https://www.drupal.org/project/issues/trace_mail_log"
             }
         },
         {

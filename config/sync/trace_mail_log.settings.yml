@@ -1,0 +1,10 @@
+_core:
+  default_config_hash: N4E963iJ0WD7kT2KIqkFgz-UDT1e3tHnB73jtQfHYqo
+enabled: true
+retention_days: 30
+log_directory: 'private://mail-logs'
+log_body: false
+log_attachments: false
+date_format_list: short
+date_format_detail: medium
+items_per_page: 50
