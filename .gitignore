@@ -1,6 +1,5 @@
  Ignore vendor directory (managed by Composer)
 vendor/
-private/
 
 # Ignore Drupal's files directory
 web/sites/*/files/
