@@ -2,12 +2,6 @@
 // GLOBAL ELEMENTS & BASE STYLES
 // =============================================================================
 
-body {
-  font-family: $font-family-sans-serif;
-  background-color: $lcyc-soft-bg;
-  color: $lcyc-text-main;
-}
-
 .btn-primary, .cta-link {
   border: 2px solid $lcyc-white;
   background-color: $lcyc-slate;
@@ -74,6 +68,7 @@ h2 { font-size: 1.25rem; }
   }
 
   .navbar-brand__text {
+      font-family: $font-serif;
     font-size: 40px;
     line-height: 1;
     margin-left: 20px;

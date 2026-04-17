@@ -1,2 +1,14 @@
 // Define your custom typography/classes here.
 // -----------------------------------------------------------------------------
+
+body {
+  font-family: $font-sans;
+  font-weight: 400;
+  background-color: $lcyc-soft-bg;
+  color: $lcyc-text-main;
+}
+
+h1, h2, h3, h4, .site-title {
+  font-family: $font-serif;
+  font-weight: 700; 
+}

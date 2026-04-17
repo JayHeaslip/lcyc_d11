@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Theme override for an image component.
+ *
+ * Available properties:
+ * - align: (optional) Determines how the image is aligned. Can be 'start', 'center', or 'end'.
+ * - responsive: (optional) Makes the image responsive if set to true. Default img class is `.img-fluid`.
+ * - thumbnails: (optional) Adds a thumbnail style to the image if set to true. Class added is `.img-thumbnail`.
+ * - rounded: (optional) Applies rounded corners to the image if set to true. Class added is `.rounded`.
+ * - image_utility_classes: (optional) A list of additional classes to be added to the image's class attribute.
+ * - src: (required) The image source URL.
+ * - alt: (optional) The alt text for the image.
+ * - title: (optional) The title text for the image.
+ * - loading: (optional) The loading attribute for the image. Default is 'auto'.
+ * - width: (optional) The width of the image.
+ * - height: (optional) The height of the image.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the image tag.
+ */
+#}
+{# Radix image component override - forces eager loading + high priority for slideshow images #}
+
+
+{# lcyc_radix image component override - forces eager loading on slideshow images #}
+{% set image_attributes = attributes %}
+
+{% if 'slideshow_1076x400' in (attributes.src|default('') ~ attributes.uri|default('')) %}
+  {% set image_attributes = image_attributes.setAttribute('loading', 'eager') %}
+  {% set image_attributes = image_attributes.setAttribute('fetchpriority', 'high') %}
+{% endif %}
+
+<img{{ image_attributes }} />

@@ -1,4 +1,12 @@
 @use "sass:color";
+
+// Google Fonts Import
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;700&family=EB+Garamond:wght@400;700&display=swap');
+
+// Font variables
+$font-serif: 'EB Garamond', serif;
+$font-sans: 'Barlow Semi Condensed', sans-serif;
+
 // =============================================================================
 // THEME VARIABLES (Bootstrap Overrides)
 // =============================================================================
