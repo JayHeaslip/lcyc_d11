@@ -204,7 +204,7 @@ h2 { font-size: 1.25rem; }
 }
 
 .contextual-region,
-.vjs-inner-*-pane-vjs-item-inner {
+.slideshow {
   contain: layout style;
   will-change: transform;
 }
@@ -347,6 +347,24 @@ img {
       max-width: 100% !important;
     }
   }
+}
+// =============================================
+// body 
+// =============================================
+
+/* Reduce spacing between paragraphs inside the body field */
+[data-component-id="radix:field"].field--name-body p {
+    margin-bottom: 8px; /* Adjust this value (e.g., 0.25rem or 5px) to your liking */
+    margin-top: 0;
+}
+
+/* Optional: Remove margin from the last item so it doesn't push away from the Read More link */
+[data-component-id="radix:field"].field--name-body p:last-child {
+    margin-bottom: 0;
+}
+
+.node__content ul.links.nav {
+  margin-bottom: 1rem;
 }
 
 // =============================================
