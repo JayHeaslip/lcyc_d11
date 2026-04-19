@@ -73,15 +73,16 @@ h2 { font-size: 1.25rem; }
 
   .navbar-brand__text {
       font-family: $font-serif;
-    font-size: 40px;
-    line-height: 1;
-    margin-left: 20px;
-    color: white;
-
-    .small {
-      font-size: 20px;
+      font-size: 40px;
       line-height: 1;
-    }
+      margin-left: 20px;
+      color: white;
+      gap: 0.5rem; 
+      
+      .small {
+	  font-size: 20px;
+	  line-height: 1;
+      }
   }
 
   @media (max-width: 991.98px) {
