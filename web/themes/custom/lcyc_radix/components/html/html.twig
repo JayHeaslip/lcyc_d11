@@ -38,15 +38,9 @@
     {% endblock %}
 
     <!-- Google Fonts Preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" as="font" type="font/woff2" href="/themes/custom/lcyc_radix/fonts/eb-garamond-v32-latin-regular.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/themes/custom/lcyc_radix/fonts/barlow-semi-condensed-v16-latin-regular.woff2" crossorigin>
 
-    <!-- Preload the Google Fonts stylesheet -->
-    <link 
-       rel="preload" 
-       href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;700&family=EB+Garamond:wght@400;700&display=swap" 
-       as="style" 
-       crossorigin>
     <head-placeholder token="{{ placeholder_token }}">
     <title>{{ head_title|safe_join(' | ') }}</title>
     <css-placeholder token="{{ placeholder_token }}">

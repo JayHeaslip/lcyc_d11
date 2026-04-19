@@ -1,9 +1,30 @@
 @use "sass:color";
 
-// Google Fonts Import
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;700&family=EB+Garamond:wght@400;600;700&display=swap');
+// =============================================
+// SELF-HOSTED FONTS – FIXED FOR RADIX + VITE
+// Absolute paths so the built CSS always finds them
+// =============================================
 
-// Font variables
+@font-face {
+  font-family: 'EB Garamond';
+  src: url('/themes/custom/lcyc_radix/fonts/eb-garamond-v32-latin-regular.woff2') format('woff2'),
+       url('/themes/custom/lcyc_radix/fonts/eb-garamond-v32-latin-600.woff2') format('woff2'),
+       url('/themes/custom/lcyc_radix/fonts/eb-garamond-v32-latin-700.woff2') format('woff2');
+  font-weight: 400 600 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow Semi Condensed';
+  src: url('/themes/custom/lcyc_radix/fonts/barlow-semi-condensed-v16-latin-regular.woff2') format('woff2'),
+       url('/themes/custom/lcyc_radix/fonts/barlow-semi-condensed-v16-latin-700.woff2') format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Font variables (unchanged)
 $font-serif: 'EB Garamond', serif;
 $font-sans: 'Barlow Semi Condensed', sans-serif;
 
