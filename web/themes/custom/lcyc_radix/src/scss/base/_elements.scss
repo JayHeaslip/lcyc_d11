@@ -80,10 +80,14 @@ h2 { font-size: 1.25rem; }
       margin-left: 20px;
       color: white;
       gap: 0.5rem; 
+      text-transform: uppercase;
+      font-weight: 500;
       
       .small {
 	  font-size: 20px;
 	  line-height: 1;
+	  font-style: italic;
+	  text-transform: none;
       }
   }
 
