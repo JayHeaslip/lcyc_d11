@@ -53,9 +53,11 @@ h2 { font-size: 1.25rem; }
       aspect-ratio: 100 / 72;
       object-fit: contain;   
 
-      filter: drop-shadow(1px 1px 0 white)
-              drop-shadow(-1px -1px 0 white)
-              drop-shadow(0 0 3px rgba(255,255,255,0.5));
+      filter: drop-shadow(1px 1px 0 #fff) drop-shadow(-1px -1px 0 #fff);
+    
+      /* Improves rendering on scaled images */
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
   }
   
   // Mobile (below lg ~992px, but you can use md/sm)
@@ -384,74 +386,75 @@ img {
   z-index: 1500 !important;   /* or even 2000+ if your sidebar is very high */
 }
 
-/* calendar styling */
-/* Target the event container and title for wrapping */
-.fc-day-grid-event .fc-content {
-    white-space: normal !important;
-    word-wrap: break-word; /* Ensures long words don't overflow */
+/* Sidebar Upcoming Events - Elegant Compact Style */
+.block--upcoming-events-block {
+  background: #f8f8f7;          /* soft off-white card background */
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 20px 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-.fc-day-grid-event .fc-title {
-    white-space: normal !important;
+/* Header - matches the clean style you liked */
+.block__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+  margin: 0 0 16px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e5e5;
 }
 
-/* Optional: Adds a tiny bit of padding so text doesn't hit the edges */
-.fc-day-grid-event .fc-content {
-    padding: 2px;
-}
-
-/* Sidebar / Event List Styling */
+/* Remove the bulky calendar boxes completely */
 .diy-event-group {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
   align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-.calendar-box {
-  width: 46px;           /* adjust size as needed */
-  flex-shrink: 0;
-  background: #f8f9fa;
-  border: 2px solid #333;
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 3px 4px 8px rgba(0,0,0,0.15);
-  text-align: center;
-  line-height: 1;
-  font-family: system-ui, sans-serif;
-}
-
-.calendar-box .month {
-  background: #c00;               /* red header like real calendars */
-  color: white;
-  font-size: 0.6rem;
-  font-weight: 700;
-  padding: 3px 0;
-}
-
-.calendar-box .day {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #222;
-  padding: 8px 0 5px 0;
-  line-height: 14px;
-}
-
-.calendar-box .weekday {
-  font-size: 0.6rem;
-  color: #555;
-  padding-bottom: 2px;
-  text-transform: uppercase;
-}
-
-/* Event side */
-.event-item {
-  flex: 1;
-  padding: 0 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);   /* soft shadow */
-  border-bottom: 1px solid #eee;
-}
-
-.event-item:last-child {
+.diy-event-group:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
   border-bottom: none;
+}
+
+.event-date.calendar-box {
+  display: none;   /* hides the entire red calendar box */
+}
+
+/* Event content styling */
+.events-for-day {
+  flex: 1;
+  min-width: 0;
+}
+
+.event-item {
+  line-height: 1.4;
+}
+
+.views-field-title a {
+  color: #1a1a1a;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.views-field-title a:hover {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+/* Optional: Add subtle date prefix if you want to restore a compact date */
+.event-item::before {
+  content: attr(data-date); /* we'll add this via JS or Views rewrite */
+  display: block;
+  font-size: 0.82rem;
+  color: #666;
+  margin-bottom: 3px;
+  font-weight: 500;
 }
