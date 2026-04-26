@@ -8,5 +8,5 @@ features:
   favicon: true
   node_user_picture: false
 logo:
-  path: sites/default/files/logo10.png
+  path: sites/default/files/burgee.webp
   use_default: false
