@@ -30,7 +30,7 @@
         "drupal/civicrm_entity": "^4.0",
         "drupal/color": "^2.x-dev",
         "drupal/config_split": "^2.0",
-        "drupal/content_access": "^2.1@RC",
+        "drupal/content_access": "^2.0",
         "drupal/core-composer-scaffold": "^11.2",
         "drupal/core-project-message": "^11.2",
         "drupal/core-recipe-unpack": "^11.2",
