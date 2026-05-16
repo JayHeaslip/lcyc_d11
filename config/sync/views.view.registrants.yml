@@ -22,6 +22,69 @@ display:
     display_options:
       title: Registrants
       fields:
+        name_1:
+          id: name_1
+          table: civicrm_value_boat_1
+          field: name_1
+          relationship: contact_id
+          group_type: group
+          admin_label: ''
+          entity_type: civicrm_contact
+          entity_field: name_1
+          plugin_id: civicrm_entity_custom_field
+          label: Boat
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          type: string
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: 0
         name:
           id: name
           table: users_field_data
@@ -97,7 +160,7 @@ display:
           entity_type: civicrm_contact
           entity_field: co_owners_6
           plugin_id: civicrm_entity_custom_field
-          label: Co-Owners
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -213,69 +276,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: 0
-        name_1:
-          id: name_1
-          table: civicrm_value_boat_1
-          field: name_1
-          relationship: contact_id
-          group_type: group
-          admin_label: ''
-          entity_type: civicrm_contact
-          entity_field: name_1
-          plugin_id: civicrm_entity_custom_field
-          label: 'Boat Name'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          type: string
-          settings: {  }
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: 0
         sail_country_19:
           id: sail_country_19
           table: civicrm_value_boat_1
@@ -286,8 +286,8 @@ display:
           entity_type: civicrm_contact
           entity_field: sail_country_19
           plugin_id: civicrm_entity_custom_field
-          label: Country
-          exclude: false
+          label: CTRY
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -542,8 +542,8 @@ display:
           entity_type: civicrm_contact
           entity_field: displacement_27
           plugin_id: civicrm_entity_custom_field
-          label: Displacement
-          exclude: false
+          label: Disp
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -713,7 +713,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          type: list_default
+          type: list_key
           settings: {  }
           group_column: value
           group_columns: {  }
@@ -735,7 +735,7 @@ display:
           entity_type: civicrm_contact
           entity_field: wednesdays_23
           plugin_id: civicrm_entity_custom_field
-          label: Wednesdays
+          label: WN
           exclude: false
           alter:
             alter_text: false
@@ -798,7 +798,7 @@ display:
           entity_type: civicrm_contact
           entity_field: weekends_24
           plugin_id: civicrm_entity_custom_field
-          label: Weekends
+          label: WE
           exclude: false
           alter:
             alter_text: false
@@ -861,8 +861,8 @@ display:
           entity_type: civicrm_contact
           entity_field: one_design_25
           plugin_id: civicrm_entity_custom_field
-          label: One-Design
-          exclude: false
+          label: OD
+          exclude: true
           alter:
             alter_text: false
             text: OD
@@ -1189,6 +1189,132 @@ display:
           2: OR
       style:
         type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          columns:
+            name_1: name_1
+            name: name
+            co_owners_6: co_owners_6
+            club_17: club_17
+            sail_country_19: sail_country_19
+            sail_number_21: sail_number_21
+            bow_number_20: bow_number_20
+            model_2: model_2
+            displacement_27: displacement_27
+            phrf_4: phrf_4
+            class_5: class_5
+            wednesdays_23: wednesdays_23
+            weekends_24: weekends_24
+            one_design_25: one_design_25
+          default: '-1'
+          info:
+            name_1:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-left
+              separator: ''
+              empty_column: false
+              responsive: ''
+            name:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-left
+              separator: ''
+              empty_column: false
+              responsive: ''
+            co_owners_6:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-left
+              separator: ''
+              empty_column: false
+              responsive: ''
+            club_17:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-left
+              separator: ''
+              empty_column: false
+              responsive: ''
+            sail_country_19:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-center
+              separator: ''
+              empty_column: false
+              responsive: ''
+            sail_number_21:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-right
+              separator: ''
+              empty_column: false
+              responsive: ''
+            bow_number_20:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-right
+              separator: ''
+              empty_column: false
+              responsive: ''
+            model_2:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-left
+              separator: ''
+              empty_column: false
+              responsive: ''
+            displacement_27:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-right
+              separator: ''
+              empty_column: false
+              responsive: ''
+            phrf_4:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-right
+              separator: ''
+              empty_column: false
+              responsive: ''
+            class_5:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-left
+              separator: ''
+              empty_column: false
+              responsive: ''
+            wednesdays_23:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-center
+              separator: ''
+              empty_column: false
+              responsive: ''
+            weekends_24:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-center
+              separator: ''
+              empty_column: false
+              responsive: ''
+            one_design_25:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-center
+              separator: ''
+              empty_column: false
+              responsive: ''
+          override: true
+          sticky: false
+          summary: ''
+          empty_table: false
+          caption: ''
+          description: ''
+          class: ''
       row:
         type: fields
       query:
