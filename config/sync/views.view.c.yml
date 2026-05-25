@@ -224,7 +224,7 @@ display:
           dialogWindow: 0
           openEntityInNewTab: 1
           createEventLink: 0
-          eventLimit: '2'
+          eventLimit: '4'
           tax_field: ''
           vocabularies: ''
           color_bundle:
@@ -232,10 +232,10 @@ display:
             blog: '#3a87ad'
             book: '#3a87ad'
             date: '#3a87ad'
-            forum: '#3a87ad'
             page: '#3a87ad'
             panel: '#3a87ad'
             poll: '#3a87ad'
+            slides: '#3a87ad'
             story: '#3a87ad'
           rrule: ''
           dialogModal: false
