@@ -4,6 +4,13 @@ status: true
 dependencies:
   config:
     - block_content.type.custom
+    - filter.format.1
+    - filter.format.3
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.plain_text
+    - filter.format.raw_html
+    - filter.format.restricted_html
     - node.type.book
     - node.type.page
   module:
@@ -12,6 +19,7 @@ dependencies:
     - content_access
     - contextual
     - crop
+    - filter
     - node
     - path
     - search
@@ -46,6 +54,7 @@ permissions:
   - 'delete any custom block content'
   - 'delete any custom block content revisions'
   - 'delete any page content'
+  - 'delete book revisions'
   - 'delete own book content'
   - 'delete own page content'
   - 'edit any book content'
@@ -57,7 +66,16 @@ permissions:
   - 'grant own content access'
   - 'rebuild node access permissions'
   - 'revert any custom block content revisions'
+  - 'revert book revisions'
   - 'search content'
   - 'use advanced search'
+  - 'use text format 1'
+  - 'use text format 3'
+  - 'use text format basic_html'
+  - 'use text format full_html'
+  - 'use text format plain_text'
+  - 'use text format raw_html'
+  - 'use text format restricted_html'
   - 'view any custom block content history'
+  - 'view book revisions'
   - 'view the administration theme'

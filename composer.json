@@ -48,7 +48,6 @@
         "drupal/inline_entity_form": "^3.0@RC",
         "drupal/jquery_ui_accordion": "^2.1",
         "drupal/login_emailusername": "^3.0.1",
-        "drupal/login_monitor": "^1.0",
         "drupal/mail_login": "^4.2",
         "drupal/meaofd": "^1",
         "drupal/profile": "^1.12",

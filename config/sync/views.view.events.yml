@@ -14,6 +14,7 @@ dependencies:
     - registration
     - text
     - user
+    - views_enhancements
 id: events
 label: Events
 module: views
@@ -1286,6 +1287,45 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        spaces_remaining_filter:
+          id: spaces_remaining_filter
+          table: node_field_data
+          field: spaces_remaining_filter
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: views_enhancements_spaces_remaining
+          operator: '='
+          value: ''
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
         state:
           id: state
           table: registration
@@ -1449,6 +1489,45 @@ display:
             remember_roles:
               authenticated: authenticated
             placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        spaces_remaining_filter:
+          id: spaces_remaining_filter
+          table: node_field_data
+          field: spaces_remaining_filter
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: views_enhancements_spaces_remaining
+          operator: '='
+          value: ''
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
           is_grouped: false
           group_info:
             label: ''
@@ -1889,6 +1968,45 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        spaces_remaining_filter:
+          id: spaces_remaining_filter
+          table: node_field_data
+          field: spaces_remaining_filter
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: views_enhancements_spaces_remaining
+          operator: '='
+          value: ''
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
         state_1:
           id: state_1
           table: registration
@@ -2059,6 +2177,45 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        spaces_remaining_filter:
+          id: spaces_remaining_filter
+          table: node_field_data
+          field: spaces_remaining_filter
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: views_enhancements_spaces_remaining
+          operator: '='
+          value: ''
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
         state:
           id: state
           table: registration
@@ -2217,6 +2374,45 @@ display:
             remember_roles:
               authenticated: authenticated
             placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        spaces_remaining_filter:
+          id: spaces_remaining_filter
+          table: node_field_data
+          field: spaces_remaining_filter
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: views_enhancements_spaces_remaining
+          operator: '='
+          value: ''
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
           is_grouped: false
           group_info:
             label: ''
@@ -2555,6 +2751,45 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        spaces_remaining_filter:
+          id: spaces_remaining_filter
+          table: node_field_data
+          field: spaces_remaining_filter
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: views_enhancements_spaces_remaining
+          operator: '='
+          value: ''
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
         state:
           id: state
           table: registration
@@ -2713,6 +2948,45 @@ display:
             remember_roles:
               authenticated: authenticated
             placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        spaces_remaining_filter:
+          id: spaces_remaining_filter
+          table: node_field_data
+          field: spaces_remaining_filter
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: views_enhancements_spaces_remaining
+          operator: '='
+          value: ''
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
           is_grouped: false
           group_info:
             label: ''
