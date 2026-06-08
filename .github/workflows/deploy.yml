@@ -269,7 +269,7 @@ jobs:
             # ────────────────────────────────────────────────────────────────
             echo "::group::7.2 CiviCRM Database Upgrade"
             echo "=== Running cv upgrade:db ==="
-            vendor/bin/cv --url="$URI" upgrade:db -y 2>&1 | tee /tmp/civicrm-upgrade-${TIMESTAMP}.log || {
+            vendor/bin/cv --url="$URI" upgrade:db 2>&1 | tee /tmp/civicrm-upgrade-${TIMESTAMP}.log || {
               echo "::warning::cv upgrade:db had issues — review log"
             }
             echo "::endgroup::"
