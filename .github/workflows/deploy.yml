@@ -267,6 +267,14 @@ jobs:
             echo "::endgroup::"
 
             # ────────────────────────────────────────────────────────────────
+            echo "::group::7.2 CiviCRM Database Upgrade"
+            echo "=== Running cv upgrade:db ==="
+            vendor/bin/cv --site="$URI" upgrade:db -y 2>&1 | tee /tmp/civicrm-upgrade-${TIMESTAMP}.log || {
+              echo "::warning::cv upgrade:db had issues — review log"
+            }
+            echo "::endgroup::"
+
+            # ────────────────────────────────────────────────────────────────
             echo "::group::7.5 Import custom block(s) from Structure Sync"
             echo "=== Applying Structure Sync block data (safe mode) ==="
             echo "This runs after config import inside drush deploy"
