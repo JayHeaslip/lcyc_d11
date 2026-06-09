@@ -21,6 +21,7 @@
         "civicrm/cli-tools": "^2025.12",
         "civicrm/composer-downloads-plugin": "^4.0",
         "composer/installers": "^2.3",
+        "cweagans/composer-patches": "^1.7",
         "drupal/admin_toolbar": "^3.6",
         "drupal/autoban": "^1.11",
         "drupal/book": "^2.0",
@@ -96,6 +97,11 @@
         "sort-packages": true
     },
     "extra": {
+	"patches": {
+	    "drupal/core": {
+		"CKEditor 5 support for summary field - https://www.drupal.org/i/2671162": "https://www.drupal.org/files/issues/2026-04-07/ckeditor-for-summary-2671162-11.3.x-161.patch"
+	    }
+	},	
 	"compile-mode": "whitelist",
 	"compile-whitelist": [
             "civicrm/civicrm-core",
