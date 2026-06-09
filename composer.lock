@@ -389,16 +389,16 @@
         },
         {
             "name": "civicrm/civicrm-core",
-            "version": "6.13.3",
+            "version": "6.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-core.git",
-                "reference": "8ae5cf9c6d0433d6f77ca1667e9118c62ae8611a"
+                "reference": "87106460a784ddae3fa53176c8e4e7b4cae6baba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-core/zipball/8ae5cf9c6d0433d6f77ca1667e9118c62ae8611a",
-                "reference": "8ae5cf9c6d0433d6f77ca1667e9118c62ae8611a",
+                "url": "https://api.github.com/repos/civicrm/civicrm-core/zipball/87106460a784ddae3fa53176c8e4e7b4cae6baba",
+                "reference": "87106460a784ddae3fa53176c8e4e7b4cae6baba",
                 "shasum": ""
             },
             "require": {
@@ -443,32 +443,31 @@
                 "phpoffice/phpword": "^1.4",
                 "phpseclib/phpseclib": "^3.0",
                 "phpseclib/phpseclib2_compat": "^1.0",
-                "pontedilana/php-weasyprint": "^0.13.0 || ^1",
+                "pontedilana/php-weasyprint": "^0.13.0 || ^1 || ^2",
                 "psr/container": "~1.0 || ~2.0",
                 "psr/http-client": "^1.0",
                 "psr/log": "~1.0 || ~2.0 || ~3.0",
                 "psr/simple-cache": "~1.0.1",
                 "rubobaquero/phpquery": "^0.9.15",
                 "soundasleep/html2text": "^2.1",
-                "symfony/config": "~4.4 || ~5.4 || ~6.0 || ~7.0",
-                "symfony/dependency-injection": "~4.4 || ~5.4 || ~6.0 || ~7.0",
-                "symfony/event-dispatcher": "~4.4 || ~5.4 ||  ~6.0 || ~7.0",
-                "symfony/filesystem": "~4.4 ||  ~5.4 || ~6.0 || ~7.0",
-                "symfony/finder": "~4.4 || ~5.4 || ~6.0 || ~7.0",
+                "symfony/config": "~4.4 || ~5.4 || ~6.0 || ~7.0 || ~8.0",
+                "symfony/dependency-injection": "~4.4 || ~5.4 || ~6.0 || ~7.0 || ~8.0",
+                "symfony/event-dispatcher": "~4.4 || ~5.4 ||  ~6.0 || ~7.0 || ~8.0",
+                "symfony/filesystem": "~4.4 ||  ~5.4 || ~6.0 || ~7.0 || ~8.0",
+                "symfony/finder": "~4.4 || ~5.4 || ~6.0 || ~7.0 || ~8.0",
                 "symfony/polyfill-iconv": "~1.0",
-                "symfony/polyfill-php80": "^1.0",
-                "symfony/polyfill-php81": "^1.0",
                 "symfony/polyfill-php82": "^1.0",
                 "symfony/polyfill-php83": "^1.0",
                 "symfony/polyfill-php84": "^1.0",
-                "symfony/process": "~4.4 ||  ~5.4 || ~5.0 || ~6.0 || ~7.0",
+                "symfony/polyfill-php85": "^1.0",
+                "symfony/process": "~4.4 ||  ~5.4 || ~5.0 || ~6.0 || ~7.0 || ~8.0",
                 "symfony/service-contracts": "~2.2 || ~3.1",
-                "symfony/var-dumper": "~4.4 || ~5.1 || ~6.0 || ~7.0",
+                "symfony/var-dumper": "~4.4 || ~5.1 || ~6.0 || ~7.0 || ~8.0",
                 "tecnickcom/tcpdf": "6.*",
                 "totten/ca-config": "~23.07",
                 "tplaner/when": "~3.1",
                 "typo3/phar-stream-wrapper": "^3.0 || ^4.0",
-                "xkerman/restricted-unserialize": "~1.1",
+                "xkerman/restricted-unserialize": "~1.1.12",
                 "zetacomponents/base": "1.9.*",
                 "zetacomponents/mail": "~1.9.4"
             },
@@ -495,6 +494,9 @@
                     "adrienrn/php-mimetyper": {
                         "Apply patch to fix php8.2 deprecation notice on dynamic property $filename": "https://download.civicrm.org/patches/011c5f09dc27b260937380f7a9ef5ad1fa713ae206b0b66ce03decc1932fc3f6/17.patch",
                         "Update gitignore to ensure that sites that manage via git don't miss out on the important db.json file": "https://download.civicrm.org/patches/ffb6c65c6caa0a8a648f167f8800072d50ca0e4138002c52c05065be0ae60a63/15.patch"
+                    },
+                    "xkerman/restricted-unserialize": {
+                        "Fix warnings on PHP 8.4 and PHP 8.5": "https://download.civicrm.org/patches/1f01239f400e9aff4e59c2e744fc73bdfb48c6c3b0e93665851b7be763b2716b/php84-php85.patch"
                     }
                 },
                 "downloads": {
@@ -549,7 +551,7 @@
                         ]
                     },
                     "select2": {
-                        "url": "https://github.com/colemanw/select2/archive/v3.5-civicrm-1.3.zip"
+                        "url": "https://github.com/colemanw/select2/archive/v3.5-civicrm-1.4.zip"
                     },
                     "ckeditor": {
                         "url": "https://github.com/ckeditor/ckeditor-releases/archive/4.18.0.zip"
@@ -897,7 +899,7 @@
             ],
             "description": "Open source constituent relationship management for non-profits, NGOs and advocacy organizations.",
             "support": {
-                "source": "https://github.com/civicrm/civicrm-core/tree/6.13.3"
+                "source": "https://github.com/civicrm/civicrm-core/tree/6.15.0"
             },
             "funding": [
                 {
@@ -905,20 +907,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2026-04-28T21:51:21+00:00"
+            "time": "2026-06-03T20:32:08+00:00"
         },
         {
             "name": "civicrm/civicrm-drupal-8",
-            "version": "6.13.3",
+            "version": "6.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-drupal-8.git",
-                "reference": "8ca88b6915524cbdc0a8658a76b846e34e6eb731"
+                "reference": "0922536730a627d1e03fc052368235e7f4d2ca76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-drupal-8/zipball/8ca88b6915524cbdc0a8658a76b846e34e6eb731",
-                "reference": "8ca88b6915524cbdc0a8658a76b846e34e6eb731",
+                "url": "https://api.github.com/repos/civicrm/civicrm-drupal-8/zipball/0922536730a627d1e03fc052368235e7f4d2ca76",
+                "reference": "0922536730a627d1e03fc052368235e7f4d2ca76",
                 "shasum": ""
             },
             "require": {
@@ -958,7 +960,7 @@
             ],
             "description": "Open source constituent relationship management for non-profits, NGOs and advocacy organizations.",
             "support": {
-                "source": "https://github.com/civicrm/civicrm-drupal-8/tree/6.13.3"
+                "source": "https://github.com/civicrm/civicrm-drupal-8/tree/6.15.0"
             },
             "funding": [
                 {
@@ -966,29 +968,29 @@
                     "type": "custom"
                 }
             ],
-            "time": "2026-01-30T01:27:02+00:00"
+            "time": "2026-04-04T15:53:07+00:00"
         },
         {
             "name": "civicrm/civicrm-packages",
-            "version": "6.13.3",
+            "version": "6.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/civicrm-packages.git",
-                "reference": "788bc9a98ad079c5f75d171a80f3060dff574381"
+                "reference": "4d2bdff9aeb5aa7cf0c4a7a2697510e05c65c61e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/civicrm-packages/zipball/788bc9a98ad079c5f75d171a80f3060dff574381",
-                "reference": "788bc9a98ad079c5f75d171a80f3060dff574381",
+                "url": "https://api.github.com/repos/civicrm/civicrm-packages/zipball/4d2bdff9aeb5aa7cf0c4a7a2697510e05c65c61e",
+                "reference": "4d2bdff9aeb5aa7cf0c4a7a2697510e05c65c61e",
                 "shasum": ""
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
             "description": "Legacy third party dependencies for CiviCRM",
             "support": {
-                "source": "https://github.com/civicrm/civicrm-packages/tree/6.13.3"
+                "source": "https://github.com/civicrm/civicrm-packages/tree/6.15.0"
             },
-            "time": "2026-03-26T00:36:39+00:00"
+            "time": "2026-04-22T18:15:32+00:00"
         },
         {
             "name": "civicrm/cli-tools",
@@ -1056,23 +1058,23 @@
         },
         {
             "name": "civicrm/composer-compile-lib",
-            "version": "v0.8",
+            "version": "v0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/civicrm/composer-compile-lib.git",
-                "reference": "553efbc9c227cc00e03b654ddb37c97b2db21de3"
+                "reference": "6d96a49f50c4ab2e52d0f549272e7861a61d5ad0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/civicrm/composer-compile-lib/zipball/553efbc9c227cc00e03b654ddb37c97b2db21de3",
-                "reference": "553efbc9c227cc00e03b654ddb37c97b2db21de3",
+                "url": "https://api.github.com/repos/civicrm/composer-compile-lib/zipball/6d96a49f50c4ab2e52d0f549272e7861a61d5ad0",
+                "reference": "6d96a49f50c4ab2e52d0f549272e7861a61d5ad0",
                 "shasum": ""
             },
             "require": {
                 "civicrm/composer-compile-plugin": "~0.19 || ~1.0",
                 "padaliyajay/php-autoprefixer": "~1.2",
                 "scssphp/scssphp": "^1.8.1",
-                "symfony/filesystem": "~2.8 || ~3.4 || ~4.0 || ~5.0 || ~6.0 || ~7.0",
+                "symfony/filesystem": "~2.8 || ~3.4 || ~4.0 || ~5.0 || ~6.0 || ~7.0 || ~8.0",
                 "tubalmartin/cssmin": "^4.1"
             },
             "type": "library",
@@ -1117,9 +1119,9 @@
             "description": "Small library of compilation helpers",
             "support": {
                 "issues": "https://github.com/civicrm/composer-compile-lib/issues",
-                "source": "https://github.com/civicrm/composer-compile-lib/tree/v0.8"
+                "source": "https://github.com/civicrm/composer-compile-lib/tree/v0.9"
             },
-            "time": "2024-05-29T21:50:30+00:00"
+            "time": "2026-05-11T22:58:51+00:00"
         },
         {
             "name": "civicrm/composer-compile-plugin",
@@ -7150,16 +7152,16 @@
         },
         {
             "name": "knplabs/knp-snappy",
-            "version": "v1.6.0",
+            "version": "v1.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/snappy.git",
-                "reference": "af73003db677563fa982b50c1aec4d1e2b2f30b2"
+                "reference": "1461239a8b265fcc5457b7bdeb842c75b0f066eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/snappy/zipball/af73003db677563fa982b50c1aec4d1e2b2f30b2",
-                "reference": "af73003db677563fa982b50c1aec4d1e2b2f30b2",
+                "url": "https://api.github.com/repos/KnpLabs/snappy/zipball/1461239a8b265fcc5457b7bdeb842c75b0f066eb",
+                "reference": "1461239a8b265fcc5457b7bdeb842c75b0f066eb",
                 "shasum": ""
             },
             "require": {
@@ -7170,8 +7172,8 @@
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.0",
                 "pedrotroller/php-cs-custom-fixer": "^2.19",
-                "phpstan/phpstan": "^1.0.0",
-                "phpstan/phpstan-phpunit": "^1.0.0",
+                "phpstan/phpstan": "^2.1.39",
+                "phpstan/phpstan-phpunit": "^2.0.15",
                 "phpunit/phpunit": "^9.6.29"
             },
             "type": "library",
@@ -7211,9 +7213,9 @@
             ],
             "support": {
                 "issues": "https://github.com/KnpLabs/snappy/issues",
-                "source": "https://github.com/KnpLabs/snappy/tree/v1.6.0"
+                "source": "https://github.com/KnpLabs/snappy/tree/v1.7.2"
             },
-            "time": "2026-02-13T12:50:40+00:00"
+            "time": "2026-05-15T15:04:49+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -9616,16 +9618,16 @@
         },
         {
             "name": "phpoffice/phpspreadsheet",
-            "version": "2.4.5",
+            "version": "2.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "ec7815be350e03df90f3e2ace92653fa6cb4327c"
+                "reference": "0bbef382b7d9c1dbda10c8113d564ff9159a7e79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/ec7815be350e03df90f3e2ace92653fa6cb4327c",
-                "reference": "ec7815be350e03df90f3e2ace92653fa6cb4327c",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/0bbef382b7d9c1dbda10c8113d564ff9159a7e79",
+                "reference": "0bbef382b7d9c1dbda10c8113d564ff9159a7e79",
                 "shasum": ""
             },
             "require": {
@@ -9716,9 +9718,9 @@
             ],
             "support": {
                 "issues": "https://github.com/PHPOffice/PhpSpreadsheet/issues",
-                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/2.4.5"
+                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/2.4.6"
             },
-            "time": "2026-04-19T05:48:49+00:00"
+            "time": "2026-06-07T02:31:12+00:00"
         },
         {
             "name": "phpoffice/phpword",
@@ -10268,28 +10270,28 @@
         },
         {
             "name": "pontedilana/php-weasyprint",
-            "version": "1.5.0",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pontedilana/php-weasyprint.git",
-                "reference": "702d76185acf1ffeff8b3e1064ff05ec1f33d990"
+                "reference": "eaadec8389ce3e3d43f1fe6bbca415c06262a262"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pontedilana/php-weasyprint/zipball/702d76185acf1ffeff8b3e1064ff05ec1f33d990",
-                "reference": "702d76185acf1ffeff8b3e1064ff05ec1f33d990",
+                "url": "https://api.github.com/repos/pontedilana/php-weasyprint/zipball/eaadec8389ce3e3d43f1fe6bbca415c06262a262",
+                "reference": "eaadec8389ce3e3d43f1fe6bbca415c06262a262",
                 "shasum": ""
             },
             "require": {
-                "php": "7.4.* || 8.0.* || 8.1.* || 8.2.* || 8.3.* || 8.4.*",
+                "php": "7.4.* || 8.0.* || 8.1.* || 8.2.* || 8.3.* || 8.4.* || 8.5.*",
                 "psr/log": "^1.1 || ^2.0 || ^3.0",
-                "symfony/process": "^5.4 || ^6.2 || ^7"
+                "symfony/process": "^5.4.51 || ^6.4.33 || ^7.4.5 || ^8.0.5"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.64",
-                "phpstan/extension-installer": "^1.4",
-                "phpstan/phpstan": "^1.12",
-                "phpstan/phpstan-phpunit": "^1.4",
+                "phpstan/extension-installer": "^1",
+                "phpstan/phpstan": "^2",
+                "phpstan/phpstan-phpunit": "^2",
                 "phpunit/phpunit": "^9.6"
             },
             "type": "library",
@@ -10316,7 +10318,7 @@
             ],
             "support": {
                 "issues": "https://github.com/pontedilana/php-weasyprint/issues",
-                "source": "https://github.com/pontedilana/php-weasyprint/tree/1.5.0"
+                "source": "https://github.com/pontedilana/php-weasyprint/tree/2.7.0"
             },
             "funding": [
                 {
@@ -10328,7 +10330,7 @@
                     "type": "ko_fi"
                 }
             ],
-            "time": "2024-11-04T15:01:40+00:00"
+            "time": "2026-06-03T07:20:31+00:00"
         },
         {
             "name": "psr/cache",
@@ -11347,34 +11349,33 @@
         },
         {
             "name": "symfony/config",
-            "version": "v7.4.9",
+            "version": "v8.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "d4a277b7a0f26487db16b264d935c617b7d994ea"
+                "reference": "429783a0c649696f2058ea5ab5315f082dba6de9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/d4a277b7a0f26487db16b264d935c617b7d994ea",
-                "reference": "d4a277b7a0f26487db16b264d935c617b7d994ea",
+                "url": "https://api.github.com/repos/symfony/config/zipball/429783a0c649696f2058ea5ab5315f082dba6de9",
+                "reference": "429783a0c649696f2058ea5ab5315f082dba6de9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.2",
+                "php": ">=8.4.1",
                 "symfony/deprecation-contracts": "^2.5|^3",
-                "symfony/filesystem": "^7.1|^8.0",
-                "symfony/polyfill-ctype": "~1.8"
+                "symfony/filesystem": "^7.4|^8.0",
+                "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
-                "symfony/finder": "<6.4",
                 "symfony/service-contracts": "<2.5"
             },
             "require-dev": {
-                "symfony/event-dispatcher": "^6.4|^7.0|^8.0",
-                "symfony/finder": "^6.4|^7.0|^8.0",
-                "symfony/messenger": "^6.4|^7.0|^8.0",
+                "symfony/event-dispatcher": "^7.4|^8.0",
+                "symfony/finder": "^7.4|^8.0",
+                "symfony/messenger": "^7.4|^8.0",
                 "symfony/service-contracts": "^2.5|^3",
-                "symfony/yaml": "^6.4|^7.0|^8.0"
+                "symfony/yaml": "^7.4|^8.0"
             },
             "type": "library",
             "autoload": {
@@ -11402,7 +11403,7 @@
             "description": "Helps you find, load, combine, autofill and validate configuration values of any kind",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/config/tree/v7.4.9"
+                "source": "https://github.com/symfony/config/tree/v8.1.0"
             },
             "funding": [
                 {
@@ -11422,7 +11423,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-04-29T14:25:20+00:00"
+            "time": "2026-05-29T05:06:50+00:00"
         },
         {
             "name": "symfony/console",
@@ -13177,16 +13178,16 @@
         },
         {
             "name": "symfony/polyfill-php82",
-            "version": "v1.37.0",
+            "version": "v1.38.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php82.git",
-                "reference": "34808efe3e68f69685796f7c253a2f1d8ea9df59"
+                "reference": "002dc0cfe5fd4ed6033d48f27d4f19a486c4b04b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php82/zipball/34808efe3e68f69685796f7c253a2f1d8ea9df59",
-                "reference": "34808efe3e68f69685796f7c253a2f1d8ea9df59",
+                "url": "https://api.github.com/repos/symfony/polyfill-php82/zipball/002dc0cfe5fd4ed6033d48f27d4f19a486c4b04b",
+                "reference": "002dc0cfe5fd4ed6033d48f27d4f19a486c4b04b",
                 "shasum": ""
             },
             "require": {
@@ -13233,7 +13234,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php82/tree/v1.37.0"
+                "source": "https://github.com/symfony/polyfill-php82/tree/v1.38.1"
             },
             "funding": [
                 {
@@ -13253,7 +13254,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-04-10T16:19:22+00:00"
+            "time": "2026-05-26T12:45:58+00:00"
         },
         {
             "name": "symfony/polyfill-php83",
