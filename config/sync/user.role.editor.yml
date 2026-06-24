@@ -20,6 +20,7 @@ dependencies:
     - content_access
     - contextual
     - crop
+    - file_replace
     - filter
     - node
     - path
@@ -72,6 +73,7 @@ permissions:
   - 'grant content access'
   - 'grant own content access'
   - 'rebuild node access permissions'
+  - 'replace files'
   - 'revert any custom block content revisions'
   - 'revert book revisions'
   - 'revert story revisions'

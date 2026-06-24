@@ -41,6 +41,7 @@
         "drupal/devel": "^5.5",
         "drupal/field_group": "^4.0",
         "drupal/field_permissions": "^1.4",
+        "drupal/file_replace": "^1.5",
         "drupal/focal_point": "^2.1",
         "drupal/fullcalendar_view": "^5.2",
         "drupal/hal": "^2.0",
