@@ -13,6 +13,7 @@ dependencies:
     - filter.format.restricted_html
     - node.type.book
     - node.type.page
+    - node.type.story
   module:
     - block_content
     - book
@@ -49,24 +50,31 @@ permissions:
   - 'create book content'
   - 'create custom block content'
   - 'create page content'
+  - 'create story content'
   - 'create url aliases'
   - 'delete any book content'
   - 'delete any custom block content'
   - 'delete any custom block content revisions'
   - 'delete any page content'
+  - 'delete any story content'
   - 'delete book revisions'
   - 'delete own book content'
   - 'delete own page content'
+  - 'delete own story content'
+  - 'delete story revisions'
   - 'edit any book content'
   - 'edit any custom block content'
   - 'edit any page content'
+  - 'edit any story content'
   - 'edit own book content'
   - 'edit own page content'
+  - 'edit own story content'
   - 'grant content access'
   - 'grant own content access'
   - 'rebuild node access permissions'
   - 'revert any custom block content revisions'
   - 'revert book revisions'
+  - 'revert story revisions'
   - 'search content'
   - 'use advanced search'
   - 'use text format 1'
@@ -78,4 +86,5 @@ permissions:
   - 'use text format restricted_html'
   - 'view any custom block content history'
   - 'view book revisions'
+  - 'view story revisions'
   - 'view the administration theme'

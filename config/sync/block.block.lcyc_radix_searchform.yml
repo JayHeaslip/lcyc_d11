@@ -9,7 +9,7 @@ dependencies:
 id: lcyc_radix_searchform
 theme: lcyc_radix
 region: sidebar_tall
-weight: -7
+weight: -8
 provider: null
 plugin: search_form_block
 settings:
