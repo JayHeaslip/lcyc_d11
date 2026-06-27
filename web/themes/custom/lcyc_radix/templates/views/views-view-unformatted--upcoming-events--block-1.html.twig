@@ -8,19 +8,34 @@
 
 {% for row in rows %}
 
-  {# Extract only YYYY-MM-DD for grouping (handles datetime with T) #}
-  {% set full_date = '' %}
-  {% if row.content['#row']._entity.field_date is defined %}
-    {% set full_date = row.content['#row']._entity.field_date[0].value|default('') %}
-  {% elseif row.content['#row']._entity.field_event_date is defined %}
-    {% set full_date = row.content['#row']._entity.field_event_date[0].value|default('') %}
+  {# Extract raw UTC string #}
+  {% set raw_date = '' %}
+  {% set entity = row.content['#row']._entity %}
+  
+  {% if entity.field_date is defined and entity.field_date[0].value is defined %}
+    {% set raw_date = entity.field_date[0].value %}
+  {% elseif entity.field_event_date is defined and entity.field_event_date[0].value is defined %}
+    {% set raw_date = entity.field_event_date[0].value %}
   {% endif %}
 
-  {% set group = full_date|split('T')|first|default('') %}
+  {# Force timezone conversion #}
+  {% set group = '' %}
+  {% if raw_date %}
+    {# Append UTC explicitly and convert #}
+    {% set group = (raw_date ~ ' UTC')|date('Y-m-d', 'America/New_York') %}
+  {% endif %}
+
+  {# --- DEBUG --- #}
+  <div style="background: #fff8db; color: #000; padding: 10px; font-size: 11px; border: 1px solid #ddd; margin-bottom: 10px; line-height: 1.5;">
+    <strong>Raw UTC:</strong> {{ raw_date }}<br>
+    <strong>With UTC suffix:</strong> {{ raw_date ~ ' UTC' }}<br>
+    <strong>New York Full:</strong> {{ (raw_date ~ ' UTC')|date('Y-m-d H:i:s', 'America/New_York') }}<br>
+    <strong>✅ Group (Y-m-d NY):</strong> <strong style="color: blue; font-size: 13px;">{{ group }}</strong>
+  </div>
 
   {# New day starts #}
   {% if group != previous_group and group is not empty %}
-
+  
     {# Close previous group #}
     {% if previous_group is not empty %}
       </div> {# /.events-for-day #}
@@ -30,10 +45,9 @@
     {# Calendar box #}
     <div class="diy-event-group">
       <div class="event-date calendar-box">
-        {% set timestamp = group|date('U') %}
-        <div class="month">{{ timestamp|date('M')|upper }}</div>
-        <div class="day">{{ timestamp|date('j') }}</div>
-        <div class="weekday">{{ timestamp|date('D') }}</div>
+        <div class="month">{{ group|date('M')|upper }}</div>
+        <div class="day">{{ group|date('j') }}</div>
+        <div class="weekday">{{ group|date('D') }}</div>
       </div>
       <div class="events-for-day">
   {% endif %}

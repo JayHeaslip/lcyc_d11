@@ -20,8 +20,10 @@ dependencies:
     - content_access
     - contextual
     - crop
+    - file
     - file_replace
     - filter
+    - imce
     - node
     - path
     - search
@@ -37,6 +39,7 @@ permissions:
   - 'access content'
   - 'access content overview'
   - 'access contextual links'
+  - 'access files overview'
   - 'access printer-friendly version'
   - 'access site reports'
   - 'access toolbar'
@@ -44,6 +47,7 @@ permissions:
   - 'administer book outlines'
   - 'administer crop'
   - 'administer crop types'
+  - 'administer imce'
   - 'administer nodes'
   - 'administer search'
   - 'administer url aliases'
@@ -56,10 +60,12 @@ permissions:
   - 'delete any book content'
   - 'delete any custom block content'
   - 'delete any custom block content revisions'
+  - 'delete any file'
   - 'delete any page content'
   - 'delete any story content'
   - 'delete book revisions'
   - 'delete own book content'
+  - 'delete own files'
   - 'delete own page content'
   - 'delete own story content'
   - 'delete story revisions'
