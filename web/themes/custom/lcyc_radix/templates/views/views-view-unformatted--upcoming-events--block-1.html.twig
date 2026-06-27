@@ -25,14 +25,6 @@
     {% set group = (raw_date ~ ' UTC')|date('Y-m-d', 'America/New_York') %}
   {% endif %}
 
-  {# --- DEBUG --- #}
-  <div style="background: #fff8db; color: #000; padding: 10px; font-size: 11px; border: 1px solid #ddd; margin-bottom: 10px; line-height: 1.5;">
-    <strong>Raw UTC:</strong> {{ raw_date }}<br>
-    <strong>With UTC suffix:</strong> {{ raw_date ~ ' UTC' }}<br>
-    <strong>New York Full:</strong> {{ (raw_date ~ ' UTC')|date('Y-m-d H:i:s', 'America/New_York') }}<br>
-    <strong>✅ Group (Y-m-d NY):</strong> <strong style="color: blue; font-size: 13px;">{{ group }}</strong>
-  </div>
-
   {# New day starts #}
   {% if group != previous_group and group is not empty %}
   
