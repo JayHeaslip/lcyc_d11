@@ -9,4 +9,15 @@ To make updates on the staging branch, first sync up staging to latest main:
   * git fetch origin
   * git reset --hard origin/main
   * git push origin staging --force
-  
+
+See what's outdated:
+  * composer outdated "drupal/*"
+
+Update core packages:
+  * composer update "drupal/core-*" --with-all-dependencies
+
+Update any other packages that need it, then
+  * drush updatedb (if needed)
+  * drush cr
+
+Check function on sandbox , then checkin and push staging for final checks
