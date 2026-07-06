@@ -18,7 +18,7 @@
         "civicrm/civicrm-core": "^6.10",
         "civicrm/civicrm-drupal-8": "^6.10",
         "civicrm/civicrm-packages": "^6.10",
-        "civicrm/cli-tools": "^2025.12",
+        "civicrm/cli-tools": "^2026",
         "civicrm/composer-downloads-plugin": "^4.0",
         "composer/installers": "^2.3",
         "cweagans/composer-patches": "^1.7",
@@ -70,7 +70,7 @@
         "drush/drush": "^13.7",
         "kigkonsult/icalcreator": "^2.41",
         "mglaman/composer-drupal-lenient": "^1.0",
-        "psy/psysh": "0.12.19",
+        "psy/psysh": "^0.12",
         "scssphp/scssphp": "^1.10",
         "symfony/process": "^7.4"
     },
@@ -93,7 +93,8 @@
             "mglaman/composer-drupal-lenient": true,
             "php-http/discovery": true,
             "php-tuf/composer-integration": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "symfony/runtime": true
         },
         "sort-packages": true
     },

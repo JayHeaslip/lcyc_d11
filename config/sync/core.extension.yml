@@ -23,7 +23,6 @@ module:
   config: 0
   config_split: 0
   config_translation: 0
-  contact: 0
   content_access: 0
   contextual: 0
   crop: 0
@@ -50,7 +49,6 @@ module:
   fullcalendarview_generator: 0
   hal: 0
   help: 0
-  history: 0
   honeypot: 0
   image: 0
   imce: 0
@@ -74,7 +72,6 @@ module:
   menu_link_content: 0
   menu_ui: 0
   migrate: 0
-  migrate_drupal: 0
   mysql: 0
   node: 0
   options: 0
@@ -97,6 +94,8 @@ module:
   responsive_image: 0
   rest: 0
   search: 0
+  search_help: 0
+  search_node: 0
   serialization: 0
   settings_tray: 0
   shortcut: 0
@@ -131,7 +130,6 @@ theme:
   claro: 0
   radix: 0
   lcyc_radix: 0
-  stable9: 0
   starterkit_theme: 0
   olivero: 0
 profile: standard

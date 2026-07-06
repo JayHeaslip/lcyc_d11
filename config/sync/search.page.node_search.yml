@@ -1,20 +1,15 @@
-uuid: 74704bd8-ef6c-4136-bcba-1540c7886dee
+uuid: 6c051e0d-c2d0-452b-82ab-cc11ffd75854
 langcode: en
 status: true
 dependencies:
   module:
-    - node
+    - search_node
 _core:
-  default_config_hash: 97tvtzGOa8_flb22CzSjgtm_YkiGMHvEBO-6q2K9V_U
+  default_config_hash: br_PqvONqWqTzpV2ajwoa9w-k3t7j9LqJQTjC0zmT88
 id: node_search
-label: node_search
+label: Content
 path: node
 weight: -10
 plugin: node_search
 configuration:
-  rankings:
-    comments: 5
-    promote: 0
-    relevance: 5
-    sticky: 0
-    views: 5
+  rankings: {  }
