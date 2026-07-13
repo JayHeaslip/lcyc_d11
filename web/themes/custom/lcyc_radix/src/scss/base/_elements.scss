@@ -122,6 +122,12 @@ h2 { font-size: 1.25rem; }
   background-color: $lcyc-navy
 }
 
+/* Fix main navigation z-index overlap on slideshow */
+nav.navbar {
+  position: relative !important;
+  z-index: 1050 !important;
+}
+
 .navbar-nav {
   font-size: 1.25rem;
 
@@ -166,7 +172,7 @@ h2 { font-size: 1.25rem; }
 // Dropdown menu styling
 .dropdown-menu {
   margin-top: 0.25rem;
-  z-index: 1021 !important;
+  z-index: 1051 !important;
 }
 
 .navbar .nav-link {

@@ -1,0 +1,8 @@
+name: 'Rails SSO Handoff'
+type: module
+description: 'Provides a secure JWT token link generation utility for Ruby on Rails SSO.'
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - core:user
+  
