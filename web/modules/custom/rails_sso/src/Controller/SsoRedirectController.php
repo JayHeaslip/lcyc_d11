@@ -58,8 +58,9 @@ class SsoRedirectController extends ControllerBase {
 
     $jwt = JWT::encode($payload, $secret_key, 'HS256');
     
-    // Construct target local Rails dev environment URL
-    $rails_url = 'http://localhost:3001/sso/login?token=' . urlencode($jwt);
+    // Construct target
+    $rails_url = $rails_base_url . '?token=' . urlencode($jwt);
+
 
     // Issue standard HTTP 302 redirect
     return new TrustedRedirectResponse($rails_url);
