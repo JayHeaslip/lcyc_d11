@@ -47,7 +47,7 @@ class SsoRedirectController extends ControllerBase {
 
     // Generate token valid for exactly 120 seconds
     $issued_at = time(); 
-    $expire = $issued_at + 120;
+    $expire = $issued_at + 300;
 
     $payload = [
       'iat'   => $issued_at,
@@ -56,7 +56,9 @@ class SsoRedirectController extends ControllerBase {
       'name'  => $current_user->getAccountName(),
     ];
 
+    error_log("Drupal generate - now: " . time() . " iat: $issued_at exp: $expire");
     $jwt = JWT::encode($payload, $secret_key, 'HS256');
+    error_log("Token: " . $jwt);  // Log the full token
     
     // Construct target
     $rails_url = $rails_base_url . '?token=' . urlencode($jwt);
