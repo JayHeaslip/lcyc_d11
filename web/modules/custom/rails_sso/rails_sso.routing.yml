@@ -4,4 +4,7 @@ rails_sso.redirect_page:
     _controller: '\Drupal\rails_sso\Controller\SsoRedirectController::redirectToRails'
   requirements:
     _user_is_logged_in: 'TRUE' # Built-in Drupal guard to block anonymous users
+  options:
+    no_cache: TRUE
+    
     
