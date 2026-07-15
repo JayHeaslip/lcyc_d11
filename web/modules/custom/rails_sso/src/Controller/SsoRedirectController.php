@@ -45,9 +45,9 @@ class SsoRedirectController extends ControllerBase {
 	  return new TrustedRedirectResponse('<front>');
     }
 
-    // Generate token valid for exactly 30 seconds (even tighter security)
-    $issued_at = time();
-    $expire = $issued_at + 30;
+    // Generate token valid for exactly 120 seconds
+    $issued_at = time(); 
+    $expire = $issued_at + 120;
 
     $payload = [
       'iat'   => $issued_at,
