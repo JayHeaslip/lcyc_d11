@@ -79,6 +79,8 @@ $container-max-widths: (
 // Dropdow=ns
 $dropdown-bg: $lcyc-navy;
 $dropdown-border-color: color.adjust($primary, $lightness: -10%);
-$dropdown-link-color: white;
+$dropdown-link-color: white;<
 $dropdown-link-hover-color: white;
 $dropdown-link-hover-bg: rgba(255, 255, 255, 0.15);
+
+$zindex-sticky: 500;  // same level as menu

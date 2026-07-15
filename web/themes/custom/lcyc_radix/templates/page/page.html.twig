@@ -83,7 +83,7 @@ Based on a typical Bootstrap layout using Radix regions.
 	{# --- RIGHT SIDE: Sidebar Column (narrow but usable) --- #}
 	<div class="col-lg-3 col-md-4">   {# ← Changed: 3 or 4 columns wide #}
           {% if page.sidebar_tall %}
-          <aside class="p-3 border bg-light sticky-top" style="top: 2rem;">  {# Optional: make it sticky #}
+          <aside class="p-3 border bg-light" style="top: 2rem;">  {# Optional: make it sticky #}
             {{ page.sidebar_tall }}
           </aside>
           {% endif %}
