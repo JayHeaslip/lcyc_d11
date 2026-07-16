@@ -48,7 +48,7 @@ class SsoRedirectController extends ControllerBase {
     // Generate token valid for exactly 120 seconds
     $issued_at = time(); 
     $expire = $issued_at + 300;
-
+    \Drupal::logger('rails_sso')->info('SSO issued at: ' . $issued_at);
     $payload = [
       'iat'   => $issued_at,
       'exp'   => $expire,
