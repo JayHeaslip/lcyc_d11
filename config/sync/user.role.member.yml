@@ -4,9 +4,11 @@ status: true
 dependencies:
   module:
     - book
+    - rails_sso
 id: member
 label: Member
 weight: 6
 is_admin: false
 permissions:
+  - 'access SSO controller'
   - 'access printer-friendly version'

@@ -1,0 +1,5 @@
+# rails_sso.permissions.yml
+access SSO controller:
+  title: 'Access Rails SSO Redirect'
+  description: 'Allows users to access the Rails SSO redirect page.'
+  restrict access: false  # Set to true if this is a highly sensitive admin permission

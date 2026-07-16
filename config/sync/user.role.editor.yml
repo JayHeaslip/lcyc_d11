@@ -24,6 +24,7 @@ dependencies:
     - filter
     - node
     - path
+    - rails_sso
     - search
     - system
     - toolbar
@@ -32,6 +33,7 @@ label: editor
 weight: 5
 is_admin: false
 permissions:
+  - 'access SSO controller'
   - 'access administration pages'
   - 'access block library'
   - 'access content'

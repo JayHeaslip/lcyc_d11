@@ -4,7 +4,7 @@
 //    on members.lcyc.info
 //       Memberships/Spreadsheets - generate Member Cards/Workday Checklist spreadsheet
 // upload the resulting csv file to lcyc.info server in the ~/lcyc.info directory
-// run: gen_email_list.rb, copy resulting email list into assign_member_role.php
+// run: get_email_list.rb <csv file>, copy resulting email list into assign_member_role.php
 // run: drush scr assign_member_role.php
 
 use Drupal\user\Entity\User;
