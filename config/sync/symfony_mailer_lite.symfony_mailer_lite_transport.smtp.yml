@@ -8,8 +8,8 @@ plugin: smtp
 configuration:
   user: communications@lcyc.info
   pass: ''
-  pass_key: ''
-  use_key_module: false
+  pass_key: smtp_password
+  use_key_module: true
   host: smtp.dreamhost.com
   port: 587
   query:
