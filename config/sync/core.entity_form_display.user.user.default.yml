@@ -3,8 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.user.user.user_picture
+    - field.field.user.user.field_picture
   module:
+    - media_library
     - user
 _core:
   default_config_hash: FaQ9Ptcpxpg30AtiqRDtl_8zbJArHP1LPfug_s59TOA
@@ -21,6 +22,13 @@ content:
   contact:
     weight: 5
     region: content
+  field_picture:
+    type: media_library_widget
+    weight: 7
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
   language:
     weight: 1
     region: content
@@ -31,4 +39,3 @@ content:
     region: content
 hidden:
   langcode: true
-  user_picture: true
