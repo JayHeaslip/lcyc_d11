@@ -4,11 +4,21 @@ status: true
 dependencies:
   module:
     - book
+    - civicrm
+    - profile
     - rails_sso
 id: member
 label: Member
 weight: 6
 is_admin: false
 permissions:
+  - 'access Contact Dashboard'
   - 'access SSO controller'
   - 'access printer-friendly version'
+  - 'access profile overview'
+  - 'access user profiles'
+  - 'view all contacts'
+  - 'view any profile'
+  - 'view own profile'
+  - 'view own unpublished profile'
+  - 'view user email addresses'

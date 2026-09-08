@@ -275,7 +275,7 @@ display:
         type: normal
         title: 'VVJS Example'
         description: 'See the VVJS slideshow in action'
-        weight: -39
+        weight: -38
         enabled: false
         menu_name: main
         parent: ''

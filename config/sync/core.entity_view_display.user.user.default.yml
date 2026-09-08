@@ -13,20 +13,26 @@ targetEntityType: user
 bundle: user
 mode: default
 content:
+  civicrm_profiles:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
   field_picture:
-    type: entity_reference_entity_view
-    label: above
-    settings:
+   type: entity_reference_entity_view
+   label: above
+   settings:
       view_mode: default
       link: false
-    third_party_settings: {  }
-    weight: 6
-    region: content
+   third_party_settings: {  }
+   weight: 1
+   region: content
   member_for:
-    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
     region: content
 hidden:
   civicrm_dashboard: true
-  civicrm_profiles: true
   civicrm_record: true
   langcode: true
