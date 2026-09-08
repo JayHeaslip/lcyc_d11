@@ -32,6 +32,7 @@ module:
   datetime_range: 0
   dblog: 0
   deploy_tracker: 0
+  devel_entity_updates: 0
   dynamic_page_cache: 0
   editor: 0
   entity: 0
@@ -113,7 +114,6 @@ module:
   token: 0
   toolbar: 0
   trace_mail_log: 0
-  tracer: 0
   update: 0
   user: 0
   viewfield: 0
