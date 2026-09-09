@@ -38,8 +38,6 @@
         "drupal/core-recommended": "^11.2",
         "drupal/ctools": "^4.1",
         "drupal/date_ical": "^4.0",
-        "drupal/devel": "^5.5",
-        "drupal/devel_entity_updates": "^5.0",
         "drupal/field_group": "^4.0",
         "drupal/field_permissions": "^1.4",
         "drupal/file_replace": "^1.5",
