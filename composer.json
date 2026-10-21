@@ -51,7 +51,7 @@
         "drupal/key": "^1.22",
         "drupal/mail_login": "^4.2",
         "drupal/meaofd": "^1.2",
-        "drupal/profile": "^1.12",
+        "drupal/profile": "^1.16",
         "drupal/radix": "^6.0",
         "drupal/rdf": "^3.0@beta",
         "drupal/registration": "^3.4",
