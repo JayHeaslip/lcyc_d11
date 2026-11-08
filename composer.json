@@ -48,7 +48,7 @@
         "drupal/imce": "^3.1",
         "drupal/inline_entity_form": "^3.0@RC",
         "drupal/jquery_ui_accordion": "^2.1",
-        "drupal/key": "^1.22",
+        "drupal/key": "^1.23",
         "drupal/mail_login": "^4.2",
         "drupal/meaofd": "^1.2",
         "drupal/profile": "^1.16",
@@ -59,7 +59,7 @@
         "drupal/structure_sync": "^2.0",
         "drupal/symfony_mailer_lite": "^2.0",
         "drupal/theme_switcher": "^2",
-        "drupal/token": "^1.16",
+        "drupal/token": "^1.18",
         "drupal/trace_mail_log": "^1.1",
         "drupal/viewfield": "^3.0@beta",
         "drupal/views_slideshow": "^5.0",
@@ -100,10 +100,7 @@
 	"patches": {
 	    "drupal/core": {
 		"CKEditor 5 support for summary field - https://www.drupal.org/i/2671162": "https://www.drupal.org/files/issues/2026-04-07/ckeditor-for-summary-2671162-11.3.x-161.patch"
-	    },
-	    "drupal/radix": {
-            "Fix dropdown-menu component schema validation error": "https://www.drupal.org/files/issues/2026-07-07/dropdown-menu-schema._3609155-2.patch"
-            }
+	    }
 	},	
 	"compile-mode": "whitelist",
 	"compile-whitelist": [
