@@ -44,6 +44,19 @@ class SsoRedirectController extends ControllerBase {
         $this->messenger()->addError($this->t('SSO destination setup error. Please contact an administrator.'));
 	  return new TrustedRedirectResponse('<front>');
     }
+    
+    // 1. Get the destination path passed from the menu link (default to root if empty)
+    $request = \Drupal::request();
+    $destination = $request->query->get('return_to', '/');
+
+    // Only permit relative paths beginning with a single slash.
+    if (
+      !is_string($destination) ||
+        !str_starts_with($destination, '/') ||
+	  str_starts_with($destination, '//')
+    ) {
+      $destination = '/';
+    }
 
     // Generate token valid for exactly 120 seconds
     $issued_at = time(); 
@@ -54,6 +67,7 @@ class SsoRedirectController extends ControllerBase {
       'exp'   => $expire,
       'email' => $current_user->getEmail(),
       'name'  => $current_user->getAccountName(),
+      'return_to' => $destination, // Passing dynamic destination
     ];
 
     $jwt = JWT::encode($payload, $secret_key, 'HS256');
@@ -61,7 +75,11 @@ class SsoRedirectController extends ControllerBase {
     // Construct target
     $rails_url = $rails_base_url . '?token=' . urlencode($jwt);
 
-
+    // --- ADD THIS LOGGING STATEMENT ---
+       \Drupal::logger('rails_sso')->info('Redirecting user to Rails SSO URL: @url', [
+       '@url' => $rails_url,
+    ]);						       	     
+    
     // Issue standard HTTP 302 redirect
     return new TrustedRedirectResponse($rails_url);
   }
