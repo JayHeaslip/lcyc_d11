@@ -15,6 +15,7 @@ module:
   bootstrap_styles: 0
   breakpoint: 0
   civicrm: 0
+  civicrm_display_name: 0
   civicrm_drush: 0
   ckeditor5: 0
   color: 0
