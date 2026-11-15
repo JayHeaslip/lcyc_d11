@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * @file
+ * Overrides Drupal username with CiviCRM Display Name.
+ */
+
+/**
+ * Implements hook_user_format_name_alter().
+ */
+function civicrm_display_name_user_format_name_alter(&$name, $account) {
+  // Skip if this is not a real user.
+  if (empty($account->id()) || $account->isAnonymous()) {
+    return;
+  }
+
+  try {
+    // Initialize CiviCRM.
+    \Drupal::service('civicrm')->initialize();
+
+    // Get the CiviCRM contact linked to this Drupal user.
+    $result = civicrm_api3('UFMatch', 'get', [
+      'uf_id' => $account->id(),
+      'sequential' => 1,
+      'limit' => 1,
+    ]);
+
+    if (empty($result['values'][0]['contact_id'])) {
+      return;
+    }
+
+    $contact_id = $result['values'][0]['contact_id'];
+
+    // Get the display name from CiviCRM.
+    $contact = civicrm_api3('Contact', 'getsingle', [
+      'id' => $contact_id,
+      'return' => ['display_name'],
+    ]);
+
+    if (!empty($contact['display_name'])) {
+      $name = $contact['display_name'];
+    }
+  }
+  catch (\Exception $e) {
+    // Fail silently so the original username is still shown.
+    \Drupal::logger('civicrm_display_name')->error('Error getting CiviCRM display name for uid @uid: @message', [
+      '@uid' => $account->id(),
+      '@message' => $e->getMessage(),
+    ]);
+  }
+}

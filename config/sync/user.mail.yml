@@ -18,10 +18,7 @@ register_pending_approval:
   body: "[user:name],\r\n\r\nThank you for registering at [site:name]. Your application for an account is currently pending approval. Once it has been granted, you may log in to [site:login-url] using the following username and password:\r\n\r\nusername: [user:name]\r\npassword: \r\n\r\nYou may also log in by clicking on this link or copying and pasting it in your browser:\r\n\r\n[user:one-time-login-url]\r\n\r\nThis is a one-time login, so it can be used only once.\r\n\r\nAfter logging in, you may wish to change your password at [user:edit-url]\r\n\r\nYour new [site:name] membership also enables to you to login to other Drupal powered websites (e.g. http://www.drop.org/) without registering. Just use the following Drupal ID and password:\r\n\r\nDrupal ID: [user:name]@[site:url-brief]\r\npassword: \r\n\r\n\r\n--  [site:name] team"
 register_pending_approval_admin:
   subject: 'Account details for [user:display-name] at [site:name] (pending admin approval)'
-  body: |-
-    [user:display-name] has applied for an account.
-
-    [user:edit-url]
+  body: "[user:display-name] has applied for an account.\r\n\r\n[user:edit-url]"
 status_activated:
   subject: 'Account details for [user:name] at [site:name] (approved)'
   body: "[user:name],\r\n\r\nYour account at [site:name] has been activated.\r\n\r\nYou may now log in by clicking on this link or copying and pasting it in your browser:\r\n\r\n[user:one-time-login-url]\r\n\r\nThis is a one-time login, so it can be used only once.\r\n\r\nAfter logging in, you will be redirected to [user:edit-url] so you can change your password.\r\n\r\nOnce you have set your own password, you will be able to log in to [site:login-url] in the future using:\r\n\r\nusername: [user:name]\r\n"

@@ -1,0 +1,7 @@
+name: 'CiviCRM Display Name'
+type: module
+description: 'Overrides Drupal username with the CiviCRM Contact Display Name (First + Last Name).'
+core_version_requirement: ^10 || ^11
+package: Custom
+dependencies:
+  - civicrm:civicrm
