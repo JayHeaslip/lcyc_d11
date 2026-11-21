@@ -25,10 +25,15 @@ function registration_guard_validate(
         return;
     }
 
-    $raw_email = $form_state->getValue('mail')
-        ?? $form_state->getValue(['account', 'mail'])
-        ?? '';
-    $email = strtolower(trim($raw_email));
+    $error_element = 'mail';
+    $raw_email = $form_state->getValue('mail');
+
+    if ($raw_email === null) {
+        $raw_email = $form_state->getValue(['account', 'mail']);
+        $error_element = 'account][mail';
+    }
+
+    $email = strtolower(trim((string) ($raw_email ?? '')));
 
     // Extract everything after the last '@' symbol.
     $at_part = strrchr($email, '@');
@@ -52,8 +57,8 @@ function registration_guard_validate(
                 ]
             );
             $form_state->setErrorByName(
-                'mail',
-                t('Registration using this email domain is not permitted.')
+                $error_element,
+                \t('Registration using this email domain is not permitted.')
             );
             return;
         }
