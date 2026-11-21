@@ -1,0 +1,5 @@
+name: Registration Guard
+type: module
+description: Blocks unwanted email domains during registration.
+core_version_requirement: ^11
+package: Custom
