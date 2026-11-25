@@ -7,19 +7,40 @@
 
 @font-face {
   font-family: 'EB Garamond';
-  src: url('/themes/custom/lcyc_radix/fonts/eb-garamond-v32-latin-regular.woff2') format('woff2'),
-       url('/themes/custom/lcyc_radix/fonts/eb-garamond-v32-latin-600.woff2') format('woff2'),
-       url('/themes/custom/lcyc_radix/fonts/eb-garamond-v32-latin-700.woff2') format('woff2');
-  font-weight: 400 600 700;
+  src: url('/themes/custom/lcyc_radix/fonts/eb-garamond-v32-latin-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'EB Garamond';
+  src: url('/themes/custom/lcyc_radix/fonts/eb-garamond-v32-latin-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'EB Garamond';
+  src: url('/themes/custom/lcyc_radix/fonts/eb-garamond-v32-latin-700.woff2') format('woff2');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Barlow Semi Condensed';
-  src: url('/themes/custom/lcyc_radix/fonts/barlow-semi-condensed-v16-latin-regular.woff2') format('woff2'),
-       url('/themes/custom/lcyc_radix/fonts/barlow-semi-condensed-v16-latin-700.woff2') format('woff2');
-  font-weight: 400 700;
+  src: url('/themes/custom/lcyc_radix/fonts/barlow-semi-condensed-v16-latin-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow Semi Condensed';
+  src: url('/themes/custom/lcyc_radix/fonts/barlow-semi-condensed-v16-latin-700.woff2') format('woff2');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -55,7 +76,7 @@ $navbar-dark-brand-hover-color: white;
 }
 
 // 2. Typography
-$font-family-sans-serif: "PT Sans", sans-serif;
+$font-family-sans-serif: $font-sans;
 $navbar-brand-font-size: 2.5rem;
 
 // 3. Grid & Containers
