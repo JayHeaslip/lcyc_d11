@@ -2,8 +2,10 @@
 
 namespace Drupal\views_enhancements\Plugin\views\filter;
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\views\Plugin\views\display\DisplayPluginBase;
 use Drupal\views\Plugin\views\filter\FilterPluginBase;
+use Drupal\views\Plugin\views\query\Sql;
 use Drupal\views\ViewExecutable;
 
 /**
@@ -15,21 +17,30 @@ class SpacesRemaining extends FilterPluginBase {
 
   protected $valueTitle;
 
+  /**
+   * {@inheritdoc}
+   */
   public function init(ViewExecutable $view, DisplayPluginBase $display, ?array &$options = NULL) {
     parent::init($view, $display, $options);
-    $this->valueTitle = t('Spaces remaining > 0 (hardcoded)');
+    $this->valueTitle = $this->t('Spaces remaining > 0 (hardcoded)');
   }
 
   /**
    * No configuration needed since hardcoded.
    */
-  public function buildOptionsForm(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  public function buildOptionsForm(&$form, FormStateInterface $form_state) {
     $form['info'] = [
       '#markup' => '<p>' . $this->t('This filter is hardcoded to show only events with >0 spaces remaining. No options available.') . '</p>',
     ];
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function query() {
+    if (!$this->query instanceof Sql) {
+      return;
+    }
 
     $this->query->addWhereExpression(
       $this->options['group'],
@@ -48,16 +59,23 @@ class SpacesRemaining extends FilterPluginBase {
       )',
       [
         ':entity_type' => 'node',
-        ':active_statuses[]' => ['complete'],  // Fix here
+        ':active_statuses[]' => ['complete'],
       ]
     );
-  } 
+  }
 
+  /**
+   * {@inheritdoc}
+   */
   public function adminSummary() {
     return $this->t('> 0 spaces remaining (hardcoded)');
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function canExpose() {
-    return FALSE;  // Hardcoded → no exposure needed
+    return FALSE;
   }
+
 }

@@ -20,7 +20,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   }
  * )
  */
-class CurrentUserId extends ConditionPluginBase implements ContainerFactoryPluginInterface {
+final class CurrentUserId extends ConditionPluginBase implements ContainerFactoryPluginInterface {
 
   /**
    * {@inheritdoc}
@@ -47,7 +47,7 @@ class CurrentUserId extends ConditionPluginBase implements ContainerFactoryPlugi
 	   '#attributes' => ['type' => 'number', 'min' => 0],
 	   '#element_validate' => [[$this, 'validateUserId']],
       ];
- 
+
       return parent::buildConfigurationForm($form, $form_state);
   }
 
@@ -95,8 +95,8 @@ class CurrentUserId extends ConditionPluginBase implements ContainerFactoryPlugi
  public function validateUserId(array &$element, FormStateInterface $form_state) {
     $uid = $element['#value'];
 
-     if (empty($uid) || $uid === '') {
-      return; 
+     if (empty($uid)) {
+      return;
     }
 
     // Ensure the value is a valid integer string representation.
